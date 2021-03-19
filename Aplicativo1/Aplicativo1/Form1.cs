@@ -97,7 +97,7 @@ namespace Aplicativo1
             txtSenhaPartida.Clear();
 
         }
-
+        //TesteGIT
         //Cria uma partida
         private void btnCriar_Click(object sender, EventArgs e)
         {
