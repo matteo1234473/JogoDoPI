@@ -101,6 +101,8 @@ namespace Aplicativo1
 
         //TesteGIT ja to profissa Joãozinho
 
+        //TesteGIT ja to profissa Thaysa
+
         //Cria uma partida
         private void btnCriar_Click(object sender, EventArgs e)
         {
