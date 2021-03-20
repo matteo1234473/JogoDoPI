@@ -97,7 +97,7 @@ namespace Aplicativo1
             txtSenhaPartida.Clear();
 
         }
-        //TesteGIT ja to profissa
+        //TesteGIT ja to profissa Joãozinho
         //Cria uma partida
         private void btnCriar_Click(object sender, EventArgs e)
         {
@@ -139,6 +139,11 @@ namespace Aplicativo1
         private void btnIniciarP_Click(object sender, EventArgs e)
         {
             Jogo.IniciarPartida(IdJogador, Senha);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
