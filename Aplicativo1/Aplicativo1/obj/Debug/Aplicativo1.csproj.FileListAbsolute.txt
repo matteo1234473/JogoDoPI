@@ -40,3 +40,17 @@ C:\Users\thiag\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\obj\D
 C:\Users\thiag\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\obj\Debug\Aplicativo1.csproj.CopyComplete
 C:\Users\thiag\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\obj\Debug\Aplicativo1.exe
 C:\Users\thiag\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\obj\Debug\Aplicativo1.pdb
+C:\Users\essec\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\bin\Debug\Aplicativo1.exe.config
+C:\Users\essec\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\bin\Debug\Aplicativo1.exe
+C:\Users\essec\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\bin\Debug\Aplicativo1.pdb
+C:\Users\essec\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\bin\Debug\CantStopServer.dll
+C:\Users\essec\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\bin\Debug\CantStopServer.xml
+C:\Users\essec\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\obj\Debug\Aplicativo1.csprojAssemblyReference.cache
+C:\Users\essec\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\obj\Debug\Aplicativo1.Form1.resources
+C:\Users\essec\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\obj\Debug\Aplicativo1.Properties.Resources.resources
+C:\Users\essec\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\obj\Debug\Aplicativo1.Tabuleiro.resources
+C:\Users\essec\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\obj\Debug\Aplicativo1.csproj.GenerateResource.cache
+C:\Users\essec\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\obj\Debug\Aplicativo1.csproj.CoreCompileInputs.cache
+C:\Users\essec\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\obj\Debug\Aplicativo1.csproj.CopyComplete
+C:\Users\essec\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\obj\Debug\Aplicativo1.exe
+C:\Users\essec\Source\Repos\matteo1234473\JogoDoPI\Aplicativo1\Aplicativo1\obj\Debug\Aplicativo1.pdb
