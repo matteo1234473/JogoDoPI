@@ -49,6 +49,17 @@ namespace Aplicativo1
             this.lblVersao = new System.Windows.Forms.Label();
             this.btnPartidasJ = new System.Windows.Forms.Button();
             this.btnIniciarP = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtIdjogador = new System.Windows.Forms.TextBox();
+            this.txtDado1 = new System.Windows.Forms.TextBox();
+            this.txtDado2 = new System.Windows.Forms.TextBox();
+            this.txtDado3 = new System.Windows.Forms.TextBox();
+            this.txtDado4 = new System.Windows.Forms.TextBox();
+            this.btnRola = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnPartidas
@@ -71,6 +82,7 @@ namespace Aplicativo1
             this.lstPartidas.Name = "lstPartidas";
             this.lstPartidas.Size = new System.Drawing.Size(334, 173);
             this.lstPartidas.TabIndex = 2;
+            this.lstPartidas.SelectedIndexChanged += new System.EventHandler(this.lstPartidas_SelectedIndexChanged);
             // 
             // btnJogadores
             // 
@@ -109,7 +121,7 @@ namespace Aplicativo1
             // 
             this.btnCriar.BackColor = System.Drawing.Color.LightCyan;
             this.btnCriar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCriar.Location = new System.Drawing.Point(124, 318);
+            this.btnCriar.Location = new System.Drawing.Point(124, 271);
             this.btnCriar.Name = "btnCriar";
             this.btnCriar.Size = new System.Drawing.Size(85, 44);
             this.btnCriar.TabIndex = 7;
@@ -178,7 +190,7 @@ namespace Aplicativo1
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(101, 209);
+            this.label3.Location = new System.Drawing.Point(101, 176);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(123, 24);
             this.label3.TabIndex = 14;
@@ -186,14 +198,14 @@ namespace Aplicativo1
             // 
             // txtNomePartida
             // 
-            this.txtNomePartida.Location = new System.Drawing.Point(15, 271);
+            this.txtNomePartida.Location = new System.Drawing.Point(12, 234);
             this.txtNomePartida.Name = "txtNomePartida";
             this.txtNomePartida.Size = new System.Drawing.Size(140, 20);
             this.txtNomePartida.TabIndex = 15;
             // 
             // txtCriarSenha
             // 
-            this.txtCriarSenha.Location = new System.Drawing.Point(175, 271);
+            this.txtCriarSenha.Location = new System.Drawing.Point(175, 234);
             this.txtCriarSenha.Name = "txtCriarSenha";
             this.txtCriarSenha.Size = new System.Drawing.Size(140, 20);
             this.txtCriarSenha.TabIndex = 16;
@@ -202,17 +214,18 @@ namespace Aplicativo1
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 252);
+            this.label4.Location = new System.Drawing.Point(12, 215);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 16);
             this.label4.TabIndex = 17;
             this.label4.Text = "Nome";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(172, 252);
+            this.label5.Location = new System.Drawing.Point(172, 215);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 16);
             this.label5.TabIndex = 18;
@@ -247,12 +260,114 @@ namespace Aplicativo1
             this.btnIniciarP.UseVisualStyleBackColor = true;
             this.btnIniciarP.Click += new System.EventHandler(this.btnIniciarP_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 334);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 13);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "IdJogador";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // txtIdjogador
+            // 
+            this.txtIdjogador.Location = new System.Drawing.Point(12, 353);
+            this.txtIdjogador.Name = "txtIdjogador";
+            this.txtIdjogador.Size = new System.Drawing.Size(100, 20);
+            this.txtIdjogador.TabIndex = 23;
+            // 
+            // txtDado1
+            // 
+            this.txtDado1.Location = new System.Drawing.Point(143, 334);
+            this.txtDado1.Name = "txtDado1";
+            this.txtDado1.Size = new System.Drawing.Size(31, 20);
+            this.txtDado1.TabIndex = 24;
+            // 
+            // txtDado2
+            // 
+            this.txtDado2.Location = new System.Drawing.Point(143, 366);
+            this.txtDado2.Name = "txtDado2";
+            this.txtDado2.Size = new System.Drawing.Size(31, 20);
+            this.txtDado2.TabIndex = 25;
+            // 
+            // txtDado3
+            // 
+            this.txtDado3.Location = new System.Drawing.Point(206, 334);
+            this.txtDado3.Name = "txtDado3";
+            this.txtDado3.Size = new System.Drawing.Size(34, 20);
+            this.txtDado3.TabIndex = 26;
+            // 
+            // txtDado4
+            // 
+            this.txtDado4.Location = new System.Drawing.Point(206, 366);
+            this.txtDado4.Name = "txtDado4";
+            this.txtDado4.Size = new System.Drawing.Size(34, 20);
+            this.txtDado4.TabIndex = 27;
+            // 
+            // btnRola
+            // 
+            this.btnRola.Location = new System.Drawing.Point(272, 345);
+            this.btnRola.Name = "btnRola";
+            this.btnRola.Size = new System.Drawing.Size(75, 23);
+            this.btnRola.TabIndex = 28;
+            this.btnRola.Text = "Roda";
+            this.btnRola.UseVisualStyleBackColor = true;
+            this.btnRola.Click += new System.EventHandler(this.btnRola_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(140, 325);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(39, 13);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "Dado1";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(140, 357);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(39, 13);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "Dado2";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(203, 325);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(39, 13);
+            this.label9.TabIndex = 31;
+            this.label9.Text = "Dado3";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(203, 356);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(39, 13);
+            this.label10.TabIndex = 32;
+            this.label10.Text = "Dado4";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(694, 390);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btnRola);
+            this.Controls.Add(this.txtDado4);
+            this.Controls.Add(this.txtDado3);
+            this.Controls.Add(this.txtDado2);
+            this.Controls.Add(this.txtDado1);
+            this.Controls.Add(this.txtIdjogador);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnIniciarP);
             this.Controls.Add(this.btnPartidasJ);
             this.Controls.Add(this.lblVersao);
@@ -302,6 +417,17 @@ namespace Aplicativo1
         private System.Windows.Forms.Label lblVersao;
         private System.Windows.Forms.Button btnPartidasJ;
         private System.Windows.Forms.Button btnIniciarP;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtIdjogador;
+        private System.Windows.Forms.TextBox txtDado1;
+        private System.Windows.Forms.TextBox txtDado2;
+        private System.Windows.Forms.TextBox txtDado3;
+        private System.Windows.Forms.TextBox txtDado4;
+        private System.Windows.Forms.Button btnRola;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }
 
