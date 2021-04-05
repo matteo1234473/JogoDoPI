@@ -24,9 +24,7 @@ namespace Aplicativo1
         {
             InitializeComponent();
             lblVersao.Text = "Versão " + Jogo.Versao;
-            int IdP = idPartida;
-            string SenhaP = Senha;
-            int IdJ = IdJogador;
+            
         }
 
 
@@ -169,45 +167,6 @@ namespace Aplicativo1
 
         }
 
-        private void btnRola_Click(object sender, EventArgs e)
-        {
-            string dados = Jogo.RolarDados(IdJogador, Senha);
-            if (dados.StartsWith("ERRO"))
-            {
-                MessageBox.Show(dados);
-            }
-            else
-            {
-                
-                dados = dados.Replace("\r", "");
-                string[] linha = dados.Split('\n');
-
-
-                double[] dadoInt = {Convert.ToDouble(linha[0]) / 10, Convert.ToDouble(linha[1]) / 10, Convert.ToDouble(linha[2]) / 10, Convert.ToDouble(linha[3]) / 10 };
-
-                
-                string dado1 = Convert.ToString(dadoInt[0]);
-                string dado2 = Convert.ToString(dadoInt[1]);
-                string dado3 = Convert.ToString(dadoInt[2]);
-                string dado4 = Convert.ToString(dadoInt[3]);
-
-                string[] dadoTratado1 = dado1.Split(',');
-                string[] dadoTratado2 = dado2.Split(',');
-                string[] dadoTratado3 = dado3.Split(',');
-                string[] dadoTratado4 = dado4.Split(',');
-
-
-                txtDado1.Text = dadoTratado1[1];
-                txtDado2.Text = dadoTratado2[1];
-                txtDado3.Text = dadoTratado3[1];
-                txtDado4.Text = dadoTratado4[1];
-
-            }
-            
-
-            
-
-            MessageBox.Show(dados);
-        }
+        
     }
 }

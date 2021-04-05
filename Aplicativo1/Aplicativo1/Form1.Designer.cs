@@ -51,15 +51,6 @@ namespace Aplicativo1
             this.btnIniciarP = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtIdjogador = new System.Windows.Forms.TextBox();
-            this.txtDado1 = new System.Windows.Forms.TextBox();
-            this.txtDado2 = new System.Windows.Forms.TextBox();
-            this.txtDado3 = new System.Windows.Forms.TextBox();
-            this.txtDado4 = new System.Windows.Forms.TextBox();
-            this.btnRola = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnPartidas
@@ -277,95 +268,12 @@ namespace Aplicativo1
             this.txtIdjogador.Size = new System.Drawing.Size(100, 20);
             this.txtIdjogador.TabIndex = 23;
             // 
-            // txtDado1
-            // 
-            this.txtDado1.Location = new System.Drawing.Point(143, 334);
-            this.txtDado1.Name = "txtDado1";
-            this.txtDado1.Size = new System.Drawing.Size(31, 20);
-            this.txtDado1.TabIndex = 24;
-            // 
-            // txtDado2
-            // 
-            this.txtDado2.Location = new System.Drawing.Point(143, 366);
-            this.txtDado2.Name = "txtDado2";
-            this.txtDado2.Size = new System.Drawing.Size(31, 20);
-            this.txtDado2.TabIndex = 25;
-            // 
-            // txtDado3
-            // 
-            this.txtDado3.Location = new System.Drawing.Point(206, 334);
-            this.txtDado3.Name = "txtDado3";
-            this.txtDado3.Size = new System.Drawing.Size(34, 20);
-            this.txtDado3.TabIndex = 26;
-            // 
-            // txtDado4
-            // 
-            this.txtDado4.Location = new System.Drawing.Point(206, 366);
-            this.txtDado4.Name = "txtDado4";
-            this.txtDado4.Size = new System.Drawing.Size(34, 20);
-            this.txtDado4.TabIndex = 27;
-            // 
-            // btnRola
-            // 
-            this.btnRola.Location = new System.Drawing.Point(272, 345);
-            this.btnRola.Name = "btnRola";
-            this.btnRola.Size = new System.Drawing.Size(75, 23);
-            this.btnRola.TabIndex = 28;
-            this.btnRola.Text = "Roda";
-            this.btnRola.UseVisualStyleBackColor = true;
-            this.btnRola.Click += new System.EventHandler(this.btnRola_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(140, 325);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 13);
-            this.label7.TabIndex = 29;
-            this.label7.Text = "Dado1";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(140, 357);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(39, 13);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "Dado2";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(203, 325);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(39, 13);
-            this.label9.TabIndex = 31;
-            this.label9.Text = "Dado3";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(203, 356);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(39, 13);
-            this.label10.TabIndex = 32;
-            this.label10.Text = "Dado4";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(694, 390);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.btnRola);
-            this.Controls.Add(this.txtDado4);
-            this.Controls.Add(this.txtDado3);
-            this.Controls.Add(this.txtDado2);
-            this.Controls.Add(this.txtDado1);
             this.Controls.Add(this.txtIdjogador);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnIniciarP);
@@ -419,15 +327,6 @@ namespace Aplicativo1
         private System.Windows.Forms.Button btnIniciarP;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtIdjogador;
-        private System.Windows.Forms.TextBox txtDado1;
-        private System.Windows.Forms.TextBox txtDado2;
-        private System.Windows.Forms.TextBox txtDado3;
-        private System.Windows.Forms.TextBox txtDado4;
-        private System.Windows.Forms.Button btnRola;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
     }
 }
 

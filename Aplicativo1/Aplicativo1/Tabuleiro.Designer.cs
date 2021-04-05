@@ -118,6 +118,7 @@ namespace Aplicativo1
             this.txtDado2.Name = "txtDado2";
             this.txtDado2.Size = new System.Drawing.Size(43, 20);
             this.txtDado2.TabIndex = 15;
+            this.txtDado2.TextChanged += new System.EventHandler(this.txtDado2_TextChanged);
             // 
             // txtDado4
             // 
@@ -125,6 +126,7 @@ namespace Aplicativo1
             this.txtDado4.Name = "txtDado4";
             this.txtDado4.Size = new System.Drawing.Size(43, 20);
             this.txtDado4.TabIndex = 17;
+            this.txtDado4.TextChanged += new System.EventHandler(this.txtDado4_TextChanged);
             // 
             // txtDado3
             // 
@@ -132,6 +134,7 @@ namespace Aplicativo1
             this.txtDado3.Name = "txtDado3";
             this.txtDado3.Size = new System.Drawing.Size(43, 20);
             this.txtDado3.TabIndex = 18;
+            this.txtDado3.TextChanged += new System.EventHandler(this.txtDado3_TextChanged);
             // 
             // Tabuleiro
             // 
