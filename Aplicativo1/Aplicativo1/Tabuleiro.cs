@@ -102,5 +102,15 @@ namespace Aplicativo1
 
 
         }
+
+        private void Tabuleiro_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
