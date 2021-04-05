@@ -51,6 +51,7 @@ namespace Aplicativo1
             this.btnIniciarP = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtIdjogador = new System.Windows.Forms.TextBox();
+            this.btn_statusTabu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnPartidas
@@ -268,12 +269,23 @@ namespace Aplicativo1
             this.txtIdjogador.Size = new System.Drawing.Size(100, 20);
             this.txtIdjogador.TabIndex = 23;
             // 
+            // btn_statusTabu
+            // 
+            this.btn_statusTabu.Location = new System.Drawing.Point(238, 340);
+            this.btn_statusTabu.Name = "btn_statusTabu";
+            this.btn_statusTabu.Size = new System.Drawing.Size(79, 38);
+            this.btn_statusTabu.TabIndex = 24;
+            this.btn_statusTabu.Text = "Status Tabuleiro";
+            this.btn_statusTabu.UseVisualStyleBackColor = true;
+            this.btn_statusTabu.Click += new System.EventHandler(this.btn_statusTabu_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(694, 390);
+            this.Controls.Add(this.btn_statusTabu);
             this.Controls.Add(this.txtIdjogador);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnIniciarP);
@@ -327,6 +339,7 @@ namespace Aplicativo1
         private System.Windows.Forms.Button btnIniciarP;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtIdjogador;
+        private System.Windows.Forms.Button btn_statusTabu;
     }
 }
 

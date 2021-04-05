@@ -112,5 +112,10 @@ namespace Aplicativo1
         {
 
         }
+
+        private void pictureBox86_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

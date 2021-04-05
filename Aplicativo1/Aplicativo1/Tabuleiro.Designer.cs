@@ -342,7 +342,7 @@ namespace Aplicativo1
             // 
             // pictureBox11
             // 
-            this.pictureBox11.Location = new System.Drawing.Point(281, 221);
+            this.pictureBox11.Location = new System.Drawing.Point(281, 223);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(47, 29);
             this.pictureBox11.TabIndex = 25;
@@ -662,7 +662,7 @@ namespace Aplicativo1
             // 
             // pictureBox17
             // 
-            this.pictureBox17.Location = new System.Drawing.Point(635, 324);
+            this.pictureBox17.Location = new System.Drawing.Point(635, 326);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(47, 29);
             this.pictureBox17.TabIndex = 89;
@@ -766,7 +766,7 @@ namespace Aplicativo1
             // 
             // pictureBox64
             // 
-            this.pictureBox64.Location = new System.Drawing.Point(356, 324);
+            this.pictureBox64.Location = new System.Drawing.Point(356, 326);
             this.pictureBox64.Name = "pictureBox64";
             this.pictureBox64.Size = new System.Drawing.Size(47, 29);
             this.pictureBox64.TabIndex = 98;
@@ -865,7 +865,7 @@ namespace Aplicativo1
             // 
             // pictureBox69
             // 
-            this.pictureBox69.Location = new System.Drawing.Point(495, 186);
+            this.pictureBox69.Location = new System.Drawing.Point(495, 189);
             this.pictureBox69.Name = "pictureBox69";
             this.pictureBox69.Size = new System.Drawing.Size(47, 29);
             this.pictureBox69.TabIndex = 120;
@@ -873,7 +873,7 @@ namespace Aplicativo1
             // 
             // pictureBox70
             // 
-            this.pictureBox70.Location = new System.Drawing.Point(495, 221);
+            this.pictureBox70.Location = new System.Drawing.Point(495, 224);
             this.pictureBox70.Name = "pictureBox70";
             this.pictureBox70.Size = new System.Drawing.Size(47, 29);
             this.pictureBox70.TabIndex = 119;
@@ -881,7 +881,7 @@ namespace Aplicativo1
             // 
             // pictureBox71
             // 
-            this.pictureBox71.Location = new System.Drawing.Point(495, 256);
+            this.pictureBox71.Location = new System.Drawing.Point(495, 259);
             this.pictureBox71.Name = "pictureBox71";
             this.pictureBox71.Size = new System.Drawing.Size(47, 29);
             this.pictureBox71.TabIndex = 118;
@@ -889,7 +889,7 @@ namespace Aplicativo1
             // 
             // pictureBox72
             // 
-            this.pictureBox72.Location = new System.Drawing.Point(495, 291);
+            this.pictureBox72.Location = new System.Drawing.Point(495, 293);
             this.pictureBox72.Name = "pictureBox72";
             this.pictureBox72.Size = new System.Drawing.Size(47, 29);
             this.pictureBox72.TabIndex = 117;
@@ -897,7 +897,7 @@ namespace Aplicativo1
             // 
             // pictureBox73
             // 
-            this.pictureBox73.Location = new System.Drawing.Point(495, 324);
+            this.pictureBox73.Location = new System.Drawing.Point(495, 326);
             this.pictureBox73.Name = "pictureBox73";
             this.pictureBox73.Size = new System.Drawing.Size(47, 29);
             this.pictureBox73.TabIndex = 116;
@@ -958,10 +958,11 @@ namespace Aplicativo1
             this.pictureBox86.Size = new System.Drawing.Size(47, 29);
             this.pictureBox86.TabIndex = 121;
             this.pictureBox86.TabStop = false;
+            this.pictureBox86.Click += new System.EventHandler(this.pictureBox86_Click);
             // 
             // pictureBox87
             // 
-            this.pictureBox87.Location = new System.Drawing.Point(495, 151);
+            this.pictureBox87.Location = new System.Drawing.Point(495, 154);
             this.pictureBox87.Name = "pictureBox87";
             this.pictureBox87.Size = new System.Drawing.Size(47, 29);
             this.pictureBox87.TabIndex = 122;
