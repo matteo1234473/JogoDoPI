@@ -124,6 +124,7 @@ namespace Aplicativo1
             this.pictureBox86 = new System.Windows.Forms.PictureBox();
             this.pictureBox87 = new System.Windows.Forms.PictureBox();
             this.btn_statusTabu = new System.Windows.Forms.Button();
+            this.txtTestezada = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -979,6 +980,13 @@ namespace Aplicativo1
             this.btn_statusTabu.UseVisualStyleBackColor = true;
             this.btn_statusTabu.Click += new System.EventHandler(this.btn_statusTabu_Click);
             // 
+            // txtTestezada
+            // 
+            this.txtTestezada.Location = new System.Drawing.Point(849, 569);
+            this.txtTestezada.Name = "txtTestezada";
+            this.txtTestezada.Size = new System.Drawing.Size(112, 20);
+            this.txtTestezada.TabIndex = 124;
+            // 
             // Tabuleiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -987,6 +995,7 @@ namespace Aplicativo1
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1038, 684);
+            this.Controls.Add(this.txtTestezada);
             this.Controls.Add(this.btn_statusTabu);
             this.Controls.Add(this.pictureBox87);
             this.Controls.Add(this.pictureBox86);
@@ -1270,5 +1279,6 @@ namespace Aplicativo1
         private System.Windows.Forms.PictureBox pictureBox86;
         private System.Windows.Forms.PictureBox pictureBox87;
         private System.Windows.Forms.Button btn_statusTabu;
+        private System.Windows.Forms.TextBox txtTestezada;
     }
 }

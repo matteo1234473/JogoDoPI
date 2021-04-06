@@ -176,6 +176,8 @@ namespace Aplicativo1
         {
             int id = pegaIdDaPartida(lstPartidas.SelectedItem.ToString());
             string status = Jogo.ExibirTabuleiro(id);
+
+
             MessageBox.Show(status);
         }
     }
