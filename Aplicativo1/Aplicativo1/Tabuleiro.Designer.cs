@@ -123,6 +123,7 @@ namespace Aplicativo1
             this.pictureBox85 = new System.Windows.Forms.PictureBox();
             this.pictureBox86 = new System.Windows.Forms.PictureBox();
             this.pictureBox87 = new System.Windows.Forms.PictureBox();
+            this.btn_statusTabu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -968,6 +969,16 @@ namespace Aplicativo1
             this.pictureBox87.TabIndex = 122;
             this.pictureBox87.TabStop = false;
             // 
+            // btn_statusTabu
+            // 
+            this.btn_statusTabu.Location = new System.Drawing.Point(12, 588);
+            this.btn_statusTabu.Name = "btn_statusTabu";
+            this.btn_statusTabu.Size = new System.Drawing.Size(113, 61);
+            this.btn_statusTabu.TabIndex = 123;
+            this.btn_statusTabu.Text = "Status Tabuleiro";
+            this.btn_statusTabu.UseVisualStyleBackColor = true;
+            this.btn_statusTabu.Click += new System.EventHandler(this.btn_statusTabu_Click);
+            // 
             // Tabuleiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -976,6 +987,7 @@ namespace Aplicativo1
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1038, 684);
+            this.Controls.Add(this.btn_statusTabu);
             this.Controls.Add(this.pictureBox87);
             this.Controls.Add(this.pictureBox86);
             this.Controls.Add(this.pictureBox69);
@@ -1257,5 +1269,6 @@ namespace Aplicativo1
         private System.Windows.Forms.PictureBox pictureBox85;
         private System.Windows.Forms.PictureBox pictureBox86;
         private System.Windows.Forms.PictureBox pictureBox87;
+        private System.Windows.Forms.Button btn_statusTabu;
     }
 }

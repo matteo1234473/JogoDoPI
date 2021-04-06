@@ -117,5 +117,11 @@ namespace Aplicativo1
         {
 
         }
+
+        private void btn_statusTabu_Click(object sender, EventArgs e)
+        {
+            string status = Jogo.ExibirTabuleiro(form1.idPartida);
+            MessageBox.Show(status);
+        }
     }
 }
