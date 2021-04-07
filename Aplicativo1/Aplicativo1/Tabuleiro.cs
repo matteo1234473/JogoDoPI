@@ -154,7 +154,7 @@ namespace Aplicativo1
                 StatusTabu tabu6 = new StatusTabu(Convert.ToInt32(pos6[0]), Convert.ToInt32(pos6[1]), Convert.ToInt32(pos6[2]), Convert.ToChar(pos6[3]));
 
                 //Trilha, posicao, jogador, tipo
-                txtTestezada.Text = Convert.ToString(tabu4.tipo);
+                txtTestezada.Text = Convert.ToString(tabu6.trilha);
 
 
                 MessageBox.Show(status);
