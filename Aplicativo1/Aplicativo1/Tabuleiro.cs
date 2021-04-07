@@ -128,33 +128,35 @@ namespace Aplicativo1
             }
             else
             {
-
+                int i = 0;
                 status = status.Replace("\r", "");
                 string[] linha = status.Split('\n');
 
-                string linha1 = linha[0];
-                string linha2 = linha[1];
-                string linha3 = linha[2];
-                string linha4 = linha[3];
-                string linha5 = linha[4];
-                string linha6 = linha[5];
+                while(linha[i] != "")
+                {
+                    string linhas = linha[i];
+                    string[] dados = linhas.Split(',');
+                    StatusTabu Status = new StatusTabu(Convert.ToInt32(dados[0]), Convert.ToInt32(dados[1]), Convert.ToInt32(dados[2]), Convert.ToChar(dados[3]));
 
-                string[] pos1 = linha1.Split(',');
-                string[] pos2 = linha2.Split(',');
-                string[] pos3 = linha3.Split(',');
-                string[] pos4 = linha4.Split(',');
-                string[] pos5 = linha5.Split(',');
-                string[] pos6 = linha6.Split(',');
+                    if(Status.trilha == 2)
+                    {
 
-                StatusTabu tabu1 = new StatusTabu(Convert.ToInt32(pos1[0]), Convert.ToInt32(pos1[1]), Convert.ToInt32(pos1[2]),Convert.ToChar(pos1[3]));
-                StatusTabu tabu2 = new StatusTabu(Convert.ToInt32(pos2[0]), Convert.ToInt32(pos2[1]), Convert.ToInt32(pos2[2]), Convert.ToChar(pos2[3]));
-                StatusTabu tabu3 = new StatusTabu(Convert.ToInt32(pos3[0]), Convert.ToInt32(pos3[1]), Convert.ToInt32(pos3[2]), Convert.ToChar(pos3[3]));
-                StatusTabu tabu4 = new StatusTabu(Convert.ToInt32(pos4[0]), Convert.ToInt32(pos4[1]), Convert.ToInt32(pos4[2]), Convert.ToChar(pos4[3]));
-                StatusTabu tabu5 = new StatusTabu(Convert.ToInt32(pos5[0]), Convert.ToInt32(pos5[1]), Convert.ToInt32(pos5[2]), Convert.ToChar(pos5[3]));
-                StatusTabu tabu6 = new StatusTabu(Convert.ToInt32(pos6[0]), Convert.ToInt32(pos6[1]), Convert.ToInt32(pos6[2]), Convert.ToChar(pos6[3]));
 
-                //Trilha, posicao, jogador, tipo
-                txtTestezada.Text = Convert.ToString(tabu6.trilha);
+                    }
+
+
+
+
+
+
+
+
+
+                    i++;
+                }
+
+                
+                
 
 
                 MessageBox.Show(status);
