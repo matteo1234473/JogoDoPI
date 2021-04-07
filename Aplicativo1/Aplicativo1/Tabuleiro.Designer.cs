@@ -123,6 +123,8 @@ namespace Aplicativo1
             this.pictureBox85 = new System.Windows.Forms.PictureBox();
             this.pictureBox86 = new System.Windows.Forms.PictureBox();
             this.pictureBox87 = new System.Windows.Forms.PictureBox();
+            this.btn_statusTabu = new System.Windows.Forms.Button();
+            this.txtTestezada = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -293,9 +295,6 @@ namespace Aplicativo1
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox5.Location = new System.Drawing.Point(281, 431);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(47, 29);
@@ -305,9 +304,6 @@ namespace Aplicativo1
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox6.Location = new System.Drawing.Point(281, 396);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(47, 29);
@@ -316,9 +312,6 @@ namespace Aplicativo1
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox7.Location = new System.Drawing.Point(281, 361);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(47, 29);
@@ -327,9 +320,6 @@ namespace Aplicativo1
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox8.Location = new System.Drawing.Point(281, 326);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(47, 29);
@@ -338,9 +328,6 @@ namespace Aplicativo1
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox9.Location = new System.Drawing.Point(281, 291);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(47, 29);
@@ -349,9 +336,6 @@ namespace Aplicativo1
             // 
             // pictureBox10
             // 
-            this.pictureBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox10.Location = new System.Drawing.Point(281, 256);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(47, 29);
@@ -360,10 +344,7 @@ namespace Aplicativo1
             // 
             // pictureBox11
             // 
-            this.pictureBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox11.Location = new System.Drawing.Point(281, 221);
+            this.pictureBox11.Location = new System.Drawing.Point(281, 223);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(47, 29);
             this.pictureBox11.TabIndex = 25;
@@ -371,9 +352,6 @@ namespace Aplicativo1
             // 
             // pictureBox19
             // 
-            this.pictureBox19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox19.Location = new System.Drawing.Point(707, 221);
             this.pictureBox19.Name = "pictureBox19";
             this.pictureBox19.Size = new System.Drawing.Size(47, 29);
@@ -382,9 +360,6 @@ namespace Aplicativo1
             // 
             // pictureBox20
             // 
-            this.pictureBox20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox20.Location = new System.Drawing.Point(707, 256);
             this.pictureBox20.Name = "pictureBox20";
             this.pictureBox20.Size = new System.Drawing.Size(47, 29);
@@ -393,9 +368,6 @@ namespace Aplicativo1
             // 
             // pictureBox21
             // 
-            this.pictureBox21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox21.Location = new System.Drawing.Point(707, 291);
             this.pictureBox21.Name = "pictureBox21";
             this.pictureBox21.Size = new System.Drawing.Size(47, 29);
@@ -404,9 +376,6 @@ namespace Aplicativo1
             // 
             // pictureBox22
             // 
-            this.pictureBox22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox22.Location = new System.Drawing.Point(707, 326);
             this.pictureBox22.Name = "pictureBox22";
             this.pictureBox22.Size = new System.Drawing.Size(47, 29);
@@ -415,9 +384,6 @@ namespace Aplicativo1
             // 
             // pictureBox23
             // 
-            this.pictureBox23.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox23.Location = new System.Drawing.Point(707, 361);
             this.pictureBox23.Name = "pictureBox23";
             this.pictureBox23.Size = new System.Drawing.Size(47, 29);
@@ -426,9 +392,6 @@ namespace Aplicativo1
             // 
             // pictureBox24
             // 
-            this.pictureBox24.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox24.Location = new System.Drawing.Point(707, 396);
             this.pictureBox24.Name = "pictureBox24";
             this.pictureBox24.Size = new System.Drawing.Size(47, 29);
@@ -437,9 +400,6 @@ namespace Aplicativo1
             // 
             // pictureBox25
             // 
-            this.pictureBox25.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox25.Location = new System.Drawing.Point(707, 431);
             this.pictureBox25.Name = "pictureBox25";
             this.pictureBox25.Size = new System.Drawing.Size(47, 29);
@@ -448,9 +408,6 @@ namespace Aplicativo1
             // 
             // pictureBox26
             // 
-            this.pictureBox26.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox26.Location = new System.Drawing.Point(422, 291);
             this.pictureBox26.Name = "pictureBox26";
             this.pictureBox26.Size = new System.Drawing.Size(47, 29);
@@ -459,9 +416,6 @@ namespace Aplicativo1
             // 
             // pictureBox33
             // 
-            this.pictureBox33.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox33.Location = new System.Drawing.Point(422, 326);
             this.pictureBox33.Name = "pictureBox33";
             this.pictureBox33.Size = new System.Drawing.Size(47, 29);
@@ -470,9 +424,6 @@ namespace Aplicativo1
             // 
             // pictureBox34
             // 
-            this.pictureBox34.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox34.Location = new System.Drawing.Point(422, 361);
             this.pictureBox34.Name = "pictureBox34";
             this.pictureBox34.Size = new System.Drawing.Size(47, 29);
@@ -481,9 +432,6 @@ namespace Aplicativo1
             // 
             // pictureBox35
             // 
-            this.pictureBox35.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox35.Location = new System.Drawing.Point(422, 396);
             this.pictureBox35.Name = "pictureBox35";
             this.pictureBox35.Size = new System.Drawing.Size(47, 29);
@@ -492,9 +440,6 @@ namespace Aplicativo1
             // 
             // pictureBox36
             // 
-            this.pictureBox36.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox36.Location = new System.Drawing.Point(422, 431);
             this.pictureBox36.Name = "pictureBox36";
             this.pictureBox36.Size = new System.Drawing.Size(47, 29);
@@ -503,9 +448,6 @@ namespace Aplicativo1
             // 
             // pictureBox37
             // 
-            this.pictureBox37.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox37.Location = new System.Drawing.Point(422, 466);
             this.pictureBox37.Name = "pictureBox37";
             this.pictureBox37.Size = new System.Drawing.Size(47, 29);
@@ -514,9 +456,6 @@ namespace Aplicativo1
             // 
             // pictureBox38
             // 
-            this.pictureBox38.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox38.Location = new System.Drawing.Point(422, 501);
             this.pictureBox38.Name = "pictureBox38";
             this.pictureBox38.Size = new System.Drawing.Size(47, 29);
@@ -525,9 +464,6 @@ namespace Aplicativo1
             // 
             // pictureBox42
             // 
-            this.pictureBox42.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox42.Location = new System.Drawing.Point(422, 153);
             this.pictureBox42.Name = "pictureBox42";
             this.pictureBox42.Size = new System.Drawing.Size(47, 29);
@@ -536,9 +472,6 @@ namespace Aplicativo1
             // 
             // pictureBox43
             // 
-            this.pictureBox43.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox43.Location = new System.Drawing.Point(422, 188);
             this.pictureBox43.Name = "pictureBox43";
             this.pictureBox43.Size = new System.Drawing.Size(47, 29);
@@ -547,9 +480,6 @@ namespace Aplicativo1
             // 
             // pictureBox44
             // 
-            this.pictureBox44.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox44.Location = new System.Drawing.Point(422, 223);
             this.pictureBox44.Name = "pictureBox44";
             this.pictureBox44.Size = new System.Drawing.Size(47, 29);
@@ -558,9 +488,6 @@ namespace Aplicativo1
             // 
             // pictureBox45
             // 
-            this.pictureBox45.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox45.Location = new System.Drawing.Point(422, 258);
             this.pictureBox45.Name = "pictureBox45";
             this.pictureBox45.Size = new System.Drawing.Size(47, 29);
@@ -569,9 +496,6 @@ namespace Aplicativo1
             // 
             // pictureBox50
             // 
-            this.pictureBox50.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox50.Location = new System.Drawing.Point(566, 153);
             this.pictureBox50.Name = "pictureBox50";
             this.pictureBox50.Size = new System.Drawing.Size(47, 29);
@@ -580,9 +504,6 @@ namespace Aplicativo1
             // 
             // pictureBox51
             // 
-            this.pictureBox51.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox51.Location = new System.Drawing.Point(566, 188);
             this.pictureBox51.Name = "pictureBox51";
             this.pictureBox51.Size = new System.Drawing.Size(47, 29);
@@ -591,9 +512,6 @@ namespace Aplicativo1
             // 
             // pictureBox52
             // 
-            this.pictureBox52.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox52.Location = new System.Drawing.Point(566, 223);
             this.pictureBox52.Name = "pictureBox52";
             this.pictureBox52.Size = new System.Drawing.Size(47, 29);
@@ -602,9 +520,6 @@ namespace Aplicativo1
             // 
             // pictureBox53
             // 
-            this.pictureBox53.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox53.Location = new System.Drawing.Point(566, 258);
             this.pictureBox53.Name = "pictureBox53";
             this.pictureBox53.Size = new System.Drawing.Size(47, 29);
@@ -613,9 +528,6 @@ namespace Aplicativo1
             // 
             // pictureBox54
             // 
-            this.pictureBox54.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox54.Location = new System.Drawing.Point(566, 291);
             this.pictureBox54.Name = "pictureBox54";
             this.pictureBox54.Size = new System.Drawing.Size(47, 29);
@@ -624,9 +536,6 @@ namespace Aplicativo1
             // 
             // pictureBox55
             // 
-            this.pictureBox55.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox55.Location = new System.Drawing.Point(566, 326);
             this.pictureBox55.Name = "pictureBox55";
             this.pictureBox55.Size = new System.Drawing.Size(47, 29);
@@ -635,9 +544,6 @@ namespace Aplicativo1
             // 
             // pictureBox56
             // 
-            this.pictureBox56.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox56.Location = new System.Drawing.Point(566, 361);
             this.pictureBox56.Name = "pictureBox56";
             this.pictureBox56.Size = new System.Drawing.Size(47, 29);
@@ -646,9 +552,6 @@ namespace Aplicativo1
             // 
             // pictureBox57
             // 
-            this.pictureBox57.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox57.Location = new System.Drawing.Point(566, 396);
             this.pictureBox57.Name = "pictureBox57";
             this.pictureBox57.Size = new System.Drawing.Size(47, 29);
@@ -657,9 +560,6 @@ namespace Aplicativo1
             // 
             // pictureBox58
             // 
-            this.pictureBox58.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox58.Location = new System.Drawing.Point(566, 431);
             this.pictureBox58.Name = "pictureBox58";
             this.pictureBox58.Size = new System.Drawing.Size(47, 29);
@@ -668,9 +568,6 @@ namespace Aplicativo1
             // 
             // pictureBox59
             // 
-            this.pictureBox59.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox59.Location = new System.Drawing.Point(566, 466);
             this.pictureBox59.Name = "pictureBox59";
             this.pictureBox59.Size = new System.Drawing.Size(47, 29);
@@ -679,9 +576,6 @@ namespace Aplicativo1
             // 
             // pictureBox60
             // 
-            this.pictureBox60.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox60.Location = new System.Drawing.Point(566, 501);
             this.pictureBox60.Name = "pictureBox60";
             this.pictureBox60.Size = new System.Drawing.Size(47, 29);
@@ -690,9 +584,6 @@ namespace Aplicativo1
             // 
             // pictureBox18
             // 
-            this.pictureBox18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox18.Location = new System.Drawing.Point(211, 254);
             this.pictureBox18.Name = "pictureBox18";
             this.pictureBox18.Size = new System.Drawing.Size(47, 29);
@@ -701,9 +592,6 @@ namespace Aplicativo1
             // 
             // pictureBox27
             // 
-            this.pictureBox27.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox27.Location = new System.Drawing.Point(211, 289);
             this.pictureBox27.Name = "pictureBox27";
             this.pictureBox27.Size = new System.Drawing.Size(47, 29);
@@ -712,9 +600,6 @@ namespace Aplicativo1
             // 
             // pictureBox28
             // 
-            this.pictureBox28.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox28.Location = new System.Drawing.Point(211, 324);
             this.pictureBox28.Name = "pictureBox28";
             this.pictureBox28.Size = new System.Drawing.Size(47, 29);
@@ -723,9 +608,6 @@ namespace Aplicativo1
             // 
             // pictureBox29
             // 
-            this.pictureBox29.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox29.Location = new System.Drawing.Point(211, 359);
             this.pictureBox29.Name = "pictureBox29";
             this.pictureBox29.Size = new System.Drawing.Size(47, 29);
@@ -734,9 +616,6 @@ namespace Aplicativo1
             // 
             // pictureBox30
             // 
-            this.pictureBox30.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox30.Location = new System.Drawing.Point(211, 394);
             this.pictureBox30.Name = "pictureBox30";
             this.pictureBox30.Size = new System.Drawing.Size(47, 29);
@@ -745,9 +624,6 @@ namespace Aplicativo1
             // 
             // pictureBox12
             // 
-            this.pictureBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox12.Location = new System.Drawing.Point(778, 256);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(47, 29);
@@ -756,9 +632,6 @@ namespace Aplicativo1
             // 
             // pictureBox13
             // 
-            this.pictureBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox13.Location = new System.Drawing.Point(778, 291);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(47, 29);
@@ -767,9 +640,6 @@ namespace Aplicativo1
             // 
             // pictureBox14
             // 
-            this.pictureBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox14.Location = new System.Drawing.Point(778, 326);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(47, 29);
@@ -778,9 +648,6 @@ namespace Aplicativo1
             // 
             // pictureBox15
             // 
-            this.pictureBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox15.Location = new System.Drawing.Point(778, 361);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(47, 29);
@@ -789,9 +656,6 @@ namespace Aplicativo1
             // 
             // pictureBox16
             // 
-            this.pictureBox16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox16.Location = new System.Drawing.Point(778, 396);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(47, 29);
@@ -800,10 +664,7 @@ namespace Aplicativo1
             // 
             // pictureBox17
             // 
-            this.pictureBox17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox17.Location = new System.Drawing.Point(635, 324);
+            this.pictureBox17.Location = new System.Drawing.Point(635, 326);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(47, 29);
             this.pictureBox17.TabIndex = 89;
@@ -811,9 +672,6 @@ namespace Aplicativo1
             // 
             // pictureBox31
             // 
-            this.pictureBox31.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox31.Location = new System.Drawing.Point(635, 359);
             this.pictureBox31.Name = "pictureBox31";
             this.pictureBox31.Size = new System.Drawing.Size(47, 29);
@@ -822,9 +680,6 @@ namespace Aplicativo1
             // 
             // pictureBox32
             // 
-            this.pictureBox32.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox32.Location = new System.Drawing.Point(635, 394);
             this.pictureBox32.Name = "pictureBox32";
             this.pictureBox32.Size = new System.Drawing.Size(47, 29);
@@ -833,9 +688,6 @@ namespace Aplicativo1
             // 
             // pictureBox39
             // 
-            this.pictureBox39.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox39.Location = new System.Drawing.Point(635, 429);
             this.pictureBox39.Name = "pictureBox39";
             this.pictureBox39.Size = new System.Drawing.Size(47, 29);
@@ -844,9 +696,6 @@ namespace Aplicativo1
             // 
             // pictureBox40
             // 
-            this.pictureBox40.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox40.Location = new System.Drawing.Point(635, 464);
             this.pictureBox40.Name = "pictureBox40";
             this.pictureBox40.Size = new System.Drawing.Size(47, 29);
@@ -855,9 +704,6 @@ namespace Aplicativo1
             // 
             // pictureBox46
             // 
-            this.pictureBox46.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox46.Location = new System.Drawing.Point(635, 188);
             this.pictureBox46.Name = "pictureBox46";
             this.pictureBox46.Size = new System.Drawing.Size(47, 29);
@@ -866,9 +712,6 @@ namespace Aplicativo1
             // 
             // pictureBox47
             // 
-            this.pictureBox47.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox47.Location = new System.Drawing.Point(635, 223);
             this.pictureBox47.Name = "pictureBox47";
             this.pictureBox47.Size = new System.Drawing.Size(47, 29);
@@ -877,9 +720,6 @@ namespace Aplicativo1
             // 
             // pictureBox48
             // 
-            this.pictureBox48.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox48.Location = new System.Drawing.Point(635, 258);
             this.pictureBox48.Name = "pictureBox48";
             this.pictureBox48.Size = new System.Drawing.Size(47, 29);
@@ -888,9 +728,6 @@ namespace Aplicativo1
             // 
             // pictureBox49
             // 
-            this.pictureBox49.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox49.Location = new System.Drawing.Point(635, 293);
             this.pictureBox49.Name = "pictureBox49";
             this.pictureBox49.Size = new System.Drawing.Size(47, 29);
@@ -899,9 +736,6 @@ namespace Aplicativo1
             // 
             // pictureBox41
             // 
-            this.pictureBox41.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox41.Location = new System.Drawing.Point(356, 188);
             this.pictureBox41.Name = "pictureBox41";
             this.pictureBox41.Size = new System.Drawing.Size(47, 29);
@@ -910,9 +744,6 @@ namespace Aplicativo1
             // 
             // pictureBox61
             // 
-            this.pictureBox61.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox61.Location = new System.Drawing.Point(356, 223);
             this.pictureBox61.Name = "pictureBox61";
             this.pictureBox61.Size = new System.Drawing.Size(47, 29);
@@ -921,9 +752,6 @@ namespace Aplicativo1
             // 
             // pictureBox62
             // 
-            this.pictureBox62.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox62.Location = new System.Drawing.Point(356, 258);
             this.pictureBox62.Name = "pictureBox62";
             this.pictureBox62.Size = new System.Drawing.Size(47, 29);
@@ -932,9 +760,6 @@ namespace Aplicativo1
             // 
             // pictureBox63
             // 
-            this.pictureBox63.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox63.Location = new System.Drawing.Point(356, 293);
             this.pictureBox63.Name = "pictureBox63";
             this.pictureBox63.Size = new System.Drawing.Size(47, 29);
@@ -943,10 +768,7 @@ namespace Aplicativo1
             // 
             // pictureBox64
             // 
-            this.pictureBox64.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox64.Location = new System.Drawing.Point(356, 324);
+            this.pictureBox64.Location = new System.Drawing.Point(356, 326);
             this.pictureBox64.Name = "pictureBox64";
             this.pictureBox64.Size = new System.Drawing.Size(47, 29);
             this.pictureBox64.TabIndex = 98;
@@ -954,9 +776,6 @@ namespace Aplicativo1
             // 
             // pictureBox65
             // 
-            this.pictureBox65.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox65.Location = new System.Drawing.Point(356, 359);
             this.pictureBox65.Name = "pictureBox65";
             this.pictureBox65.Size = new System.Drawing.Size(47, 29);
@@ -965,9 +784,6 @@ namespace Aplicativo1
             // 
             // pictureBox66
             // 
-            this.pictureBox66.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox66.Location = new System.Drawing.Point(356, 394);
             this.pictureBox66.Name = "pictureBox66";
             this.pictureBox66.Size = new System.Drawing.Size(47, 29);
@@ -976,9 +792,6 @@ namespace Aplicativo1
             // 
             // pictureBox67
             // 
-            this.pictureBox67.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox67.Location = new System.Drawing.Point(356, 429);
             this.pictureBox67.Name = "pictureBox67";
             this.pictureBox67.Size = new System.Drawing.Size(47, 29);
@@ -987,9 +800,6 @@ namespace Aplicativo1
             // 
             // pictureBox68
             // 
-            this.pictureBox68.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox68.Location = new System.Drawing.Point(356, 464);
             this.pictureBox68.Name = "pictureBox68";
             this.pictureBox68.Size = new System.Drawing.Size(47, 29);
@@ -998,9 +808,6 @@ namespace Aplicativo1
             // 
             // pictureBox75
             // 
-            this.pictureBox75.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox75.Location = new System.Drawing.Point(142, 289);
             this.pictureBox75.Name = "pictureBox75";
             this.pictureBox75.Size = new System.Drawing.Size(47, 29);
@@ -1009,9 +816,6 @@ namespace Aplicativo1
             // 
             // pictureBox76
             // 
-            this.pictureBox76.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox76.Location = new System.Drawing.Point(142, 324);
             this.pictureBox76.Name = "pictureBox76";
             this.pictureBox76.Size = new System.Drawing.Size(47, 29);
@@ -1020,9 +824,6 @@ namespace Aplicativo1
             // 
             // pictureBox77
             // 
-            this.pictureBox77.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox77.Location = new System.Drawing.Point(142, 359);
             this.pictureBox77.Name = "pictureBox77";
             this.pictureBox77.Size = new System.Drawing.Size(47, 29);
@@ -1031,9 +832,6 @@ namespace Aplicativo1
             // 
             // pictureBox79
             // 
-            this.pictureBox79.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox79.Location = new System.Drawing.Point(848, 289);
             this.pictureBox79.Name = "pictureBox79";
             this.pictureBox79.Size = new System.Drawing.Size(47, 29);
@@ -1042,9 +840,6 @@ namespace Aplicativo1
             // 
             // pictureBox80
             // 
-            this.pictureBox80.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox80.Location = new System.Drawing.Point(848, 324);
             this.pictureBox80.Name = "pictureBox80";
             this.pictureBox80.Size = new System.Drawing.Size(47, 29);
@@ -1053,9 +848,6 @@ namespace Aplicativo1
             // 
             // pictureBox81
             // 
-            this.pictureBox81.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox81.Location = new System.Drawing.Point(848, 359);
             this.pictureBox81.Name = "pictureBox81";
             this.pictureBox81.Size = new System.Drawing.Size(47, 29);
@@ -1066,7 +858,7 @@ namespace Aplicativo1
             // 
             this.txtJogadores.BackColor = System.Drawing.Color.LightGray;
             this.txtJogadores.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtJogadores.Location = new System.Drawing.Point(875, -41);
+            this.txtJogadores.Location = new System.Drawing.Point(871, 20);
             this.txtJogadores.Multiline = true;
             this.txtJogadores.Name = "txtJogadores";
             this.txtJogadores.Size = new System.Drawing.Size(151, 103);
@@ -1075,10 +867,7 @@ namespace Aplicativo1
             // 
             // pictureBox69
             // 
-            this.pictureBox69.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox69.Location = new System.Drawing.Point(495, 186);
+            this.pictureBox69.Location = new System.Drawing.Point(495, 189);
             this.pictureBox69.Name = "pictureBox69";
             this.pictureBox69.Size = new System.Drawing.Size(47, 29);
             this.pictureBox69.TabIndex = 120;
@@ -1086,10 +875,7 @@ namespace Aplicativo1
             // 
             // pictureBox70
             // 
-            this.pictureBox70.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox70.Location = new System.Drawing.Point(495, 221);
+            this.pictureBox70.Location = new System.Drawing.Point(495, 224);
             this.pictureBox70.Name = "pictureBox70";
             this.pictureBox70.Size = new System.Drawing.Size(47, 29);
             this.pictureBox70.TabIndex = 119;
@@ -1097,10 +883,7 @@ namespace Aplicativo1
             // 
             // pictureBox71
             // 
-            this.pictureBox71.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox71.Location = new System.Drawing.Point(495, 256);
+            this.pictureBox71.Location = new System.Drawing.Point(495, 259);
             this.pictureBox71.Name = "pictureBox71";
             this.pictureBox71.Size = new System.Drawing.Size(47, 29);
             this.pictureBox71.TabIndex = 118;
@@ -1108,10 +891,7 @@ namespace Aplicativo1
             // 
             // pictureBox72
             // 
-            this.pictureBox72.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox72.Location = new System.Drawing.Point(495, 291);
+            this.pictureBox72.Location = new System.Drawing.Point(495, 293);
             this.pictureBox72.Name = "pictureBox72";
             this.pictureBox72.Size = new System.Drawing.Size(47, 29);
             this.pictureBox72.TabIndex = 117;
@@ -1119,10 +899,7 @@ namespace Aplicativo1
             // 
             // pictureBox73
             // 
-            this.pictureBox73.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox73.Location = new System.Drawing.Point(495, 324);
+            this.pictureBox73.Location = new System.Drawing.Point(495, 326);
             this.pictureBox73.Name = "pictureBox73";
             this.pictureBox73.Size = new System.Drawing.Size(47, 29);
             this.pictureBox73.TabIndex = 116;
@@ -1130,9 +907,6 @@ namespace Aplicativo1
             // 
             // pictureBox74
             // 
-            this.pictureBox74.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox74.Location = new System.Drawing.Point(495, 359);
             this.pictureBox74.Name = "pictureBox74";
             this.pictureBox74.Size = new System.Drawing.Size(47, 29);
@@ -1141,9 +915,6 @@ namespace Aplicativo1
             // 
             // pictureBox78
             // 
-            this.pictureBox78.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox78.Location = new System.Drawing.Point(495, 394);
             this.pictureBox78.Name = "pictureBox78";
             this.pictureBox78.Size = new System.Drawing.Size(47, 29);
@@ -1152,9 +923,6 @@ namespace Aplicativo1
             // 
             // pictureBox82
             // 
-            this.pictureBox82.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox82.Location = new System.Drawing.Point(495, 429);
             this.pictureBox82.Name = "pictureBox82";
             this.pictureBox82.Size = new System.Drawing.Size(47, 29);
@@ -1163,9 +931,6 @@ namespace Aplicativo1
             // 
             // pictureBox83
             // 
-            this.pictureBox83.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox83.Location = new System.Drawing.Point(495, 464);
             this.pictureBox83.Name = "pictureBox83";
             this.pictureBox83.Size = new System.Drawing.Size(47, 29);
@@ -1174,9 +939,6 @@ namespace Aplicativo1
             // 
             // pictureBox84
             // 
-            this.pictureBox84.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox84.Location = new System.Drawing.Point(495, 499);
             this.pictureBox84.Name = "pictureBox84";
             this.pictureBox84.Size = new System.Drawing.Size(47, 29);
@@ -1185,9 +947,6 @@ namespace Aplicativo1
             // 
             // pictureBox85
             // 
-            this.pictureBox85.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox85.Location = new System.Drawing.Point(495, 534);
             this.pictureBox85.Name = "pictureBox85";
             this.pictureBox85.Size = new System.Drawing.Size(47, 29);
@@ -1196,25 +955,37 @@ namespace Aplicativo1
             // 
             // pictureBox86
             // 
-            this.pictureBox86.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox86.Location = new System.Drawing.Point(495, 119);
             this.pictureBox86.Name = "pictureBox86";
             this.pictureBox86.Size = new System.Drawing.Size(47, 29);
             this.pictureBox86.TabIndex = 121;
             this.pictureBox86.TabStop = false;
+            this.pictureBox86.Click += new System.EventHandler(this.pictureBox86_Click);
             // 
             // pictureBox87
             // 
-            this.pictureBox87.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox87.Location = new System.Drawing.Point(495, 151);
+            this.pictureBox87.Location = new System.Drawing.Point(495, 154);
             this.pictureBox87.Name = "pictureBox87";
             this.pictureBox87.Size = new System.Drawing.Size(47, 29);
             this.pictureBox87.TabIndex = 122;
             this.pictureBox87.TabStop = false;
+            // 
+            // btn_statusTabu
+            // 
+            this.btn_statusTabu.Location = new System.Drawing.Point(12, 588);
+            this.btn_statusTabu.Name = "btn_statusTabu";
+            this.btn_statusTabu.Size = new System.Drawing.Size(113, 61);
+            this.btn_statusTabu.TabIndex = 123;
+            this.btn_statusTabu.Text = "Status Tabuleiro";
+            this.btn_statusTabu.UseVisualStyleBackColor = true;
+            this.btn_statusTabu.Click += new System.EventHandler(this.btn_statusTabu_Click);
+            // 
+            // txtTestezada
+            // 
+            this.txtTestezada.Location = new System.Drawing.Point(849, 569);
+            this.txtTestezada.Name = "txtTestezada";
+            this.txtTestezada.Size = new System.Drawing.Size(112, 20);
+            this.txtTestezada.TabIndex = 124;
             // 
             // Tabuleiro
             // 
@@ -1224,6 +995,8 @@ namespace Aplicativo1
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1038, 684);
+            this.Controls.Add(this.txtTestezada);
+            this.Controls.Add(this.btn_statusTabu);
             this.Controls.Add(this.pictureBox87);
             this.Controls.Add(this.pictureBox86);
             this.Controls.Add(this.pictureBox69);
@@ -1505,5 +1278,7 @@ namespace Aplicativo1
         private System.Windows.Forms.PictureBox pictureBox85;
         private System.Windows.Forms.PictureBox pictureBox86;
         private System.Windows.Forms.PictureBox pictureBox87;
+        private System.Windows.Forms.Button btn_statusTabu;
+        private System.Windows.Forms.TextBox txtTestezada;
     }
 }
