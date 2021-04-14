@@ -16,6 +16,8 @@ namespace Aplicativo1
     {
         int mais1 = 0;
         Form1 form1 = new Form1();
+        List<Jogador> listaDeJogadores = new List<Jogador>();
+
 
         private void btnMais1_Click(object sender, EventArgs e)
         {
@@ -34,9 +36,22 @@ namespace Aplicativo1
             form1.ShowDialog();
 
             InitializeComponent();
+            string dadosJogadores = Jogo.ListarJogadores(form1.idPartida);
+            dadosJogadores = dadosJogadores.Replace("\r", "");
+            string[] _jogadores = dadosJogadores.Split('\n');
+            foreach (string linha in _jogadores)
+            {
+                if (linha != "")
+                {
+                    listaDeJogadores.Add(new Jogador(int.Parse(linha.Split(',')[0]), linha.Split(',')[1], linha.Split(',')[2]));
+                }
+            }
 
-            txtJogadores.Text = Jogo.ListarJogadores(form1.idPartida);
-
+            foreach(Jogador jogador in listaDeJogadores)
+            {
+                txtJogadores.Text += jogador.Id + ": " + jogador.Nome + "\r\n";
+            }
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -2154,13 +2169,13 @@ namespace Aplicativo1
                                             {
                                                 pboxJ2T6.Visible = true;
                                                 pboxJ2T6.BackColor = Color.Blue;
-                                                pboxJ2T6.Location = new Point(341, 410 - (28 * 8));
+                                                pboxJ2T6.Location = new Point(341, 410 - (28 * 9));
                                             }
                                             else
                                             {
                                                 pboxAJ2T6.Visible = true;
                                                 pboxAJ2T6.BackColor = Color.Black;
-                                                pboxAJ2T6.Location = new Point(341, 410 - (28 * 8));
+                                                pboxAJ2T6.Location = new Point(341, 410 - (28 * 9));
                                             }
 
                                             break;
@@ -2170,13 +2185,13 @@ namespace Aplicativo1
                                             {
                                                 pboxJ2T6.Visible = true;
                                                 pboxJ2T6.BackColor = Color.Blue;
-                                                pboxJ2T6.Location = new Point(341, 410 - (28 * 8));
+                                                pboxJ2T6.Location = new Point(341, 410 - (28 * 10));
                                             }
                                             else
                                             {
                                                 pboxAJ2T6.Visible = true;
                                                 pboxAJ2T6.BackColor = Color.Black;
-                                                pboxAJ2T6.Location = new Point(341, 410 - (28 * 8));
+                                                pboxAJ2T6.Location = new Point(341, 410 - (28 * 10));
                                             }
 
                                             break;
