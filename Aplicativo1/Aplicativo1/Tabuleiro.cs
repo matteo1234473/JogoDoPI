@@ -17,10 +17,12 @@ namespace Aplicativo1
         
         int mais1 = 0;
         Form1 form1 = new Form1();
+
         List<Jogador> listaDeJogadores = new List<Jogador>();
         List<Dado> listaDeDados = new List<Dado>();
-
-
+        int alp = 3;
+        int dado12 = 0 , dado13 = 0 , dado14 = 0 , dado24= 0, dado23 = 0, dado34 = 0;
+        string d1234, d1324, d1423;
         private void btnMais1_Click(object sender, EventArgs e)
         {
             mais1 += 1;
@@ -143,9 +145,59 @@ namespace Aplicativo1
                 picbxDado4.Image = Aplicativo1.Properties.Resources.dado6;
 
             MessageBox.Show(dados);
+
+            dado12 = listaDeDados[0].Numero + listaDeDados[1].Numero;
+            dado13 = listaDeDados[0].Numero + listaDeDados[2].Numero;
+            dado14 = listaDeDados[0].Numero + listaDeDados[3].Numero;
+            dado24 = listaDeDados[1].Numero + listaDeDados[3].Numero;
+            dado23 = listaDeDados[1].Numero + listaDeDados[2].Numero;
+            dado34 = listaDeDados[2].Numero + listaDeDados[3].Numero;
+
+            
+
+            cbxCombinacoes.Items.Add(dado12 + " e " + dado34);
+            cbxCombinacoes.Items.Add(dado13 + " e " + dado24);
+            cbxCombinacoes.Items.Add(dado14 + " e " + dado23);
+
+            d1234 = dado12.ToString() + dado34.ToString();
+            d1324 = dado13.ToString() + dado24.ToString();
+            d1423 = dado14.ToString() + dado23.ToString();
+
+            d1234.Replace("10", "A");
+            d1234.Replace("11", "B");
+            d1234.Replace("12", "C");
+
+            d1324.Replace("10", "A");
+            d1324.Replace("11", "B");
+            d1324.Replace("12", "C");
+
+            d1423.Replace("10", "A");
+            d1423.Replace("11", "B");
+            d1423.Replace("12", "C");
         }
 
-        public string somaDado()
+        private void btnMover_Click(object sender, EventArgs e)
+        {
+           if(cbxCombinacoes.SelectedIndex == 0)
+            {
+                Jogo.Mover(listaDeJogadores[0].Id, form1.Senha, "1234", d1234);
+            }
+
+            if (cbxCombinacoes.SelectedIndex == 1)
+            {
+                Jogo.Mover(listaDeJogadores[0].Id, form1.Senha, "1324", d1324);
+            }
+
+            if (cbxCombinacoes.SelectedIndex == 2)
+            {
+                Jogo.Mover(listaDeJogadores[0].Id, form1.Senha, "1423", d1423);
+            }
+        }
+
+
+
+
+        /*public string somaDado()
         {
             int dado12 = listaDeDados[0].Numero + listaDeDados[1].Numero;
             int dado13 = listaDeDados[0].Numero + listaDeDados[2].Numero;
@@ -160,12 +212,14 @@ namespace Aplicativo1
 
             string combinacao = D1234 
             return;
-        }
+        }*/
 
-         
+
         private void btn_statusTabu_Click(object sender, EventArgs e)
         {
             string status = Jogo.ExibirTabuleiro(form1.idPartida);
+
+            
 
             if (status.StartsWith("ERRO"))
             {
@@ -5893,7 +5947,6 @@ namespace Aplicativo1
             }
         }
 
-
-       
+        
     }
 }

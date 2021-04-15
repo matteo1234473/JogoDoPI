@@ -179,6 +179,5 @@ namespace Aplicativo1
             MessageBox.Show(status);
         }
 
-        
     }
 }

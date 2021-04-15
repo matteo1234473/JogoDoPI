@@ -127,6 +127,8 @@ namespace Aplicativo1
             this.pboxAJ2T2 = new System.Windows.Forms.PictureBox();
             this.pboxAJ3T2 = new System.Windows.Forms.PictureBox();
             this.pboxAJ1T2 = new System.Windows.Forms.PictureBox();
+            this.cbxCombinacoes = new System.Windows.Forms.ComboBox();
+            this.btnMover = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado3)).BeginInit();
@@ -276,9 +278,9 @@ namespace Aplicativo1
             // 
             // btn_statusTabu
             // 
-            this.btn_statusTabu.Location = new System.Drawing.Point(10, 487);
+            this.btn_statusTabu.Location = new System.Drawing.Point(0, 531);
             this.btn_statusTabu.Name = "btn_statusTabu";
-            this.btn_statusTabu.Size = new System.Drawing.Size(113, 61);
+            this.btn_statusTabu.Size = new System.Drawing.Size(113, 35);
             this.btn_statusTabu.TabIndex = 123;
             this.btn_statusTabu.Text = "Status Tabuleiro";
             this.btn_statusTabu.UseVisualStyleBackColor = true;
@@ -690,7 +692,7 @@ namespace Aplicativo1
             // 
             // btnMais1
             // 
-            this.btnMais1.Location = new System.Drawing.Point(373, 521);
+            this.btnMais1.Location = new System.Drawing.Point(386, 522);
             this.btnMais1.Name = "btnMais1";
             this.btnMais1.Size = new System.Drawing.Size(74, 27);
             this.btnMais1.TabIndex = 171;
@@ -1094,6 +1096,24 @@ namespace Aplicativo1
             this.pboxAJ1T2.TabStop = false;
             this.pboxAJ1T2.Visible = false;
             // 
+            // cbxCombinacoes
+            // 
+            this.cbxCombinacoes.FormattingEnabled = true;
+            this.cbxCombinacoes.Location = new System.Drawing.Point(0, 403);
+            this.cbxCombinacoes.Name = "cbxCombinacoes";
+            this.cbxCombinacoes.Size = new System.Drawing.Size(105, 21);
+            this.cbxCombinacoes.TabIndex = 216;
+            // 
+            // btnMover
+            // 
+            this.btnMover.Location = new System.Drawing.Point(129, 531);
+            this.btnMover.Name = "btnMover";
+            this.btnMover.Size = new System.Drawing.Size(101, 35);
+            this.btnMover.TabIndex = 217;
+            this.btnMover.Text = "button1";
+            this.btnMover.UseVisualStyleBackColor = true;
+            this.btnMover.Click += new System.EventHandler(this.btnMover_Click);
+            // 
             // Tabuleiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1102,6 +1122,8 @@ namespace Aplicativo1
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.btnMover);
+            this.Controls.Add(this.cbxCombinacoes);
             this.Controls.Add(this.pboxAJ4T12);
             this.Controls.Add(this.pboxAJ2T12);
             this.Controls.Add(this.pboxAJ3T12);
@@ -1395,5 +1417,7 @@ namespace Aplicativo1
         private System.Windows.Forms.PictureBox pboxAJ2T2;
         private System.Windows.Forms.PictureBox pboxAJ3T2;
         private System.Windows.Forms.PictureBox pboxAJ1T2;
+        private System.Windows.Forms.ComboBox cbxCombinacoes;
+        private System.Windows.Forms.Button btnMover;
     }
 }
