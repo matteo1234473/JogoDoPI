@@ -129,6 +129,7 @@ namespace Aplicativo1
             this.pboxAJ1T2 = new System.Windows.Forms.PictureBox();
             this.cbxCombinacoes = new System.Windows.Forms.ComboBox();
             this.btnMover = new System.Windows.Forms.Button();
+            this.btnParar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado3)).BeginInit();
@@ -1110,9 +1111,19 @@ namespace Aplicativo1
             this.btnMover.Name = "btnMover";
             this.btnMover.Size = new System.Drawing.Size(101, 35);
             this.btnMover.TabIndex = 217;
-            this.btnMover.Text = "button1";
+            this.btnMover.Text = "MOVER!";
             this.btnMover.UseVisualStyleBackColor = true;
             this.btnMover.Click += new System.EventHandler(this.btnMover_Click);
+            // 
+            // btnParar
+            // 
+            this.btnParar.Location = new System.Drawing.Point(248, 531);
+            this.btnParar.Name = "btnParar";
+            this.btnParar.Size = new System.Drawing.Size(87, 34);
+            this.btnParar.TabIndex = 218;
+            this.btnParar.Text = "PARAR!";
+            this.btnParar.UseVisualStyleBackColor = true;
+            this.btnParar.Click += new System.EventHandler(this.btnParar_Click);
             // 
             // Tabuleiro
             // 
@@ -1122,6 +1133,7 @@ namespace Aplicativo1
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.btnParar);
             this.Controls.Add(this.btnMover);
             this.Controls.Add(this.cbxCombinacoes);
             this.Controls.Add(this.pboxAJ4T12);
@@ -1419,5 +1431,6 @@ namespace Aplicativo1
         private System.Windows.Forms.PictureBox pboxAJ1T2;
         private System.Windows.Forms.ComboBox cbxCombinacoes;
         private System.Windows.Forms.Button btnMover;
+        private System.Windows.Forms.Button btnParar;
     }
 }

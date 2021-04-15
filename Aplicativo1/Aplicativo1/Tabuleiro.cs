@@ -20,9 +20,12 @@ namespace Aplicativo1
 
         List<Jogador> listaDeJogadores = new List<Jogador>();
         List<Dado> listaDeDados = new List<Dado>();
-        int alp = 3;
+        int alp = 3, vez = 0;
         int dado12 = 0 , dado13 = 0 , dado14 = 0 , dado24= 0, dado23 = 0, dado34 = 0;
         string d1234, d1324, d1423;
+
+        
+
         private void btnMais1_Click(object sender, EventArgs e)
         {
             mais1 += 1;
@@ -180,21 +183,40 @@ namespace Aplicativo1
         {
            if(cbxCombinacoes.SelectedIndex == 0)
             {
-                Jogo.Mover(listaDeJogadores[0].Id, form1.Senha, "1234", d1234);
+                Jogo.Mover(listaDeJogadores[vez].Id, form1.Senha, "1234", d1234);
+                cbxCombinacoes.Items.Clear();
+                listaDeDados.Clear();
             }
 
             if (cbxCombinacoes.SelectedIndex == 1)
             {
-                Jogo.Mover(listaDeJogadores[0].Id, form1.Senha, "1324", d1324);
+                Jogo.Mover(listaDeJogadores[vez].Id, form1.Senha, "1324", d1324);
+                cbxCombinacoes.Items.Clear();
+                listaDeDados.Clear();
             }
 
             if (cbxCombinacoes.SelectedIndex == 2)
             {
-                Jogo.Mover(listaDeJogadores[0].Id, form1.Senha, "1423", d1423);
+                Jogo.Mover(listaDeJogadores[vez].Id, form1.Senha, "1423", d1423);
+                cbxCombinacoes.Items.Clear();
+                listaDeDados.Clear();
             }
         }
 
+        private void btnParar_Click(object sender, EventArgs e)
+        {
+            Jogo.Parar(listaDeJogadores[vez].Id, form1.Senha);
 
+            if (vez == 0)
+            {
+                vez++;
+            }
+            else if (vez == 1)
+            {
+                vez--;
+            }
+                
+        }
 
 
         /*public string somaDado()
