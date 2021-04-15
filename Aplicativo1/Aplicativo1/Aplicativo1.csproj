@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dado.cs" />
     <Compile Include="Jogador.cs" />
     <Compile Include="TrilhaJogador.cs" />
     <Compile Include="StatusTabu.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Tabuleiro.resx">
       <DependentUpon>Tabuleiro.cs</DependentUpon>
@@ -93,6 +95,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dado1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dado2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dado3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dado4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dado5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dado6.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

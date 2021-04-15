@@ -31,14 +31,10 @@ namespace Aplicativo1
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tabuleiro));
             this.btnRodadado = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.txtDado1 = new System.Windows.Forms.TextBox();
-            this.txtDado2 = new System.Windows.Forms.TextBox();
-            this.txtDado4 = new System.Windows.Forms.TextBox();
-            this.txtDado3 = new System.Windows.Forms.TextBox();
+            this.picbxDado1 = new System.Windows.Forms.PictureBox();
+            this.picbxDado2 = new System.Windows.Forms.PictureBox();
+            this.picbxDado3 = new System.Windows.Forms.PictureBox();
+            this.picbxDado4 = new System.Windows.Forms.PictureBox();
             this.txtJogadores = new System.Windows.Forms.TextBox();
             this.btn_statusTabu = new System.Windows.Forms.Button();
             this.txtTestezada = new System.Windows.Forms.TextBox();
@@ -131,10 +127,10 @@ namespace Aplicativo1
             this.pboxAJ2T2 = new System.Windows.Forms.PictureBox();
             this.pboxAJ3T2 = new System.Windows.Forms.PictureBox();
             this.pboxAJ1T2 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picbxDado1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picbxDado2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picbxDado3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picbxDado4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxJ1T2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxJ3T2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxJ2T2)).BeginInit();
@@ -235,74 +231,38 @@ namespace Aplicativo1
             this.btnRodadado.UseVisualStyleBackColor = true;
             this.btnRodadado.Click += new System.EventHandler(this.btnRodadado_Click);
             // 
-            // pictureBox1
+            // picbxDado1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(10, 66);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(45, 44);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.picbxDado1.Location = new System.Drawing.Point(10, 66);
+            this.picbxDado1.Name = "picbxDado1";
+            this.picbxDado1.Size = new System.Drawing.Size(45, 45);
+            this.picbxDado1.TabIndex = 9;
+            this.picbxDado1.TabStop = false;
+            this.picbxDado1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // pictureBox3
+            // picbxDado2
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(10, 116);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(45, 44);
-            this.pictureBox3.TabIndex = 11;
-            this.pictureBox3.TabStop = false;
+            this.picbxDado2.Location = new System.Drawing.Point(10, 116);
+            this.picbxDado2.Name = "picbxDado2";
+            this.picbxDado2.Size = new System.Drawing.Size(45, 45);
+            this.picbxDado2.TabIndex = 11;
+            this.picbxDado2.TabStop = false;
             // 
-            // pictureBox2
+            // picbxDado3
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(10, 166);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(45, 44);
-            this.pictureBox2.TabIndex = 12;
-            this.pictureBox2.TabStop = false;
+            this.picbxDado3.Location = new System.Drawing.Point(10, 166);
+            this.picbxDado3.Name = "picbxDado3";
+            this.picbxDado3.Size = new System.Drawing.Size(45, 45);
+            this.picbxDado3.TabIndex = 12;
+            this.picbxDado3.TabStop = false;
             // 
-            // pictureBox4
+            // picbxDado4
             // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(10, 219);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(45, 44);
-            this.pictureBox4.TabIndex = 13;
-            this.pictureBox4.TabStop = false;
-            // 
-            // txtDado1
-            // 
-            this.txtDado1.Location = new System.Drawing.Point(10, 77);
-            this.txtDado1.Name = "txtDado1";
-            this.txtDado1.Size = new System.Drawing.Size(43, 20);
-            this.txtDado1.TabIndex = 14;
-            
-            // 
-            // txtDado2
-            // 
-            this.txtDado2.Location = new System.Drawing.Point(10, 128);
-            this.txtDado2.Name = "txtDado2";
-            this.txtDado2.Size = new System.Drawing.Size(43, 20);
-            this.txtDado2.TabIndex = 15;
-           
-            // 
-            // txtDado4
-            // 
-            this.txtDado4.Location = new System.Drawing.Point(10, 230);
-            this.txtDado4.Name = "txtDado4";
-            this.txtDado4.Size = new System.Drawing.Size(43, 20);
-            this.txtDado4.TabIndex = 17;
-        
-            // 
-            // txtDado3
-            // 
-            this.txtDado3.Location = new System.Drawing.Point(10, 178);
-            this.txtDado3.Name = "txtDado3";
-            this.txtDado3.Size = new System.Drawing.Size(43, 20);
-            this.txtDado3.TabIndex = 18;
-         
+            this.picbxDado4.Location = new System.Drawing.Point(10, 219);
+            this.picbxDado4.Name = "picbxDado4";
+            this.picbxDado4.Size = new System.Drawing.Size(45, 45);
+            this.picbxDado4.TabIndex = 13;
+            this.picbxDado4.TabStop = false;
             // 
             // txtJogadores
             // 
@@ -313,7 +273,6 @@ namespace Aplicativo1
             this.txtJogadores.Name = "txtJogadores";
             this.txtJogadores.Size = new System.Drawing.Size(151, 103);
             this.txtJogadores.TabIndex = 7;
-          
             // 
             // btn_statusTabu
             // 
@@ -331,7 +290,6 @@ namespace Aplicativo1
             this.txtTestezada.Name = "txtTestezada";
             this.txtTestezada.Size = new System.Drawing.Size(112, 20);
             this.txtTestezada.TabIndex = 124;
-           
             // 
             // pboxJ1T2
             // 
@@ -1235,21 +1193,17 @@ namespace Aplicativo1
             this.Controls.Add(this.pboxJ1T2);
             this.Controls.Add(this.txtTestezada);
             this.Controls.Add(this.btn_statusTabu);
-            this.Controls.Add(this.txtDado3);
-            this.Controls.Add(this.txtDado4);
-            this.Controls.Add(this.txtDado2);
-            this.Controls.Add(this.txtDado1);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.picbxDado4);
+            this.Controls.Add(this.picbxDado3);
+            this.Controls.Add(this.picbxDado2);
+            this.Controls.Add(this.picbxDado1);
             this.Controls.Add(this.btnRodadado);
             this.Controls.Add(this.txtJogadores);
             this.Name = "Tabuleiro";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picbxDado1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picbxDado2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picbxDado3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picbxDado4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxJ1T2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxJ3T2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxJ2T2)).EndInit();
@@ -1345,14 +1299,10 @@ namespace Aplicativo1
 
         #endregion
         private System.Windows.Forms.Button btnRodadado;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.TextBox txtDado1;
-        private System.Windows.Forms.TextBox txtDado2;
-        private System.Windows.Forms.TextBox txtDado4;
-        private System.Windows.Forms.TextBox txtDado3;
+        private System.Windows.Forms.PictureBox picbxDado1;
+        private System.Windows.Forms.PictureBox picbxDado2;
+        private System.Windows.Forms.PictureBox picbxDado3;
+        private System.Windows.Forms.PictureBox picbxDado4;
         private System.Windows.Forms.TextBox txtJogadores;
         private System.Windows.Forms.Button btn_statusTabu;
         private System.Windows.Forms.TextBox txtTestezada;

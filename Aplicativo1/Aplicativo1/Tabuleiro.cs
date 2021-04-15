@@ -14,9 +14,11 @@ namespace Aplicativo1
 {
     public partial class Tabuleiro : Form
     {
+        
         int mais1 = 0;
         Form1 form1 = new Form1();
         List<Jogador> listaDeJogadores = new List<Jogador>();
+        List<Dado> listaDeDados = new List<Dado>();
 
 
         private void btnMais1_Click(object sender, EventArgs e)
@@ -28,7 +30,7 @@ namespace Aplicativo1
         {
 
         }
-
+      
 
         public Tabuleiro()
         {
@@ -37,7 +39,7 @@ namespace Aplicativo1
 
             InitializeComponent();
             string dadosJogadores = Jogo.ListarJogadores(form1.idPartida);
-            //dadosJogadores += '\n' + '\n';
+     
             dadosJogadores = dadosJogadores.Replace("\r", "");
             string[] _jogadores = dadosJogadores.Split('\n');
             foreach (string linha in _jogadores)
@@ -47,7 +49,6 @@ namespace Aplicativo1
                     listaDeJogadores.Add(new Jogador(int.Parse(linha.Split(',')[0]), linha.Split(',')[1], linha.Split(',')[2]));
                 }
             }
-
             foreach (Jogador jogador in listaDeJogadores)
             {
                 txtJogadores.Text += jogador.Id + ": " + jogador.Nome + "\r\n";
@@ -72,37 +73,96 @@ namespace Aplicativo1
             {
 
                 dados = dados.Replace("\r", "");
-                string[] linha = dados.Split('\n');
+                string[] _linha = dados.Split('\n');
 
-
-                double[] dadoInt = { Convert.ToDouble(linha[0]) / 10, Convert.ToDouble(linha[1]) / 10, Convert.ToDouble(linha[2]) / 10, Convert.ToDouble(linha[3]) / 10 };
-
-
-                string dado1 = Convert.ToString(dadoInt[0]);
-                string dado2 = Convert.ToString(dadoInt[1]);
-                string dado3 = Convert.ToString(dadoInt[2]);
-                string dado4 = Convert.ToString(dadoInt[3]);
-
-                string[] dadoTratado1 = dado1.Split(',');
-                string[] dadoTratado2 = dado2.Split(',');
-                string[] dadoTratado3 = dado3.Split(',');
-                string[] dadoTratado4 = dado4.Split(',');
-
-
-                txtDado1.Text = dadoTratado1[1];
-                txtDado2.Text = dadoTratado2[1];
-                txtDado3.Text = dadoTratado3[1];
-                txtDado4.Text = dadoTratado4[1];
-
+                double[] dadoInt = { Convert.ToDouble(_linha[0]) / 10, Convert.ToDouble(_linha[1]) / 10, Convert.ToDouble(_linha[2]) / 10, Convert.ToDouble(_linha[3]) / 10 };
+                string[] dadoString = new string[4];
+                for (int i = 0; i < 4; i++)
+                {
+                    dadoString[i]= Convert.ToString(dadoInt[i]);
+                }
+                int j = 0;
+                foreach (string linha in dadoString)
+                {
+                   
+                    listaDeDados.Add(new Dado(int.Parse(dadoString[j].Split(',')[1]), int.Parse(dadoString[j].Split(',')[0])));
+                    j++;
+                }
             }
 
+            if (listaDeDados[0].Numero == 1)           
+                picbxDado1.Image = Aplicativo1.Properties.Resources.dado1;
+            if (listaDeDados[0].Numero == 2)
+                picbxDado1.Image = Aplicativo1.Properties.Resources.dado2;
+            if (listaDeDados[0].Numero == 3)
+                picbxDado1.Image = Aplicativo1.Properties.Resources.dado3;
+            if (listaDeDados[0].Numero == 4)
+                picbxDado1.Image = Aplicativo1.Properties.Resources.dado4;
+            if (listaDeDados[0].Numero == 5)
+                picbxDado1.Image = Aplicativo1.Properties.Resources.dado5;
+            if (listaDeDados[0].Numero == 6)
+                picbxDado1.Image = Aplicativo1.Properties.Resources.dado6;
 
+            if (listaDeDados[1].Numero == 1)
+                picbxDado2.Image = Aplicativo1.Properties.Resources.dado1;
+            if (listaDeDados[1].Numero == 2)
+                picbxDado2.Image = Aplicativo1.Properties.Resources.dado2;
+            if (listaDeDados[1].Numero == 3)
+                picbxDado2.Image = Aplicativo1.Properties.Resources.dado3;
+            if (listaDeDados[1].Numero == 4)
+                picbxDado2.Image = Aplicativo1.Properties.Resources.dado4;
+            if (listaDeDados[1].Numero == 5)
+                picbxDado2.Image = Aplicativo1.Properties.Resources.dado5;
+            if (listaDeDados[1].Numero == 6)
+                picbxDado2.Image = Aplicativo1.Properties.Resources.dado6;
 
+            if (listaDeDados[2].Numero == 1)
+                picbxDado3.Image = Aplicativo1.Properties.Resources.dado1;
+            if (listaDeDados[2].Numero == 2)
+                picbxDado3.Image = Aplicativo1.Properties.Resources.dado2;
+            if (listaDeDados[2].Numero == 3)
+                picbxDado3.Image = Aplicativo1.Properties.Resources.dado3;
+            if (listaDeDados[2].Numero == 4)
+                picbxDado3.Image = Aplicativo1.Properties.Resources.dado4;
+            if (listaDeDados[2].Numero == 5)
+                picbxDado3.Image = Aplicativo1.Properties.Resources.dado5;
+            if (listaDeDados[2].Numero == 6)
+                picbxDado3.Image = Aplicativo1.Properties.Resources.dado6;
+
+            if (listaDeDados[3].Numero == 1)
+                picbxDado4.Image = Aplicativo1.Properties.Resources.dado1;
+            if (listaDeDados[3].Numero == 2)
+                picbxDado4.Image = Aplicativo1.Properties.Resources.dado2;
+            if (listaDeDados[3].Numero == 3)
+                picbxDado4.Image = Aplicativo1.Properties.Resources.dado3;
+            if (listaDeDados[3].Numero == 4)
+                picbxDado4.Image = Aplicativo1.Properties.Resources.dado4;
+            if (listaDeDados[3].Numero == 5)
+                picbxDado4.Image = Aplicativo1.Properties.Resources.dado5;
+            if (listaDeDados[3].Numero == 6)
+                picbxDado4.Image = Aplicativo1.Properties.Resources.dado6;
 
             MessageBox.Show(dados);
-
         }
 
+        public string somaDado()
+        {
+            int dado12 = listaDeDados[0].Numero + listaDeDados[1].Numero;
+            int dado13 = listaDeDados[0].Numero + listaDeDados[2].Numero;
+            int dado14 = listaDeDados[0].Numero + listaDeDados[3].Numero;
+            int dado24 = listaDeDados[1].Numero + listaDeDados[3].Numero;
+            int dado23 = listaDeDados[1].Numero + listaDeDados[2].Numero;
+            int dado34 = listaDeDados[2].Numero + listaDeDados[3].Numero;
+
+            string D1234 = dado12.ToString() + dado34.ToString();
+            string D1324 = dado13.ToString() + dado24.ToString();
+            string D1423 = dado14.ToString() + dado23.ToString();
+
+            string combinacao = D1234 
+            return;
+        }
+
+         
         private void btn_statusTabu_Click(object sender, EventArgs e)
         {
             string status = Jogo.ExibirTabuleiro(form1.idPartida);
@@ -5833,9 +5893,7 @@ namespace Aplicativo1
             }
         }
 
-        private void txtTestezada_TextChanged(object sender, EventArgs e)
-        {
 
-        }
+       
     }
 }
