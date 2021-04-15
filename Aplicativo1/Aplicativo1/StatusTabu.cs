@@ -9,22 +9,30 @@ namespace Aplicativo1
     class StatusTabu
     {
 
-        public char tipo;
+        public char tipo { get; set; }
 
-        public int jogador;
+        public Jogador Jogador { get; set; }
 
-        public int trilha;
+        public int trilha { get; set; }
 
-        public int position;
+        public int position { get; set; }
 
 
-        public StatusTabu(int trilha, int posicao, int jogador, char tipo)
+
+        public StatusTabu(int trilha, int posicao, int j_id, char tipo, List<Jogador> listaDeJogadores)
         {
             this.trilha = trilha;
             this.position = posicao;
-            this.jogador = jogador;
             this.tipo = tipo;
-
+            foreach(Jogador jogador in listaDeJogadores)
+            {
+                if (jogador.Id == j_id)
+                {
+                    this.Jogador = jogador;
+                    break;
+                }
+                
+            }
         }
 
 

@@ -278,7 +278,7 @@ namespace Aplicativo1
             this.txtDado1.Name = "txtDado1";
             this.txtDado1.Size = new System.Drawing.Size(43, 20);
             this.txtDado1.TabIndex = 14;
-            this.txtDado1.TextChanged += new System.EventHandler(this.txtDado1_TextChanged);
+            
             // 
             // txtDado2
             // 
@@ -286,7 +286,7 @@ namespace Aplicativo1
             this.txtDado2.Name = "txtDado2";
             this.txtDado2.Size = new System.Drawing.Size(43, 20);
             this.txtDado2.TabIndex = 15;
-            this.txtDado2.TextChanged += new System.EventHandler(this.txtDado2_TextChanged);
+           
             // 
             // txtDado4
             // 
@@ -294,7 +294,7 @@ namespace Aplicativo1
             this.txtDado4.Name = "txtDado4";
             this.txtDado4.Size = new System.Drawing.Size(43, 20);
             this.txtDado4.TabIndex = 17;
-            this.txtDado4.TextChanged += new System.EventHandler(this.txtDado4_TextChanged);
+        
             // 
             // txtDado3
             // 
@@ -302,7 +302,7 @@ namespace Aplicativo1
             this.txtDado3.Name = "txtDado3";
             this.txtDado3.Size = new System.Drawing.Size(43, 20);
             this.txtDado3.TabIndex = 18;
-            this.txtDado3.TextChanged += new System.EventHandler(this.txtDado3_TextChanged);
+         
             // 
             // txtJogadores
             // 
@@ -313,7 +313,7 @@ namespace Aplicativo1
             this.txtJogadores.Name = "txtJogadores";
             this.txtJogadores.Size = new System.Drawing.Size(151, 103);
             this.txtJogadores.TabIndex = 7;
-            this.txtJogadores.TextChanged += new System.EventHandler(this.txtJogadores_TextChanged);
+          
             // 
             // btn_statusTabu
             // 
@@ -331,6 +331,7 @@ namespace Aplicativo1
             this.txtTestezada.Name = "txtTestezada";
             this.txtTestezada.Size = new System.Drawing.Size(112, 20);
             this.txtTestezada.TabIndex = 124;
+           
             // 
             // pboxJ1T2
             // 
@@ -1245,7 +1246,6 @@ namespace Aplicativo1
             this.Controls.Add(this.btnRodadado);
             this.Controls.Add(this.txtJogadores);
             this.Name = "Tabuleiro";
-            this.Load += new System.EventHandler(this.Tabuleiro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

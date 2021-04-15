@@ -12,11 +12,16 @@ namespace Aplicativo1
         public string Nome { get; set; }
         public string Cor { get; set; }
 
+        static int qtdJogadores = 0;
+        public int Posicao { get; set; }
+
         public Jogador(int id, string nome, string cor)
         {
             this.Id = id;
             this.Cor = cor;
             this.Nome = nome;
+            Jogador.qtdJogadores++;
+            this.Posicao = Jogador.qtdJogadores;
         }
     }
 }

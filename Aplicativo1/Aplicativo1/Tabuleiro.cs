@@ -37,6 +37,7 @@ namespace Aplicativo1
 
             InitializeComponent();
             string dadosJogadores = Jogo.ListarJogadores(form1.idPartida);
+            //dadosJogadores += '\n' + '\n';
             dadosJogadores = dadosJogadores.Replace("\r", "");
             string[] _jogadores = dadosJogadores.Split('\n');
             foreach (string linha in _jogadores)
@@ -47,11 +48,11 @@ namespace Aplicativo1
                 }
             }
 
-            foreach(Jogador jogador in listaDeJogadores)
+            foreach (Jogador jogador in listaDeJogadores)
             {
                 txtJogadores.Text += jogador.Id + ": " + jogador.Nome + "\r\n";
             }
-            
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -102,49 +103,6 @@ namespace Aplicativo1
 
         }
 
-
-        private void txtJogadores_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void txtDado1_TextChanged(object sender, EventArgs e)
-        {
-
-
-        }
-        private void txtDado2_TextChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void txtDado3_TextChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void txtDado4_TextChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void Tabuleiro_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox86_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_statusTabu_Click(object sender, EventArgs e)
         {
             string status = Jogo.ExibirTabuleiro(form1.idPartida);
@@ -164,14 +122,13 @@ namespace Aplicativo1
                 {
                     string linhas = linha[i];
                     string[] dados = linhas.Split(',');
-                    StatusTabu Status = new StatusTabu(Convert.ToInt32(dados[0]), Convert.ToInt32(dados[1]), Convert.ToInt32(dados[2]), Convert.ToChar(dados[3]));
+                    StatusTabu Status = new StatusTabu(Convert.ToInt32(dados[0]), Convert.ToInt32(dados[1]), Convert.ToInt32(dados[2]), Convert.ToChar(dados[3]), listaDeJogadores);
                     Status.position += mais1;
 
 
-                    switch (Status.jogador)
+                    switch (Status.Jogador.Posicao)
                     {
                         case 1://jogador 1
-
 
                             switch (Status.trilha)
                             {
@@ -2753,9 +2710,9 @@ namespace Aplicativo1
                                             }
                                             else
                                             {
-                                                pboxJ2T9.Visible = true;
-                                                pboxJ2T9.BackColor = Color.Black;
-                                                pboxJ2T9.Location = new Point(500, 381 - (28 * 8));
+                                                pboxAJ2T9.Visible = true;
+                                                pboxAJ2T9.BackColor = Color.Black;
+                                                pboxAJ2T9.Location = new Point(500, 381 - (28 * 8));
                                             }
 
                                             break;
@@ -5874,6 +5831,11 @@ namespace Aplicativo1
 
                 MessageBox.Show(status);
             }
+        }
+
+        private void txtTestezada_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

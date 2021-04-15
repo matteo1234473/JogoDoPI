@@ -172,6 +172,13 @@ namespace Aplicativo1
 
         }
 
-       
+        private void ChecaTabu_Click(object sender, EventArgs e)
+        {
+            int id = pegaIdDaPartida(lstPartidas.SelectedItem.ToString());
+            string status = Jogo.ExibirTabuleiro(id);
+            MessageBox.Show(status);
+        }
+
+        
     }
 }

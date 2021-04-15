@@ -51,6 +51,7 @@ namespace Aplicativo1
             this.btnIniciarP = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtIdjogador = new System.Windows.Forms.TextBox();
+            this.ChecaTabu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnPartidas
@@ -95,6 +96,7 @@ namespace Aplicativo1
             this.txtJogadores.Name = "txtJogadores";
             this.txtJogadores.Size = new System.Drawing.Size(160, 147);
             this.txtJogadores.TabIndex = 5;
+          
             // 
             // btnEntrar
             // 
@@ -268,12 +270,23 @@ namespace Aplicativo1
             this.txtIdjogador.Size = new System.Drawing.Size(100, 20);
             this.txtIdjogador.TabIndex = 23;
             // 
+            // ChecaTabu
+            // 
+            this.ChecaTabu.Location = new System.Drawing.Point(177, 338);
+            this.ChecaTabu.Name = "ChecaTabu";
+            this.ChecaTabu.Size = new System.Drawing.Size(94, 39);
+            this.ChecaTabu.TabIndex = 24;
+            this.ChecaTabu.Text = "button1";
+            this.ChecaTabu.UseVisualStyleBackColor = true;
+            this.ChecaTabu.Click += new System.EventHandler(this.ChecaTabu_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(694, 390);
+            this.Controls.Add(this.ChecaTabu);
             this.Controls.Add(this.txtIdjogador);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnIniciarP);
@@ -327,6 +340,7 @@ namespace Aplicativo1
         private System.Windows.Forms.Button btnIniciarP;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtIdjogador;
+        private System.Windows.Forms.Button ChecaTabu;
     }
 }
 
