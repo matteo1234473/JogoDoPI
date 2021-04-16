@@ -14,17 +14,20 @@ namespace Aplicativo1
 {
     public partial class Tabuleiro : Form
     {
-        
+
         int mais1 = 0;
         Form1 form1 = new Form1();
 
         List<Jogador> listaDeJogadores = new List<Jogador>();
         List<Dado> listaDeDados = new List<Dado>();
-        int alp = 3, vez = 0;
-        int dado12 = 0 , dado13 = 0 , dado14 = 0 , dado24= 0, dado23 = 0, dado34 = 0;
-        string d1234, d1324, d1423;
+        //int alp = 3, vez = 0;
+        //int dado12 = 0, dado13 = 0, dado14 = 0, dado24 = 0, dado23 = 0, dado34 = 0;
+        //string d1234, d1324, d1423, dado12S, dado13S, dado14S, dado24S, dado23S, dado34S;
 
-        
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void btnMais1_Click(object sender, EventArgs e)
         {
@@ -35,7 +38,7 @@ namespace Aplicativo1
         {
 
         }
-      
+
 
         public Tabuleiro()
         {
@@ -44,7 +47,7 @@ namespace Aplicativo1
 
             InitializeComponent();
             string dadosJogadores = Jogo.ListarJogadores(form1.idPartida);
-     
+
             dadosJogadores = dadosJogadores.Replace("\r", "");
             string[] _jogadores = dadosJogadores.Split('\n');
             foreach (string linha in _jogadores)
@@ -84,138 +87,134 @@ namespace Aplicativo1
                 string[] dadoString = new string[4];
                 for (int i = 0; i < 4; i++)
                 {
-                    dadoString[i]= Convert.ToString(dadoInt[i]);
+                    dadoString[i] = Convert.ToString(dadoInt[i]);
                 }
                 int j = 0;
                 foreach (string linha in dadoString)
                 {
-                   
+
                     listaDeDados.Add(new Dado(int.Parse(dadoString[j].Split(',')[1]), int.Parse(dadoString[j].Split(',')[0])));
                     j++;
                 }
+
+                if (listaDeDados[0].Numero == 1)
+                    picbxDado1.Image = Aplicativo1.Properties.Resources.dado1;
+                if (listaDeDados[0].Numero == 2)
+                    picbxDado1.Image = Aplicativo1.Properties.Resources.dado2;
+                if (listaDeDados[0].Numero == 3)
+                    picbxDado1.Image = Aplicativo1.Properties.Resources.dado3;
+                if (listaDeDados[0].Numero == 4)
+                    picbxDado1.Image = Aplicativo1.Properties.Resources.dado4;
+                if (listaDeDados[0].Numero == 5)
+                    picbxDado1.Image = Aplicativo1.Properties.Resources.dado5;
+                if (listaDeDados[0].Numero == 6)
+                    picbxDado1.Image = Aplicativo1.Properties.Resources.dado6;
+
+                if (listaDeDados[1].Numero == 1)
+                    picbxDado2.Image = Aplicativo1.Properties.Resources.dado1;
+                if (listaDeDados[1].Numero == 2)
+                    picbxDado2.Image = Aplicativo1.Properties.Resources.dado2;
+                if (listaDeDados[1].Numero == 3)
+                    picbxDado2.Image = Aplicativo1.Properties.Resources.dado3;
+                if (listaDeDados[1].Numero == 4)
+                    picbxDado2.Image = Aplicativo1.Properties.Resources.dado4;
+                if (listaDeDados[1].Numero == 5)
+                    picbxDado2.Image = Aplicativo1.Properties.Resources.dado5;
+                if (listaDeDados[1].Numero == 6)
+                    picbxDado2.Image = Aplicativo1.Properties.Resources.dado6;
+
+                if (listaDeDados[2].Numero == 1)
+                    picbxDado3.Image = Aplicativo1.Properties.Resources.dado1;
+                if (listaDeDados[2].Numero == 2)
+                    picbxDado3.Image = Aplicativo1.Properties.Resources.dado2;
+                if (listaDeDados[2].Numero == 3)
+                    picbxDado3.Image = Aplicativo1.Properties.Resources.dado3;
+                if (listaDeDados[2].Numero == 4)
+                    picbxDado3.Image = Aplicativo1.Properties.Resources.dado4;
+                if (listaDeDados[2].Numero == 5)
+                    picbxDado3.Image = Aplicativo1.Properties.Resources.dado5;
+                if (listaDeDados[2].Numero == 6)
+                    picbxDado3.Image = Aplicativo1.Properties.Resources.dado6;
+
+                if (listaDeDados[3].Numero == 1)
+                    picbxDado4.Image = Aplicativo1.Properties.Resources.dado1;
+                if (listaDeDados[3].Numero == 2)
+                    picbxDado4.Image = Aplicativo1.Properties.Resources.dado2;
+                if (listaDeDados[3].Numero == 3)
+                    picbxDado4.Image = Aplicativo1.Properties.Resources.dado3;
+                if (listaDeDados[3].Numero == 4)
+                    picbxDado4.Image = Aplicativo1.Properties.Resources.dado4;
+                if (listaDeDados[3].Numero == 5)
+                    picbxDado4.Image = Aplicativo1.Properties.Resources.dado5;
+                if (listaDeDados[3].Numero == 6)
+                    picbxDado4.Image = Aplicativo1.Properties.Resources.dado6;
+                /*
+                    dado12 = listaDeDados[0].Numero + listaDeDados[1].Numero;
+                    dado13 = listaDeDados[0].Numero + listaDeDados[2].Numero;
+                    dado14 = listaDeDados[0].Numero + listaDeDados[3].Numero;
+                    dado24 = listaDeDados[1].Numero + listaDeDados[3].Numero;
+                    dado23 = listaDeDados[1].Numero + listaDeDados[2].Numero;
+                    dado34 = listaDeDados[2].Numero + listaDeDados[3].Numero;
+
+
+
+                    dado12S = dado12.ToString();
+                    dado13S = dado13.ToString();
+                    dado14S = dado14.ToString();
+                    dado24S = dado24.ToString();
+                    dado23S = dado23.ToString();
+                    dado34S = dado34.ToString();
+
+                    if (dado12 == 10 || dado12 == 11 || dado12 == 12)
+                        dado12S = dado12.ToString("X");
+
+                    if (dado13 == 10 || dado13 == 11 || dado13 == 12)
+                        dado13S = dado13.ToString("X");
+
+                    if (dado14 == 10 || dado14 == 11 || dado14 == 12)
+                        dado14S = dado14.ToString("X");
+
+                    if (dado24 == 10 || dado24 == 11 || dado24 == 12)
+                        dado24S = dado24.ToString("X");
+
+                    if (dado23 == 10 || dado23 == 11 || dado23 == 12)
+                        dado23S = dado23.ToString("X");
+
+                    if (dado34 == 10 || dado34 == 11 || dado34 == 12)
+                        dado34S = dado34.ToString("X");
+
+
+
+
+
+                    cbxCombinacoes.Items.Add(dado12 + " e " + dado34);
+                    cbxCombinacoes.Items.Add(dado13 + " e " + dado24);
+                    cbxCombinacoes.Items.Add(dado14 + " e " + dado23);
+
+                    d1234 = dado12S + dado34S;
+                    d1324 = dado13S + dado24S;
+                    d1423 = dado14S + dado23S;
+
+                    */
             }
-
-            if (listaDeDados[0].Numero == 1)           
-                picbxDado1.Image = Aplicativo1.Properties.Resources.dado1;
-            if (listaDeDados[0].Numero == 2)
-                picbxDado1.Image = Aplicativo1.Properties.Resources.dado2;
-            if (listaDeDados[0].Numero == 3)
-                picbxDado1.Image = Aplicativo1.Properties.Resources.dado3;
-            if (listaDeDados[0].Numero == 4)
-                picbxDado1.Image = Aplicativo1.Properties.Resources.dado4;
-            if (listaDeDados[0].Numero == 5)
-                picbxDado1.Image = Aplicativo1.Properties.Resources.dado5;
-            if (listaDeDados[0].Numero == 6)
-                picbxDado1.Image = Aplicativo1.Properties.Resources.dado6;
-
-            if (listaDeDados[1].Numero == 1)
-                picbxDado2.Image = Aplicativo1.Properties.Resources.dado1;
-            if (listaDeDados[1].Numero == 2)
-                picbxDado2.Image = Aplicativo1.Properties.Resources.dado2;
-            if (listaDeDados[1].Numero == 3)
-                picbxDado2.Image = Aplicativo1.Properties.Resources.dado3;
-            if (listaDeDados[1].Numero == 4)
-                picbxDado2.Image = Aplicativo1.Properties.Resources.dado4;
-            if (listaDeDados[1].Numero == 5)
-                picbxDado2.Image = Aplicativo1.Properties.Resources.dado5;
-            if (listaDeDados[1].Numero == 6)
-                picbxDado2.Image = Aplicativo1.Properties.Resources.dado6;
-
-            if (listaDeDados[2].Numero == 1)
-                picbxDado3.Image = Aplicativo1.Properties.Resources.dado1;
-            if (listaDeDados[2].Numero == 2)
-                picbxDado3.Image = Aplicativo1.Properties.Resources.dado2;
-            if (listaDeDados[2].Numero == 3)
-                picbxDado3.Image = Aplicativo1.Properties.Resources.dado3;
-            if (listaDeDados[2].Numero == 4)
-                picbxDado3.Image = Aplicativo1.Properties.Resources.dado4;
-            if (listaDeDados[2].Numero == 5)
-                picbxDado3.Image = Aplicativo1.Properties.Resources.dado5;
-            if (listaDeDados[2].Numero == 6)
-                picbxDado3.Image = Aplicativo1.Properties.Resources.dado6;
-
-            if (listaDeDados[3].Numero == 1)
-                picbxDado4.Image = Aplicativo1.Properties.Resources.dado1;
-            if (listaDeDados[3].Numero == 2)
-                picbxDado4.Image = Aplicativo1.Properties.Resources.dado2;
-            if (listaDeDados[3].Numero == 3)
-                picbxDado4.Image = Aplicativo1.Properties.Resources.dado3;
-            if (listaDeDados[3].Numero == 4)
-                picbxDado4.Image = Aplicativo1.Properties.Resources.dado4;
-            if (listaDeDados[3].Numero == 5)
-                picbxDado4.Image = Aplicativo1.Properties.Resources.dado5;
-            if (listaDeDados[3].Numero == 6)
-                picbxDado4.Image = Aplicativo1.Properties.Resources.dado6;
 
             MessageBox.Show(dados);
 
-            dado12 = listaDeDados[0].Numero + listaDeDados[1].Numero;
-            dado13 = listaDeDados[0].Numero + listaDeDados[2].Numero;
-            dado14 = listaDeDados[0].Numero + listaDeDados[3].Numero;
-            dado24 = listaDeDados[1].Numero + listaDeDados[3].Numero;
-            dado23 = listaDeDados[1].Numero + listaDeDados[2].Numero;
-            dado34 = listaDeDados[2].Numero + listaDeDados[3].Numero;
-
-            
-
-            cbxCombinacoes.Items.Add(dado12 + " e " + dado34);
-            cbxCombinacoes.Items.Add(dado13 + " e " + dado24);
-            cbxCombinacoes.Items.Add(dado14 + " e " + dado23);
-
-            d1234 = dado12.ToString() + dado34.ToString();
-            d1324 = dado13.ToString() + dado24.ToString();
-            d1423 = dado14.ToString() + dado23.ToString();
-
-            d1234.Replace("10", "A");
-            d1234.Replace("11", "B");
-            d1234.Replace("12", "C");
-
-            d1324.Replace("10", "A");
-            d1324.Replace("11", "B");
-            d1324.Replace("12", "C");
-
-            d1423.Replace("10", "A");
-            d1423.Replace("11", "B");
-            d1423.Replace("12", "C");
         }
 
         private void btnMover_Click(object sender, EventArgs e)
         {
-           if(cbxCombinacoes.SelectedIndex == 0)
-            {
-                Jogo.Mover(listaDeJogadores[vez].Id, form1.Senha, "1234", d1234);
-                cbxCombinacoes.Items.Clear();
-                listaDeDados.Clear();
-            }
+            
+            Jogo.Mover(listaDeJogadores[0].Id, form1.Senha, txtOrdem.Text, txtAonde.Text);
 
-            if (cbxCombinacoes.SelectedIndex == 1)
-            {
-                Jogo.Mover(listaDeJogadores[vez].Id, form1.Senha, "1324", d1324);
-                cbxCombinacoes.Items.Clear();
-                listaDeDados.Clear();
-            }
-
-            if (cbxCombinacoes.SelectedIndex == 2)
-            {
-                Jogo.Mover(listaDeJogadores[vez].Id, form1.Senha, "1423", d1423);
-                cbxCombinacoes.Items.Clear();
-                listaDeDados.Clear();
-            }
+            listaDeDados.Clear();
+            atualizaTabu();
         }
 
         private void btnParar_Click(object sender, EventArgs e)
         {
-            Jogo.Parar(listaDeJogadores[vez].Id, form1.Senha);
-
-            if (vez == 0)
-            {
-                vez++;
-            }
-            else if (vez == 1)
-            {
-                vez--;
-            }
-                
+            Jogo.Parar(listaDeJogadores[0].Id, form1.Senha);
+            atualizaTabu();
         }
 
 
@@ -236,12 +235,16 @@ namespace Aplicativo1
             return;
         }*/
 
-
         private void btn_statusTabu_Click(object sender, EventArgs e)
+        {
+            atualizaTabu();
+        }
+
+        public void atualizaTabu()
         {
             string status = Jogo.ExibirTabuleiro(form1.idPartida);
 
-            
+
 
             if (status.StartsWith("ERRO"))
             {
@@ -278,6 +281,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T2.Visible = true;
+                                                pboxAJ1T2.Visible = false;
                                                 pboxJ1T2.BackColor = Color.Red;
                                             }
                                             else
@@ -293,6 +297,7 @@ namespace Aplicativo1
                                             {
                                                 pboxJ1T2.Visible = true;
                                                 pboxJ1T2.BackColor = Color.Red;
+                                                pboxAJ1T2.Visible = false;
                                                 pboxJ1T2.Location = new Point(110, 296 - 28);
                                             }
                                             else
@@ -309,6 +314,7 @@ namespace Aplicativo1
                                             {
                                                 pboxJ1T2.Visible = true;
                                                 pboxJ1T2.BackColor = Color.Red;
+                                                pboxAJ1T2.Visible = false;
                                                 pboxJ1T2.Location = new Point(112, (296 - 28) - 28);
                                             }
                                             else
@@ -333,6 +339,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T3.Visible = true;
+                                                pboxAJ1T3.Visible = false;
                                                 pboxJ1T3.BackColor = Color.Red;
                                             }
                                             else
@@ -350,6 +357,7 @@ namespace Aplicativo1
                                             {
                                                 pboxJ1T3.Visible = true;
                                                 pboxJ1T3.BackColor = Color.Red;
+                                                pboxAJ1T3.Visible = false;
                                                 pboxJ1T3.Location = new Point(163, 325 - 28);
                                             }
                                             else
@@ -367,6 +375,7 @@ namespace Aplicativo1
                                             {
                                                 pboxJ1T3.Visible = true;
                                                 pboxJ1T3.BackColor = Color.Red;
+                                                pboxAJ1T3.Visible = false;
                                                 pboxJ1T3.Location = new Point(163, (325 - 28) - 28);
                                             }
                                             else
@@ -386,6 +395,7 @@ namespace Aplicativo1
                                             {
                                                 pboxJ1T3.Visible = true;
                                                 pboxJ1T3.BackColor = Color.Red;
+                                                pboxAJ1T3.Visible = false;
                                                 pboxJ1T3.Location = new Point(163, 325 - (28 * 3));
                                             }
                                             else
@@ -405,6 +415,7 @@ namespace Aplicativo1
                                             {
                                                 pboxJ1T3.Visible = true;
                                                 pboxJ1T3.BackColor = Color.Red;
+                                                pboxAJ1T3.Visible = false;
                                                 pboxJ1T3.Location = new Point(163, 325 - (28 * 4));
                                             }
                                             else
@@ -431,6 +442,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T4.Visible = true;
+                                                pboxAJ1T4.Visible = false;
                                                 pboxJ1T4.BackColor = Color.Red;
                                             }
                                             else
@@ -448,6 +460,7 @@ namespace Aplicativo1
                                             {
                                                 pboxJ1T4.Visible = true;
                                                 pboxJ1T4.BackColor = Color.Red;
+                                                pboxAJ1T4.Visible = false;
                                                 pboxJ1T4.Location = new Point(217, 325 - 28);
                                             }
                                             else
@@ -466,6 +479,7 @@ namespace Aplicativo1
                                             {
                                                 pboxJ1T4.Visible = true;
                                                 pboxJ1T4.BackColor = Color.Red;
+                                                pboxAJ1T4.Visible = false;
                                                 pboxJ1T4.Location = new Point(217, (354 - 28) - 28);
                                             }
                                             else
@@ -482,6 +496,7 @@ namespace Aplicativo1
                                             {
                                                 pboxJ1T4.Visible = true;
                                                 pboxJ1T4.BackColor = Color.Red;
+                                                pboxAJ1T4.Visible = false;
                                                 pboxJ1T4.Location = new Point(217, 354 - (28 * 3));
                                             }
                                             else
@@ -498,6 +513,7 @@ namespace Aplicativo1
                                             {
                                                 pboxJ1T4.Visible = true;
                                                 pboxJ1T4.BackColor = Color.Red;
+                                                pboxAJ1T4.Visible = false;
                                                 pboxJ1T4.Location = new Point(217, 354 - (28 * 4));
                                             }
                                             else
@@ -514,6 +530,7 @@ namespace Aplicativo1
                                             {
                                                 pboxJ1T4.Visible = true;
                                                 pboxJ1T4.BackColor = Color.Red;
+                                                pboxAJ1T4.Visible = false;
                                                 pboxJ1T4.Location = new Point(217, 354 - (28 * 5));
                                             }
                                             else
@@ -533,6 +550,7 @@ namespace Aplicativo1
                                             {
                                                 pboxJ1T4.Visible = true;
                                                 pboxJ1T4.BackColor = Color.Red;
+                                                pboxAJ1T4.Visible = false;
                                                 pboxJ1T4.Location = new Point(217, 354 - (28 * 6));
                                             }
                                             else
@@ -555,6 +573,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T5.Visible = true;
+                                                pboxAJ1T5.Visible = false;
                                                 pboxJ1T5.BackColor = Color.Red;
 
                                             }
@@ -573,6 +592,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T5.Visible = true;
+                                                pboxAJ1T5.Visible = false;
                                                 pboxJ1T5.BackColor = Color.Red;
                                                 pboxJ1T5.Location = new Point(270, 381 - 28);
                                             }
@@ -589,6 +609,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T5.Visible = true;
+                                                pboxAJ1T5.Visible = false;
                                                 pboxJ1T5.BackColor = Color.Red;
                                                 pboxJ1T5.Location = new Point(270, (381 - 28) - 28);
                                             }
@@ -605,6 +626,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T5.Visible = true;
+                                                pboxAJ1T5.Visible = false;
                                                 pboxJ1T5.BackColor = Color.Red;
                                                 pboxJ1T5.Location = new Point(270, 381 - (28 * 3));
                                             }
@@ -622,6 +644,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T5.Visible = true;
+                                                pboxAJ1T5.Visible = false;
                                                 pboxJ1T5.BackColor = Color.Red;
                                                 pboxJ1T5.Location = new Point(270, 381 - (28 * 4));
                                             }
@@ -638,6 +661,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T5.Visible = true;
+                                                pboxAJ1T5.Visible = false;
                                                 pboxJ1T5.BackColor = Color.Red;
                                                 pboxJ1T5.Location = new Point(270, 381 - (28 * 5));
                                             }
@@ -654,6 +678,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T5.Visible = true;
+                                                pboxAJ1T5.Visible = false;
                                                 pboxJ1T5.BackColor = Color.Red;
                                                 pboxJ1T5.Location = new Point(270, 381 - (28 * 6));
                                             }
@@ -670,6 +695,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T5.Visible = true;
+                                                pboxAJ1T5.Visible = false;
                                                 pboxJ1T5.BackColor = Color.Red;
                                                 pboxJ1T5.Location = new Point(270, 381 - (28 * 7));
                                             }
@@ -686,6 +712,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T5.Visible = true;
+                                                pboxAJ1T5.Visible = false;
                                                 pboxJ1T5.BackColor = Color.Red;
                                                 pboxJ1T5.Location = new Point(270, 381 - (28 * 8));
                                             }
@@ -710,6 +737,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T6.Visible = true;
+                                                pboxAJ1T6.Visible = false;
                                                 pboxJ1T6.BackColor = Color.Red;
                                             }
                                             else
@@ -725,6 +753,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T6.Visible = true;
+                                                pboxAJ1T6.Visible = false;
                                                 pboxJ1T6.BackColor = Color.Red;
                                                 pboxJ1T6.Location = new Point(323, 410 - 28);
                                             }
@@ -740,6 +769,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T6.Visible = true;
+                                                pboxAJ1T6.Visible = false;
                                                 pboxJ1T6.BackColor = Color.Red;
                                                 pboxJ1T6.Location = new Point(323, (410 - 28) - 28);
                                             }
@@ -755,6 +785,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T6.Visible = true;
+                                                pboxAJ1T6.Visible = false;
                                                 pboxJ1T6.BackColor = Color.Red;
                                                 pboxJ1T6.Location = new Point(323, 410 - (28 * 3));
                                             }
@@ -770,6 +801,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T6.Visible = true;
+                                                pboxAJ1T6.Visible = false;
                                                 pboxJ1T6.BackColor = Color.Red;
                                                 pboxJ1T6.Location = new Point(323, 410 - (28 * 4));
                                             }
@@ -785,6 +817,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T6.Visible = true;
+                                                pboxAJ1T6.Visible = false;
                                                 pboxJ1T6.BackColor = Color.Red;
                                                 pboxJ1T6.Location = new Point(323, 410 - (28 * 5));
                                             }
@@ -800,6 +833,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T6.Visible = true;
+                                                pboxAJ1T6.Visible = false;
                                                 pboxJ1T6.BackColor = Color.Red;
                                                 pboxJ1T6.Location = new Point(323, 410 - (28 * 6));
                                             }
@@ -815,6 +849,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T6.Visible = true;
+                                                pboxAJ1T6.Visible = false;
                                                 pboxJ1T6.BackColor = Color.Red;
                                                 pboxJ1T6.Location = new Point(323, 410 - (28 * 7));
                                             }
@@ -830,6 +865,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T6.Visible = true;
+                                                pboxAJ1T6.Visible = false;
                                                 pboxJ1T6.BackColor = Color.Red;
                                                 pboxJ1T6.Location = new Point(323, 410 - (28 * 8));
                                             }
@@ -845,6 +881,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T6.Visible = true;
+                                                pboxAJ1T6.Visible = false;
                                                 pboxJ1T6.BackColor = Color.Red;
                                                 pboxJ1T6.Location = new Point(323, 410 - (28 * 9));
                                             }
@@ -860,6 +897,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T6.Visible = true;
+                                                pboxAJ1T6.Visible = false;
                                                 pboxJ1T6.BackColor = Color.Red;
                                                 pboxJ1T6.Location = new Point(323, 410 - (28 * 10));
                                             }
@@ -882,6 +920,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T7.Visible = true;
+                                                pboxAJ1T7.Visible = false;
                                                 pboxJ1T7.BackColor = Color.Red;
                                             }
                                             else
@@ -897,6 +936,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T7.Visible = true;
+                                                pboxAJ1T7.Visible = false;
                                                 pboxJ1T7.BackColor = Color.Red;
                                                 pboxJ1T7.Location = new Point(376, 438 - 28);
                                             }
@@ -914,6 +954,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T7.Visible = true;
+                                                pboxAJ1T7.Visible = false;
                                                 pboxJ1T7.BackColor = Color.Red;
                                                 pboxJ1T7.Location = new Point(376, 438 - 28);
                                             }
@@ -929,6 +970,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T7.Visible = true;
+                                                pboxAJ1T7.Visible = false;
                                                 pboxJ1T7.BackColor = Color.Red;
                                                 pboxJ1T7.Location = new Point(376, 438 - (28 * 3));
                                             }
@@ -944,6 +986,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T7.Visible = true;
+                                                pboxAJ1T7.Visible = false;
                                                 pboxJ1T7.BackColor = Color.Red;
                                                 pboxJ1T7.Location = new Point(376, 438 - (28 * 4));
                                             }
@@ -959,6 +1002,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T7.Visible = true;
+                                                pboxAJ1T7.Visible = false;
                                                 pboxJ1T7.BackColor = Color.Red;
                                                 pboxJ1T7.Location = new Point(376, 438 - (28 * 5));
                                             }
@@ -974,6 +1018,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T7.Visible = true;
+                                                pboxAJ1T7.Visible = false;
                                                 pboxJ1T7.BackColor = Color.Red;
                                                 pboxJ1T7.Location = new Point(376, 438 - (28 * 6));
                                             }
@@ -989,6 +1034,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T7.Visible = true;
+                                                pboxAJ1T7.Visible = false;
                                                 pboxJ1T7.BackColor = Color.Red;
                                                 pboxJ1T7.Location = new Point(376, 438 - (28 * 7));
                                             }
@@ -1004,6 +1050,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T7.Visible = true;
+                                                pboxAJ1T7.Visible = false;
                                                 pboxJ1T7.BackColor = Color.Red;
                                                 pboxJ1T7.Location = new Point(376, 438 - (28 * 8));
                                             }
@@ -1019,6 +1066,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T7.Visible = true;
+                                                pboxAJ1T7.Visible = false;
                                                 pboxJ1T7.BackColor = Color.Red;
                                                 pboxJ1T7.Location = new Point(376, 438 - (28 * 9));
                                             }
@@ -1034,6 +1082,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T7.Visible = true;
+                                                pboxAJ1T7.Visible = false;
                                                 pboxJ1T7.BackColor = Color.Red;
                                                 pboxJ1T7.Location = new Point(376, 438 - (28 * 10));
                                             }
@@ -1049,6 +1098,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T7.Visible = true;
+                                                pboxAJ1T7.Visible = false;
                                                 pboxJ1T7.BackColor = Color.Red;
                                                 pboxJ1T7.Location = new Point(376, 438 - (28 * 11));
                                             }
@@ -1064,6 +1114,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T7.Visible = true;
+                                                pboxAJ1T7.Visible = false;
                                                 pboxJ1T7.BackColor = Color.Red;
                                                 pboxJ1T7.Location = new Point(376, 438 - (28 * 12));
                                             }
@@ -1086,6 +1137,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T8.Visible = true;
+                                                pboxAJ1T8.Visible = false;
                                                 pboxJ1T8.BackColor = Color.Red;
                                             }
                                             else
@@ -1100,6 +1152,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T8.Visible = true;
+                                                pboxAJ1T8.Visible = false;
                                                 pboxJ1T8.BackColor = Color.Red;
                                                 pboxJ1T8.Location = new Point(429, 410 - 28);
                                             }
@@ -1116,6 +1169,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T8.Visible = true;
+                                                pboxAJ1T8.Visible = false;
                                                 pboxJ1T8.BackColor = Color.Red;
                                                 pboxJ1T8.Location = new Point(429, (410 - 28) - 28);
                                             }
@@ -1132,6 +1186,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T8.Visible = true;
+                                                pboxAJ1T8.Visible = false;
                                                 pboxJ1T8.BackColor = Color.Red;
                                                 pboxJ1T8.Location = new Point(429, 410 - (28 * 3));
                                             }
@@ -1148,6 +1203,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T8.Visible = true;
+                                                pboxAJ1T8.Visible = false;
                                                 pboxJ1T8.BackColor = Color.Red;
                                                 pboxJ1T8.Location = new Point(429, 410 - (28 * 4));
                                             }
@@ -1164,6 +1220,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T8.Visible = true;
+                                                pboxAJ1T8.Visible = false;
                                                 pboxJ1T8.BackColor = Color.Red;
                                                 pboxJ1T8.Location = new Point(429, 410 - (28 * 5));
                                             }
@@ -1180,6 +1237,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T8.Visible = true;
+                                                pboxAJ1T8.Visible = false;
                                                 pboxJ1T8.BackColor = Color.Red;
                                                 pboxJ1T8.Location = new Point(429, 410 - (28 * 6));
                                             }
@@ -1196,6 +1254,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T8.Visible = true;
+                                                pboxAJ1T8.Visible = false;
                                                 pboxJ1T8.BackColor = Color.Red;
                                                 pboxJ1T8.Location = new Point(429, 410 - (28 * 7));
                                             }
@@ -1212,6 +1271,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T8.Visible = true;
+                                                pboxAJ1T8.Visible = false;
                                                 pboxJ1T8.BackColor = Color.Red;
                                                 pboxJ1T8.Location = new Point(429, 410 - (28 * 8));
                                             }
@@ -1228,6 +1288,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T8.Visible = true;
+                                                pboxAJ1T8.Visible = false;
                                                 pboxJ1T8.BackColor = Color.Red;
                                                 pboxJ1T8.Location = new Point(429, 410 - (28 * 8));
                                             }
@@ -1244,6 +1305,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T8.Visible = true;
+                                                pboxAJ1T8.Visible = false;
                                                 pboxJ1T8.BackColor = Color.Red;
                                                 pboxJ1T8.Location = new Point(429, 410 - (28 * 8));
                                             }
@@ -1266,6 +1328,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T9.Visible = true;
+                                                pboxAJ1T9.Visible = false;
                                                 pboxJ1T9.BackColor = Color.Red;
                                             }
                                             else
@@ -1280,6 +1343,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T9.Visible = true;
+                                                pboxAJ1T9.Visible = false;
                                                 pboxJ1T9.BackColor = Color.Red;
                                                 pboxJ1T9.Location = new Point(482, 381 - 28);
                                             }
@@ -1296,6 +1360,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T9.Visible = true;
+                                                pboxAJ1T9.Visible = false;
                                                 pboxJ1T9.BackColor = Color.Red;
                                                 pboxJ1T9.Location = new Point(482, (381 - 28) - 28);
                                             }
@@ -1312,6 +1377,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T9.Visible = true;
+                                                pboxAJ1T9.Visible = false;
                                                 pboxJ1T9.BackColor = Color.Red;
                                                 pboxJ1T9.Location = new Point(482, 381 - (28 * 3));
                                             }
@@ -1328,6 +1394,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T9.Visible = true;
+                                                pboxAJ1T9.Visible = false;
                                                 pboxJ1T9.BackColor = Color.Red;
                                                 pboxJ1T9.Location = new Point(482, 381 - (28 * 4));
                                             }
@@ -1344,6 +1411,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T9.Visible = true;
+                                                pboxAJ1T9.Visible = false;
                                                 pboxJ1T9.BackColor = Color.Red;
                                                 pboxJ1T9.Location = new Point(482, 381 - (28 * 5));
                                             }
@@ -1360,6 +1428,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T9.Visible = true;
+                                                pboxAJ1T9.Visible = false;
                                                 pboxJ1T9.BackColor = Color.Red;
                                                 pboxJ1T9.Location = new Point(482, 381 - (28 * 6));
                                             }
@@ -1376,6 +1445,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T9.Visible = true;
+                                                pboxAJ1T9.Visible = false;
                                                 pboxJ1T9.BackColor = Color.Red;
                                                 pboxJ1T9.Location = new Point(482, 381 - (28 * 7));
                                             }
@@ -1392,6 +1462,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T9.Visible = true;
+                                                pboxAJ1T9.Visible = false;
                                                 pboxJ1T9.BackColor = Color.Red;
                                                 pboxJ1T9.Location = new Point(482, 381 - (28 * 8));
                                             }
@@ -1416,6 +1487,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T10.Visible = true;
+                                                pboxAJ1T10.Visible = false;
                                                 pboxJ1T10.BackColor = Color.Red;
                                             }
                                             else
@@ -1432,14 +1504,15 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T10.Visible = true;
+                                                pboxAJ1T10.Visible = false;
                                                 pboxJ1T10.BackColor = Color.Red;
-                                                pboxJ1T10.Location = new Point(536, 325 - 28);
+                                                pboxJ1T10.Location = new Point(536, 354 - 28);
                                             }
                                             else
                                             {
                                                 pboxAJ1T10.Visible = true;
                                                 pboxAJ1T10.BackColor = Color.Black;
-                                                pboxAJ1T10.Location = new Point(536, 325 - 28);
+                                                pboxAJ1T10.Location = new Point(536, 354 - 28);
                                             }
 
 
@@ -1451,6 +1524,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T10.Visible = true;
+                                                pboxAJ1T10.Visible = false;
                                                 pboxJ1T10.BackColor = Color.Red;
                                                 pboxJ1T10.Location = new Point(536, (354 - 28) - 28);
                                             }
@@ -1467,6 +1541,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T10.Visible = true;
+                                                pboxAJ1T10.Visible = false;
                                                 pboxJ1T10.BackColor = Color.Red;
                                                 pboxJ1T10.Location = new Point(536, 354 - (28 * 3));
                                             }
@@ -1483,6 +1558,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T10.Visible = true;
+                                                pboxAJ1T10.Visible = false;
                                                 pboxJ1T10.BackColor = Color.Red;
                                                 pboxJ1T10.Location = new Point(536, 354 - (28 * 4));
                                             }
@@ -1499,6 +1575,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T10.Visible = true;
+                                                pboxAJ1T10.Visible = false;
                                                 pboxJ1T10.BackColor = Color.Red;
                                                 pboxJ1T10.Location = new Point(536, 354 - (28 * 5));
                                             }
@@ -1515,6 +1592,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T10.Visible = true;
+                                                pboxAJ1T10.Visible = false;
                                                 pboxJ1T10.BackColor = Color.Red;
                                                 pboxJ1T10.Location = new Point(536, 354 - (28 * 6));
                                             }
@@ -1540,6 +1618,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T11.Visible = true;
+                                                pboxAJ1T11.Visible = false;
                                                 pboxJ1T11.BackColor = Color.Red;
                                             }
                                             else
@@ -1556,6 +1635,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T11.Visible = true;
+                                                pboxAJ1T11.Visible = false;
                                                 pboxJ1T11.BackColor = Color.Red;
                                                 pboxJ1T11.Location = new Point(589, 325 - 28);
                                             }
@@ -1574,6 +1654,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T11.Visible = true;
+                                                pboxAJ1T11.Visible = false;
                                                 pboxJ1T11.BackColor = Color.Red;
                                                 pboxJ1T11.Location = new Point(589, (325 - 28) - 28);
                                             }
@@ -1590,6 +1671,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T11.Visible = true;
+                                                pboxAJ1T11.Visible = false;
                                                 pboxJ1T11.BackColor = Color.Red;
                                                 pboxJ1T11.Location = new Point(589, 325 - (28 * 3));
                                             }
@@ -1606,6 +1688,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T11.Visible = true;
+                                                pboxAJ1T11.Visible = false;
                                                 pboxJ1T11.BackColor = Color.Red;
                                                 pboxJ1T11.Location = new Point(589, 325 - (28 * 4));
                                             }
@@ -1630,6 +1713,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T12.Visible = true;
+                                                pboxAJ1T12.Visible = false;
                                                 pboxJ1T12.BackColor = Color.Red;
                                             }
                                             else
@@ -1645,6 +1729,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T12.Visible = true;
+                                                pboxAJ1T12.Visible = false;
                                                 pboxJ1T12.BackColor = Color.Red;
                                                 pboxJ1T12.Location = new Point(642, 296 - 28);
                                             }
@@ -1660,6 +1745,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ1T12.Visible = true;
+                                                pboxAJ1T12.Visible = false;
                                                 pboxJ1T12.BackColor = Color.Red;
                                                 pboxJ1T12.Location = new Point(642, (296 - 28) - 28);
                                             }
@@ -1695,6 +1781,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T2.Visible = true;
+                                                pboxAJ2T2.Visible = false;
                                                 pboxJ2T2.BackColor = Color.Blue;
                                             }
                                             else
@@ -1711,6 +1798,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T2.Visible = true;
+                                                pboxAJ2T2.Visible = false;
                                                 pboxJ2T2.BackColor = Color.Blue;
                                                 pboxJ2T2.Location = new Point(129, 296 - 28);
                                             }
@@ -1727,6 +1815,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T2.Visible = true;
+                                                pboxAJ2T2.Visible = false;
                                                 pboxJ2T2.BackColor = Color.Blue;
                                                 pboxJ2T2.Location = new Point(129, (296 - 28) - 28);
                                             }
@@ -1767,6 +1856,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T3.Visible = true;
+                                                pboxAJ2T3.Visible = false;
                                                 pboxJ2T3.BackColor = Color.Blue;
                                                 pboxJ1T3.Location = new Point(181, 325 - 28);
                                             }
@@ -1784,6 +1874,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T3.Visible = true;
+                                                pboxAJ2T3.Visible = false;
                                                 pboxJ2T3.BackColor = Color.Blue;
                                                 pboxJ2T3.Location = new Point(181, (325 - 28) - 28);
                                             }
@@ -1800,6 +1891,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T3.Visible = true;
+                                                pboxAJ2T3.Visible = false;
                                                 pboxJ2T3.BackColor = Color.Blue;
                                                 pboxJ2T3.Location = new Point(181, 325 - (28 * 3));
                                             }
@@ -1816,6 +1908,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T3.Visible = true;
+                                                pboxAJ2T3.Visible = false;
                                                 pboxJ2T3.BackColor = Color.Blue;
                                                 pboxJ2T3.Location = new Point(181, 325 - (28 * 4));
                                             }
@@ -1840,6 +1933,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T4.Visible = true;
+                                                pboxAJ2T4.Visible = false;
                                                 pboxJ2T4.BackColor = Color.Blue;
                                             }
                                             else
@@ -1856,6 +1950,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T4.Visible = true;
+                                                pboxAJ2T4.Visible = false;
                                                 pboxJ2T4.BackColor = Color.Blue;
                                                 pboxJ2T4.Location = new Point(235, 325 - 28);
                                             }
@@ -1872,6 +1967,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T4.Visible = true;
+                                                pboxAJ2T4.Visible = false;
                                                 pboxJ2T4.BackColor = Color.Blue;
                                                 pboxJ2T4.Location = new Point(235, (354 - 28) - 28);
                                             }
@@ -1888,6 +1984,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T4.Visible = true;
+                                                pboxAJ2T4.Visible = false;
                                                 pboxJ2T4.BackColor = Color.Blue;
                                                 pboxJ2T4.Location = new Point(235, 354 - (28 * 3));
                                             }
@@ -1904,6 +2001,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T4.Visible = true;
+                                                pboxAJ2T4.Visible = false;
                                                 pboxJ2T4.BackColor = Color.Blue;
                                                 pboxJ2T4.Location = new Point(235, 354 - (28 * 4));
                                             }
@@ -1920,6 +2018,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T4.Visible = true;
+                                                pboxAJ2T4.Visible = false;
                                                 pboxJ2T4.BackColor = Color.Blue;
                                                 pboxJ2T4.Location = new Point(235, 354 - (28 * 5));
                                             }
@@ -1936,6 +2035,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T4.Visible = true;
+                                                pboxAJ2T4.Visible = false;
                                                 pboxJ2T4.BackColor = Color.Blue;
                                                 pboxJ2T4.Location = new Point(235, 354 - (28 * 6));
                                             }
@@ -1960,6 +2060,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T5.Visible = true;
+                                                pboxAJ2T5.Visible = false;
                                                 pboxJ2T5.BackColor = Color.Blue;
                                             }
                                             else
@@ -1976,6 +2077,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T5.Visible = true;
+                                                pboxAJ2T5.Visible = false;
                                                 pboxJ2T5.BackColor = Color.Blue;
                                                 pboxJ2T5.Location = new Point(287, 381 - 28);
                                             }
@@ -1992,6 +2094,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T5.Visible = true;
+                                                pboxAJ2T5.Visible = false;
                                                 pboxJ2T5.BackColor = Color.Blue;
                                                 pboxJ2T5.Location = new Point(287, (381 - 28) - 28);
                                             }
@@ -2008,6 +2111,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T5.Visible = true;
+                                                pboxAJ2T5.Visible = false;
                                                 pboxJ2T5.BackColor = Color.Blue;
                                                 pboxJ2T5.Location = new Point(287, 381 - (28 * 3));
                                             }
@@ -2024,6 +2128,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T5.Visible = true;
+                                                pboxAJ2T5.Visible = false;
                                                 pboxJ2T5.BackColor = Color.Blue;
                                                 pboxJ2T5.Location = new Point(287, 381 - (28 * 4));
                                             }
@@ -2040,6 +2145,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T5.Visible = true;
+                                                pboxAJ2T5.Visible = false;
                                                 pboxJ2T5.BackColor = Color.Blue;
                                                 pboxJ2T5.Location = new Point(287, 381 - (28 * 5));
                                             }
@@ -2056,6 +2162,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T5.Visible = true;
+                                                pboxAJ2T5.Visible = false;
                                                 pboxJ2T5.BackColor = Color.Blue;
                                                 pboxJ2T5.Location = new Point(287, 381 - (28 * 6));
                                             }
@@ -2072,6 +2179,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T5.Visible = true;
+                                                pboxAJ2T5.Visible = false;
                                                 pboxJ2T5.BackColor = Color.Blue;
                                                 pboxJ2T5.Location = new Point(287, 381 - (28 * 7));
                                             }
@@ -2088,6 +2196,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T5.Visible = true;
+                                                pboxAJ2T5.Visible = false;
                                                 pboxJ2T5.BackColor = Color.Blue;
                                                 pboxJ2T5.Location = new Point(287, 381 - (28 * 8));
                                             }
@@ -2112,6 +2221,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T6.Visible = true;
+                                                pboxAJ2T6.Visible = false;
                                                 pboxJ2T6.BackColor = Color.Blue;
                                             }
                                             else
@@ -2128,6 +2238,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T6.Visible = true;
+                                                pboxAJ2T6.Visible = false;
                                                 pboxJ2T6.BackColor = Color.Blue;
                                                 pboxJ2T6.Location = new Point(341, 410 - 28);
                                             }
@@ -2144,6 +2255,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T6.Visible = true;
+                                                pboxAJ2T6.Visible = false;
                                                 pboxJ2T6.BackColor = Color.Blue;
                                                 pboxJ2T6.Location = new Point(341, (410 - 28) - 28);
                                             }
@@ -2163,6 +2275,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T6.Visible = true;
+                                                pboxAJ2T6.Visible = false;
                                                 pboxJ2T6.BackColor = Color.Blue;
                                                 pboxJ2T6.Location = new Point(341, 410 - (28 * 3));
                                             }
@@ -2179,6 +2292,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T6.Visible = true;
+                                                pboxAJ2T6.Visible = false;
                                                 pboxJ2T6.BackColor = Color.Blue;
                                                 pboxJ2T6.Location = new Point(341, 410 - (28 * 4));
                                             }
@@ -2195,6 +2309,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T6.Visible = true;
+                                                pboxAJ2T6.Visible = false;
                                                 pboxJ2T6.BackColor = Color.Blue;
                                                 pboxJ2T6.Location = new Point(341, 410 - (28 * 5));
                                             }
@@ -2213,6 +2328,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T6.Visible = true;
+                                                pboxAJ2T6.Visible = false;
                                                 pboxJ2T6.BackColor = Color.Blue;
                                                 pboxJ2T6.Location = new Point(341, 410 - (28 * 6));
                                             }
@@ -2229,6 +2345,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T6.Visible = true;
+                                                pboxAJ2T6.Visible = false;
                                                 pboxJ2T6.BackColor = Color.Blue;
                                                 pboxJ2T6.Location = new Point(341, 410 - (28 * 7));
                                             }
@@ -2245,6 +2362,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T6.Visible = true;
+                                                pboxAJ2T6.Visible = false;
                                                 pboxJ2T6.BackColor = Color.Blue;
                                                 pboxJ2T6.Location = new Point(341, 410 - (28 * 8));
                                             }
@@ -2261,6 +2379,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T6.Visible = true;
+                                                pboxAJ2T6.Visible = false;
                                                 pboxJ2T6.BackColor = Color.Blue;
                                                 pboxJ2T6.Location = new Point(341, 410 - (28 * 9));
                                             }
@@ -2277,6 +2396,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T6.Visible = true;
+                                                pboxAJ2T6.Visible = false;
                                                 pboxJ2T6.BackColor = Color.Blue;
                                                 pboxJ2T6.Location = new Point(341, 410 - (28 * 10));
                                             }
@@ -2300,6 +2420,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T7.Visible = true;
+                                                pboxAJ2T7.Visible = false;
                                                 pboxJ2T7.BackColor = Color.Blue;
                                             }
                                             else
@@ -2317,6 +2438,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T7.Visible = true;
+                                                pboxAJ2T7.Visible = false;
                                                 pboxJ2T7.BackColor = Color.Blue;
                                                 pboxJ2T7.Location = new Point(395, 438 - 28);
                                             }
@@ -2334,6 +2456,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T7.Visible = true;
+                                                pboxAJ2T7.Visible = false;
                                                 pboxJ2T7.BackColor = Color.Blue;
                                                 pboxJ2T7.Location = new Point(395, (438 - 28) - 28);
                                             }
@@ -2351,6 +2474,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T7.Visible = true;
+                                                pboxAJ2T7.Visible = false;
                                                 pboxJ2T7.BackColor = Color.Blue;
                                                 pboxJ2T7.Location = new Point(395, 438 - (28 * 3));
                                             }
@@ -2368,6 +2492,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T7.Visible = true;
+                                                pboxAJ2T7.Visible = false;
                                                 pboxJ2T7.BackColor = Color.Blue;
                                                 pboxJ2T7.Location = new Point(395, 438 - (28 * 4));
                                             }
@@ -2385,6 +2510,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T7.Visible = true;
+                                                pboxAJ2T7.Visible = false;
                                                 pboxJ2T7.BackColor = Color.Blue;
                                                 pboxJ2T7.Location = new Point(395, 438 - (28 * 5));
                                             }
@@ -2402,6 +2528,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T7.Visible = true;
+                                                pboxAJ2T7.Visible = false;
                                                 pboxJ2T7.BackColor = Color.Blue;
                                                 pboxJ2T7.Location = new Point(395, 438 - (28 * 6));
                                             }
@@ -2419,6 +2546,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T7.Visible = true;
+                                                pboxAJ2T7.Visible = false;
                                                 pboxJ2T7.BackColor = Color.Blue;
                                                 pboxJ2T7.Location = new Point(395, 438 - (28 * 7));
                                             }
@@ -2436,6 +2564,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T7.Visible = true;
+                                                pboxAJ2T7.Visible = false;
                                                 pboxJ2T7.BackColor = Color.Blue;
                                                 pboxJ2T7.Location = new Point(395, 438 - (28 * 8));
                                             }
@@ -2453,6 +2582,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T7.Visible = true;
+                                                pboxAJ2T7.Visible = false;
                                                 pboxJ2T7.BackColor = Color.Blue;
                                                 pboxJ2T7.Location = new Point(395, 438 - (28 * 9));
                                             }
@@ -2470,6 +2600,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T7.Visible = true;
+                                                pboxAJ2T7.Visible = false;
                                                 pboxJ2T7.BackColor = Color.Blue;
                                                 pboxJ2T7.Location = new Point(395, 438 - (28 * 10));
                                             }
@@ -2487,6 +2618,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T7.Visible = true;
+                                                pboxAJ2T7.Visible = false;
                                                 pboxJ2T7.BackColor = Color.Blue;
                                                 pboxJ2T7.Location = new Point(395, 438 - (28 * 11));
                                             }
@@ -2504,6 +2636,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T7.Visible = true;
+                                                pboxAJ2T7.Visible = false;
                                                 pboxJ2T7.BackColor = Color.Blue;
                                                 pboxJ2T7.Location = new Point(395, 438 - (28 * 12));
                                             }
@@ -2528,6 +2661,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T8.Visible = true;
+                                                pboxAJ2T8.Visible = false;
                                                 pboxJ2T8.BackColor = Color.Blue;
                                             }
                                             else
@@ -2543,6 +2677,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T8.Visible = true;
+                                                pboxAJ2T8.Visible = false;
                                                 pboxJ2T8.BackColor = Color.Blue;
                                                 pboxJ2T8.Location = new Point(447, 410 - 28);
                                             }
@@ -2559,6 +2694,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T8.Visible = true;
+                                                pboxAJ2T8.Visible = false;
                                                 pboxJ2T8.BackColor = Color.Blue;
                                                 pboxJ2T8.Location = new Point(447, (410 - 28) - 28);
                                             }
@@ -2575,6 +2711,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T8.Visible = true;
+                                                pboxAJ2T8.Visible = false;
                                                 pboxJ2T8.BackColor = Color.Blue;
                                                 pboxJ2T8.Location = new Point(447, 410 - (28 * 3));
                                             }
@@ -2591,6 +2728,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T8.Visible = true;
+                                                pboxAJ2T8.Visible = false;
                                                 pboxJ2T8.BackColor = Color.Blue;
                                                 pboxJ2T8.Location = new Point(447, 410 - (28 * 4));
                                             }
@@ -2607,6 +2745,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T8.Visible = true;
+                                                pboxAJ2T8.Visible = false;
                                                 pboxJ2T8.BackColor = Color.Blue;
                                                 pboxJ2T8.Location = new Point(447, 410 - (28 * 5));
                                             }
@@ -2623,6 +2762,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T8.Visible = true;
+                                                pboxAJ2T8.Visible = false;
                                                 pboxJ2T8.BackColor = Color.Blue;
                                                 pboxJ2T8.Location = new Point(447, 410 - (28 * 6));
                                             }
@@ -2639,6 +2779,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T8.Visible = true;
+                                                pboxAJ2T8.Visible = false;
                                                 pboxJ2T8.BackColor = Color.Blue;
                                                 pboxJ2T8.Location = new Point(447, 410 - (28 * 7));
                                             }
@@ -2655,6 +2796,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T8.Visible = true;
+                                                pboxAJ2T8.Visible = false;
                                                 pboxJ2T8.BackColor = Color.Blue;
                                                 pboxJ2T8.Location = new Point(447, 410 - (28 * 8));
                                             }
@@ -2671,6 +2813,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T8.Visible = true;
+                                                pboxAJ2T8.Visible = false;
                                                 pboxJ2T8.BackColor = Color.Blue;
                                                 pboxJ2T8.Location = new Point(447, 410 - (28 * 8));
                                             }
@@ -2687,6 +2830,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T8.Visible = true;
+                                                pboxAJ2T8.Visible = false;
                                                 pboxJ2T8.BackColor = Color.Blue;
                                                 pboxJ2T8.Location = new Point(447, 410 - (28 * 8));
                                             }
@@ -2710,6 +2854,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T9.Visible = true;
+                                                pboxAJ2T9.Visible = false;
                                                 pboxJ2T9.BackColor = Color.Blue;
                                             }
                                             else
@@ -2727,6 +2872,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T9.Visible = true;
+                                                pboxAJ2T9.Visible = false;
                                                 pboxJ2T9.BackColor = Color.Blue;
                                                 pboxJ2T9.Location = new Point(500, 381 - 28);
                                             }
@@ -2745,6 +2891,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T9.Visible = true;
+                                                pboxAJ2T9.Visible = false;
                                                 pboxJ2T9.BackColor = Color.Blue;
                                                 pboxJ2T9.Location = new Point(500, (381 - 28) - 28);
                                             }
@@ -2761,6 +2908,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T9.Visible = true;
+                                                pboxAJ2T9.Visible = false;
                                                 pboxJ2T9.BackColor = Color.Blue;
                                                 pboxJ2T9.Location = new Point(500, 381 - (28 * 3));
                                             }
@@ -2777,6 +2925,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T9.Visible = true;
+                                                pboxAJ2T9.Visible = false;
                                                 pboxJ2T9.BackColor = Color.Blue;
                                                 pboxJ2T9.Location = new Point(500, 381 - (28 * 4));
                                             }
@@ -2793,6 +2942,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T9.Visible = true;
+                                                pboxAJ2T9.Visible = false;
                                                 pboxJ2T9.BackColor = Color.Blue;
                                                 pboxJ2T9.Location = new Point(500, 381 - (28 * 5));
                                             }
@@ -2809,6 +2959,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T9.Visible = true;
+                                                pboxAJ2T9.Visible = false;
                                                 pboxJ2T9.BackColor = Color.Blue;
                                                 pboxJ2T9.Location = new Point(500, 381 - (28 * 6));
                                             }
@@ -2825,6 +2976,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T9.Visible = true;
+                                                pboxAJ2T9.Visible = false;
                                                 pboxJ2T9.BackColor = Color.Blue;
                                                 pboxJ2T9.Location = new Point(500, 381 - (28 * 7));
                                             }
@@ -2841,6 +2993,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T9.Visible = true;
+                                                pboxAJ2T9.Visible = false;
                                                 pboxJ2T9.BackColor = Color.Blue;
                                                 pboxJ2T9.Location = new Point(500, 381 - (28 * 8));
                                             }
@@ -2865,6 +3018,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T10.Visible = true;
+                                                pboxAJ2T10.Visible = false;
                                                 pboxJ2T10.BackColor = Color.Blue;
                                             }
                                             else
@@ -2879,6 +3033,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T10.Visible = true;
+                                                pboxAJ2T10.Visible = false;
                                                 pboxJ2T10.BackColor = Color.Blue;
                                                 pboxJ2T10.Location = new Point(553, 325 - 28);
                                             }
@@ -2895,6 +3050,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T10.Visible = true;
+                                                pboxAJ2T10.Visible = false;
                                                 pboxJ2T10.BackColor = Color.Blue;
                                                 pboxJ2T10.Location = new Point(553, (354 - 28) - 28);
                                             }
@@ -2911,6 +3067,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T10.Visible = true;
+                                                pboxAJ2T10.Visible = false;
                                                 pboxJ2T10.BackColor = Color.Blue;
                                                 pboxJ2T10.Location = new Point(553, 354 - (28 * 3));
                                             }
@@ -2927,6 +3084,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T10.Visible = true;
+                                                pboxAJ2T10.Visible = false;
                                                 pboxJ2T10.BackColor = Color.Blue;
                                                 pboxJ2T10.Location = new Point(553, 354 - (28 * 4));
                                             }
@@ -2943,6 +3101,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T10.Visible = true;
+                                                pboxAJ2T10.Visible = false;
                                                 pboxJ2T10.BackColor = Color.Blue;
                                                 pboxJ2T10.Location = new Point(553, 354 - (28 * 5));
                                             }
@@ -2959,6 +3118,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T10.Visible = true;
+                                                pboxAJ2T10.Visible = false;
                                                 pboxJ2T10.BackColor = Color.Blue;
                                                 pboxJ2T10.Location = new Point(553, 354 - (28 * 6));
                                             }
@@ -2984,6 +3144,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T11.Visible = true;
+                                                pboxAJ2T11.Visible = false;
                                                 pboxJ2T11.BackColor = Color.Blue;
                                             }
                                             else
@@ -2999,6 +3160,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T11.Visible = true;
+                                                pboxAJ2T11.Visible = false;
                                                 pboxJ2T11.BackColor = Color.Blue;
                                                 pboxJ2T11.Location = new Point(607, 325 - 28);
                                             }
@@ -3015,6 +3177,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T11.Visible = true;
+                                                pboxAJ2T11.Visible = false;
                                                 pboxJ2T11.BackColor = Color.Blue;
                                                 pboxJ2T11.Location = new Point(607, (325 - 28) - 28);
                                             }
@@ -3031,6 +3194,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T11.Visible = true;
+                                                pboxAJ2T11.Visible = false;
                                                 pboxJ2T11.BackColor = Color.Blue;
                                                 pboxJ2T11.Location = new Point(607, 325 - (28 * 3));
                                             }
@@ -3047,6 +3211,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T11.Visible = true;
+                                                pboxAJ2T11.Visible = false;
                                                 pboxJ2T11.BackColor = Color.Blue;
                                                 pboxJ2T11.Location = new Point(607, 325 - (28 * 4));
                                             }
@@ -3072,6 +3237,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T12.Visible = true;
+                                                pboxAJ2T12.Visible = false;
                                                 pboxJ2T12.BackColor = Color.Blue;
                                             }
                                             else
@@ -3087,6 +3253,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T12.Visible = true;
+                                                pboxAJ2T12.Visible = false;
                                                 pboxJ2T12.BackColor = Color.Blue;
                                                 pboxJ2T12.Location = new Point(660, 296 - 28);
                                             }
@@ -3103,6 +3270,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ2T12.Visible = true;
+                                                pboxAJ2T12.Visible = false;
                                                 pboxJ2T12.BackColor = Color.Blue;
                                                 pboxJ2T12.Location = new Point(660, (296 - 28) - 28);
                                             }
@@ -3139,6 +3307,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T2.Visible = true;
+                                                pboxAJ3T2.Visible = false;
                                                 pboxJ3T2.BackColor = Color.Green;
                                             }
                                             else
@@ -3153,6 +3322,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T2.Visible = true;
+                                                pboxAJ3T2.Visible = false;
                                                 pboxJ3T2.BackColor = Color.Green;
                                                 pboxJ3T2.Location = new Point(110, 306 - 28);
                                             }
@@ -3169,6 +3339,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T2.Visible = true;
+                                                pboxAJ3T2.Visible = false;
                                                 pboxJ3T2.BackColor = Color.Green;
                                                 pboxJ3T2.Location = new Point(112, (306 - 28) - 28);
                                             }
@@ -3194,6 +3365,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T3.Visible = true;
+                                                pboxAJ3T3.Visible = false;
                                                 pboxJ3T3.BackColor = Color.Green;
                                             }
                                             else
@@ -3210,6 +3382,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T3.Visible = true;
+                                                pboxAJ3T3.Visible = false;
                                                 pboxJ3T3.BackColor = Color.Green;
                                                 pboxJ3T3.Location = new Point(163, 334 - 28);
                                             }
@@ -3227,6 +3400,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T3.Visible = true;
+                                                pboxAJ3T3.Visible = false;
                                                 pboxJ3T3.BackColor = Color.Green;
                                                 pboxJ3T3.Location = new Point(163, (334 - 28) - 28);
                                             }
@@ -3246,6 +3420,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T3.Visible = true;
+                                                pboxAJ3T3.Visible = false;
                                                 pboxJ3T3.BackColor = Color.Green;
                                                 pboxJ3T3.Location = new Point(163, 334 - (28 * 3));
                                             }
@@ -3265,6 +3440,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T3.Visible = true;
+                                                pboxAJ3T3.Visible = false;
                                                 pboxJ3T3.BackColor = Color.Green;
                                                 pboxJ3T3.Location = new Point(163, 334 - (28 * 4));
                                             }
@@ -3292,6 +3468,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T4.Visible = true;
+                                                pboxAJ3T4.Visible = false;
                                                 pboxJ3T4.BackColor = Color.Green;
                                             }
                                             else
@@ -3308,6 +3485,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T4.Visible = true;
+                                                pboxAJ3T4.Visible = false;
                                                 pboxJ3T4.BackColor = Color.Green;
                                                 pboxJ3T4.Location = new Point(217, 363 - 28);
                                             }
@@ -3326,6 +3504,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T4.Visible = true;
+                                                pboxAJ3T4.Visible = false;
                                                 pboxJ3T4.BackColor = Color.Green;
                                                 pboxJ3T4.Location = new Point(217, (363 - 28) - 28);
                                             }
@@ -3342,6 +3521,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T4.Visible = true;
+                                                pboxAJ3T4.Visible = false;
                                                 pboxJ3T4.BackColor = Color.Green;
                                                 pboxJ3T4.Location = new Point(217, 363 - (28 * 3));
                                             }
@@ -3358,6 +3538,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T4.Visible = true;
+                                                pboxAJ3T4.Visible = false;
                                                 pboxJ3T4.BackColor = Color.Green;
                                                 pboxJ3T4.Location = new Point(217, 363 - (28 * 4));
                                             }
@@ -3374,6 +3555,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T4.Visible = true;
+                                                pboxAJ3T4.Visible = false;
                                                 pboxJ3T4.BackColor = Color.Green;
                                                 pboxJ3T4.Location = new Point(217, 363 - (28 * 5));
                                             }
@@ -3393,6 +3575,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T4.Visible = true;
+                                                pboxAJ3T4.Visible = false;
                                                 pboxJ3T4.BackColor = Color.Green;
                                                 pboxJ3T4.Location = new Point(217, 363 - (28 * 6));
                                             }
@@ -3416,6 +3599,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T5.Visible = true;
+                                                pboxAJ3T5.Visible = false;
                                                 pboxJ3T5.BackColor = Color.Green;
 
                                             }
@@ -3434,6 +3618,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T5.Visible = true;
+                                                pboxAJ3T5.Visible = false;
                                                 pboxJ3T5.BackColor = Color.Green;
                                                 pboxJ3T5.Location = new Point(270, 391 - 28);
                                             }
@@ -3450,6 +3635,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T5.Visible = true;
+                                                pboxAJ3T5.Visible = false;
                                                 pboxJ3T5.BackColor = Color.Green;
                                                 pboxJ3T5.Location = new Point(270, (391 - 28) - 28);
                                             }
@@ -3466,6 +3652,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T5.Visible = true;
+                                                pboxAJ3T5.Visible = false;
                                                 pboxJ3T5.BackColor = Color.Green;
                                                 pboxJ3T5.Location = new Point(270, 391 - (28 * 3));
                                             }
@@ -3483,6 +3670,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T5.Visible = true;
+                                                pboxAJ3T5.Visible = false;
                                                 pboxJ3T5.BackColor = Color.Green;
                                                 pboxJ3T5.Location = new Point(270, 391 - (28 * 4));
                                             }
@@ -3499,6 +3687,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T5.Visible = true;
+                                                pboxAJ3T5.Visible = false;
                                                 pboxJ3T5.BackColor = Color.Green;
                                                 pboxJ3T5.Location = new Point(270, 391 - (28 * 5));
                                             }
@@ -3515,6 +3704,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T5.Visible = true;
+                                                pboxAJ3T5.Visible = false;
                                                 pboxJ3T5.BackColor = Color.Green;
                                                 pboxJ3T5.Location = new Point(270, 391 - (28 * 6));
                                             }
@@ -3531,6 +3721,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T5.Visible = true;
+                                                pboxAJ3T5.Visible = false;
                                                 pboxJ3T5.BackColor = Color.Green;
                                                 pboxJ3T5.Location = new Point(270, 391 - (28 * 7));
                                             }
@@ -3547,6 +3738,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T5.Visible = true;
+                                                pboxAJ3T5.Visible = false;
                                                 pboxJ3T5.BackColor = Color.Green;
                                                 pboxJ3T5.Location = new Point(270, 391 - (28 * 8));
                                             }
@@ -3571,6 +3763,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T6.Visible = true;
+                                                pboxAJ3T6.Visible = false;
                                                 pboxJ3T6.BackColor = Color.Green;
                                             }
                                             else
@@ -3586,6 +3779,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T6.Visible = true;
+                                                pboxAJ3T6.Visible = false;
                                                 pboxJ3T6.BackColor = Color.Green;
                                                 pboxJ3T6.Location = new Point(323, 420 - 28);
                                             }
@@ -3601,6 +3795,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T6.Visible = true;
+                                                pboxAJ3T6.Visible = false;
                                                 pboxJ3T6.BackColor = Color.Green;
                                                 pboxJ3T6.Location = new Point(323, (420 - 28) - 28);
                                             }
@@ -3616,6 +3811,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T6.Visible = true;
+                                                pboxAJ3T6.Visible = false;
                                                 pboxJ3T6.BackColor = Color.Green;
                                                 pboxJ3T6.Location = new Point(323, 420 - (28 * 3));
                                             }
@@ -3631,6 +3827,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T6.Visible = true;
+                                                pboxAJ3T6.Visible = false;
                                                 pboxJ3T6.BackColor = Color.Green;
                                                 pboxJ3T6.Location = new Point(323, 420 - (28 * 4));
                                             }
@@ -3646,6 +3843,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T6.Visible = true;
+                                                pboxAJ3T6.Visible = false;
                                                 pboxJ3T6.BackColor = Color.Green;
                                                 pboxJ3T6.Location = new Point(323, 420 - (28 * 5));
                                             }
@@ -3661,6 +3859,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T6.Visible = true;
+                                                pboxAJ3T6.Visible = false;
                                                 pboxJ3T6.BackColor = Color.Green;
                                                 pboxJ3T6.Location = new Point(323, 420 - (28 * 6));
                                             }
@@ -3676,6 +3875,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T6.Visible = true;
+                                                pboxAJ3T6.Visible = false;
                                                 pboxJ3T6.BackColor = Color.Green;
                                                 pboxJ3T6.Location = new Point(323, 420 - (28 * 7));
                                             }
@@ -3691,6 +3891,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T6.Visible = true;
+                                                pboxAJ3T6.Visible = false;
                                                 pboxJ3T6.BackColor = Color.Green;
                                                 pboxJ3T6.Location = new Point(323, 420 - (28 * 8));
                                             }
@@ -3706,6 +3907,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T6.Visible = true;
+                                                pboxAJ3T6.Visible = false;
                                                 pboxJ3T6.BackColor = Color.Green;
                                                 pboxJ3T6.Location = new Point(323, 420 - (28 * 9));
                                             }
@@ -3721,6 +3923,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T6.Visible = true;
+                                                pboxAJ3T6.Visible = false;
                                                 pboxJ3T6.BackColor = Color.Green;
                                                 pboxJ3T6.Location = new Point(323, 420 - (28 * 10));
                                             }
@@ -3743,6 +3946,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T7.Visible = true;
+                                                pboxAJ3T7.Visible = false;
                                                 pboxJ3T7.BackColor = Color.Green;
                                             }
                                             else
@@ -3758,6 +3962,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T7.Visible = true;
+                                                pboxAJ3T7.Visible = false;
                                                 pboxJ3T7.BackColor = Color.Green;
                                                 pboxJ3T7.Location = new Point(376, 447 - 28);
                                             }
@@ -3775,6 +3980,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T7.Visible = true;
+                                                pboxAJ3T7.Visible = false;
                                                 pboxJ3T7.BackColor = Color.Green;
                                                 pboxJ3T7.Location = new Point(376, 447 - 28);
                                             }
@@ -3790,6 +3996,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T7.Visible = true;
+                                                pboxAJ3T7.Visible = false;
                                                 pboxJ3T7.BackColor = Color.Green;
                                                 pboxJ3T7.Location = new Point(376, 447 - (28 * 3));
                                             }
@@ -3805,6 +4012,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T7.Visible = true;
+                                                pboxAJ3T7.Visible = false;
                                                 pboxJ3T7.BackColor = Color.Green;
                                                 pboxJ3T7.Location = new Point(376, 447 - (28 * 4));
                                             }
@@ -3820,6 +4028,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T7.Visible = true;
+                                                pboxAJ3T7.Visible = false;
                                                 pboxJ3T7.BackColor = Color.Green;
                                                 pboxJ3T7.Location = new Point(376, 447 - (28 * 5));
                                             }
@@ -3835,6 +4044,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T7.Visible = true;
+                                                pboxAJ3T7.Visible = false;
                                                 pboxJ3T7.BackColor = Color.Green;
                                                 pboxJ3T7.Location = new Point(376, 447 - (28 * 6));
                                             }
@@ -3850,6 +4060,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T7.Visible = true;
+                                                pboxAJ3T7.Visible = false;
                                                 pboxJ3T7.BackColor = Color.Green;
                                                 pboxJ3T7.Location = new Point(376, 447 - (28 * 7));
                                             }
@@ -3865,6 +4076,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T7.Visible = true;
+                                                pboxAJ3T7.Visible = false;
                                                 pboxJ3T7.BackColor = Color.Green;
                                                 pboxJ3T7.Location = new Point(376, 447 - (28 * 8));
                                             }
@@ -3880,6 +4092,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T7.Visible = true;
+                                                pboxAJ3T7.Visible = false;
                                                 pboxJ3T7.BackColor = Color.Green;
                                                 pboxJ3T7.Location = new Point(376, 447 - (28 * 9));
                                             }
@@ -3895,6 +4108,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T7.Visible = true;
+                                                pboxAJ3T7.Visible = false;
                                                 pboxJ3T7.BackColor = Color.Green;
                                                 pboxJ3T7.Location = new Point(376, 447 - (28 * 10));
                                             }
@@ -3910,6 +4124,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T7.Visible = true;
+                                                pboxAJ3T7.Visible = false;
                                                 pboxJ3T7.BackColor = Color.Green;
                                                 pboxJ3T7.Location = new Point(376, 447 - (28 * 11));
                                             }
@@ -3925,6 +4140,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T7.Visible = true;
+                                                pboxAJ3T7.Visible = false;
                                                 pboxJ3T7.BackColor = Color.Green;
                                                 pboxJ3T7.Location = new Point(376, 447 - (28 * 12));
                                             }
@@ -3947,6 +4163,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T8.Visible = true;
+                                                pboxAJ3T8.Visible = false;
                                                 pboxJ3T8.BackColor = Color.Green;
                                             }
                                             else
@@ -3961,6 +4178,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T8.Visible = true;
+                                                pboxAJ3T8.Visible = false;
                                                 pboxJ3T8.BackColor = Color.Green;
                                                 pboxJ3T8.Location = new Point(429, 420 - 28);
                                             }
@@ -3977,6 +4195,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T8.Visible = true;
+                                                pboxAJ3T8.Visible = false;
                                                 pboxJ3T8.BackColor = Color.Green;
                                                 pboxJ3T8.Location = new Point(429, (420 - 28) - 28);
                                             }
@@ -3993,6 +4212,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T8.Visible = true;
+                                                pboxAJ3T8.Visible = false;
                                                 pboxJ3T8.BackColor = Color.Green;
                                                 pboxJ3T8.Location = new Point(429, 420 - (28 * 3));
                                             }
@@ -4009,6 +4229,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T8.Visible = true;
+                                                pboxAJ3T8.Visible = false;
                                                 pboxJ3T8.BackColor = Color.Green;
                                                 pboxJ3T8.Location = new Point(429, 420 - (28 * 4));
                                             }
@@ -4025,6 +4246,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T8.Visible = true;
+                                                pboxAJ3T8.Visible = false;
                                                 pboxJ3T8.BackColor = Color.Green;
                                                 pboxJ3T8.Location = new Point(429, 420 - (28 * 5));
                                             }
@@ -4041,6 +4263,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T8.Visible = true;
+                                                pboxAJ3T8.Visible = false;
                                                 pboxJ3T8.BackColor = Color.Green;
                                                 pboxJ3T8.Location = new Point(429, 420 - (28 * 6));
                                             }
@@ -4057,6 +4280,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T8.Visible = true;
+                                                pboxAJ3T8.Visible = false;
                                                 pboxJ3T8.BackColor = Color.Green;
                                                 pboxJ3T8.Location = new Point(429, 420 - (28 * 7));
                                             }
@@ -4073,6 +4297,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T8.Visible = true;
+                                                pboxAJ3T8.Visible = false;
                                                 pboxJ3T8.BackColor = Color.Green;
                                                 pboxJ3T8.Location = new Point(429, 420 - (28 * 8));
                                             }
@@ -4089,6 +4314,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T8.Visible = true;
+                                                pboxAJ3T8.Visible = false;
                                                 pboxJ3T8.BackColor = Color.Green;
                                                 pboxJ3T8.Location = new Point(429, 420 - (28 * 8));
                                             }
@@ -4105,6 +4331,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T8.Visible = true;
+                                                pboxAJ3T8.Visible = false;
                                                 pboxJ3T8.BackColor = Color.Green;
                                                 pboxJ3T8.Location = new Point(429, 420 - (28 * 8));
                                             }
@@ -4127,6 +4354,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T9.Visible = true;
+                                                pboxAJ3T9.Visible = false;
                                                 pboxJ3T9.BackColor = Color.Green;
                                             }
                                             else
@@ -4141,6 +4369,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T9.Visible = true;
+                                                pboxAJ3T9.Visible = false;
                                                 pboxJ3T9.BackColor = Color.Green;
                                                 pboxJ3T9.Location = new Point(482, 391 - 28);
                                             }
@@ -4157,6 +4386,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T9.Visible = true;
+                                                pboxAJ3T9.Visible = false;
                                                 pboxJ3T9.BackColor = Color.Green;
                                                 pboxJ3T9.Location = new Point(482, (391 - 28) - 28);
                                             }
@@ -4173,6 +4403,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T9.Visible = true;
+                                                pboxAJ3T9.Visible = false;
                                                 pboxJ3T9.BackColor = Color.Green;
                                                 pboxJ3T9.Location = new Point(482, 391 - (28 * 3));
                                             }
@@ -4189,6 +4420,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T9.Visible = true;
+                                                pboxAJ3T9.Visible = false;
                                                 pboxJ3T9.BackColor = Color.Green;
                                                 pboxJ3T9.Location = new Point(482, 391 - (28 * 4));
                                             }
@@ -4205,6 +4437,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T9.Visible = true;
+                                                pboxAJ3T9.Visible = false;
                                                 pboxJ3T9.BackColor = Color.Green;
                                                 pboxJ3T9.Location = new Point(482, 391 - (28 * 5));
                                             }
@@ -4221,6 +4454,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T9.Visible = true;
+                                                pboxAJ3T9.Visible = false;
                                                 pboxJ3T9.BackColor = Color.Green;
                                                 pboxJ3T9.Location = new Point(482, 391 - (28 * 6));
                                             }
@@ -4237,6 +4471,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T9.Visible = true;
+                                                pboxAJ3T9.Visible = false;
                                                 pboxJ3T9.BackColor = Color.Green;
                                                 pboxJ3T9.Location = new Point(482, 391 - (28 * 7));
                                             }
@@ -4253,6 +4488,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T9.Visible = true;
+                                                pboxAJ3T9.Visible = false;
                                                 pboxJ3T9.BackColor = Color.Green;
                                                 pboxJ3T9.Location = new Point(482, 391 - (28 * 8));
                                             }
@@ -4277,6 +4513,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T10.Visible = true;
+                                                pboxAJ3T10.Visible = false;
                                                 pboxJ3T10.BackColor = Color.Green;
                                             }
                                             else
@@ -4293,6 +4530,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T10.Visible = true;
+                                                pboxAJ3T10.Visible = false;
                                                 pboxJ3T10.BackColor = Color.Green;
                                                 pboxJ3T10.Location = new Point(536, 363 - 28);
                                             }
@@ -4312,6 +4550,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T10.Visible = true;
+                                                pboxAJ3T10.Visible = false;
                                                 pboxJ3T10.BackColor = Color.Green;
                                                 pboxJ3T10.Location = new Point(536, (363 - 28) - 28);
                                             }
@@ -4328,6 +4567,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T10.Visible = true;
+                                                pboxAJ3T10.Visible = false;
                                                 pboxJ3T10.BackColor = Color.Green;
                                                 pboxJ3T10.Location = new Point(536, 363 - (28 * 3));
                                             }
@@ -4344,6 +4584,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T10.Visible = true;
+                                                pboxAJ3T10.Visible = false;
                                                 pboxJ3T10.BackColor = Color.Green;
                                                 pboxJ3T10.Location = new Point(536, 363 - (28 * 4));
                                             }
@@ -4360,6 +4601,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T10.Visible = true;
+                                                pboxAJ3T10.Visible = false;
                                                 pboxJ3T10.BackColor = Color.Green;
                                                 pboxJ3T10.Location = new Point(536, 363 - (28 * 5));
                                             }
@@ -4376,6 +4618,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T10.Visible = true;
+                                                pboxAJ3T10.Visible = false;
                                                 pboxJ3T10.BackColor = Color.Green;
                                                 pboxJ3T10.Location = new Point(536, 363 - (28 * 6));
                                             }
@@ -4401,6 +4644,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T11.Visible = true;
+                                                pboxAJ3T11.Visible = false;
                                                 pboxJ3T11.BackColor = Color.Green;
                                             }
                                             else
@@ -4417,6 +4661,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T11.Visible = true;
+                                                pboxAJ3T11.Visible = false;
                                                 pboxJ3T11.BackColor = Color.Green;
                                                 pboxJ3T11.Location = new Point(589, 334 - 28);
                                             }
@@ -4435,6 +4680,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T11.Visible = true;
+                                                pboxAJ3T11.Visible = false;
                                                 pboxJ3T11.BackColor = Color.Green;
                                                 pboxJ3T11.Location = new Point(589, (334 - 28) - 28);
                                             }
@@ -4451,6 +4697,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T11.Visible = true;
+                                                pboxAJ3T11.Visible = false;
                                                 pboxJ3T11.BackColor = Color.Green;
                                                 pboxJ3T11.Location = new Point(589, 334 - (28 * 3));
                                             }
@@ -4467,6 +4714,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T11.Visible = true;
+                                                pboxAJ3T11.Visible = false;
                                                 pboxJ3T11.BackColor = Color.Green;
                                                 pboxJ3T11.Location = new Point(589, 334 - (28 * 4));
                                             }
@@ -4491,6 +4739,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T12.Visible = true;
+                                                pboxAJ3T12.Visible = false;
                                                 pboxJ3T12.BackColor = Color.Green;
                                             }
                                             else
@@ -4506,6 +4755,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T12.Visible = true;
+                                                pboxAJ3T12.Visible = false;
                                                 pboxJ3T12.BackColor = Color.Green;
                                                 pboxJ3T12.Location = new Point(642, 306 - 28);
                                             }
@@ -4521,6 +4771,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ3T12.Visible = true;
+                                                pboxAJ3T12.Visible = false;
                                                 pboxJ3T12.BackColor = Color.Green;
                                                 pboxJ3T12.Location = new Point(642, (306 - 28) - 28);
                                             }
@@ -4556,6 +4807,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T2.Visible = true;
+                                                pboxAJ4T2.Visible = false;
                                                 pboxJ4T2.BackColor = Color.Yellow;
                                             }
                                             else
@@ -4570,6 +4822,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T2.Visible = true;
+                                                pboxAJ4T2.Visible = false;
                                                 pboxJ4T2.BackColor = Color.Yellow;
                                                 pboxJ4T2.Location = new Point(129, 306 - 28);
                                             }
@@ -4586,6 +4839,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T2.Visible = true;
+                                                pboxAJ4T2.Visible = false;
                                                 pboxJ4T2.BackColor = Color.Yellow;
                                                 pboxJ4T2.Location = new Point(129, (306 - 28) - 28);
                                             }
@@ -4611,6 +4865,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T3.Visible = true;
+                                                pboxAJ4T3.Visible = false;
                                                 pboxJ4T3.BackColor = Color.Yellow;
                                             }
                                             else
@@ -4627,6 +4882,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T3.Visible = true;
+                                                pboxAJ4T3.Visible = false;
                                                 pboxJ4T3.BackColor = Color.Yellow;
                                                 pboxJ4T3.Location = new Point(181, 334 - 28);
                                             }
@@ -4644,6 +4900,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T3.Visible = true;
+                                                pboxAJ4T3.Visible = false;
                                                 pboxJ4T3.BackColor = Color.Yellow;
                                                 pboxJ4T3.Location = new Point(181, (334 - 28) - 28);
                                             }
@@ -4663,6 +4920,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T3.Visible = true;
+                                                pboxAJ4T3.Visible = false;
                                                 pboxJ4T3.BackColor = Color.Yellow;
                                                 pboxJ4T3.Location = new Point(181, 334 - (28 * 3));
                                             }
@@ -4682,6 +4940,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T3.Visible = true;
+                                                pboxAJ4T3.Visible = false;
                                                 pboxJ4T3.BackColor = Color.Yellow;
                                                 pboxJ4T3.Location = new Point(181, 334 - (28 * 4));
                                             }
@@ -4709,6 +4968,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T4.Visible = true;
+                                                pboxAJ4T4.Visible = false;
                                                 pboxJ4T4.BackColor = Color.Yellow;
                                             }
                                             else
@@ -4725,6 +4985,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T4.Visible = true;
+                                                pboxAJ4T4.Visible = false;
                                                 pboxJ4T4.BackColor = Color.Yellow;
                                                 pboxJ4T4.Location = new Point(235, 363 - 28);
                                             }
@@ -4743,6 +5004,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T4.Visible = true;
+                                                pboxAJ4T4.Visible = false;
                                                 pboxJ4T4.BackColor = Color.Yellow;
                                                 pboxJ4T4.Location = new Point(235, (363 - 28) - 28);
                                             }
@@ -4759,6 +5021,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T4.Visible = true;
+                                                pboxAJ4T4.Visible = false;
                                                 pboxJ4T4.BackColor = Color.Yellow;
                                                 pboxJ4T4.Location = new Point(235, 363 - (28 * 3));
                                             }
@@ -4775,6 +5038,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T4.Visible = true;
+                                                pboxAJ4T4.Visible = false;
                                                 pboxJ4T4.BackColor = Color.Yellow;
                                                 pboxJ4T4.Location = new Point(235, 363 - (28 * 4));
                                             }
@@ -4791,6 +5055,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T4.Visible = true;
+                                                pboxAJ4T4.Visible = false;
                                                 pboxJ4T4.BackColor = Color.Yellow;
                                                 pboxJ4T4.Location = new Point(235, 363 - (28 * 5));
                                             }
@@ -4810,6 +5075,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T4.Visible = true;
+                                                pboxAJ4T4.Visible = false;
                                                 pboxJ4T4.BackColor = Color.Yellow;
                                                 pboxJ4T4.Location = new Point(235, 363 - (28 * 6));
                                             }
@@ -4833,6 +5099,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T5.Visible = true;
+                                                pboxAJ4T5.Visible = false;
                                                 pboxJ4T5.BackColor = Color.Yellow;
 
                                             }
@@ -4851,6 +5118,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T5.Visible = true;
+                                                pboxAJ4T5.Visible = false;
                                                 pboxJ4T5.BackColor = Color.Yellow;
                                                 pboxJ4T5.Location = new Point(287, 391 - 28);
                                             }
@@ -4867,6 +5135,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T5.Visible = true;
+                                                pboxAJ4T5.Visible = false;
                                                 pboxJ4T5.BackColor = Color.Yellow;
                                                 pboxJ4T5.Location = new Point(287, (391 - 28) - 28);
                                             }
@@ -4883,6 +5152,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T5.Visible = true;
+                                                pboxAJ4T5.Visible = false;
                                                 pboxJ4T5.BackColor = Color.Yellow;
                                                 pboxJ4T5.Location = new Point(287, 391 - (28 * 3));
                                             }
@@ -4900,6 +5170,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T5.Visible = true;
+                                                pboxAJ4T5.Visible = false;
                                                 pboxJ4T5.BackColor = Color.Yellow;
                                                 pboxJ4T5.Location = new Point(287, 391 - (28 * 4));
                                             }
@@ -4916,6 +5187,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T5.Visible = true;
+                                                pboxAJ4T5.Visible = false;
                                                 pboxJ4T5.BackColor = Color.Yellow;
                                                 pboxJ4T5.Location = new Point(287, 391 - (28 * 5));
                                             }
@@ -4932,6 +5204,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T5.Visible = true;
+                                                pboxAJ4T5.Visible = false;
                                                 pboxJ4T5.BackColor = Color.Yellow;
                                                 pboxJ4T5.Location = new Point(287, 391 - (28 * 6));
                                             }
@@ -4948,6 +5221,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T5.Visible = true;
+                                                pboxAJ4T5.Visible = false;
                                                 pboxJ4T5.BackColor = Color.Yellow;
                                                 pboxJ4T5.Location = new Point(287, 391 - (28 * 7));
                                             }
@@ -4964,6 +5238,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T5.Visible = true;
+                                                pboxAJ4T5.Visible = false;
                                                 pboxJ4T5.BackColor = Color.Yellow;
                                                 pboxJ4T5.Location = new Point(287, 391 - (28 * 8));
                                             }
@@ -4988,6 +5263,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T6.Visible = true;
+                                                pboxAJ4T6.Visible = false;
                                                 pboxJ4T6.BackColor = Color.Yellow;
                                             }
                                             else
@@ -5003,6 +5279,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T6.Visible = true;
+                                                pboxAJ4T6.Visible = false;
                                                 pboxJ4T6.BackColor = Color.Yellow;
                                                 pboxJ4T6.Location = new Point(341, 420 - 28);
                                             }
@@ -5018,6 +5295,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T6.Visible = true;
+                                                pboxAJ4T6.Visible = false;
                                                 pboxJ4T6.BackColor = Color.Yellow;
                                                 pboxJ4T6.Location = new Point(341, (420 - 28) - 28);
                                             }
@@ -5033,6 +5311,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T6.Visible = true;
+                                                pboxAJ4T6.Visible = false;
                                                 pboxJ4T6.BackColor = Color.Yellow;
                                                 pboxJ4T6.Location = new Point(341, 420 - (28 * 3));
                                             }
@@ -5048,6 +5327,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T6.Visible = true;
+                                                pboxAJ4T6.Visible = false;
                                                 pboxJ4T6.BackColor = Color.Yellow;
                                                 pboxJ4T6.Location = new Point(341, 420 - (28 * 4));
                                             }
@@ -5063,6 +5343,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T6.Visible = true;
+                                                pboxAJ4T6.Visible = false;
                                                 pboxJ4T6.BackColor = Color.Yellow;
                                                 pboxJ4T6.Location = new Point(341, 420 - (28 * 5));
                                             }
@@ -5078,6 +5359,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T6.Visible = true;
+                                                pboxAJ4T6.Visible = false;
                                                 pboxJ4T6.BackColor = Color.Yellow;
                                                 pboxJ4T6.Location = new Point(341, 420 - (28 * 6));
                                             }
@@ -5093,6 +5375,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T6.Visible = true;
+                                                pboxAJ4T6.Visible = false;
                                                 pboxJ4T6.BackColor = Color.Yellow;
                                                 pboxJ4T6.Location = new Point(341, 420 - (28 * 7));
                                             }
@@ -5108,6 +5391,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T6.Visible = true;
+                                                pboxAJ4T6.Visible = false;
                                                 pboxJ4T6.BackColor = Color.Yellow;
                                                 pboxJ4T6.Location = new Point(341, 420 - (28 * 8));
                                             }
@@ -5123,6 +5407,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T6.Visible = true;
+                                                pboxAJ4T6.Visible = false;
                                                 pboxJ4T6.BackColor = Color.Yellow;
                                                 pboxJ4T6.Location = new Point(341, 420 - (28 * 9));
                                             }
@@ -5138,6 +5423,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T6.Visible = true;
+                                                pboxAJ4T6.Visible = false;
                                                 pboxJ4T6.BackColor = Color.Yellow;
                                                 pboxJ4T6.Location = new Point(341, 420 - (28 * 10));
                                             }
@@ -5160,6 +5446,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T7.Visible = true;
+                                                pboxAJ4T7.Visible = false;
                                                 pboxJ4T7.BackColor = Color.Yellow;
                                             }
                                             else
@@ -5175,6 +5462,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T7.Visible = true;
+                                                pboxAJ4T7.Visible = false;
                                                 pboxJ4T7.BackColor = Color.Yellow;
                                                 pboxJ4T7.Location = new Point(395, 447 - 28);
                                             }
@@ -5192,6 +5480,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T7.Visible = true;
+                                                pboxAJ4T7.Visible = false;
                                                 pboxJ4T7.BackColor = Color.Yellow;
                                                 pboxJ4T7.Location = new Point(395, 447 - 28);
                                             }
@@ -5207,6 +5496,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T7.Visible = true;
+                                                pboxAJ4T7.Visible = false;
                                                 pboxJ4T7.BackColor = Color.Yellow;
                                                 pboxJ4T7.Location = new Point(395, 447 - (28 * 3));
                                             }
@@ -5222,6 +5512,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T7.Visible = true;
+                                                pboxAJ4T7.Visible = false;
                                                 pboxJ4T7.BackColor = Color.Yellow;
                                                 pboxJ4T7.Location = new Point(395, 447 - (28 * 4));
                                             }
@@ -5237,6 +5528,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T7.Visible = true;
+                                                pboxAJ4T7.Visible = false;
                                                 pboxJ4T7.BackColor = Color.Yellow;
                                                 pboxJ4T7.Location = new Point(395, 447 - (28 * 5));
                                             }
@@ -5252,6 +5544,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T7.Visible = true;
+                                                pboxAJ4T7.Visible = false;
                                                 pboxJ4T7.BackColor = Color.Yellow;
                                                 pboxJ4T7.Location = new Point(395, 447 - (28 * 6));
                                             }
@@ -5267,6 +5560,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T7.Visible = true;
+                                                pboxAJ4T7.Visible = false;
                                                 pboxJ4T7.BackColor = Color.Yellow;
                                                 pboxJ4T7.Location = new Point(395, 447 - (28 * 7));
                                             }
@@ -5282,6 +5576,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T7.Visible = true;
+                                                pboxAJ4T7.Visible = false;
                                                 pboxJ4T7.BackColor = Color.Yellow;
                                                 pboxJ4T7.Location = new Point(395, 447 - (28 * 8));
                                             }
@@ -5297,6 +5592,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T7.Visible = true;
+                                                pboxAJ4T7.Visible = false;
                                                 pboxJ4T7.BackColor = Color.Yellow;
                                                 pboxJ4T7.Location = new Point(395, 447 - (28 * 9));
                                             }
@@ -5312,6 +5608,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T7.Visible = true;
+                                                pboxAJ4T7.Visible = false;
                                                 pboxJ4T7.BackColor = Color.Yellow;
                                                 pboxJ4T7.Location = new Point(395, 447 - (28 * 10));
                                             }
@@ -5327,6 +5624,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T7.Visible = true;
+                                                pboxAJ4T7.Visible = false;
                                                 pboxJ4T7.BackColor = Color.Yellow;
                                                 pboxJ4T7.Location = new Point(395, 447 - (28 * 11));
                                             }
@@ -5342,6 +5640,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T7.Visible = true;
+                                                pboxAJ4T7.Visible = false;
                                                 pboxJ4T7.BackColor = Color.Yellow;
                                                 pboxJ4T7.Location = new Point(395, 447 - (28 * 12));
                                             }
@@ -5364,6 +5663,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T8.Visible = true;
+                                                pboxAJ4T8.Visible = false;
                                                 pboxJ4T8.BackColor = Color.Yellow;
                                             }
                                             else
@@ -5378,6 +5678,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T8.Visible = true;
+                                                pboxAJ4T8.Visible = false;
                                                 pboxJ4T8.BackColor = Color.Yellow;
                                                 pboxJ4T8.Location = new Point(447, 420 - 28);
                                             }
@@ -5394,6 +5695,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T8.Visible = true;
+                                                pboxAJ4T8.Visible = false;
                                                 pboxJ4T8.BackColor = Color.Yellow;
                                                 pboxJ4T8.Location = new Point(447, (420 - 28) - 28);
                                             }
@@ -5410,6 +5712,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T8.Visible = true;
+                                                pboxAJ4T8.Visible = false;
                                                 pboxJ4T8.BackColor = Color.Yellow;
                                                 pboxJ4T8.Location = new Point(447, 420 - (28 * 3));
                                             }
@@ -5426,6 +5729,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T8.Visible = true;
+                                                pboxAJ4T8.Visible = false;
                                                 pboxJ4T8.BackColor = Color.Yellow;
                                                 pboxJ4T8.Location = new Point(447, 420 - (28 * 4));
                                             }
@@ -5442,6 +5746,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T8.Visible = true;
+                                                pboxAJ4T8.Visible = false;
                                                 pboxJ4T8.BackColor = Color.Yellow;
                                                 pboxJ4T8.Location = new Point(447, 420 - (28 * 5));
                                             }
@@ -5458,6 +5763,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T8.Visible = true;
+                                                pboxAJ4T8.Visible = false;
                                                 pboxJ4T8.BackColor = Color.Yellow;
                                                 pboxJ4T8.Location = new Point(447, 420 - (28 * 6));
                                             }
@@ -5474,6 +5780,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T8.Visible = true;
+                                                pboxAJ4T8.Visible = false;
                                                 pboxJ4T8.BackColor = Color.Yellow;
                                                 pboxJ4T8.Location = new Point(447, 420 - (28 * 7));
                                             }
@@ -5490,6 +5797,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T8.Visible = true;
+                                                pboxAJ4T8.Visible = false;
                                                 pboxJ4T8.BackColor = Color.Yellow;
                                                 pboxJ4T8.Location = new Point(447, 420 - (28 * 8));
                                             }
@@ -5506,6 +5814,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T8.Visible = true;
+                                                pboxAJ4T8.Visible = false;
                                                 pboxJ4T8.BackColor = Color.Yellow;
                                                 pboxJ4T8.Location = new Point(447, 420 - (28 * 8));
                                             }
@@ -5522,6 +5831,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T8.Visible = true;
+                                                pboxAJ4T8.Visible = false;
                                                 pboxJ4T8.BackColor = Color.Yellow;
                                                 pboxJ4T8.Location = new Point(447, 420 - (28 * 8));
                                             }
@@ -5544,6 +5854,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T9.Visible = true;
+                                                pboxAJ4T9.Visible = false;
                                                 pboxJ4T9.BackColor = Color.Yellow;
                                             }
                                             else
@@ -5558,6 +5869,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T9.Visible = true;
+                                                pboxAJ4T9.Visible = false;
                                                 pboxJ4T9.BackColor = Color.Yellow;
                                                 pboxJ4T9.Location = new Point(500, 391 - 28);
                                             }
@@ -5574,6 +5886,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T9.Visible = true;
+                                                pboxAJ4T9.Visible = false;
                                                 pboxJ4T9.BackColor = Color.Yellow;
                                                 pboxJ4T9.Location = new Point(500, (391 - 28) - 28);
                                             }
@@ -5590,6 +5903,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T9.Visible = true;
+                                                pboxAJ4T9.Visible = false;
                                                 pboxJ4T9.BackColor = Color.Yellow;
                                                 pboxJ4T9.Location = new Point(500, 391 - (28 * 3));
                                             }
@@ -5606,6 +5920,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T9.Visible = true;
+                                                pboxAJ4T9.Visible = false;
                                                 pboxJ4T9.BackColor = Color.Yellow;
                                                 pboxJ4T9.Location = new Point(500, 391 - (28 * 4));
                                             }
@@ -5622,6 +5937,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T9.Visible = true;
+                                                pboxAJ4T9.Visible = false;
                                                 pboxJ4T9.BackColor = Color.Yellow;
                                                 pboxJ4T9.Location = new Point(500, 391 - (28 * 5));
                                             }
@@ -5638,6 +5954,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T9.Visible = true;
+                                                pboxAJ4T9.Visible = false;
                                                 pboxJ4T9.BackColor = Color.Yellow;
                                                 pboxJ4T9.Location = new Point(500, 391 - (28 * 6));
                                             }
@@ -5654,6 +5971,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T9.Visible = true;
+                                                pboxAJ4T9.Visible = false;
                                                 pboxJ4T9.BackColor = Color.Yellow;
                                                 pboxJ4T9.Location = new Point(500, 391 - (28 * 7));
                                             }
@@ -5670,6 +5988,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T9.Visible = true;
+                                                pboxAJ4T9.Visible = false;
                                                 pboxJ4T9.BackColor = Color.Yellow;
                                                 pboxJ4T9.Location = new Point(500, 391 - (28 * 8));
                                             }
@@ -5694,6 +6013,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T10.Visible = true;
+                                                pboxAJ4T10.Visible = false;
                                                 pboxJ4T10.BackColor = Color.Yellow;
                                             }
                                             else
@@ -5710,6 +6030,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T10.Visible = true;
+                                                pboxAJ4T10.Visible = false;
                                                 pboxJ4T10.BackColor = Color.Yellow;
                                                 pboxJ4T10.Location = new Point(553, 363 - 28);
                                             }
@@ -5729,6 +6050,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T10.Visible = true;
+                                                pboxAJ4T10.Visible = false;
                                                 pboxJ4T10.BackColor = Color.Yellow;
                                                 pboxJ4T10.Location = new Point(553, (363 - 28) - 28);
                                             }
@@ -5745,6 +6067,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T10.Visible = true;
+                                                pboxAJ4T10.Visible = false;
                                                 pboxJ4T10.BackColor = Color.Yellow;
                                                 pboxJ4T10.Location = new Point(553, 363 - (28 * 3));
                                             }
@@ -5761,6 +6084,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T10.Visible = true;
+                                                pboxAJ4T10.Visible = false;
                                                 pboxJ4T10.BackColor = Color.Yellow;
                                                 pboxJ4T10.Location = new Point(553, 363 - (28 * 4));
                                             }
@@ -5777,6 +6101,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T10.Visible = true;
+                                                pboxAJ4T10.Visible = false;
                                                 pboxJ4T10.BackColor = Color.Yellow;
                                                 pboxJ4T10.Location = new Point(553, 363 - (28 * 5));
                                             }
@@ -5793,6 +6118,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T10.Visible = true;
+                                                pboxAJ4T10.Visible = false;
                                                 pboxJ4T10.BackColor = Color.Yellow;
                                                 pboxJ4T10.Location = new Point(553, 363 - (28 * 6));
                                             }
@@ -5818,6 +6144,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T11.Visible = true;
+                                                pboxAJ4T11.Visible = false;
                                                 pboxJ4T11.BackColor = Color.Yellow;
                                             }
                                             else
@@ -5834,6 +6161,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T11.Visible = true;
+                                                pboxAJ4T11.Visible = false;
                                                 pboxJ4T11.BackColor = Color.Yellow;
                                                 pboxJ4T11.Location = new Point(607, 334 - 28);
                                             }
@@ -5852,6 +6180,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T11.Visible = true;
+                                                pboxAJ4T11.Visible = false;
                                                 pboxJ4T11.BackColor = Color.Yellow;
                                                 pboxJ4T11.Location = new Point(607, (334 - 28) - 28);
                                             }
@@ -5868,6 +6197,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T11.Visible = true;
+                                                pboxAJ4T11.Visible = false;
                                                 pboxJ4T11.BackColor = Color.Yellow;
                                                 pboxJ4T11.Location = new Point(607, 334 - (28 * 3));
                                             }
@@ -5884,6 +6214,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T11.Visible = true;
+                                                pboxAJ4T11.Visible = false;
                                                 pboxJ4T11.BackColor = Color.Yellow;
                                                 pboxJ4T11.Location = new Point(607, 334 - (28 * 4));
                                             }
@@ -5908,6 +6239,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T12.Visible = true;
+                                                pboxAJ4T12.Visible = false;
                                                 pboxJ3T12.BackColor = Color.Yellow;
                                             }
                                             else
@@ -5923,6 +6255,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T12.Visible = true;
+                                                pboxAJ4T12.Visible = false;
                                                 pboxJ4T12.BackColor = Color.Yellow;
                                                 pboxJ4T12.Location = new Point(660, 306 - 28);
                                             }
@@ -5938,6 +6271,7 @@ namespace Aplicativo1
                                             if (Status.tipo == 'B')
                                             {
                                                 pboxJ4T12.Visible = true;
+                                                pboxAJ4T12.Visible = false;
                                                 pboxJ4T12.BackColor = Color.Yellow;
                                                 pboxJ4T12.Location = new Point(660, (306 - 28) - 28);
                                             }
@@ -5968,6 +6302,12 @@ namespace Aplicativo1
                 MessageBox.Show(status);
             }
         }
+
+
+
+
+
+
 
         
     }

@@ -127,9 +127,13 @@ namespace Aplicativo1
             this.pboxAJ2T2 = new System.Windows.Forms.PictureBox();
             this.pboxAJ3T2 = new System.Windows.Forms.PictureBox();
             this.pboxAJ1T2 = new System.Windows.Forms.PictureBox();
-            this.cbxCombinacoes = new System.Windows.Forms.ComboBox();
             this.btnMover = new System.Windows.Forms.Button();
             this.btnParar = new System.Windows.Forms.Button();
+            this.txtOrdem = new System.Windows.Forms.TextBox();
+            this.txtAonde = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado3)).BeginInit();
@@ -1097,14 +1101,6 @@ namespace Aplicativo1
             this.pboxAJ1T2.TabStop = false;
             this.pboxAJ1T2.Visible = false;
             // 
-            // cbxCombinacoes
-            // 
-            this.cbxCombinacoes.FormattingEnabled = true;
-            this.cbxCombinacoes.Location = new System.Drawing.Point(0, 403);
-            this.cbxCombinacoes.Name = "cbxCombinacoes";
-            this.cbxCombinacoes.Size = new System.Drawing.Size(105, 21);
-            this.cbxCombinacoes.TabIndex = 216;
-            // 
             // btnMover
             // 
             this.btnMover.Location = new System.Drawing.Point(129, 531);
@@ -1125,6 +1121,48 @@ namespace Aplicativo1
             this.btnParar.UseVisualStyleBackColor = true;
             this.btnParar.Click += new System.EventHandler(this.btnParar_Click);
             // 
+            // txtOrdem
+            // 
+            this.txtOrdem.Location = new System.Drawing.Point(10, 447);
+            this.txtOrdem.Name = "txtOrdem";
+            this.txtOrdem.Size = new System.Drawing.Size(95, 20);
+            this.txtOrdem.TabIndex = 219;
+            // 
+            // txtAonde
+            // 
+            this.txtAonde.Location = new System.Drawing.Point(10, 499);
+            this.txtAonde.Name = "txtAonde";
+            this.txtAonde.Size = new System.Drawing.Size(95, 20);
+            this.txtAonde.TabIndex = 220;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 470);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 26);
+            this.label1.TabIndex = 221;
+            this.label1.Text = "Casas \r\nEx: 8A, 46\r\n";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 420);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 26);
+            this.label2.TabIndex = 222;
+            this.label2.Text = "Ordem de dados \r\nEx:1324, 1234\r\n";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(107, 489);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 39);
+            this.label3.TabIndex = 223;
+            this.label3.Text = "10 = A,\r\n11 = B,\r\n12= C.";
+            // 
             // Tabuleiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1133,9 +1171,13 @@ namespace Aplicativo1
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtAonde);
+            this.Controls.Add(this.txtOrdem);
             this.Controls.Add(this.btnParar);
             this.Controls.Add(this.btnMover);
-            this.Controls.Add(this.cbxCombinacoes);
             this.Controls.Add(this.pboxAJ4T12);
             this.Controls.Add(this.pboxAJ2T12);
             this.Controls.Add(this.pboxAJ3T12);
@@ -1429,8 +1471,12 @@ namespace Aplicativo1
         private System.Windows.Forms.PictureBox pboxAJ2T2;
         private System.Windows.Forms.PictureBox pboxAJ3T2;
         private System.Windows.Forms.PictureBox pboxAJ1T2;
-        private System.Windows.Forms.ComboBox cbxCombinacoes;
         private System.Windows.Forms.Button btnMover;
         private System.Windows.Forms.Button btnParar;
+        private System.Windows.Forms.TextBox txtOrdem;
+        private System.Windows.Forms.TextBox txtAonde;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

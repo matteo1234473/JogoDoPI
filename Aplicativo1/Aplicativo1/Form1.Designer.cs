@@ -96,7 +96,6 @@ namespace Aplicativo1
             this.txtJogadores.Name = "txtJogadores";
             this.txtJogadores.Size = new System.Drawing.Size(160, 147);
             this.txtJogadores.TabIndex = 5;
-          
             // 
             // btnEntrar
             // 
