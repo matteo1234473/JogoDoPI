@@ -29,6 +29,7 @@ namespace Aplicativo1
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tabuleiro));
             this.btnRodadado = new System.Windows.Forms.Button();
             this.picbxDado1 = new System.Windows.Forms.PictureBox();
@@ -37,7 +38,6 @@ namespace Aplicativo1
             this.picbxDado4 = new System.Windows.Forms.PictureBox();
             this.txtJogadores = new System.Windows.Forms.TextBox();
             this.btn_statusTabu = new System.Windows.Forms.Button();
-            this.txtTestezada = new System.Windows.Forms.TextBox();
             this.pboxJ1T2 = new System.Windows.Forms.PictureBox();
             this.pboxJ3T2 = new System.Windows.Forms.PictureBox();
             this.pboxJ2T2 = new System.Windows.Forms.PictureBox();
@@ -134,6 +134,10 @@ namespace Aplicativo1
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtHistorico = new System.Windows.Forms.TextBox();
+            this.btn = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.txtPossibilidades = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado3)).BeginInit();
@@ -230,7 +234,7 @@ namespace Aplicativo1
             // 
             // btnRodadado
             // 
-            this.btnRodadado.Location = new System.Drawing.Point(10, 18);
+            this.btnRodadado.Location = new System.Drawing.Point(0, 37);
             this.btnRodadado.Name = "btnRodadado";
             this.btnRodadado.Size = new System.Drawing.Size(75, 23);
             this.btnRodadado.TabIndex = 8;
@@ -280,6 +284,7 @@ namespace Aplicativo1
             this.txtJogadores.Name = "txtJogadores";
             this.txtJogadores.Size = new System.Drawing.Size(151, 103);
             this.txtJogadores.TabIndex = 7;
+            this.txtJogadores.TextChanged += new System.EventHandler(this.txtJogadores_TextChanged);
             // 
             // btn_statusTabu
             // 
@@ -290,13 +295,6 @@ namespace Aplicativo1
             this.btn_statusTabu.Text = "Status Tabuleiro";
             this.btn_statusTabu.UseVisualStyleBackColor = true;
             this.btn_statusTabu.Click += new System.EventHandler(this.btn_statusTabu_Click);
-            // 
-            // txtTestezada
-            // 
-            this.txtTestezada.Location = new System.Drawing.Point(631, 509);
-            this.txtTestezada.Name = "txtTestezada";
-            this.txtTestezada.Size = new System.Drawing.Size(112, 20);
-            this.txtTestezada.TabIndex = 124;
             // 
             // pboxJ1T2
             // 
@@ -697,7 +695,7 @@ namespace Aplicativo1
             // 
             // btnMais1
             // 
-            this.btnMais1.Location = new System.Drawing.Point(386, 522);
+            this.btnMais1.Location = new System.Drawing.Point(341, 522);
             this.btnMais1.Name = "btnMais1";
             this.btnMais1.Size = new System.Drawing.Size(74, 27);
             this.btnMais1.TabIndex = 171;
@@ -1163,6 +1161,41 @@ namespace Aplicativo1
             this.label3.TabIndex = 223;
             this.label3.Text = "10 = A,\r\n11 = B,\r\n12= C.";
             // 
+            // txtHistorico
+            // 
+            this.txtHistorico.BackColor = System.Drawing.Color.LightGray;
+            this.txtHistorico.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHistorico.Location = new System.Drawing.Point(553, 467);
+            this.txtHistorico.Multiline = true;
+            this.txtHistorico.Name = "txtHistorico";
+            this.txtHistorico.Size = new System.Drawing.Size(230, 94);
+            this.txtHistorico.TabIndex = 224;
+            // 
+            // btn
+            // 
+            this.btn.Location = new System.Drawing.Point(631, 438);
+            this.btn.Name = "btn";
+            this.btn.Size = new System.Drawing.Size(74, 23);
+            this.btn.TabIndex = 225;
+            this.btn.Text = "Historico";
+            this.btn.UseVisualStyleBackColor = true;
+            this.btn.Click += new System.EventHandler(this.btn_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // txtPossibilidades
+            // 
+            this.txtPossibilidades.BackColor = System.Drawing.Color.LightGray;
+            this.txtPossibilidades.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPossibilidades.Location = new System.Drawing.Point(0, 274);
+            this.txtPossibilidades.Multiline = true;
+            this.txtPossibilidades.Name = "txtPossibilidades";
+            this.txtPossibilidades.Size = new System.Drawing.Size(73, 121);
+            this.txtPossibilidades.TabIndex = 227;
+            // 
             // Tabuleiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1171,6 +1204,9 @@ namespace Aplicativo1
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.txtPossibilidades);
+            this.Controls.Add(this.btn);
+            this.Controls.Add(this.txtHistorico);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -1267,7 +1303,6 @@ namespace Aplicativo1
             this.Controls.Add(this.pboxJ2T2);
             this.Controls.Add(this.pboxJ3T2);
             this.Controls.Add(this.pboxJ1T2);
-            this.Controls.Add(this.txtTestezada);
             this.Controls.Add(this.btn_statusTabu);
             this.Controls.Add(this.picbxDado4);
             this.Controls.Add(this.picbxDado3);
@@ -1381,7 +1416,6 @@ namespace Aplicativo1
         private System.Windows.Forms.PictureBox picbxDado4;
         private System.Windows.Forms.TextBox txtJogadores;
         private System.Windows.Forms.Button btn_statusTabu;
-        private System.Windows.Forms.TextBox txtTestezada;
         private System.Windows.Forms.PictureBox pboxJ1T2;
         private System.Windows.Forms.PictureBox pboxJ3T2;
         private System.Windows.Forms.PictureBox pboxJ2T2;
@@ -1478,5 +1512,9 @@ namespace Aplicativo1
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtHistorico;
+        private System.Windows.Forms.Button btn;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.TextBox txtPossibilidades;
     }
 }
