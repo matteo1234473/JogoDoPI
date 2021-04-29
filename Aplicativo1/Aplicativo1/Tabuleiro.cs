@@ -17,12 +17,18 @@ namespace Aplicativo1
 
         int mais1 = 0;
         Form1 form1 = new Form1();
+        int idJuqui;
+        Jogador Player;
 
+        
+        
         List<Jogador> listaDeJogadores = new List<Jogador>();
         List<Dado> listaDeDados = new List<Dado>();
         //int alp = 3;
         int dado12 = 0, dado13 = 0, dado14 = 0, dado24 = 0, dado23 = 0, dado34 = 0;
         string d1234, d1324, d1423, dado12S, dado13S, dado14S, dado24S, dado23S, dado34S;
+
+        
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -45,7 +51,9 @@ namespace Aplicativo1
 
             form1.ShowDialog();
 
+            
             InitializeComponent();
+            timer1.Enabled = true;
             string dadosJogadores = Jogo.ListarJogadores(form1.idPartida);
 
             dadosJogadores = dadosJogadores.Replace("\r", "");
@@ -62,8 +70,39 @@ namespace Aplicativo1
                 txtJogadores.Text += jogador.Id + ": " + jogador.Nome + "\r\n";
             }
 
-        }
+            foreach (Jogador idJogador in listaDeJogadores)
+            {
+                if (idJogador.Nome.ToUpper() == "JUQUITIBA")
+                {
+                    idJuqui = idJogador.Id;
+                }
+                Player = idJogador;
+            }
 
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            string retorno = Jogo.VerificarVez(form1.idPartida);
+            retorno = retorno.Replace("\r", "");
+            retorno = retorno.Replace("\n", "");
+            string[] vetor = retorno.Split(',');
+            foreach (Jogador jogador in listaDeJogadores)
+            {
+                if (vetor[1] == jogador.Id.ToString())
+                {
+                    lblJogador.Text = jogador.Cor;
+                }
+            }
+            if (vetor[1] == idJuqui.ToString())
+            {
+                rolaDado();
+                lblJogador.Text = Player.Nome;
+            }
+
+            atualizaTabu();
+
+            
+        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -71,6 +110,13 @@ namespace Aplicativo1
 
 
         private void btnRodadado_Click(object sender, EventArgs e)
+        {
+            rolaDado();
+        }
+
+
+
+        public void rolaDado()
         {
             string dados = Jogo.RolarDados(form1.IdJogador, form1.Senha);
             if (dados.StartsWith("ERRO"))
@@ -148,48 +194,45 @@ namespace Aplicativo1
                     picbxDado4.Image = Aplicativo1.Properties.Resources.dado5;
                 if (listaDeDados[3].Numero == 6)
                     picbxDado4.Image = Aplicativo1.Properties.Resources.dado6;
-               
-                    dado12 = listaDeDados[0].Numero + listaDeDados[1].Numero;
-                    dado13 = listaDeDados[0].Numero + listaDeDados[2].Numero;
-                    dado14 = listaDeDados[0].Numero + listaDeDados[3].Numero;
-                    dado24 = listaDeDados[1].Numero + listaDeDados[3].Numero;
-                    dado23 = listaDeDados[1].Numero + listaDeDados[2].Numero;
-                    dado34 = listaDeDados[2].Numero + listaDeDados[3].Numero;
+
+                dado12 = listaDeDados[0].Numero + listaDeDados[1].Numero;
+                dado13 = listaDeDados[0].Numero + listaDeDados[2].Numero;
+                dado14 = listaDeDados[0].Numero + listaDeDados[3].Numero;
+                dado24 = listaDeDados[1].Numero + listaDeDados[3].Numero;
+                dado23 = listaDeDados[1].Numero + listaDeDados[2].Numero;
+                dado34 = listaDeDados[2].Numero + listaDeDados[3].Numero;
 
 
 
-                    dado12S = dado12.ToString();
-                    dado13S = dado13.ToString();
-                    dado14S = dado14.ToString();
-                    dado24S = dado24.ToString();
-                    dado23S = dado23.ToString();
-                    dado34S = dado34.ToString();
+                dado12S = dado12.ToString();
+                dado13S = dado13.ToString();
+                dado14S = dado14.ToString();
+                dado24S = dado24.ToString();
+                dado23S = dado23.ToString();
+                dado34S = dado34.ToString();
 
 
 
                 string combinacoes;
                 string combinacoes2;
 
-                
+
                 d1234 = dado12S + dado34S;
                 d1324 = dado13S + dado24S;
                 d1423 = dado14S + dado23S;
 
-                combinacoes = dado12 + " e " + dado34 + " = 1234 "+ "\r\n" + dado13 + " e " + dado24 + " = 1324 " +"\r\n" +  dado14 + " e " + dado23 + " = 1423" + "\r\n" + "\r\n";
-                combinacoes2 = dado12 + " ou " + dado34 + "=12 ou 34" + "\r\n" + dado13 + " ou " + dado24 + "=13 ou 24" + "\r\n" + dado14 + " ou " + dado23 +"=14 ou 23";
+                combinacoes = dado12 + " e " + dado34 + " = 1234 " + "\r\n" + dado13 + " e " + dado24 + " = 1324 " + "\r\n" + dado14 + " e " + dado23 + " = 1423" + "\r\n" + "\r\n";
+                combinacoes2 = dado12 + " ou " + dado34 + "=12 ou 34" + "\r\n" + dado13 + " ou " + dado24 + "=13 ou 24" + "\r\n" + dado14 + " ou " + dado23 + "=14 ou 23";
                 txtPossibilidades.Text = combinacoes + combinacoes2;
 
 
             }
-
-                
-
         }
 
         private void btnMover_Click(object sender, EventArgs e)
         {
             string erro;
-            erro = Jogo.Mover(listaDeJogadores[0].Id, form1.Senha, txtOrdem.Text, txtAonde.Text);
+            erro = Jogo.Mover(idJuqui, form1.Senha, txtOrdem.Text, txtAonde.Text);
             if (erro.StartsWith("ERRO"))
             {
                 MessageBox.Show(erro);
@@ -206,7 +249,7 @@ namespace Aplicativo1
         {
             string erroParar;
 
-            erroParar = Jogo.Parar(listaDeJogadores[0].Id, form1.Senha);
+            erroParar = Jogo.Parar(idJuqui, form1.Senha);
 
             if (erroParar.StartsWith("ERRO"))
             {

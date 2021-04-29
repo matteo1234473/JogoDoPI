@@ -123,6 +123,8 @@ namespace Aplicativo1
             int id = pegaIdDaPartida(lstPartidas.SelectedItem.ToString());
             this.idPartida = Convert.ToInt32(id);
 
+            
+
             this.Close();
         }
 

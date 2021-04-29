@@ -138,6 +138,8 @@ namespace Aplicativo1
             this.btn = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.txtPossibilidades = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblJogador = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado3)).BeginInit();
@@ -1196,6 +1198,20 @@ namespace Aplicativo1
             this.txtPossibilidades.Size = new System.Drawing.Size(104, 229);
             this.txtPossibilidades.TabIndex = 227;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 10000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lblJogador
+            // 
+            this.lblJogador.AutoSize = true;
+            this.lblJogador.Location = new System.Drawing.Point(124, 59);
+            this.lblJogador.Name = "lblJogador";
+            this.lblJogador.Size = new System.Drawing.Size(35, 13);
+            this.lblJogador.TabIndex = 228;
+            this.lblJogador.Text = "label4";
+            // 
             // Tabuleiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1204,6 +1220,7 @@ namespace Aplicativo1
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.lblJogador);
             this.Controls.Add(this.txtPossibilidades);
             this.Controls.Add(this.btn);
             this.Controls.Add(this.txtHistorico);
@@ -1516,5 +1533,7 @@ namespace Aplicativo1
         private System.Windows.Forms.Button btn;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.TextBox txtPossibilidades;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lblJogador;
     }
 }
