@@ -1190,10 +1190,10 @@ namespace Aplicativo1
             // 
             this.txtPossibilidades.BackColor = System.Drawing.Color.LightGray;
             this.txtPossibilidades.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPossibilidades.Location = new System.Drawing.Point(0, 274);
+            this.txtPossibilidades.Location = new System.Drawing.Point(679, 166);
             this.txtPossibilidades.Multiline = true;
             this.txtPossibilidades.Name = "txtPossibilidades";
-            this.txtPossibilidades.Size = new System.Drawing.Size(73, 121);
+            this.txtPossibilidades.Size = new System.Drawing.Size(104, 229);
             this.txtPossibilidades.TabIndex = 227;
             // 
             // Tabuleiro

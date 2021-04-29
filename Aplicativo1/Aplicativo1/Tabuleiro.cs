@@ -20,7 +20,7 @@ namespace Aplicativo1
 
         List<Jogador> listaDeJogadores = new List<Jogador>();
         List<Dado> listaDeDados = new List<Dado>();
-        int alp = 3;
+        //int alp = 3;
         int dado12 = 0, dado13 = 0, dado14 = 0, dado24 = 0, dado23 = 0, dado34 = 0;
         string d1234, d1324, d1423, dado12S, dado13S, dado14S, dado24S, dado23S, dado34S;
 
@@ -175,8 +175,8 @@ namespace Aplicativo1
                 d1324 = dado13S + dado24S;
                 d1423 = dado14S + dado23S;
 
-                combinacoes = dado12 + " e " + dado34 + "\r\n" + dado13 + " e " + dado24 + "\r\n" + dado14 + " e " + dado23 + "\r\n" + "\r\n";
-                combinacoes2 = dado12 + " ou " + dado34 + "\r\n" + dado13 + " ou " + dado24 + "\r\n" + dado14 + " ou " + dado23;
+                combinacoes = dado12 + " e " + dado34 + " = 1234 "+ "\r\n" + dado13 + " e " + dado24 + " = 1324 " +"\r\n" +  dado14 + " e " + dado23 + " = 1423" + "\r\n" + "\r\n";
+                combinacoes2 = dado12 + " ou " + dado34 + "=12 ou 34" + "\r\n" + dado13 + " ou " + dado24 + "=13 ou 24" + "\r\n" + dado14 + " ou " + dado23 +"=14 ou 23";
                 txtPossibilidades.Text = combinacoes + combinacoes2;
 
 
@@ -188,17 +188,35 @@ namespace Aplicativo1
 
         private void btnMover_Click(object sender, EventArgs e)
         {
-            
-            Jogo.Mover(listaDeJogadores[0].Id, form1.Senha, txtOrdem.Text, txtAonde.Text);
+            string erro;
+            erro = Jogo.Mover(listaDeJogadores[0].Id, form1.Senha, txtOrdem.Text, txtAonde.Text);
+            if (erro.StartsWith("ERRO"))
+            {
+                MessageBox.Show(erro);
+            }
+            else
+            {
 
-            listaDeDados.Clear();
-            atualizaTabu();
+                listaDeDados.Clear();
+                atualizaTabu();
+            }
         }
 
         private void btnParar_Click(object sender, EventArgs e)
         {
-            Jogo.Parar(listaDeJogadores[0].Id, form1.Senha);
-            atualizaTabu();
+            string erroParar;
+
+            erroParar = Jogo.Parar(listaDeJogadores[0].Id, form1.Senha);
+
+            if (erroParar.StartsWith("ERRO"))
+            {
+                MessageBox.Show(erroParar);
+            }
+            else
+            {
+                atualizaTabu();
+            }
+
         }
 
 
@@ -1935,13 +1953,13 @@ namespace Aplicativo1
                                                 pboxJ2T4.Visible = true;
                                                 pboxAJ2T4.Visible = false;
                                                 pboxJ2T4.BackColor = Color.Blue;
-                                                pboxJ2T4.Location = new Point(235, 325 - 28);
+                                                pboxJ2T4.Location = new Point(235, 354 - 28);
                                             }
                                             else
                                             {
                                                 pboxAJ2T4.Visible = true;
                                                 pboxAJ2T4.BackColor = Color.Black;
-                                                pboxAJ2T4.Location = new Point(235, 325 - 28);
+                                                pboxAJ2T4.Location = new Point(235, 354 - 28);
                                             }
 
                                             break;
@@ -6223,7 +6241,7 @@ namespace Aplicativo1
                                             {
                                                 pboxJ4T12.Visible = true;
                                                 pboxAJ4T12.Visible = false;
-                                                pboxJ3T12.BackColor = Color.Yellow;
+                                                pboxJ4T12.BackColor = Color.Yellow;
                                             }
                                             else
                                             {
