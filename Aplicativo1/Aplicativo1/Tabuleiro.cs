@@ -17,10 +17,7 @@ namespace Aplicativo1
 
         int mais1 = 0;
         Form1 form1 = new Form1();
-        int idJuqui;
-        Jogador Player;
-
-        
+        int idJuqui;   
         
         List<Jogador> listaDeJogadores = new List<Jogador>();
         List<Dado> listaDeDados = new List<Dado>();
@@ -90,13 +87,13 @@ namespace Aplicativo1
             {
                 if (vetor[1] == jogador.Id.ToString())
                 {
-                    lblJogador.Text = jogador.Cor;
+                    lblJogador.Text = jogador.Nome + " " + jogador.Cor;                   
                 }
             }
             if (vetor[1] == idJuqui.ToString())
             {
                 rolaDado();
-                lblJogador.Text = Player.Nome;
+                timer1.Enabled = false;
             }
 
             atualizaTabu();
@@ -241,6 +238,7 @@ namespace Aplicativo1
             {
 
                 listaDeDados.Clear();
+                timer1.Enabled = true;
                 atualizaTabu();
             }
         }
