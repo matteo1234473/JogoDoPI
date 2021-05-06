@@ -31,7 +31,6 @@ namespace Aplicativo1
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tabuleiro));
-            this.btnRodadado = new System.Windows.Forms.Button();
             this.picbxDado1 = new System.Windows.Forms.PictureBox();
             this.picbxDado2 = new System.Windows.Forms.PictureBox();
             this.picbxDado3 = new System.Windows.Forms.PictureBox();
@@ -82,7 +81,6 @@ namespace Aplicativo1
             this.pboxJ2T12 = new System.Windows.Forms.PictureBox();
             this.pboxJ3T12 = new System.Windows.Forms.PictureBox();
             this.pboxJ1T12 = new System.Windows.Forms.PictureBox();
-            this.btnMais1 = new System.Windows.Forms.Button();
             this.pboxAJ4T12 = new System.Windows.Forms.PictureBox();
             this.pboxAJ2T12 = new System.Windows.Forms.PictureBox();
             this.pboxAJ3T12 = new System.Windows.Forms.PictureBox();
@@ -129,17 +127,12 @@ namespace Aplicativo1
             this.pboxAJ1T2 = new System.Windows.Forms.PictureBox();
             this.btnMover = new System.Windows.Forms.Button();
             this.btnParar = new System.Windows.Forms.Button();
-            this.txtOrdem = new System.Windows.Forms.TextBox();
-            this.txtAonde = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtHistorico = new System.Windows.Forms.TextBox();
-            this.btn = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.txtPossibilidades = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblJogador = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblqtdAlp = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado3)).BeginInit();
@@ -234,16 +227,6 @@ namespace Aplicativo1
             ((System.ComponentModel.ISupportInitialize)(this.pboxAJ1T2)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnRodadado
-            // 
-            this.btnRodadado.Location = new System.Drawing.Point(0, 37);
-            this.btnRodadado.Name = "btnRodadado";
-            this.btnRodadado.Size = new System.Drawing.Size(75, 23);
-            this.btnRodadado.TabIndex = 8;
-            this.btnRodadado.Text = "Rodar Dado";
-            this.btnRodadado.UseVisualStyleBackColor = true;
-            this.btnRodadado.Click += new System.EventHandler(this.btnRodadado_Click);
-            // 
             // picbxDado1
             // 
             this.picbxDado1.Location = new System.Drawing.Point(10, 66);
@@ -251,7 +234,6 @@ namespace Aplicativo1
             this.picbxDado1.Size = new System.Drawing.Size(45, 45);
             this.picbxDado1.TabIndex = 9;
             this.picbxDado1.TabStop = false;
-            this.picbxDado1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // picbxDado2
             // 
@@ -284,6 +266,7 @@ namespace Aplicativo1
             this.txtJogadores.Location = new System.Drawing.Point(621, 7);
             this.txtJogadores.Multiline = true;
             this.txtJogadores.Name = "txtJogadores";
+            this.txtJogadores.ReadOnly = true;
             this.txtJogadores.Size = new System.Drawing.Size(151, 103);
             this.txtJogadores.TabIndex = 7;
             this.txtJogadores.TextChanged += new System.EventHandler(this.txtJogadores_TextChanged);
@@ -666,7 +649,6 @@ namespace Aplicativo1
             this.pboxJ4T12.TabIndex = 170;
             this.pboxJ4T12.TabStop = false;
             this.pboxJ4T12.Visible = false;
-            this.pboxJ4T12.Click += new System.EventHandler(this.pboxJ4T12_Click);
             // 
             // pboxJ2T12
             // 
@@ -694,16 +676,6 @@ namespace Aplicativo1
             this.pboxJ1T12.TabIndex = 167;
             this.pboxJ1T12.TabStop = false;
             this.pboxJ1T12.Visible = false;
-            // 
-            // btnMais1
-            // 
-            this.btnMais1.Location = new System.Drawing.Point(341, 522);
-            this.btnMais1.Name = "btnMais1";
-            this.btnMais1.Size = new System.Drawing.Size(74, 27);
-            this.btnMais1.TabIndex = 171;
-            this.btnMais1.Text = "button1";
-            this.btnMais1.UseVisualStyleBackColor = true;
-            this.btnMais1.Click += new System.EventHandler(this.btnMais1_Click);
             // 
             // pboxAJ4T12
             // 
@@ -1121,96 +1093,55 @@ namespace Aplicativo1
             this.btnParar.UseVisualStyleBackColor = true;
             this.btnParar.Click += new System.EventHandler(this.btnParar_Click);
             // 
-            // txtOrdem
-            // 
-            this.txtOrdem.Location = new System.Drawing.Point(10, 447);
-            this.txtOrdem.Name = "txtOrdem";
-            this.txtOrdem.Size = new System.Drawing.Size(95, 20);
-            this.txtOrdem.TabIndex = 219;
-            // 
-            // txtAonde
-            // 
-            this.txtAonde.Location = new System.Drawing.Point(10, 499);
-            this.txtAonde.Name = "txtAonde";
-            this.txtAonde.Size = new System.Drawing.Size(95, 20);
-            this.txtAonde.TabIndex = 220;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 470);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 26);
-            this.label1.TabIndex = 221;
-            this.label1.Text = "Casas \r\nEx: 8A, 46\r\n";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 420);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 26);
-            this.label2.TabIndex = 222;
-            this.label2.Text = "Ordem de dados \r\nEx:1324, 1234\r\n";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(107, 489);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 39);
-            this.label3.TabIndex = 223;
-            this.label3.Text = "10 = A,\r\n11 = B,\r\n12= C.";
-            // 
             // txtHistorico
             // 
             this.txtHistorico.BackColor = System.Drawing.Color.LightGray;
             this.txtHistorico.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHistorico.Location = new System.Drawing.Point(553, 467);
+            this.txtHistorico.Location = new System.Drawing.Point(589, 420);
             this.txtHistorico.Multiline = true;
             this.txtHistorico.Name = "txtHistorico";
-            this.txtHistorico.Size = new System.Drawing.Size(230, 94);
+            this.txtHistorico.ReadOnly = true;
+            this.txtHistorico.Size = new System.Drawing.Size(194, 141);
             this.txtHistorico.TabIndex = 224;
-            // 
-            // btn
-            // 
-            this.btn.Location = new System.Drawing.Point(631, 438);
-            this.btn.Name = "btn";
-            this.btn.Size = new System.Drawing.Size(74, 23);
-            this.btn.TabIndex = 225;
-            this.btn.Text = "Historico";
-            this.btn.UseVisualStyleBackColor = true;
-            this.btn.Click += new System.EventHandler(this.btn_Click);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // txtPossibilidades
-            // 
-            this.txtPossibilidades.BackColor = System.Drawing.Color.LightGray;
-            this.txtPossibilidades.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPossibilidades.Location = new System.Drawing.Point(679, 166);
-            this.txtPossibilidades.Multiline = true;
-            this.txtPossibilidades.Name = "txtPossibilidades";
-            this.txtPossibilidades.Size = new System.Drawing.Size(104, 229);
-            this.txtPossibilidades.TabIndex = 227;
-            // 
             // timer1
             // 
-            this.timer1.Interval = 10000;
+            this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // lblJogador
             // 
             this.lblJogador.AutoSize = true;
-            this.lblJogador.Location = new System.Drawing.Point(124, 59);
+            this.lblJogador.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblJogador.Location = new System.Drawing.Point(264, 15);
             this.lblJogador.Name = "lblJogador";
-            this.lblJogador.Size = new System.Drawing.Size(35, 13);
+            this.lblJogador.Size = new System.Drawing.Size(99, 33);
             this.lblJogador.TabIndex = 228;
             this.lblJogador.Text = "label4";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(721, 271);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 13);
+            this.label4.TabIndex = 229;
+            this.label4.Text = "Alpinistas";
+            // 
+            // lblqtdAlp
+            // 
+            this.lblqtdAlp.AutoSize = true;
+            this.lblqtdAlp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblqtdAlp.Location = new System.Drawing.Point(730, 296);
+            this.lblqtdAlp.Name = "lblqtdAlp";
+            this.lblqtdAlp.Size = new System.Drawing.Size(42, 16);
+            this.lblqtdAlp.TabIndex = 230;
+            this.lblqtdAlp.Text = "NAlp";
             // 
             // Tabuleiro
             // 
@@ -1220,15 +1151,10 @@ namespace Aplicativo1
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.lblqtdAlp);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lblJogador);
-            this.Controls.Add(this.txtPossibilidades);
-            this.Controls.Add(this.btn);
             this.Controls.Add(this.txtHistorico);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtAonde);
-            this.Controls.Add(this.txtOrdem);
             this.Controls.Add(this.btnParar);
             this.Controls.Add(this.btnMover);
             this.Controls.Add(this.pboxAJ4T12);
@@ -1275,7 +1201,6 @@ namespace Aplicativo1
             this.Controls.Add(this.pboxAJ2T2);
             this.Controls.Add(this.pboxAJ3T2);
             this.Controls.Add(this.pboxAJ1T2);
-            this.Controls.Add(this.btnMais1);
             this.Controls.Add(this.pboxJ4T12);
             this.Controls.Add(this.pboxJ2T12);
             this.Controls.Add(this.pboxJ3T12);
@@ -1325,7 +1250,6 @@ namespace Aplicativo1
             this.Controls.Add(this.picbxDado3);
             this.Controls.Add(this.picbxDado2);
             this.Controls.Add(this.picbxDado1);
-            this.Controls.Add(this.btnRodadado);
             this.Controls.Add(this.txtJogadores);
             this.Name = "Tabuleiro";
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado1)).EndInit();
@@ -1426,7 +1350,6 @@ namespace Aplicativo1
         }
 
         #endregion
-        private System.Windows.Forms.Button btnRodadado;
         private System.Windows.Forms.PictureBox picbxDado1;
         private System.Windows.Forms.PictureBox picbxDado2;
         private System.Windows.Forms.PictureBox picbxDado3;
@@ -1477,7 +1400,6 @@ namespace Aplicativo1
         private System.Windows.Forms.PictureBox pboxJ2T12;
         private System.Windows.Forms.PictureBox pboxJ3T12;
         private System.Windows.Forms.PictureBox pboxJ1T12;
-        private System.Windows.Forms.Button btnMais1;
         private System.Windows.Forms.PictureBox pboxAJ4T12;
         private System.Windows.Forms.PictureBox pboxAJ2T12;
         private System.Windows.Forms.PictureBox pboxAJ3T12;
@@ -1524,16 +1446,11 @@ namespace Aplicativo1
         private System.Windows.Forms.PictureBox pboxAJ1T2;
         private System.Windows.Forms.Button btnMover;
         private System.Windows.Forms.Button btnParar;
-        private System.Windows.Forms.TextBox txtOrdem;
-        private System.Windows.Forms.TextBox txtAonde;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtHistorico;
-        private System.Windows.Forms.Button btn;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.TextBox txtPossibilidades;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblJogador;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblqtdAlp;
     }
 }

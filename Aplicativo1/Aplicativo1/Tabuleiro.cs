@@ -19,40 +19,22 @@ namespace Aplicativo1
         Form1 form1 = new Form1();
         int idJuqui;
         Jogador Player;
-
+        Jogadas joga = new Jogadas("0");
         
         
         List<Jogador> listaDeJogadores = new List<Jogador>();
         List<Dado> listaDeDados = new List<Dado>();
-        //int alp = 3;
+        List<Jogadas> listaDeJogadas = new List<Jogadas>();
+        int alp = 3;
         int dado12 = 0, dado13 = 0, dado14 = 0, dado24 = 0, dado23 = 0, dado34 = 0;
         string d1234, d1324, d1423, dado12S, dado13S, dado14S, dado24S, dado23S, dado34S;
 
-        
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnMais1_Click(object sender, EventArgs e)
-        {
-            mais1 += 1;
-        }
-
-        private void pboxJ4T12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
+     
         public Tabuleiro()
         {
-
             form1.ShowDialog();
-
-            
             InitializeComponent();
+
             timer1.Enabled = true;
             string dadosJogadores = Jogo.ListarJogadores(form1.idPartida);
 
@@ -80,8 +62,21 @@ namespace Aplicativo1
             }
 
         }
+
+       
         private void timer1_Tick(object sender, EventArgs e)
         {
+            txtHistorico.Text = Jogo.ExibirHistorico(form1.idPartida);
+            lblqtdAlp.Text = alp.ToString();
+            if (alp == 0)
+            {
+                parar();
+            }
+            else
+            {
+
+            
+
             string retorno = Jogo.VerificarVez(form1.idPartida);
             retorno = retorno.Replace("\r", "");
             retorno = retorno.Replace("\n", "");
@@ -96,24 +91,38 @@ namespace Aplicativo1
             if (vetor[1] == idJuqui.ToString())
             {
                 rolaDado();
-                lblJogador.Text = Player.Nome;
+                timer1.Enabled = false;
+                mover();
+                txtHistorico.Text = Jogo.ExibirHistorico(form1.idPartida);
+                lblqtdAlp.Text = alp.ToString();
+
             }
 
-            atualizaTabu();
+           }
 
+            atualizaTabu();
             
         }
-        private void pictureBox1_Click(object sender, EventArgs e)
+
+        public void mover()
         {
+            string erro;
+            string retorno = escolha();
+            string[] vetor = retorno.Split(',');
 
+
+            erro = Jogo.Mover(idJuqui, form1.Senha, vetor[0], vetor[1]);
+            if (erro.StartsWith("ERRO"))
+            {
+                MessageBox.Show(erro);
+            }
+            else
+            {
+                listaDeDados.Clear();
+                atualizaTabu();
+                timer1.Enabled = true;
+            }
         }
-
-
-        private void btnRodadado_Click(object sender, EventArgs e)
-        {
-            rolaDado();
-        }
-
 
 
         public void rolaDado()
@@ -221,31 +230,123 @@ namespace Aplicativo1
                 d1324 = dado13S + dado24S;
                 d1423 = dado14S + dado23S;
 
-                combinacoes = dado12 + " e " + dado34 + " = 1234 " + "\r\n" + dado13 + " e " + dado24 + " = 1324 " + "\r\n" + dado14 + " e " + dado23 + " = 1423" + "\r\n" + "\r\n";
-                combinacoes2 = dado12 + " ou " + dado34 + "=12 ou 34" + "\r\n" + dado13 + " ou " + dado24 + "=13 ou 24" + "\r\n" + dado14 + " ou " + dado23 + "=14 ou 23";
-                txtPossibilidades.Text = combinacoes + combinacoes2;
+                
 
 
             }
         }
 
-        private void btnMover_Click(object sender, EventArgs e)
+        public string escolha()
         {
-            string erro;
-            erro = Jogo.Mover(idJuqui, form1.Senha, txtOrdem.Text, txtAonde.Text);
-            if (erro.StartsWith("ERRO"))
+            
+            if (alp == 3)
             {
-                MessageBox.Show(erro);
-            }
-            else
-            {
+                if (dado12 == dado34)
+                {
+                    if (dado12 == 10 || dado12 == 11 || dado12 == 12)
+                        dado12S = dado12.ToString("X");
 
-                listaDeDados.Clear();
-                atualizaTabu();
+                    if (dado34 == 10 || dado34 == 11 || dado34 == 12)
+                        dado34S = dado34.ToString("X");
+
+                    alp -= 1;
+                    listaDeJogadas.Add(new Jogadas(dado12S));
+                    listaDeJogadas.Add(new Jogadas(dado34S));
+                    return ("1234," + dado12S + dado34S);
+
+                }
+                else
+                {
+                    if (dado12 == 10 || dado12 == 11 || dado12 == 12)
+                        dado12S = dado12.ToString("X");
+
+                    if (dado34 == 10 || dado34 == 11 || dado34 == 12)
+                        dado34S = dado34.ToString("X");
+
+                    alp -= 2;
+                    listaDeJogadas.Add(new Jogadas(dado12S));
+                    listaDeJogadas.Add(new Jogadas(dado34S));
+                    return ("1234," + dado12S + dado34S);
+
+                }
             }
+            if (alp == 2)
+                {
+                    if (dado12 == dado34)
+                    {
+                        if (dado12 == 10 || dado12 == 11 || dado12 == 12)
+                            dado12S = dado12.ToString("X");
+
+                        if (dado34 == 10 || dado34 == 11 || dado34 == 12)
+                            dado34S = dado34.ToString("X");
+
+                            listaDeJogadas.Add(new Jogadas(dado12S));
+                            listaDeJogadas.Add(new Jogadas(dado34S));
+                    alp -= 1;
+                        return ("1234," + dado12S + dado34S);
+                    }
+                    else
+                    {
+                        if (dado12 == 10 || dado12 == 11 || dado12 == 12)
+                            dado12S = dado12.ToString("X");
+
+                        if (dado34 == 10 || dado34 == 11 || dado34 == 12)
+                            dado34S = dado34.ToString("X");
+
+                        
+                        listaDeJogadas.Add(new Jogadas(dado12S));
+                        listaDeJogadas.Add(new Jogadas(dado34S));
+
+                        alp -= 2;
+                        return ("1234," + dado12S + dado34S);
+                    }
+                }
+
+
+                if (alp == 1)
+                {
+                    if (dado12 == dado34)
+                    {
+                        if (dado12 == 10 || dado12 == 11 || dado12 == 12)
+                            dado12S = dado12.ToString("X");
+
+                        if (dado34 == 10 || dado34 == 11 || dado34 == 12)
+                            dado34S = dado34.ToString("X");
+
+                    alp -= 1;
+                    return ("1234," + dado12S + dado34S);
+
+                }
+                else
+                {
+                    if (dado12 == 10 || dado12 == 11 || dado12 == 12)
+                        dado12S = dado12.ToString("X");
+
+                    if (dado34 == 10 || dado34 == 11 || dado34 == 12)
+                        dado34S = dado34.ToString("X");
+
+
+                    foreach (Jogadas jogada in listaDeJogadas)
+                    {
+                        if (jogada.Poze == dado34S)
+                        {
+                            alp -= 1;
+                            return ("1234," + dado12S + dado34S);
+                        }
+                    }
+                    alp -= 1;
+                    return ("1234," + dado12S + "0");
+                }
+
+              }
+                    
+            return null;
         }
+        
 
-        private void btnParar_Click(object sender, EventArgs e)
+
+
+        public void parar()
         {
             string erroParar;
 
@@ -258,8 +359,21 @@ namespace Aplicativo1
             else
             {
                 atualizaTabu();
+                listaDeJogadas.Clear();
+                alp = 3;
             }
+        }
+        
 
+
+        private void btnMover_Click(object sender, EventArgs e)
+        {
+            mover();
+        }
+
+        private void btnParar_Click(object sender, EventArgs e)
+        {
+            parar();
         }
 
 
@@ -6354,7 +6468,7 @@ namespace Aplicativo1
 
         private void btn_Click(object sender, EventArgs e)
         {
-            txtHistorico.Text = Jogo.ExibirHistorico(form1.idPartida);
+            
         }
     }
 }
