@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Aplicativo1
 {
-    public class Jogadas
+    class FilWin
     {
 
-       public string Poze { get; set; }
-      
+        public string Filwin { get; set; }
 
-        public Jogadas(string pos)
+
+        public FilWin(string fil)
         {
-            this.Poze = pos;
-            
+            this.Filwin = fil;
         }
+
     }
 }

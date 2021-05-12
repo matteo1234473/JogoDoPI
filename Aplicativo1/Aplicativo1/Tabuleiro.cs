@@ -25,6 +25,8 @@ namespace Aplicativo1
         List<Jogador> listaDeJogadores = new List<Jogador>();
         List<Dado> listaDeDados = new List<Dado>();
         List<Jogadas> listaDeJogadas = new List<Jogadas>();
+        List<FilWin> FileirasWin = new List<FilWin>();
+
         int alp = 3;
         int dado12 = 0, dado13 = 0, dado14 = 0, dado24 = 0, dado23 = 0, dado34 = 0;
         string d1234, d1324, d1423, dado12S, dado13S, dado14S, dado24S, dado23S, dado34S;
@@ -75,33 +77,47 @@ namespace Aplicativo1
             else
             {
 
-            
+                string retorno = Jogo.VerificarVez(form1.idPartida);
+                retorno = retorno.Replace("\r", "");
+                retorno = retorno.Replace("\n", "");
+                string[] vetor = retorno.Split(',');
 
-            string retorno = Jogo.VerificarVez(form1.idPartida);
-            retorno = retorno.Replace("\r", "");
-            retorno = retorno.Replace("\n", "");
-            string[] vetor = retorno.Split(',');
-            foreach (Jogador jogador in listaDeJogadores)
-            {
-                if (vetor[1] == jogador.Id.ToString())
+                if (vetor[0].StartsWith("ERRO"))
                 {
-                    lblJogador.Text = jogador.Cor;
+                    MessageBox.Show(vetor[0]);
                 }
+                else
+                {
+
+                    foreach (Jogador jogador in listaDeJogadores)
+                    {
+                        if (vetor[1] == jogador.Id.ToString())
+                        {
+                            lblJogador.Text = jogador.Cor;
+                        }
+                        else
+                        {
+                            atualizaTabu();
+                        }
+                    }
+                    if (vetor[1] == idJuqui.ToString())
+                    {
+                        rolaDado();
+                        timer1.Enabled = false;
+                        mover();
+                        txtHistorico.Text = Jogo.ExibirHistorico(form1.idPartida);
+                        lblqtdAlp.Text = alp.ToString();
+
+                    }
+                    else
+                    {
+                        atualizaTabu();
+                    }
+
+                }
+
+                atualizaTabu();
             }
-            if (vetor[1] == idJuqui.ToString())
-            {
-                rolaDado();
-                timer1.Enabled = false;
-                mover();
-                txtHistorico.Text = Jogo.ExibirHistorico(form1.idPartida);
-                lblqtdAlp.Text = alp.ToString();
-
-            }
-
-           }
-
-            atualizaTabu();
-            
         }
 
         public void mover()
@@ -123,7 +139,6 @@ namespace Aplicativo1
                 timer1.Enabled = true;
             }
         }
-
 
         public void rolaDado()
         {
@@ -219,11 +234,6 @@ namespace Aplicativo1
                 dado24S = dado24.ToString();
                 dado23S = dado23.ToString();
                 dado34S = dado34.ToString();
-
-
-
-                string combinacoes;
-                string combinacoes2;
 
 
                 d1234 = dado12S + dado34S;
@@ -328,7 +338,7 @@ namespace Aplicativo1
 
                     foreach (Jogadas jogada in listaDeJogadas)
                     {
-                        if (jogada.Poze == dado34S)
+                        if (jogada.Poze == dado12S || jogada.Poze == dado34S)
                         {
                             alp -= 1;
                             return ("1234," + dado12S + dado34S);
@@ -469,10 +479,22 @@ namespace Aplicativo1
                                         case 3:
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ1T2.Visible = true;
                                                 pboxJ1T2.BackColor = Color.Red;
                                                 pboxAJ1T2.Visible = false;
                                                 pboxJ1T2.Location = new Point(112, (296 - 28) - 28);
+                                                pboxJ1T2.Visible = false;
+                                                pboxJ2T2.Visible = false;
+                                                pboxJ3T2.Visible = false;
+                                                pboxJ4T2.Visible = false;
+                                                C2.BackColor = Color.Red;
+                                                C22.BackColor = Color.Red;
+                                                C23.BackColor = Color.Red;
+                                                C2.Visible = true;
+                                                C22.Visible = true;
+                                                C23.Visible = true;
+                                                FileirasWin.Add(new FilWin("2"));
+
+
                                             }
                                             else
                                             {
@@ -570,10 +592,25 @@ namespace Aplicativo1
                                             //CHECA COR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ1T3.Visible = true;
+                                                
                                                 pboxJ1T3.BackColor = Color.Red;
                                                 pboxAJ1T3.Visible = false;
                                                 pboxJ1T3.Location = new Point(163, 325 - (28 * 4));
+                                                pboxJ1T3.Visible = false;
+                                                pboxJ2T3.Visible = false;
+                                                pboxJ3T3.Visible = false;
+                                                pboxJ4T3.Visible = false;
+                                                C3.BackColor = Color.Red;
+                                                C32.BackColor = Color.Red;
+                                                C33.BackColor = Color.Red;
+                                                C34.BackColor = Color.Red;
+                                                C35.BackColor = Color.Red;
+                                                C3.Visible = true;
+                                                C32.Visible = true;
+                                                C33.Visible = true;
+                                                C34.Visible = true;
+                                                C35.Visible = true;
+                                                FileirasWin.Add(new FilWin("3"));
                                             }
                                             else
                                             {
@@ -618,13 +655,13 @@ namespace Aplicativo1
                                                 pboxJ1T4.Visible = true;
                                                 pboxJ1T4.BackColor = Color.Red;
                                                 pboxAJ1T4.Visible = false;
-                                                pboxJ1T4.Location = new Point(217, 325 - 28);
+                                                pboxJ1T4.Location = new Point(217, 354 - 28);
                                             }
                                             else
                                             {
                                                 pboxAJ1T4.Visible = true;
                                                 pboxAJ1T4.BackColor = Color.Black;
-                                                pboxAJ1T4.Location = new Point(217, 325 - 28);
+                                                pboxAJ1T4.Location = new Point(217, 354 - 28);
                                             }
 
 
@@ -705,10 +742,28 @@ namespace Aplicativo1
                                             //CHECA COR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ1T4.Visible = true;
                                                 pboxJ1T4.BackColor = Color.Red;
                                                 pboxAJ1T4.Visible = false;
                                                 pboxJ1T4.Location = new Point(217, 354 - (28 * 6));
+                                                pboxJ1T4.Visible = false;
+                                                pboxJ2T4.Visible = false;
+                                                pboxJ3T4.Visible = false;
+                                                pboxJ4T4.Visible = false;
+                                                C4.BackColor = Color.Red;
+                                                C42.BackColor = Color.Red;
+                                                C43.BackColor = Color.Red;
+                                                C44.BackColor = Color.Red;
+                                                C45.BackColor = Color.Red;
+                                                C46.BackColor = Color.Red;
+                                                C47.BackColor = Color.Red;
+                                                C4.Visible = true;
+                                                C42.Visible = true;
+                                                C43.Visible = true;
+                                                C44.Visible = true;
+                                                C45.Visible = true;
+                                                C46.Visible = true;
+                                                C47.Visible = true;
+                                                FileirasWin.Add(new FilWin("4"));
                                             }
                                             else
                                             {
@@ -868,10 +923,32 @@ namespace Aplicativo1
                                             //CHECA COR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ1T5.Visible = true;
                                                 pboxAJ1T5.Visible = false;
                                                 pboxJ1T5.BackColor = Color.Red;
                                                 pboxJ1T5.Location = new Point(270, 381 - (28 * 8));
+                                                pboxJ1T5.Visible = false;
+                                                pboxJ2T5.Visible = false;
+                                                pboxJ3T5.Visible = false;
+                                                pboxJ4T5.Visible = false;
+                                                C5.BackColor = Color.Red;
+                                                C52.BackColor = Color.Red;
+                                                C53.BackColor = Color.Red;
+                                                C54.BackColor = Color.Red;
+                                                C55.BackColor = Color.Red;
+                                                C56.BackColor = Color.Red;
+                                                C57.BackColor = Color.Red;
+                                                C58.BackColor = Color.Red;
+                                                C59.BackColor = Color.Red;
+                                                C5.Visible = true;
+                                                C52.Visible = true;
+                                                C53.Visible = true;
+                                                C54.Visible = true;
+                                                C55.Visible = true;
+                                                C56.Visible = true;
+                                                C57.Visible = true;
+                                                C58.Visible = true;
+                                                C59.Visible = true;
+                                                FileirasWin.Add(new FilWin("5"));
                                             }
                                             else
                                             {
@@ -1053,16 +1130,43 @@ namespace Aplicativo1
                                         case 11:
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ1T6.Visible = true;
                                                 pboxAJ1T6.Visible = false;
                                                 pboxJ1T6.BackColor = Color.Red;
-                                                pboxJ1T6.Location = new Point(323, 410 - (28 * 10));
+                                                pboxJ1T6.Visible = false;
+                                                pboxJ2T6.Visible = false;
+                                                pboxJ3T6.Visible = false;
+                                                pboxJ4T6.Visible = false;
+                                                C6.BackColor = Color.Red;
+                                                C62.BackColor = Color.Red;
+                                                C63.BackColor = Color.Red;
+                                                C64.BackColor = Color.Red;
+                                                C65.BackColor = Color.Red;
+                                                C66.BackColor = Color.Red;
+                                                C67.BackColor = Color.Red;
+                                                C68.BackColor = Color.Red;
+                                                C69.BackColor = Color.Red;
+                                                C610.BackColor = Color.Red;
+                                                C611.BackColor = Color.Red;
+                                                C610.BackColor = Color.Red;
+                                                C6.Visible = true;
+                                                C62.Visible = true;
+                                                C63.Visible = true;
+                                                C64.Visible = true;
+                                                C65.Visible = true;
+                                                C66.Visible = true;
+                                                C67.Visible = true;
+                                                C68.Visible = true;
+                                                C69.Visible = true;
+                                                C610.Visible = true;
+                                                C611.Visible = true;
+                                                FileirasWin.Add(new FilWin("6"));
                                             }
                                             else
                                             {
-                                                pboxAJ1T6.Visible = true;
+                                                pboxJ1T6.Visible = true;
                                                 pboxAJ1T6.BackColor = Color.Black;
                                                 pboxAJ1T6.Location = new Point(323, 410 - (28 * 10));
+                                               
                                             }
 
                                             break;
@@ -1270,16 +1374,47 @@ namespace Aplicativo1
                                         case 13:
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ1T7.Visible = true;
                                                 pboxAJ1T7.Visible = false;
                                                 pboxJ1T7.BackColor = Color.Red;
                                                 pboxJ1T7.Location = new Point(376, 438 - (28 * 12));
+                                                pboxJ1T7.Visible = false;
+                                                pboxJ2T7.Visible = false;
+                                                pboxJ3T7.Visible = false;
+                                                pboxJ4T7.Visible = false;
+                                                C7.BackColor = Color.Red;
+                                                C72.BackColor = Color.Red;
+                                                C73.BackColor = Color.Red;
+                                                C74.BackColor = Color.Red;
+                                                C75.BackColor = Color.Red;
+                                                C76.BackColor = Color.Red;
+                                                C77.BackColor = Color.Red;
+                                                C78.BackColor = Color.Red;
+                                                C79.BackColor = Color.Red;
+                                                C710.BackColor = Color.Red;
+                                                C711.BackColor = Color.Red;
+                                                C712.BackColor = Color.Red;
+                                                C713.BackColor = Color.Red;
+                                                C7.Visible = true;
+                                                C72.Visible = true;
+                                                C73.Visible = true;
+                                                C74.Visible = true;
+                                                C75.Visible = true;
+                                                C76.Visible = true;
+                                                C77.Visible = true;
+                                                C78.Visible = true;
+                                                C79.Visible = true;
+                                                C710.Visible = true;
+                                                C711.Visible = true;
+                                                C712.Visible = true;
+                                                C713.Visible = true;
+                                                FileirasWin.Add(new FilWin("7"));
                                             }
                                             else
                                             {
                                                 pboxAJ1T7.Visible = true;
                                                 pboxAJ1T7.BackColor = Color.Black;
                                                 pboxAJ1T7.Location = new Point(376, 438 - (28 * 12));
+
                                             }
 
                                             break;
@@ -1461,10 +1596,36 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ1T8.Visible = true;
                                                 pboxAJ1T8.Visible = false;
                                                 pboxJ1T8.BackColor = Color.Red;
                                                 pboxJ1T8.Location = new Point(429, 410 - (28 * 8));
+                                                pboxJ1T8.Visible = false;
+                                                pboxJ2T8.Visible = false;
+                                                pboxJ3T8.Visible = false;
+                                                pboxJ4T8.Visible = false;
+                                                C8.BackColor = Color.Red;
+                                                C82.BackColor = Color.Red;
+                                                C83.BackColor = Color.Red;
+                                                C84.BackColor = Color.Red;
+                                                C85.BackColor = Color.Red;
+                                                C86.BackColor = Color.Red;
+                                                C87.BackColor = Color.Red;
+                                                C88.BackColor = Color.Red;
+                                                C89.BackColor = Color.Red;
+                                                C810.BackColor = Color.Red;
+                                                C811.BackColor = Color.Red;
+                                                C8.Visible = true;
+                                                C82.Visible = true;
+                                                C83.Visible = true;
+                                                C84.Visible = true;
+                                                C85.Visible = true;
+                                                C86.Visible = true;
+                                                C87.Visible = true;
+                                                C88.Visible = true;
+                                                C89.Visible = true;
+                                                C810.Visible = true;
+                                                C811.Visible = true;
+                                                FileirasWin.Add(new FilWin("8"));
                                             }
                                             else
                                             {
@@ -1618,10 +1779,32 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ1T9.Visible = true;
                                                 pboxAJ1T9.Visible = false;
                                                 pboxJ1T9.BackColor = Color.Red;
                                                 pboxJ1T9.Location = new Point(482, 381 - (28 * 8));
+                                                pboxJ1T9.Visible = false;
+                                                pboxJ2T9.Visible = false;
+                                                pboxJ3T9.Visible = false;
+                                                pboxJ4T9.Visible = false;
+                                                C9.BackColor = Color.Red;
+                                                C92.BackColor = Color.Red;
+                                                C93.BackColor = Color.Red;
+                                                C94.BackColor = Color.Red;
+                                                C95.BackColor = Color.Red;
+                                                C96.BackColor = Color.Red;
+                                                C97.BackColor = Color.Red;
+                                                C98.BackColor = Color.Red;
+                                                C99.BackColor = Color.Red;
+                                                C9.Visible = true;
+                                                C92.Visible = true;
+                                                C93.Visible = true;
+                                                C94.Visible = true;
+                                                C95.Visible = true;
+                                                C96.Visible = true;
+                                                C97.Visible = true;
+                                                C98.Visible = true;
+                                                C99.Visible = true;
+                                                FileirasWin.Add(new FilWin("9"));
                                             }
                                             else
                                             {
@@ -1748,10 +1931,30 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ1T10.Visible = true;
                                                 pboxAJ1T10.Visible = false;
                                                 pboxJ1T10.BackColor = Color.Red;
                                                 pboxJ1T10.Location = new Point(536, 354 - (28 * 6));
+                                                pboxJ1T10.Visible = false;
+                                                pboxJ2T10.Visible = false;
+                                                pboxJ3T10.Visible = false;
+                                                pboxJ4T10.Visible = false;
+                                                C10.BackColor = Color.Red;
+                                                C102.BackColor = Color.Red;
+                                                C103.BackColor = Color.Red;
+                                                C104.BackColor = Color.Red;
+                                                C105.BackColor = Color.Red;
+                                                C106.BackColor = Color.Red;
+                                                C107.BackColor = Color.Red;
+                                               
+                                                C10.Visible = true;
+                                                C102.Visible = true;
+                                                C103.Visible = true;
+                                                C104.Visible = true;
+                                                C105.Visible = true;
+                                                C106.Visible = true;
+                                                C107.Visible = true;
+                                                FileirasWin.Add(new FilWin("10"));
+
                                             }
                                             else
                                             {
@@ -1844,10 +2047,24 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ1T11.Visible = true;
                                                 pboxAJ1T11.Visible = false;
                                                 pboxJ1T11.BackColor = Color.Red;
                                                 pboxJ1T11.Location = new Point(589, 325 - (28 * 4));
+                                                pboxJ1T11.Visible = false;
+                                                pboxJ2T11.Visible = false;
+                                                pboxJ3T11.Visible = false;
+                                                pboxJ4T11.Visible = false;
+                                                C11.BackColor = Color.Red;
+                                                C112.BackColor = Color.Red;
+                                                C113.BackColor = Color.Red;
+                                                C114.BackColor = Color.Red;
+                                                C115.BackColor = Color.Red;
+                                                C11.Visible = true;
+                                                C112.Visible = true;
+                                                C113.Visible = true;
+                                                C114.Visible = true;
+                                                C115.Visible = true;
+                                                FileirasWin.Add(new FilWin("11"));
                                             }
                                             else
                                             {
@@ -1901,10 +2118,21 @@ namespace Aplicativo1
                                         case 3:
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ1T12.Visible = true;
+                                                
                                                 pboxAJ1T12.Visible = false;
                                                 pboxJ1T12.BackColor = Color.Red;
                                                 pboxJ1T12.Location = new Point(642, (296 - 28) - 28);
+                                                pboxJ1T11.Visible = false;
+                                                pboxJ2T12.Visible = false;
+                                                pboxJ3T12.Visible = false;
+                                                pboxJ4T12.Visible = false;
+                                                C12.BackColor = Color.Red;
+                                                C122.BackColor = Color.Red;
+                                                C123.BackColor = Color.Red;
+                                                C12.Visible = true;
+                                                C122.Visible = true;
+                                                C123.Visible = true;
+                                                FileirasWin.Add(new FilWin("12"));
                                             }
                                             else
                                             {
@@ -1971,10 +2199,21 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ2T2.Visible = true;
+                                                
                                                 pboxAJ2T2.Visible = false;
                                                 pboxJ2T2.BackColor = Color.Blue;
                                                 pboxJ2T2.Location = new Point(129, (296 - 28) - 28);
+                                                pboxJ1T2.Visible = false;
+                                                pboxJ2T2.Visible = false;
+                                                pboxJ3T2.Visible = false;
+                                                pboxJ4T2.Visible = false;
+                                                C2.BackColor = Color.Blue;
+                                                C22.BackColor = Color.Blue;
+                                                C23.BackColor = Color.Blue;
+                                                C2.Visible = true;
+                                                C22.Visible = true;
+                                                C23.Visible = true;
+                                                
                                             }
                                             else
                                             {
@@ -2065,10 +2304,23 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ2T3.Visible = true;
                                                 pboxAJ2T3.Visible = false;
                                                 pboxJ2T3.BackColor = Color.Blue;
                                                 pboxJ2T3.Location = new Point(181, 325 - (28 * 4));
+                                                pboxJ1T3.Visible = false;
+                                                pboxJ2T3.Visible = false;
+                                                pboxJ3T3.Visible = false;
+                                                pboxJ4T3.Visible = false;
+                                                C3.BackColor = Color.Blue;
+                                                C32.BackColor = Color.Blue;
+                                                C33.BackColor = Color.Blue;
+                                                C34.BackColor = Color.Blue;
+                                                C35.BackColor = Color.Blue;
+                                                C3.Visible = true;
+                                                C32.Visible = true;
+                                                C33.Visible = true;
+                                                C34.Visible = true;
+                                                C35.Visible = true;
                                             }
                                             else
                                             {
@@ -2192,10 +2444,28 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ2T4.Visible = true;
+                                               
                                                 pboxAJ2T4.Visible = false;
                                                 pboxJ2T4.BackColor = Color.Blue;
                                                 pboxJ2T4.Location = new Point(235, 354 - (28 * 6));
+                                                pboxJ1T4.Visible = false;
+                                                pboxJ2T4.Visible = false;
+                                                pboxJ3T4.Visible = false;
+                                                pboxJ4T4.Visible = false;
+                                                C4.BackColor = Color.Blue;
+                                                C42.BackColor = Color.Blue;
+                                                C43.BackColor = Color.Blue;
+                                                C44.BackColor = Color.Blue;
+                                                C45.BackColor = Color.Blue;
+                                                C46.BackColor = Color.Blue;
+                                                C47.BackColor = Color.Blue;
+                                                C4.Visible = true;
+                                                C42.Visible = true;
+                                                C43.Visible = true;
+                                                C44.Visible = true;
+                                                C45.Visible = true;
+                                                C46.Visible = true;
+                                                C47.Visible = true;
                                             }
                                             else
                                             {
@@ -2353,10 +2623,33 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ2T5.Visible = true;
+                                                
                                                 pboxAJ2T5.Visible = false;
                                                 pboxJ2T5.BackColor = Color.Blue;
                                                 pboxJ2T5.Location = new Point(287, 381 - (28 * 8));
+                                                pboxJ1T5.Visible = false;
+                                                pboxJ2T5.Visible = false;
+                                                pboxJ3T5.Visible = false;
+                                                pboxJ4T5.Visible = false;
+                                                C5.BackColor = Color.Blue;
+                                                C52.BackColor = Color.Blue;
+                                                C53.BackColor = Color.Blue;
+                                                C54.BackColor = Color.Blue;
+                                                C55.BackColor = Color.Blue;
+                                                C56.BackColor = Color.Blue;
+                                                C57.BackColor = Color.Blue;
+                                                C58.BackColor = Color.Blue;
+                                                C59.BackColor = Color.Blue;
+
+                                                C5.Visible = true;
+                                                C52.Visible = true;
+                                                C53.Visible = true;
+                                                C54.Visible = true;
+                                                C55.Visible = true;
+                                                C56.Visible = true;
+                                                C57.Visible = true;
+                                                C58.Visible = true;
+                                                C59.Visible = true;
                                             }
                                             else
                                             {
@@ -2553,10 +2846,36 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ2T6.Visible = true;
                                                 pboxAJ2T6.Visible = false;
                                                 pboxJ2T6.BackColor = Color.Blue;
                                                 pboxJ2T6.Location = new Point(341, 410 - (28 * 10));
+                                                pboxJ1T6.Visible = false;
+                                                pboxJ2T6.Visible = false;
+                                                pboxJ3T6.Visible = false;
+                                                pboxJ4T6.Visible = false;
+                                                C6.BackColor = Color.Blue;
+                                                C62.BackColor = Color.Blue;
+                                                C63.BackColor = Color.Blue;
+                                                C64.BackColor = Color.Blue;
+                                                C65.BackColor = Color.Blue;
+                                                C66.BackColor = Color.Blue;
+                                                C67.BackColor = Color.Blue;
+                                                C68.BackColor = Color.Blue;
+                                                C69.BackColor = Color.Blue;
+                                                C610.BackColor = Color.Blue;
+                                                C611.BackColor = Color.Blue;
+
+                                                C6.Visible = true;
+                                                C62.Visible = true;
+                                                C63.Visible = true;
+                                                C64.Visible = true;
+                                                C65.Visible = true;
+                                                C66.Visible = true;
+                                                C67.Visible = true;
+                                                C68.Visible = true;
+                                                C69.Visible = true;
+                                                C610.Visible = true;
+                                                C611.Visible = true;
                                             }
                                             else
                                             {
@@ -2793,10 +3112,40 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ2T7.Visible = true;
+                                               
                                                 pboxAJ2T7.Visible = false;
                                                 pboxJ2T7.BackColor = Color.Blue;
                                                 pboxJ2T7.Location = new Point(395, 438 - (28 * 12));
+                                                pboxJ1T7.Visible = false;
+                                                pboxJ2T7.Visible = false;
+                                                pboxJ3T7.Visible = false;
+                                                pboxJ4T7.Visible = false;
+                                                C7.BackColor = Color.Blue;
+                                                C72.BackColor = Color.Blue;
+                                                C73.BackColor = Color.Blue;
+                                                C74.BackColor = Color.Blue;
+                                                C75.BackColor = Color.Blue;
+                                                C76.BackColor = Color.Blue;
+                                                C77.BackColor = Color.Blue;
+                                                C78.BackColor = Color.Blue;
+                                                C79.BackColor = Color.Blue;
+                                                C710.BackColor = Color.Blue;
+                                                C711.BackColor = Color.Blue;
+                                                C712.BackColor = Color.Blue;
+                                                C713.BackColor = Color.Blue;
+                                                C7.Visible = true;
+                                                C72.Visible = true;
+                                                C73.Visible = true;
+                                                C74.Visible = true;
+                                                C75.Visible = true;
+                                                C76.Visible = true;
+                                                C77.Visible = true;
+                                                C78.Visible = true;
+                                                C79.Visible = true;
+                                                C710.Visible = true;
+                                                C711.Visible = true;
+                                                C712.Visible = true;
+                                                C713.Visible = true;
                                             }
                                             else
                                             {
@@ -2987,10 +3336,37 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ2T8.Visible = true;
+                                                
                                                 pboxAJ2T8.Visible = false;
                                                 pboxJ2T8.BackColor = Color.Blue;
                                                 pboxJ2T8.Location = new Point(447, 410 - (28 * 8));
+                                                pboxJ1T8.Visible = false;
+                                                pboxJ2T8.Visible = false;
+                                                pboxJ3T8.Visible = false;
+                                                pboxJ4T8.Visible = false;
+                                                C8.BackColor = Color.Blue;
+                                                C82.BackColor = Color.Blue;
+                                                C83.BackColor = Color.Blue;
+                                                C84.BackColor = Color.Blue;
+                                                C85.BackColor = Color.Blue;
+                                                C86.BackColor = Color.Blue;
+                                                C87.BackColor = Color.Blue;
+                                                C88.BackColor = Color.Blue;
+                                                C89.BackColor = Color.Blue;
+                                                C810.BackColor = Color.Blue;
+                                                C811.BackColor = Color.Blue;
+                                                C8.Visible = true;
+                                                C82.Visible = true;
+                                                C83.Visible = true;
+                                                C84.Visible = true;
+                                                C85.Visible = true;
+                                                C86.Visible = true;
+                                                C87.Visible = true;
+                                                C88.Visible = true;
+                                                C89.Visible = true;
+                                                C810.Visible = true;
+                                                C811.Visible = true;
+                                                
                                             }
                                             else
                                             {
@@ -3150,10 +3526,34 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ2T9.Visible = true;
+                                                
                                                 pboxAJ2T9.Visible = false;
                                                 pboxJ2T9.BackColor = Color.Blue;
                                                 pboxJ2T9.Location = new Point(500, 381 - (28 * 8));
+                                                pboxJ1T9.Visible = false;
+                                                pboxJ2T9.Visible = false;
+                                                pboxJ3T9.Visible = false;
+                                                pboxJ4T9.Visible = false;
+                                                C9.BackColor = Color.Blue;
+                                                C92.BackColor = Color.Blue;
+                                                C93.BackColor = Color.Blue;
+                                                C94.BackColor = Color.Blue;
+                                                C95.BackColor = Color.Blue;
+                                                C96.BackColor = Color.Blue;
+                                                C97.BackColor = Color.Blue;
+                                                C98.BackColor = Color.Blue;
+                                                C99.BackColor = Color.Blue;
+                                              
+                                                C9.Visible = true;
+                                                C92.Visible = true;
+                                                C93.Visible = true;
+                                                C94.Visible = true;
+                                                C95.Visible = true;
+                                                C96.Visible = true;
+                                                C97.Visible = true;
+                                                C98.Visible = true;
+                                                C99.Visible = true;
+
                                             }
                                             else
                                             {
@@ -3275,10 +3675,30 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ2T10.Visible = true;
+                                                
                                                 pboxAJ2T10.Visible = false;
                                                 pboxJ2T10.BackColor = Color.Blue;
                                                 pboxJ2T10.Location = new Point(553, 354 - (28 * 6));
+                                                pboxJ1T10.Visible = false;
+                                                pboxJ2T10.Visible = false;
+                                                pboxJ3T10.Visible = false;
+                                                pboxJ4T10.Visible = false;
+                                                C10.BackColor = Color.Blue;
+                                                C102.BackColor = Color.Blue;
+                                                C103.BackColor = Color.Blue;
+                                                C104.BackColor = Color.Blue;
+                                                C105.BackColor = Color.Blue;
+                                                C106.BackColor = Color.Blue;
+                                                C107.BackColor = Color.Blue;
+                                               
+                                                C10.Visible = true;
+                                                C102.Visible = true;
+                                                C103.Visible = true;
+                                                C104.Visible = true;
+                                                C105.Visible = true;
+                                                C106.Visible = true;
+                                                C107.Visible = true;
+                                                
                                             }
                                             else
                                             {
@@ -3368,10 +3788,26 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ2T11.Visible = true;
+                                               
                                                 pboxAJ2T11.Visible = false;
                                                 pboxJ2T11.BackColor = Color.Blue;
                                                 pboxJ2T11.Location = new Point(607, 325 - (28 * 4));
+                                                pboxJ1T11.Visible = false;
+                                                pboxJ2T11.Visible = false;
+                                                pboxJ3T11.Visible = false;
+                                                pboxJ4T11.Visible = false;
+                                                C11.BackColor = Color.Blue;
+                                                C112.BackColor = Color.Blue;
+                                                C113.BackColor = Color.Blue;
+                                                C114.BackColor = Color.Blue;
+                                                C115.BackColor = Color.Blue;
+                                                
+                                                C11.Visible = true;
+                                                C112.Visible = true;
+                                                C113.Visible = true;
+                                                C114.Visible = true;
+                                                C115.Visible = true;
+                                                
                                             }
                                             else
                                             {
@@ -3431,6 +3867,16 @@ namespace Aplicativo1
                                                 pboxAJ2T12.Visible = false;
                                                 pboxJ2T12.BackColor = Color.Blue;
                                                 pboxJ2T12.Location = new Point(660, (296 - 28) - 28);
+                                                pboxJ1T12.Visible = false;
+                                                pboxJ2T12.Visible = false;
+                                                pboxJ3T12.Visible = false;
+                                                pboxJ4T12.Visible = false;
+                                                C12.BackColor = Color.Blue;
+                                                C122.BackColor = Color.Blue;
+                                                C123.BackColor = Color.Blue;
+                                                C12.Visible = true;
+                                                C122.Visible = true;
+                                                C123.Visible = true;  
                                             }
                                             else
                                             {
@@ -3496,10 +3942,20 @@ namespace Aplicativo1
                                         case 3:
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ3T2.Visible = true;
+                                               
                                                 pboxAJ3T2.Visible = false;
                                                 pboxJ3T2.BackColor = Color.Green;
                                                 pboxJ3T2.Location = new Point(112, (306 - 28) - 28);
+                                                pboxJ1T2.Visible = false;
+                                                pboxJ2T2.Visible = false;
+                                                pboxJ3T2.Visible = false;
+                                                pboxJ4T2.Visible = false;
+                                                C2.BackColor = Color.Green;
+                                                C22.BackColor = Color.Green;
+                                                C23.BackColor = Color.Green;
+                                                C2.Visible = true;
+                                                C22.Visible = true;
+                                                C23.Visible = true;
                                             }
                                             else
                                             {
@@ -3597,10 +4053,24 @@ namespace Aplicativo1
                                             //CHECA COR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ3T3.Visible = true;
+                                                
                                                 pboxAJ3T3.Visible = false;
                                                 pboxJ3T3.BackColor = Color.Green;
                                                 pboxJ3T3.Location = new Point(163, 334 - (28 * 4));
+                                                pboxJ1T3.Visible = false;
+                                                pboxJ2T3.Visible = false;
+                                                pboxJ3T3.Visible = false;
+                                                pboxJ4T3.Visible = false;
+                                                C3.BackColor = Color.Green;
+                                                C32.BackColor = Color.Green;
+                                                C33.BackColor = Color.Green;
+                                                C34.BackColor = Color.Green;
+                                                C35.BackColor = Color.Green;
+                                                C3.Visible = true;
+                                                C32.Visible = true;
+                                                C33.Visible = true;
+                                                C34.Visible = true;
+                                                C35.Visible = true;
                                             }
                                             else
                                             {
@@ -3724,18 +4194,32 @@ namespace Aplicativo1
                                                 pboxAJ3T4.Location = new Point(217, 363 - (28 * 5));
                                             }
 
-
-
-
                                             break;
                                         case 7:
                                             //CHECA COR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ3T4.Visible = true;
                                                 pboxAJ3T4.Visible = false;
                                                 pboxJ3T4.BackColor = Color.Green;
                                                 pboxJ3T4.Location = new Point(217, 363 - (28 * 6));
+                                                pboxJ1T4.Visible = false;
+                                                pboxJ2T4.Visible = false;
+                                                pboxJ3T4.Visible = false;
+                                                pboxJ4T4.Visible = false;
+                                                C4.BackColor = Color.Green;
+                                                C42.BackColor = Color.Green;
+                                                C43.BackColor = Color.Green;
+                                                C44.BackColor = Color.Green;
+                                                C45.BackColor = Color.Green;
+                                                C46.BackColor = Color.Green;
+                                                C47.BackColor = Color.Green;
+                                                C4.Visible = true;
+                                                C42.Visible = true;
+                                                C43.Visible = true;
+                                                C44.Visible = true;
+                                                C45.Visible = true;
+                                                C46.Visible = true;
+                                                C47.Visible = true;
                                             }
                                             else
                                             {
@@ -3895,10 +4379,31 @@ namespace Aplicativo1
                                             //CHECA COR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ3T5.Visible = true;
                                                 pboxAJ3T5.Visible = false;
                                                 pboxJ3T5.BackColor = Color.Green;
                                                 pboxJ3T5.Location = new Point(270, 391 - (28 * 8));
+                                                pboxJ1T5.Visible = false;
+                                                pboxJ2T5.Visible = false;
+                                                pboxJ3T5.Visible = false;
+                                                pboxJ4T5.Visible = false;
+                                                C5.BackColor = Color.Green;
+                                                C52.BackColor = Color.Green;
+                                                C53.BackColor = Color.Green;
+                                                C54.BackColor = Color.Green;
+                                                C55.BackColor = Color.Green;
+                                                C56.BackColor = Color.Green;
+                                                C57.BackColor = Color.Green;
+                                                C58.BackColor = Color.Green;
+                                                C59.BackColor = Color.Green;
+                                                C5.Visible = true;
+                                                C52.Visible = true;
+                                                C53.Visible = true;
+                                                C54.Visible = true;
+                                                C55.Visible = true;
+                                                C56.Visible = true;
+                                                C57.Visible = true;
+                                                C58.Visible = true;
+                                                C59.Visible = true;
                                             }
                                             else
                                             {
@@ -4080,10 +4585,35 @@ namespace Aplicativo1
                                         case 11:
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ3T6.Visible = true;
                                                 pboxAJ3T6.Visible = false;
                                                 pboxJ3T6.BackColor = Color.Green;
                                                 pboxJ3T6.Location = new Point(323, 420 - (28 * 10));
+                                                pboxJ1T6.Visible = false;
+                                                pboxJ2T6.Visible = false;
+                                                pboxJ3T6.Visible = false;
+                                                pboxJ4T6.Visible = false;
+                                                C6.BackColor = Color.Green;
+                                                C62.BackColor = Color.Green;
+                                                C63.BackColor = Color.Green;
+                                                C64.BackColor = Color.Green;
+                                                C65.BackColor = Color.Green;
+                                                C66.BackColor = Color.Green;
+                                                C67.BackColor = Color.Green;
+                                                C68.BackColor = Color.Green;
+                                                C69.BackColor = Color.Green;
+                                                C610.BackColor = Color.Green;
+                                                C611.BackColor = Color.Green;
+                                                C6.Visible = true;
+                                                C62.Visible = true;
+                                                C63.Visible = true;
+                                                C64.Visible = true;
+                                                C65.Visible = true;
+                                                C66.Visible = true;
+                                                C67.Visible = true;
+                                                C68.Visible = true;
+                                                C69.Visible = true;
+                                                C610.Visible = true;
+                                                C611.Visible = true;
                                             }
                                             else
                                             {
@@ -4297,10 +4827,39 @@ namespace Aplicativo1
                                         case 13:
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ3T7.Visible = true;
                                                 pboxAJ3T7.Visible = false;
                                                 pboxJ3T7.BackColor = Color.Green;
                                                 pboxJ3T7.Location = new Point(376, 447 - (28 * 12));
+                                                pboxJ1T7.Visible = false;
+                                                pboxJ2T7.Visible = false;
+                                                pboxJ3T7.Visible = false;
+                                                pboxJ4T7.Visible = false;
+                                                C7.BackColor = Color.Green;
+                                                C72.BackColor = Color.Green;
+                                                C73.BackColor = Color.Green;
+                                                C74.BackColor = Color.Green;
+                                                C75.BackColor = Color.Green;
+                                                C76.BackColor = Color.Green;
+                                                C77.BackColor = Color.Green;
+                                                C78.BackColor = Color.Green;
+                                                C79.BackColor = Color.Green;
+                                                C710.BackColor = Color.Green;
+                                                C711.BackColor = Color.Green;
+                                                C712.BackColor = Color.Green;
+                                                C713.BackColor = Color.Green;
+                                                C7.Visible = true;
+                                                C72.Visible = true;
+                                                C73.Visible = true;
+                                                C74.Visible = true;
+                                                C75.Visible = true;
+                                                C76.Visible = true;
+                                                C77.Visible = true;
+                                                C78.Visible = true;
+                                                C79.Visible = true;
+                                                C710.Visible = true;
+                                                C711.Visible = true;
+                                                C712.Visible = true;
+                                                C713.Visible = true;
                                             }
                                             else
                                             {
@@ -4488,10 +5047,36 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ3T8.Visible = true;
                                                 pboxAJ3T8.Visible = false;
                                                 pboxJ3T8.BackColor = Color.Green;
                                                 pboxJ3T8.Location = new Point(429, 420 - (28 * 8));
+                                                pboxJ1T8.Visible = false;
+                                                pboxJ2T8.Visible = false;
+                                                pboxJ3T8.Visible = false;
+                                                pboxJ4T8.Visible = false;
+                                                C8.BackColor = Color.Green;
+                                                C82.BackColor = Color.Green;
+                                                C83.BackColor = Color.Green;
+                                                C84.BackColor = Color.Green;
+                                                C85.BackColor = Color.Green;
+                                                C86.BackColor = Color.Green;
+                                                C87.BackColor = Color.Green;
+                                                C88.BackColor = Color.Green;
+                                                C89.BackColor = Color.Green;
+                                                C810.BackColor = Color.Green;
+                                                C811.BackColor = Color.Green;
+                                                C8.Visible = true;
+                                                C82.Visible = true;
+                                                C83.Visible = true;
+                                                C84.Visible = true;
+                                                C85.Visible = true;
+                                                C86.Visible = true;
+                                                C87.Visible = true;
+                                                C88.Visible = true;
+                                                C89.Visible = true;
+                                                C810.Visible = true;
+                                                C811.Visible = true;
+                                               
                                             }
                                             else
                                             {
@@ -4645,10 +5230,34 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ3T9.Visible = true;
+                                                
                                                 pboxAJ3T9.Visible = false;
                                                 pboxJ3T9.BackColor = Color.Green;
                                                 pboxJ3T9.Location = new Point(482, 391 - (28 * 8));
+                                                pboxJ1T9.Visible = false;
+                                                pboxJ2T9.Visible = false;
+                                                pboxJ3T9.Visible = false;
+                                                pboxJ4T9.Visible = false;
+                                                C9.BackColor = Color.Green;
+                                                C92.BackColor = Color.Green;
+                                                C93.BackColor = Color.Green;
+                                                C94.BackColor = Color.Green;
+                                                C95.BackColor = Color.Green;
+                                                C96.BackColor = Color.Green;
+                                                C97.BackColor = Color.Green;
+                                                C98.BackColor = Color.Green;
+                                                C99.BackColor = Color.Green;
+                                                
+                                                C9.Visible = true;
+                                                C92.Visible = true;
+                                                C93.Visible = true;
+                                                C94.Visible = true;
+                                                C95.Visible = true;
+                                                C96.Visible = true;
+                                                C97.Visible = true;
+                                                C98.Visible = true;
+                                                C99.Visible = true;
+                                                
                                             }
                                             else
                                             {
@@ -4775,10 +5384,28 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ3T10.Visible = true;
                                                 pboxAJ3T10.Visible = false;
                                                 pboxJ3T10.BackColor = Color.Green;
                                                 pboxJ3T10.Location = new Point(536, 363 - (28 * 6));
+                                                pboxJ1T10.Visible = false;
+                                                pboxJ2T10.Visible = false;
+                                                pboxJ3T10.Visible = false;
+                                                pboxJ4T10.Visible = false;
+                                                C10.BackColor = Color.Green;
+                                                C102.BackColor = Color.Green;
+                                                C103.BackColor = Color.Green;
+                                                C104.BackColor = Color.Green;
+                                                C105.BackColor = Color.Green;
+                                                C106.BackColor = Color.Green;
+                                                C107.BackColor = Color.Green;
+                                                C10.Visible = true;
+                                                C102.Visible = true;
+                                                C103.Visible = true;
+                                                C104.Visible = true;
+                                                C105.Visible = true;
+                                                C106.Visible = true;
+                                                C107.Visible = true;
+                                               
                                             }
                                             else
                                             {
@@ -4871,10 +5498,25 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ3T11.Visible = true;
+                                                
                                                 pboxAJ3T11.Visible = false;
                                                 pboxJ3T11.BackColor = Color.Green;
                                                 pboxJ3T11.Location = new Point(589, 334 - (28 * 4));
+                                                pboxJ1T11.Visible = false;
+                                                pboxJ2T11.Visible = false;
+                                                pboxJ3T11.Visible = false;
+                                                pboxJ4T11.Visible = false;
+                                                C11.BackColor = Color.Green;
+                                                C112.BackColor = Color.Green;
+                                                C113.BackColor = Color.Green;
+                                                C114.BackColor = Color.Green;
+                                                C115.BackColor = Color.Green;
+                                                C11.Visible = true;
+                                                C112.Visible = true;
+                                                C113.Visible = true;
+                                                C114.Visible = true;
+                                                C115.Visible = true;
+                                           
                                             }
                                             else
                                             {
@@ -4928,10 +5570,21 @@ namespace Aplicativo1
                                         case 3:
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ3T12.Visible = true;
+                                              
                                                 pboxAJ3T12.Visible = false;
                                                 pboxJ3T12.BackColor = Color.Green;
                                                 pboxJ3T12.Location = new Point(642, (306 - 28) - 28);
+                                                pboxJ1T12.Visible = false;
+                                                pboxJ2T12.Visible = false;
+                                                pboxJ3T12.Visible = false;
+                                                pboxJ4T12.Visible = false;
+                                                C12.BackColor = Color.Green;
+                                                C122.BackColor = Color.Green;
+                                                C123.BackColor = Color.Green;
+                                                C12.Visible = true;
+                                                C122.Visible = true;
+                                                C123.Visible = true;
+                                               
                                             }
                                             else
                                             {
@@ -4996,10 +5649,19 @@ namespace Aplicativo1
                                         case 3:
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ4T2.Visible = true;
                                                 pboxAJ4T2.Visible = false;
                                                 pboxJ4T2.BackColor = Color.Yellow;
                                                 pboxJ4T2.Location = new Point(129, (306 - 28) - 28);
+                                                pboxJ1T2.Visible = false;
+                                                pboxJ2T2.Visible = false;
+                                                pboxJ3T2.Visible = false;
+                                                pboxJ4T2.Visible = false;
+                                                C2.BackColor = Color.Yellow;
+                                                C22.BackColor = Color.Yellow;
+                                                C23.BackColor = Color.Yellow;
+                                                C2.Visible = true;
+                                                C22.Visible = true;
+                                                C23.Visible = true;
                                             }
                                             else
                                             {
@@ -5097,10 +5759,23 @@ namespace Aplicativo1
                                             //CHECA COR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ4T3.Visible = true;
                                                 pboxAJ4T3.Visible = false;
                                                 pboxJ4T3.BackColor = Color.Yellow;
                                                 pboxJ4T3.Location = new Point(181, 334 - (28 * 4));
+                                                pboxJ1T3.Visible = false;
+                                                pboxJ2T3.Visible = false;
+                                                pboxJ3T3.Visible = false;
+                                                pboxJ4T3.Visible = false;
+                                                C3.BackColor = Color.Yellow;
+                                                C32.BackColor = Color.Yellow;
+                                                C33.BackColor = Color.Yellow;
+                                                C34.BackColor = Color.Yellow;
+                                                C35.BackColor = Color.Yellow;
+                                                C3.Visible = true;
+                                                C32.Visible = true;
+                                                C33.Visible = true;
+                                                C34.Visible = true;
+                                                C35.Visible = true;
                                             }
                                             else
                                             {
@@ -5232,10 +5907,28 @@ namespace Aplicativo1
                                             //CHECA COR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ4T4.Visible = true;
+                                                
                                                 pboxAJ4T4.Visible = false;
                                                 pboxJ4T4.BackColor = Color.Yellow;
                                                 pboxJ4T4.Location = new Point(235, 363 - (28 * 6));
+                                                pboxJ1T4.Visible = false;
+                                                pboxJ2T4.Visible = false;
+                                                pboxJ3T4.Visible = false;
+                                                pboxJ4T4.Visible = false;
+                                                C4.BackColor = Color.Yellow;
+                                                C42.BackColor = Color.Yellow;
+                                                C43.BackColor = Color.Yellow;
+                                                C44.BackColor = Color.Yellow;
+                                                C45.BackColor = Color.Yellow;
+                                                C46.BackColor = Color.Yellow;
+                                                C47.BackColor = Color.Yellow;
+                                                C4.Visible = true;
+                                                C42.Visible = true;
+                                                C43.Visible = true;
+                                                C44.Visible = true;
+                                                C45.Visible = true;
+                                                C46.Visible = true;
+                                                C47.Visible = true;
                                             }
                                             else
                                             {
@@ -5395,10 +6088,31 @@ namespace Aplicativo1
                                             //CHECA COR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ4T5.Visible = true;
                                                 pboxAJ4T5.Visible = false;
                                                 pboxJ4T5.BackColor = Color.Yellow;
                                                 pboxJ4T5.Location = new Point(287, 391 - (28 * 8));
+                                                pboxJ1T5.Visible = false;
+                                                pboxJ2T5.Visible = false;
+                                                pboxJ3T5.Visible = false;
+                                                pboxJ4T5.Visible = false;
+                                                C5.BackColor = Color.Yellow;
+                                                C52.BackColor = Color.Yellow;
+                                                C53.BackColor = Color.Yellow;
+                                                C54.BackColor = Color.Yellow;
+                                                C55.BackColor = Color.Yellow;
+                                                C56.BackColor = Color.Yellow;
+                                                C57.BackColor = Color.Yellow;
+                                                C58.BackColor = Color.Yellow;
+                                                C59.BackColor = Color.Yellow;
+                                                C5.Visible = true;
+                                                C52.Visible = true;
+                                                C53.Visible = true;
+                                                C54.Visible = true;
+                                                C55.Visible = true;
+                                                C56.Visible = true;
+                                                C57.Visible = true;
+                                                C58.Visible = true;
+                                                C59.Visible = true;
                                             }
                                             else
                                             {
@@ -5580,10 +6294,36 @@ namespace Aplicativo1
                                         case 11:
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ4T6.Visible = true;
+                                                
                                                 pboxAJ4T6.Visible = false;
                                                 pboxJ4T6.BackColor = Color.Yellow;
                                                 pboxJ4T6.Location = new Point(341, 420 - (28 * 10));
+                                                pboxJ1T6.Visible = false;
+                                                pboxJ2T6.Visible = false;
+                                                pboxJ3T6.Visible = false;
+                                                pboxJ4T6.Visible = false;
+                                                C6.BackColor = Color.Yellow;
+                                                C62.BackColor = Color.Yellow;
+                                                C63.BackColor = Color.Yellow;
+                                                C64.BackColor = Color.Yellow;
+                                                C65.BackColor = Color.Yellow;
+                                                C66.BackColor = Color.Yellow;
+                                                C67.BackColor = Color.Yellow;
+                                                C68.BackColor = Color.Yellow;
+                                                C69.BackColor = Color.Yellow;
+                                                C610.BackColor = Color.Yellow;
+                                                C611.BackColor = Color.Yellow;
+                                                C6.Visible = true;
+                                                C62.Visible = true;
+                                                C63.Visible = true;
+                                                C64.Visible = true;
+                                                C65.Visible = true;
+                                                C66.Visible = true;
+                                                C67.Visible = true;
+                                                C68.Visible = true;
+                                                C69.Visible = true;
+                                                C610.Visible = true;
+                                                C611.Visible = true;
                                             }
                                             else
                                             {
@@ -5797,10 +6537,39 @@ namespace Aplicativo1
                                         case 13:
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ4T7.Visible = true;
                                                 pboxAJ4T7.Visible = false;
                                                 pboxJ4T7.BackColor = Color.Yellow;
                                                 pboxJ4T7.Location = new Point(395, 447 - (28 * 12));
+                                                pboxJ1T7.Visible = false;
+                                                pboxJ2T7.Visible = false;
+                                                pboxJ3T7.Visible = false;
+                                                pboxJ4T7.Visible = false;
+                                                C7.BackColor = Color.Yellow;
+                                                C72.BackColor = Color.Yellow;
+                                                C73.BackColor = Color.Yellow;
+                                                C74.BackColor = Color.Yellow;
+                                                C75.BackColor = Color.Yellow;
+                                                C76.BackColor = Color.Yellow;
+                                                C77.BackColor = Color.Yellow;
+                                                C78.BackColor = Color.Yellow;
+                                                C79.BackColor = Color.Yellow;
+                                                C710.BackColor = Color.Yellow;
+                                                C711.BackColor = Color.Yellow;
+                                                C712.BackColor = Color.Yellow;
+                                                C713.BackColor = Color.Yellow;
+                                                C7.Visible = true;
+                                                C72.Visible = true;
+                                                C73.Visible = true;
+                                                C74.Visible = true;
+                                                C75.Visible = true;
+                                                C76.Visible = true;
+                                                C77.Visible = true;
+                                                C78.Visible = true;
+                                                C79.Visible = true;
+                                                C710.Visible = true;
+                                                C711.Visible = true;
+                                                C712.Visible = true;
+                                                C713.Visible = true;
                                             }
                                             else
                                             {
@@ -5988,10 +6757,36 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ4T8.Visible = true;
+                                                
                                                 pboxAJ4T8.Visible = false;
                                                 pboxJ4T8.BackColor = Color.Yellow;
                                                 pboxJ4T8.Location = new Point(447, 420 - (28 * 8));
+                                                pboxJ1T8.Visible = false;
+                                                pboxJ2T8.Visible = false;
+                                                pboxJ3T8.Visible = false;
+                                                pboxJ4T8.Visible = false;
+                                                C8.BackColor = Color.Yellow;
+                                                C82.BackColor = Color.Yellow;
+                                                C83.BackColor = Color.Yellow;
+                                                C84.BackColor = Color.Yellow;
+                                                C85.BackColor = Color.Yellow;
+                                                C86.BackColor = Color.Yellow;
+                                                C87.BackColor = Color.Yellow;
+                                                C88.BackColor = Color.Yellow;
+                                                C89.BackColor = Color.Yellow;
+                                                C810.BackColor = Color.Yellow;
+                                                C811.BackColor = Color.Yellow;
+                                                C8.Visible = true;
+                                                C82.Visible = true;
+                                                C83.Visible = true;
+                                                C84.Visible = true;
+                                                C85.Visible = true;
+                                                C86.Visible = true;
+                                                C87.Visible = true;
+                                                C88.Visible = true;
+                                                C89.Visible = true;
+                                                C810.Visible = true;
+                                                C811.Visible = true;
                                             }
                                             else
                                             {
@@ -6145,10 +6940,33 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ4T9.Visible = true;
+                                                
                                                 pboxAJ4T9.Visible = false;
                                                 pboxJ4T9.BackColor = Color.Yellow;
                                                 pboxJ4T9.Location = new Point(500, 391 - (28 * 8));
+                                                pboxJ1T9.Visible = false;
+                                                pboxJ2T9.Visible = false;
+                                                pboxJ3T9.Visible = false;
+                                                pboxJ4T9.Visible = false;
+                                                C9.BackColor = Color.Yellow;
+                                                C92.BackColor = Color.Yellow;
+                                                C93.BackColor = Color.Yellow;
+                                                C94.BackColor = Color.Yellow;
+                                                C95.BackColor = Color.Yellow;
+                                                C96.BackColor = Color.Yellow;
+                                                C97.BackColor = Color.Yellow;
+                                                C98.BackColor = Color.Yellow;
+                                                C99.BackColor = Color.Yellow;
+                                                C9.Visible = true;
+                                                C92.Visible = true;
+                                                C93.Visible = true;
+                                                C94.Visible = true;
+                                                C95.Visible = true;
+                                                C96.Visible = true;
+                                                C97.Visible = true;
+                                                C98.Visible = true;
+                                                C99.Visible = true;
+                                                
                                             }
                                             else
                                             {
@@ -6275,10 +7093,30 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ4T10.Visible = true;
+                                                
                                                 pboxAJ4T10.Visible = false;
                                                 pboxJ4T10.BackColor = Color.Yellow;
                                                 pboxJ4T10.Location = new Point(553, 363 - (28 * 6));
+                                                pboxJ1T10.Visible = false;
+                                                pboxJ2T10.Visible = false;
+                                                pboxJ3T10.Visible = false;
+                                                pboxJ4T10.Visible = false;
+                                                C10.BackColor = Color.Yellow;
+                                                C102.BackColor = Color.Yellow;
+                                                C103.BackColor = Color.Yellow;
+                                                C104.BackColor = Color.Yellow;
+                                                C105.BackColor = Color.Yellow;
+                                                C106.BackColor = Color.Yellow;
+                                                C107.BackColor = Color.Yellow;
+                                               
+                                                C10.Visible = true;
+                                                C102.Visible = true;
+                                                C103.Visible = true;
+                                                C104.Visible = true;
+                                                C105.Visible = true;
+                                                C106.Visible = true;
+                                                C107.Visible = true;
+                                                
                                             }
                                             else
                                             {
@@ -6371,10 +7209,25 @@ namespace Aplicativo1
                                             //CHECA CORRRRR
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ4T11.Visible = true;
+                                             
                                                 pboxAJ4T11.Visible = false;
                                                 pboxJ4T11.BackColor = Color.Yellow;
                                                 pboxJ4T11.Location = new Point(607, 334 - (28 * 4));
+                                                pboxJ1T11.Visible = false;
+                                                pboxJ2T11.Visible = false;
+                                                pboxJ3T11.Visible = false;
+                                                pboxJ4T11.Visible = false;
+                                                C11.BackColor = Color.Yellow;
+                                                C112.BackColor = Color.Yellow;
+                                                C113.BackColor = Color.Yellow;
+                                                C114.BackColor = Color.Yellow;
+                                                C115.BackColor = Color.Yellow;                                             
+                                                C11.Visible = true;
+                                                C112.Visible = true;
+                                                C113.Visible = true;
+                                                C114.Visible = true;
+                                                C115.Visible = true;
+                                                
                                             }
                                             else
                                             {
@@ -6428,10 +7281,20 @@ namespace Aplicativo1
                                         case 3:
                                             if (Status.tipo == 'B')
                                             {
-                                                pboxJ4T12.Visible = true;
                                                 pboxAJ4T12.Visible = false;
                                                 pboxJ4T12.BackColor = Color.Yellow;
                                                 pboxJ4T12.Location = new Point(660, (306 - 28) - 28);
+                                                pboxJ1T12.Visible = false;
+                                                pboxJ2T12.Visible = false;
+                                                pboxJ3T12.Visible = false;
+                                                pboxJ4T12.Visible = false;
+                                                C12.BackColor = Color.Yellow;
+                                                C122.BackColor = Color.Yellow;
+                                                C123.BackColor = Color.Yellow;
+                                                C12.Visible = true;
+                                                C122.Visible = true;
+                                                C123.Visible = true;
+                                                
                                             }
                                             else
                                             {
@@ -6461,14 +7324,8 @@ namespace Aplicativo1
             }
         }
 
-        private void txtJogadores_TextChanged(object sender, EventArgs e)
-        {
+       
 
-        }
-
-        private void btn_Click(object sender, EventArgs e)
-        {
-            
-        }
+      
     }
 }

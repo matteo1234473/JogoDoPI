@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dado.cs" />
+    <Compile Include="FilWin.cs" />
     <Compile Include="Jogadas.cs" />
     <Compile Include="Jogador.cs" />
     <Compile Include="TrilhaJogador.cs" />
