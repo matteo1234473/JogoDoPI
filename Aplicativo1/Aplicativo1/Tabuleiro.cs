@@ -577,7 +577,7 @@ namespace Aplicativo1
                             if (dado24 == dado13 && dado24.ToString() != fila.Filwin)
                             {
                                 hex1324();
-                                alp -= 2;
+                                alp -= 1;
 
                                 listaDeJogadas.Add(new Jogadas(dado13S));
                                 listaDeJogadas.Add(new Jogadas(dado24S));
@@ -695,15 +695,35 @@ namespace Aplicativo1
                     else
                     {
                         hex1234();
-
                         foreach (Jogadas jogada in listaDeJogadas)
                         {
-                            if (jogada.Poze == dado12S || jogada.Poze == dado34S)
+                            if(dado12.ToString() == jogada.Poze)
                             {
+                                if(dado34.ToString() == jogada.Poze)
+                                {
+                                    return ("1234," + dado12S + dado34S);
+                                }
+
                                 alp -= 1;
                                 return ("1234," + dado12S + dado34S);
+
+                             }
+
+                            if (dado34.ToString() == jogada.Poze)
+                            {
+                                if (dado12.ToString() == jogada.Poze)
+                                {
+                                    return ("1234," + dado12S + dado34S);
+                                }
+
+                                alp -= 1;
+                                return ("1234," + dado12S + dado34S);
+
                             }
+
+
                         }
+
                         alp -= 1;
                         return ("1234," + dado12S + "0");
                     }
