@@ -1193,7 +1193,7 @@ namespace Aplicativo1
             // 
             // timer1
             // 
-            this.timer1.Interval = 5000;
+            this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // lblJogador
@@ -1209,7 +1209,7 @@ namespace Aplicativo1
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(721, 271);
+            this.label4.Location = new System.Drawing.Point(721, 251);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 13);
             this.label4.TabIndex = 229;
@@ -1219,7 +1219,7 @@ namespace Aplicativo1
             // 
             this.lblqtdAlp.AutoSize = true;
             this.lblqtdAlp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblqtdAlp.Location = new System.Drawing.Point(721, 296);
+            this.lblqtdAlp.Location = new System.Drawing.Point(730, 274);
             this.lblqtdAlp.Name = "lblqtdAlp";
             this.lblqtdAlp.Size = new System.Drawing.Size(42, 16);
             this.lblqtdAlp.TabIndex = 230;
@@ -1869,7 +1869,7 @@ namespace Aplicativo1
             // 
             this.C123.Location = new System.Drawing.Point(643, 298);
             this.C123.Name = "C123";
-            this.C123.Size = new System.Drawing.Size(30, 23);
+            this.C123.Size = new System.Drawing.Size(30, 22);
             this.C123.TabIndex = 280;
             this.C123.Visible = false;
             // 

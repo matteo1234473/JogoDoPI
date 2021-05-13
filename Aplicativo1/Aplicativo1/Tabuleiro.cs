@@ -25,13 +25,14 @@ namespace Aplicativo1
         List<Jogador> listaDeJogadores = new List<Jogador>();
         List<Dado> listaDeDados = new List<Dado>();
         List<Jogadas> listaDeJogadas = new List<Jogadas>();
-        List<FilWin> FileirasWin = new List<FilWin>();
+        List<FilWin> ListadeFileiras = new List<FilWin>();
 
         int alp = 3;
         int dado12 = 0, dado13 = 0, dado14 = 0, dado24 = 0, dado23 = 0, dado34 = 0;
         string d1234, d1324, d1423, dado12S, dado13S, dado14S, dado24S, dado23S, dado34S;
+        //bool t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12;
+        bool pode1 = false, pode2 = false;
 
-     
         public Tabuleiro()
         {
             form1.ShowDialog();
@@ -246,18 +247,160 @@ namespace Aplicativo1
             }
         }
 
+        public void hex1234()
+        {
+            if (dado12 == 10 || dado12 == 11 || dado12 == 12)
+                dado12S = dado12.ToString("X");
+
+            if (dado34 == 10 || dado34 == 11 || dado34 == 12)
+                dado34S = dado34.ToString("X");
+        }
+        public void hex1423()
+        {
+            if (dado14 == 10 || dado14 == 11 || dado14 == 12)
+                dado14S = dado14.ToString("X");
+
+            if (dado23 == 10 || dado23 == 11 || dado23 == 12)
+                dado23S = dado23.ToString("X");
+        }
+
+        public void hex1324()
+        {
+            if (dado13 == 10 || dado13 == 11 || dado13 == 12)
+                dado13S = dado13.ToString("X");
+
+            if (dado24 == 10 || dado24 == 11 || dado24 == 12)
+                dado24S = dado24.ToString("X");
+        }
+
+
         public string escolha()
         {
             
             if (alp == 3)
             {
+
+                foreach (FilWin fila in ListadeFileiras)
+                {
+
+                    if (dado12.ToString() == fila.Filwin && dado34.ToString() == fila.Filwin)
+                    {
+
+                        if (dado14.ToString() == fila.Filwin && dado23.ToString() == fila.Filwin)
+                        {
+
+                            if (dado24 == dado13 && dado24.ToString() != fila.Filwin)
+                            {
+                                hex1324();
+                                alp -= 2;
+
+                                listaDeJogadas.Add(new Jogadas(dado13S));
+                                listaDeJogadas.Add(new Jogadas(dado24S));
+                                return ("1324," + dado13S + dado24S);
+
+                            }
+
+                            if (dado24.ToString() == fila.Filwin)
+                            {
+                                hex1324();
+                                alp -= 1;
+
+                                listaDeJogadas.Add(new Jogadas(dado13S));
+                                
+                                return ("1324," + dado13S + "0");
+                            }
+
+                            if (dado13.ToString() == fila.Filwin)
+                            {
+                                hex1324();
+
+                                alp -= 1;
+
+                                listaDeJogadas.Add(new Jogadas(dado24S));
+                                return ("2413," + dado24S + "0");
+                            }
+                        }
+                        else
+                        {
+
+                            if (dado14 == dado23 && dado14.ToString() != fila.Filwin)
+                            {
+                                hex1423();
+                                alp -= 2;
+                                listaDeJogadas.Add(new Jogadas(dado14S));
+                                listaDeJogadas.Add(new Jogadas(dado23S));
+
+                                return ("1423," + dado14S + dado23S);
+
+                            }
+
+                            if (dado14.ToString() == fila.Filwin)
+                            {
+                                hex1423();
+                                alp -= 1;
+                                listaDeJogadas.Add(new Jogadas(dado23S));
+
+                                return ("2314," + dado23S + "0");
+                            }
+
+                            if (dado23.ToString() == fila.Filwin)
+                            {
+                                hex1423();
+
+                                alp -= 1;
+
+                                listaDeJogadas.Add(new Jogadas(dado14S));
+
+                                return ("1423," + dado14S + "0");
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+
+                        if (dado12 == dado24 && dado12.ToString() != fila.Filwin)
+                        {
+                            hex1234();
+                            alp -= 2;
+
+                            listaDeJogadas.Add(new Jogadas(dado12S));
+                            listaDeJogadas.Add(new Jogadas(dado34S));
+                            return ("1234," + dado12S + dado34S);
+
+                        }
+
+                        if (dado12.ToString() == fila.Filwin)
+                        {
+                            hex1234();
+
+                            alp -= 1;
+
+                            listaDeJogadas.Add(new Jogadas(dado34S));
+                           
+
+                            return ("3412," + dado34S + "0");
+                        }
+
+                        if (dado34.ToString() == fila.Filwin)
+                        {
+                            hex1234();
+
+                            alp -= 1;
+
+                            listaDeJogadas.Add(new Jogadas(dado34S));
+                            return ("1234," + dado12S + "0");
+                        }
+
+                        
+                    }
+                }
+
                 if (dado12 == dado34)
                 {
-                    if (dado12 == 10 || dado12 == 11 || dado12 == 12)
-                        dado12S = dado12.ToString("X");
 
-                    if (dado34 == 10 || dado34 == 11 || dado34 == 12)
-                        dado34S = dado34.ToString("X");
+                    hex1234();
 
                     alp -= 1;
                     listaDeJogadas.Add(new Jogadas(dado12S));
@@ -267,11 +410,7 @@ namespace Aplicativo1
                 }
                 else
                 {
-                    if (dado12 == 10 || dado12 == 11 || dado12 == 12)
-                        dado12S = dado12.ToString("X");
-
-                    if (dado34 == 10 || dado34 == 11 || dado34 == 12)
-                        dado34S = dado34.ToString("X");
+                    hex1234();
 
                     alp -= 2;
                     listaDeJogadas.Add(new Jogadas(dado12S));
@@ -281,14 +420,128 @@ namespace Aplicativo1
                 }
             }
             if (alp == 2)
+            {
+                foreach (FilWin fila in ListadeFileiras) 
                 {
-                    if (dado12 == dado34)
-                    {
-                        if (dado12 == 10 || dado12 == 11 || dado12 == 12)
-                            dado12S = dado12.ToString("X");
 
-                        if (dado34 == 10 || dado34 == 11 || dado34 == 12)
-                            dado34S = dado34.ToString("X");
+                    if (dado12.ToString() == fila.Filwin && dado34.ToString() == fila.Filwin)
+                    {
+
+                        if (dado14.ToString() == fila.Filwin && dado23.ToString() == fila.Filwin)
+                        {
+
+                            if (dado24 == dado13 && dado24.ToString() != fila.Filwin)
+                            {
+                                hex1324();
+                                alp -= 2;
+
+                                listaDeJogadas.Add(new Jogadas(dado13S));
+                                listaDeJogadas.Add(new Jogadas(dado24S));
+                                return ("1324," + dado13S + dado24S);
+
+                            }
+
+                            if (dado24.ToString() == fila.Filwin)
+                            {
+                                hex1324();
+                                alp -= 1;
+
+                                listaDeJogadas.Add(new Jogadas(dado13S));
+
+                                return ("1324," + dado13S + "0");
+                            }
+
+                            if (dado13.ToString() == fila.Filwin)
+                            {
+                                hex1324();
+
+                                alp -= 1;
+
+                                listaDeJogadas.Add(new Jogadas(dado24S));
+                                return ("2413," + dado24S + "0");
+                            }
+                        }
+                        else
+                        {
+
+                            if (dado14 == dado23 && dado14.ToString() != fila.Filwin)
+                            {
+                                hex1423();
+                                alp -= 2;
+                                listaDeJogadas.Add(new Jogadas(dado14S));
+                                listaDeJogadas.Add(new Jogadas(dado23S));
+
+                                return ("1423," + dado14S + dado23S);
+
+                            }
+
+                            if (dado14.ToString() == fila.Filwin)
+                            {
+                                hex1423();
+                                alp -= 1;
+                                listaDeJogadas.Add(new Jogadas(dado23S));
+
+                                return ("2314," + dado23S + "0");
+                            }
+
+                            if (dado23.ToString() == fila.Filwin)
+                            {
+                                hex1423();
+
+                                alp -= 1;
+
+                                listaDeJogadas.Add(new Jogadas(dado14S));
+
+                                return ("1423," + dado14S + "0");
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+
+                        if (dado12 == dado24 && dado12.ToString() != fila.Filwin)
+                        {
+                            hex1234();
+                            alp -= 2;
+
+                            listaDeJogadas.Add(new Jogadas(dado12S));
+                            listaDeJogadas.Add(new Jogadas(dado34S));
+                            return ("1234," + dado12S + dado34S);
+
+                        }
+
+                        if (dado12.ToString() == fila.Filwin)
+                        {
+                            hex1234();
+
+                            alp -= 1;
+
+                            listaDeJogadas.Add(new Jogadas(dado34S));
+
+
+                            return ("3412," + dado34S + "0");
+                        }
+
+                        if (dado34.ToString() == fila.Filwin)
+                        {
+                            hex1234();
+
+                            alp -= 1;
+
+                            listaDeJogadas.Add(new Jogadas(dado34S));
+                            return ("1234," + dado12S + "0");
+                        }
+
+
+                    }
+                }
+
+
+                if (dado12 == dado34)
+                    {
+                        hex1234();
 
                             listaDeJogadas.Add(new Jogadas(dado12S));
                             listaDeJogadas.Add(new Jogadas(dado34S));
@@ -297,59 +550,213 @@ namespace Aplicativo1
                     }
                     else
                     {
-                        if (dado12 == 10 || dado12 == 11 || dado12 == 12)
-                            dado12S = dado12.ToString("X");
+                        hex1234();
 
-                        if (dado34 == 10 || dado34 == 11 || dado34 == 12)
-                            dado34S = dado34.ToString("X");
 
-                        
                         listaDeJogadas.Add(new Jogadas(dado12S));
                         listaDeJogadas.Add(new Jogadas(dado34S));
 
                         alp -= 2;
                         return ("1234," + dado12S + dado34S);
                     }
-                }
+            }
 
 
-                if (alp == 1)
+            if (alp == 1)
+            {
+                //ABAIXO VAI DAR MERDA
+                foreach (FilWin fila in ListadeFileiras)
                 {
-                    if (dado12 == dado34)
+
+                    if (dado12.ToString() == fila.Filwin && dado34.ToString() == fila.Filwin)
                     {
-                        if (dado12 == 10 || dado12 == 11 || dado12 == 12)
-                            dado12S = dado12.ToString("X");
 
-                        if (dado34 == 10 || dado34 == 11 || dado34 == 12)
-                            dado34S = dado34.ToString("X");
-
-                    alp -= 1;
-                    return ("1234," + dado12S + dado34S);
-
-                }
-                else
-                {
-                    if (dado12 == 10 || dado12 == 11 || dado12 == 12)
-                        dado12S = dado12.ToString("X");
-
-                    if (dado34 == 10 || dado34 == 11 || dado34 == 12)
-                        dado34S = dado34.ToString("X");
-
-
-                    foreach (Jogadas jogada in listaDeJogadas)
-                    {
-                        if (jogada.Poze == dado12S || jogada.Poze == dado34S)
+                        if (dado14.ToString() == fila.Filwin && dado23.ToString() == fila.Filwin)
                         {
-                            alp -= 1;
-                            return ("1234," + dado12S + dado34S);
-                        }
-                    }
-                    alp -= 1;
-                    return ("1234," + dado12S + "0");
-                }
 
-              }
-                    
+                            if (dado24 == dado13 && dado24.ToString() != fila.Filwin)
+                            {
+                                hex1324();
+                                alp -= 2;
+
+                                listaDeJogadas.Add(new Jogadas(dado13S));
+                                listaDeJogadas.Add(new Jogadas(dado24S));
+                                return ("1324," + dado13S + dado24S);
+
+                            }
+
+                            if (dado24.ToString() == fila.Filwin)
+                            {
+                                hex1324();
+                                alp -= 1;
+
+                                listaDeJogadas.Add(new Jogadas(dado13S));
+
+                                return ("1324," + dado13S + "0");
+                            }
+
+                            if (dado13.ToString() == fila.Filwin)
+                            {
+                                hex1324();
+
+                                alp -= 1;
+
+                                listaDeJogadas.Add(new Jogadas(dado24S));
+                                return ("2413," + dado24S + "0");
+                            }
+                        }
+                        else
+                        {
+
+                            if (dado14 == dado23 && dado14.ToString() != fila.Filwin)
+                            {
+                                hex1423();
+                                alp -= 2;
+                                listaDeJogadas.Add(new Jogadas(dado14S));
+                                listaDeJogadas.Add(new Jogadas(dado23S));
+
+                                return ("1423," + dado14S + dado23S);
+
+                            }
+
+                            if (dado14.ToString() == fila.Filwin)
+                            {
+                                hex1423();
+                                alp -= 1;
+                                listaDeJogadas.Add(new Jogadas(dado23S));
+
+                                return ("2314," + dado23S + "0");
+                            }
+
+                            if (dado23.ToString() == fila.Filwin)
+                            {
+                                hex1423();
+
+                                alp -= 1;
+
+                                listaDeJogadas.Add(new Jogadas(dado14S));
+
+                                return ("1423," + dado14S + "0");
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+
+                        if (dado12 == dado24 && dado12.ToString() != fila.Filwin)
+                        {
+                            hex1234();
+                            alp -= 2;
+
+                            listaDeJogadas.Add(new Jogadas(dado12S));
+                            listaDeJogadas.Add(new Jogadas(dado34S));
+                            return ("1234," + dado12S + dado34S);
+
+                        }
+
+                        if (dado12.ToString() == fila.Filwin)
+                        {
+                            hex1234();
+
+                            alp -= 1;
+
+                            listaDeJogadas.Add(new Jogadas(dado34S));
+
+
+                            return ("3412," + dado34S + "0");
+                        }
+
+                        if (dado34.ToString() == fila.Filwin)
+                        {
+                            hex1234();
+
+                            alp -= 1;
+
+                            listaDeJogadas.Add(new Jogadas(dado34S));
+                            return ("1234," + dado12S + "0");
+                        }
+
+
+                    }
+                }
+                //ACIMA VAI DAR MERDA
+
+
+                if (dado12 == dado34)
+                    {
+                        hex1234();
+
+                        alp -= 1;
+                        return ("1234," + dado12S + dado34S);
+
+                    }
+                    else
+                    {
+                        hex1234();
+
+                        foreach (Jogadas jogada in listaDeJogadas)
+                        {
+                            if (jogada.Poze == dado12S || jogada.Poze == dado34S)
+                            {
+                                alp -= 1;
+                                return ("1234," + dado12S + dado34S);
+                            }
+                        }
+                        alp -= 1;
+                        return ("1234," + dado12S + "0");
+                    }
+
+                
+                /* foreach (Jogadas jogada in listaDeJogadas)
+                 {
+
+                     if (dado12.ToString() == jogada.Poze)
+                         pode1 = true;
+
+                     if (dado34.ToString() == jogada.Poze)
+                         pode2 = true;
+
+                     if (pode1 && pode2 )
+                     {
+                         hex1234();
+                         return ("1234," + dado12S + dado34S);
+                     }
+
+
+                     if (jogada.Poze == dado12S || jogada.Poze == dado34S)
+                     {
+                         hex1234();
+                         alp -= 1;
+                         return ("1234," + dado12S + dado34S);
+                     }
+
+
+                     if (dado12 == dado34 && dado12.ToString() == jogada.Poze)
+                     {
+                         hex1234();
+                         return ("1234," + dado12S + dado34S);
+
+                     }
+
+                     if (dado12 == dado34 && dado12.ToString() != jogada.Poze)
+                     {
+                         hex1234();
+                         alp -= 1;
+                         return ("1234," + dado12S + "0");
+                     }
+
+                  }
+
+
+                 hex1234();
+                 alp -= 1;
+                 return ("1234," + dado12S + "0");
+             }*/
+
+                
+            }
             return null;
         }
         
@@ -492,7 +899,7 @@ namespace Aplicativo1
                                                 C2.Visible = true;
                                                 C22.Visible = true;
                                                 C23.Visible = true;
-                                                FileirasWin.Add(new FilWin("2"));
+                                                ListadeFileiras.Add(new FilWin("2"));
 
 
                                             }
@@ -610,7 +1017,7 @@ namespace Aplicativo1
                                                 C33.Visible = true;
                                                 C34.Visible = true;
                                                 C35.Visible = true;
-                                                FileirasWin.Add(new FilWin("3"));
+                                                ListadeFileiras.Add(new FilWin("3"));
                                             }
                                             else
                                             {
@@ -763,7 +1170,7 @@ namespace Aplicativo1
                                                 C45.Visible = true;
                                                 C46.Visible = true;
                                                 C47.Visible = true;
-                                                FileirasWin.Add(new FilWin("4"));
+                                                ListadeFileiras.Add(new FilWin("4"));
                                             }
                                             else
                                             {
@@ -948,7 +1355,7 @@ namespace Aplicativo1
                                                 C57.Visible = true;
                                                 C58.Visible = true;
                                                 C59.Visible = true;
-                                                FileirasWin.Add(new FilWin("5"));
+                                                ListadeFileiras.Add(new FilWin("5"));
                                             }
                                             else
                                             {
@@ -1159,7 +1566,7 @@ namespace Aplicativo1
                                                 C69.Visible = true;
                                                 C610.Visible = true;
                                                 C611.Visible = true;
-                                                FileirasWin.Add(new FilWin("6"));
+                                                ListadeFileiras.Add(new FilWin("6"));
                                             }
                                             else
                                             {
@@ -1217,13 +1624,13 @@ namespace Aplicativo1
                                                 pboxJ1T7.Visible = true;
                                                 pboxAJ1T7.Visible = false;
                                                 pboxJ1T7.BackColor = Color.Red;
-                                                pboxJ1T7.Location = new Point(376, 438 - 28);
+                                                pboxJ1T7.Location = new Point(376, 438 - (28 * 2));
                                             }
                                             else
                                             {
                                                 pboxAJ1T7.Visible = true;
                                                 pboxAJ1T7.BackColor = Color.Black;
-                                                pboxAJ1T7.Location = new Point(376, 438 - 28);
+                                                pboxAJ1T7.Location = new Point(376, 438 - (28 * 2));
                                             }
 
                                             break;
@@ -1407,7 +1814,7 @@ namespace Aplicativo1
                                                 C711.Visible = true;
                                                 C712.Visible = true;
                                                 C713.Visible = true;
-                                                FileirasWin.Add(new FilWin("7"));
+                                                ListadeFileiras.Add(new FilWin("7"));
                                             }
                                             else
                                             {
@@ -1625,7 +2032,7 @@ namespace Aplicativo1
                                                 C89.Visible = true;
                                                 C810.Visible = true;
                                                 C811.Visible = true;
-                                                FileirasWin.Add(new FilWin("8"));
+                                                ListadeFileiras.Add(new FilWin("8"));
                                             }
                                             else
                                             {
@@ -1804,7 +2211,7 @@ namespace Aplicativo1
                                                 C97.Visible = true;
                                                 C98.Visible = true;
                                                 C99.Visible = true;
-                                                FileirasWin.Add(new FilWin("9"));
+                                                ListadeFileiras.Add(new FilWin("9"));
                                             }
                                             else
                                             {
@@ -1953,7 +2360,7 @@ namespace Aplicativo1
                                                 C105.Visible = true;
                                                 C106.Visible = true;
                                                 C107.Visible = true;
-                                                FileirasWin.Add(new FilWin("10"));
+                                                ListadeFileiras.Add(new FilWin("10"));
 
                                             }
                                             else
@@ -2064,7 +2471,7 @@ namespace Aplicativo1
                                                 C113.Visible = true;
                                                 C114.Visible = true;
                                                 C115.Visible = true;
-                                                FileirasWin.Add(new FilWin("11"));
+                                                ListadeFileiras.Add(new FilWin("11"));
                                             }
                                             else
                                             {
@@ -2132,7 +2539,7 @@ namespace Aplicativo1
                                                 C12.Visible = true;
                                                 C122.Visible = true;
                                                 C123.Visible = true;
-                                                FileirasWin.Add(new FilWin("12"));
+                                                ListadeFileiras.Add(new FilWin("12"));
                                             }
                                             else
                                             {
