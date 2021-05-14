@@ -1867,9 +1867,9 @@ namespace Aplicativo1
             // 
             // C123
             // 
-            this.C123.Location = new System.Drawing.Point(643, 298);
+            this.C123.Location = new System.Drawing.Point(643, 297);
             this.C123.Name = "C123";
-            this.C123.Size = new System.Drawing.Size(30, 22);
+            this.C123.Size = new System.Drawing.Size(30, 23);
             this.C123.TabIndex = 280;
             this.C123.Visible = false;
             // 

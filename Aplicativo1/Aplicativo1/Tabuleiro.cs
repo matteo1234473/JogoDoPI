@@ -30,8 +30,8 @@ namespace Aplicativo1
         int alp = 3;
         int dado12 = 0, dado13 = 0, dado14 = 0, dado24 = 0, dado23 = 0, dado34 = 0;
         string d1234, d1324, d1423, dado12S, dado13S, dado14S, dado24S, dado23S, dado34S;
-        //bool t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12;
-        bool pode1 = false, pode2 = false;
+        
+        
 
         public Tabuleiro()
         {
