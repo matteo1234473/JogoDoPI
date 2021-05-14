@@ -73,6 +73,7 @@ namespace Aplicativo1
             lblqtdAlp.Text = alp.ToString();
             if (alp == 0)
             {
+                atualizaTabu();
                 parar();
             }
             else
@@ -123,11 +124,12 @@ namespace Aplicativo1
 
         public void mover()
         {
+            
             string erro;
             string retorno = escolha();
-            string[] vetor = retorno.Split(',');
-
-
+            
+            string[] vetor = retorno.Split(','); 
+              
             erro = Jogo.Mover(idJuqui, form1.Senha, vetor[0], vetor[1]);
             if (erro.StartsWith("ERRO"))
             {
@@ -139,6 +141,7 @@ namespace Aplicativo1
                 atualizaTabu();
                 timer1.Enabled = true;
             }
+          
         }
 
         public void rolaDado()
@@ -283,10 +286,10 @@ namespace Aplicativo1
                 foreach (FilWin fila in ListadeFileiras)
                 {
 
-                    if (dado12.ToString() == fila.Filwin || dado34.ToString() == fila.Filwin)
+                    if (dado12.ToString() == fila.Filwin && dado34.ToString() == fila.Filwin)
                     {
 
-                        if (dado14.ToString() == fila.Filwin || dado23.ToString() == fila.Filwin)
+                        if (dado14.ToString() == fila.Filwin && dado23.ToString() == fila.Filwin)
                         {
 
                             if (dado24 == dado13 && dado24.ToString() != fila.Filwin)
@@ -424,16 +427,16 @@ namespace Aplicativo1
                 foreach (FilWin fila in ListadeFileiras) 
                 {
 
-                    if (dado12.ToString() == fila.Filwin || dado34.ToString() == fila.Filwin)
+                    if (dado12.ToString() == fila.Filwin && dado34.ToString() == fila.Filwin)
                     {
 
-                        if (dado14.ToString() == fila.Filwin || dado23.ToString() == fila.Filwin)
+                        if (dado14.ToString() == fila.Filwin && dado23.ToString() == fila.Filwin)
                         {
 
                             if (dado24 == dado13 && dado24.ToString() != fila.Filwin)
                             {
                                 hex1324();
-                                alp -= 2;
+                                alp -= 1;
 
                                 listaDeJogadas.Add(new Jogadas(dado13S));
                                 listaDeJogadas.Add(new Jogadas(dado24S));
@@ -504,7 +507,7 @@ namespace Aplicativo1
                         if (dado12 == dado24 && dado12.ToString() != fila.Filwin)
                         {
                             hex1234();
-                            alp -= 2;
+                            alp -= 1;
 
                             listaDeJogadas.Add(new Jogadas(dado12S));
                             listaDeJogadas.Add(new Jogadas(dado34S));
@@ -545,7 +548,7 @@ namespace Aplicativo1
 
                             listaDeJogadas.Add(new Jogadas(dado12S));
                             listaDeJogadas.Add(new Jogadas(dado34S));
-                    alp -= 1;
+                        alp -= 1;
                         return ("1234," + dado12S + dado34S);
                     }
                     else
@@ -568,10 +571,10 @@ namespace Aplicativo1
                 foreach (FilWin fila in ListadeFileiras)
                 {
 
-                    if (dado12.ToString() == fila.Filwin || dado34.ToString() == fila.Filwin)
+                    if (dado12.ToString() == fila.Filwin && dado34.ToString() == fila.Filwin)
                     {
 
-                        if (dado14.ToString() == fila.Filwin || dado23.ToString() == fila.Filwin)
+                        if (dado14.ToString() == fila.Filwin && dado23.ToString() == fila.Filwin)
                         {
 
                             if (dado24 == dado13 && dado24.ToString() != fila.Filwin)
@@ -684,7 +687,8 @@ namespace Aplicativo1
                 //ACIMA VAI DAR MERDA
 
 
-                if (dado12 == dado34)
+                
+                    if (dado12 == dado34)
                     {
                         hex1234();
 
@@ -692,43 +696,25 @@ namespace Aplicativo1
                         return ("1234," + dado12S + dado34S);
 
                     }
-                else
-                {
-                    hex1234();
-
-                    foreach (Jogadas jogada in listaDeJogadas)
+                    else
                     {
-                        if (jogada.Poze == dado12S || jogada.Poze == dado34S)
-                            if (dado12.ToString() == jogada.Poze)
-                            {
-                                if (dado34.ToString() == jogada.Poze)
-                                {
-                                    return ("1234," + dado12S + dado34S);
-                                }
 
-                                alp -= 1;
-                                return ("1234," + dado12S + dado34S);
-
-                            }
-
-                        if (dado34.ToString() == jogada.Poze)
+                        hex1234();
+                        foreach (Jogadas jogada in listaDeJogadas)
                         {
-                            if (dado12.ToString() == jogada.Poze)
+                            if (jogada.Poze == dado12S || jogada.Poze == dado34S)
                             {
+                                alp -= 1;
+                                
                                 return ("1234," + dado12S + dado34S);
                             }
-
-                            alp -= 1;
-                            return ("1234," + dado12S + dado34S);
-
                         }
-
-
+                        alp -= 1;
+                        
+                        return ("1234," + dado12S + "0");
                     }
 
-                    alp -= 1;
-                    return ("1234," + dado12S + "0");
-                }
+                
 
 
                 /* foreach (Jogadas jogada in listaDeJogadas)
@@ -2295,13 +2281,13 @@ namespace Aplicativo1
                                                 pboxJ1T10.Visible = true;
                                                 pboxAJ1T10.Visible = false;
                                                 pboxJ1T10.BackColor = Color.Red;
-                                                pboxJ1T10.Location = new Point(536, (354 - 28) - 28);
+                                                pboxJ1T10.Location = new Point(536, (354 - (28 * 2)));
                                             }
                                             else
                                             {
                                                 pboxAJ1T10.Visible = true;
                                                 pboxAJ1T10.BackColor = Color.Black;
-                                                pboxAJ1T10.Location = new Point(536, (354 - 28) - 28);
+                                                pboxAJ1T10.Location = new Point(536, (354 - (28 * 2)));
                                             }
 
                                             break;
@@ -4039,13 +4025,13 @@ namespace Aplicativo1
                                                 pboxJ2T10.Visible = true;
                                                 pboxAJ2T10.Visible = false;
                                                 pboxJ2T10.BackColor = Color.Blue;
-                                                pboxJ2T10.Location = new Point(553, (354 - 28) - 28);
+                                                pboxJ2T10.Location = new Point(553, 354 - (28 * 2));
                                             }
                                             else
                                             {
                                                 pboxAJ2T10.Visible = true;
                                                 pboxAJ2T10.BackColor = Color.Black;
-                                                pboxAJ2T10.Location = new Point(553, (354 - 28) - 28);
+                                                pboxAJ2T10.Location = new Point(553, 354 - (28 * 2));
                                             }
 
                                             break;
