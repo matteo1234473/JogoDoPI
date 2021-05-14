@@ -283,10 +283,10 @@ namespace Aplicativo1
                 foreach (FilWin fila in ListadeFileiras)
                 {
 
-                    if (dado12.ToString() == fila.Filwin && dado34.ToString() == fila.Filwin)
+                    if (dado12.ToString() == fila.Filwin || dado34.ToString() == fila.Filwin)
                     {
 
-                        if (dado14.ToString() == fila.Filwin && dado23.ToString() == fila.Filwin)
+                        if (dado14.ToString() == fila.Filwin || dado23.ToString() == fila.Filwin)
                         {
 
                             if (dado24 == dado13 && dado24.ToString() != fila.Filwin)
@@ -424,10 +424,10 @@ namespace Aplicativo1
                 foreach (FilWin fila in ListadeFileiras) 
                 {
 
-                    if (dado12.ToString() == fila.Filwin && dado34.ToString() == fila.Filwin)
+                    if (dado12.ToString() == fila.Filwin || dado34.ToString() == fila.Filwin)
                     {
 
-                        if (dado14.ToString() == fila.Filwin && dado23.ToString() == fila.Filwin)
+                        if (dado14.ToString() == fila.Filwin || dado23.ToString() == fila.Filwin)
                         {
 
                             if (dado24 == dado13 && dado24.ToString() != fila.Filwin)
@@ -568,10 +568,10 @@ namespace Aplicativo1
                 foreach (FilWin fila in ListadeFileiras)
                 {
 
-                    if (dado12.ToString() == fila.Filwin && dado34.ToString() == fila.Filwin)
+                    if (dado12.ToString() == fila.Filwin || dado34.ToString() == fila.Filwin)
                     {
 
-                        if (dado14.ToString() == fila.Filwin && dado23.ToString() == fila.Filwin)
+                        if (dado14.ToString() == fila.Filwin || dado23.ToString() == fila.Filwin)
                         {
 
                             if (dado24 == dado13 && dado24.ToString() != fila.Filwin)
@@ -694,35 +694,56 @@ namespace Aplicativo1
                     }
                     else
                     {
-                        hex1234();
+                        
                         foreach (Jogadas jogada in listaDeJogadas)
                         {
                             if(dado12.ToString() == jogada.Poze)
                             {
-                                if(dado34.ToString() == jogada.Poze)
+                                foreach (Jogadas jogada2 in listaDeJogadas)
                                 {
-                                    return ("1234," + dado12S + dado34S);
+                                    if (dado34.ToString() == jogada2.Poze)
+                                    {
+                                        hex1234();
+                                        return ("1234," + dado12S + dado34S);
+                                    }
+                                    else
+                                    {
+                                        alp -= 1;
+                                        return ("3412," + dado34S + dado12S);
+                                    }
                                 }
 
+                                hex1234();
                                 alp -= 1;
-                                return ("1234," + dado12S + dado34S);
+                                return ("1234," + dado12S + "0");
 
                              }
 
                             if (dado34.ToString() == jogada.Poze)
                             {
-                                if (dado12.ToString() == jogada.Poze)
-                                {
-                                    return ("1234," + dado12S + dado34S);
-                                }
 
+                                foreach (Jogadas jogada2 in listaDeJogadas)
+                                {
+                                    if (dado12.ToString() == jogada2.Poze)
+                                    {
+                                        hex1234();
+                                        return ("1234," + dado12S + dado34S);
+                                    }
+                                    else
+                                    {
+                                        alp -= 1;
+                                        hex1234();
+                                        return ("3412," + dado34S + dado12S);
+                                    }
+                                    
+                                }
+                                hex1234();
                                 alp -= 1;
-                                return ("1234," + dado12S + dado34S);
+                                return ("3412," + dado34S + "0");
 
                             }
 
-
-                        }
+                    }
 
                         alp -= 1;
                         return ("1234," + dado12S + "0");
