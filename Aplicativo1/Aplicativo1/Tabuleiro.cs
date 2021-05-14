@@ -692,64 +692,45 @@ namespace Aplicativo1
                         return ("1234," + dado12S + dado34S);
 
                     }
-                    else
+                else
+                {
+                    hex1234();
+
+                    foreach (Jogadas jogada in listaDeJogadas)
                     {
-                        
-                        foreach (Jogadas jogada in listaDeJogadas)
-                        {
-                            if(dado12.ToString() == jogada.Poze)
+                        if (jogada.Poze == dado12S || jogada.Poze == dado34S)
+                            if (dado12.ToString() == jogada.Poze)
                             {
-                                foreach (Jogadas jogada2 in listaDeJogadas)
+                                if (dado34.ToString() == jogada.Poze)
                                 {
-                                    if (dado34.ToString() == jogada2.Poze)
-                                    {
-                                        hex1234();
-                                        return ("1234," + dado12S + dado34S);
-                                    }
-                                    else
-                                    {
-                                        alp -= 1;
-                                        return ("3412," + dado34S + dado12S);
-                                    }
+                                    return ("1234," + dado12S + dado34S);
                                 }
 
-                                hex1234();
                                 alp -= 1;
-                                return ("1234," + dado12S + "0");
-
-                             }
-
-                            if (dado34.ToString() == jogada.Poze)
-                            {
-
-                                foreach (Jogadas jogada2 in listaDeJogadas)
-                                {
-                                    if (dado12.ToString() == jogada2.Poze)
-                                    {
-                                        hex1234();
-                                        return ("1234," + dado12S + dado34S);
-                                    }
-                                    else
-                                    {
-                                        alp -= 1;
-                                        hex1234();
-                                        return ("3412," + dado34S + dado12S);
-                                    }
-                                    
-                                }
-                                hex1234();
-                                alp -= 1;
-                                return ("3412," + dado34S + "0");
+                                return ("1234," + dado12S + dado34S);
 
                             }
 
+                        if (dado34.ToString() == jogada.Poze)
+                        {
+                            if (dado12.ToString() == jogada.Poze)
+                            {
+                                return ("1234," + dado12S + dado34S);
+                            }
+
+                            alp -= 1;
+                            return ("1234," + dado12S + dado34S);
+
+                        }
+
+
                     }
 
-                        alp -= 1;
-                        return ("1234," + dado12S + "0");
-                    }
+                    alp -= 1;
+                    return ("1234," + dado12S + "0");
+                }
 
-                
+
                 /* foreach (Jogadas jogada in listaDeJogadas)
                  {
 
@@ -796,7 +777,7 @@ namespace Aplicativo1
                  return ("1234," + dado12S + "0");
              }*/
 
-                
+
             }
             return null;
         }
