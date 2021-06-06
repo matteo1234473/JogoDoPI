@@ -26,6 +26,7 @@ namespace Aplicativo1
         List<Dado> listaDeDados = new List<Dado>();
         List<Jogadas> listaDeJogadas = new List<Jogadas>();
         List<FilWin> ListadeFileiras = new List<FilWin>();
+        List<Penultima> ListadePenultimas = new List<Penultima>();
 
         int alp = 3;
         int dado12 = 0, dado13 = 0, dado14 = 0, dado24 = 0, dado23 = 0, dado34 = 0;
@@ -71,7 +72,7 @@ namespace Aplicativo1
         {
             txtHistorico.Text = Jogo.ExibirHistorico(form1.idPartida);
             lblqtdAlp.Text = alp.ToString();
-            if (alp == 0)
+            if (alp == 0 || alp == -1)
             {
                 atualizaTabu();
                 parar();
@@ -95,7 +96,14 @@ namespace Aplicativo1
                     {
                         if (vetor[1] == jogador.Id.ToString())
                         {
-                            lblJogador.Text = jogador.Cor;
+                            if(jogador.Cor == "Vermelho")
+                                pnlVez.BackColor = Color.Red; 
+                            if(jogador.Cor == "Azul")
+                                pnlVez.BackColor = Color.Blue;
+                            if(jogador.Cor == "Verde")
+                                pnlVez.BackColor = Color.Green;
+                            if (jogador.Cor == "Amarelo")
+                                pnlVez.BackColor = Color.Yellow;
                         }
                         else
                         {
@@ -128,6 +136,7 @@ namespace Aplicativo1
             string erro;
             string retorno = escolha();
             
+            
             string[] vetor = retorno.Split(','); 
               
             erro = Jogo.Mover(idJuqui, form1.Senha, vetor[0], vetor[1]);
@@ -138,7 +147,7 @@ namespace Aplicativo1
             else
             {
                 listaDeDados.Clear();
-                atualizaTabu();
+                atualizaTabu();               
                 timer1.Enabled = true;
             }
           
@@ -286,93 +295,108 @@ namespace Aplicativo1
                 foreach (FilWin fila in ListadeFileiras)
                 {
 
-                    if (dado12.ToString() == fila.Filwin && dado34.ToString() == fila.Filwin)
+                    foreach (Penultima pos in ListadePenultimas)
                     {
-
-                        if (dado14.ToString() == fila.Filwin && dado23.ToString() == fila.Filwin)
+                        if (dado12 == dado34 && dado12 == Convert.ToInt32(pos.Chegou))
                         {
-
-                            if (dado24 == dado13 && dado24.ToString() != fila.Filwin)
+                            if (dado12.ToString() == fila.Filwin)
                             {
-                                hex1324();
-                                alp -= 2;
+                                foreach (Penultima poss in ListadePenultimas)
+                                {
+                                    if (dado13 == dado24 && dado13 == Convert.ToInt32(poss.Chegou))
+                                    {
+                                        if (dado13.ToString() == fila.Filwin)
+                                        {
+                                            foreach (Penultima posss in ListadePenultimas)
+                                            {
+                                                if (dado14 == dado23 && dado14 == Convert.ToInt32(posss.Chegou))
+                                                {
+                                                    hex1423();
+                                                    alp -= 1;
+                                                    return ("1423," + dado14S + "0");
+                                                }
+                                            }
+                                            hex1423();
+                                            alp -= 1;
+                                            return ("1423," + dado14S + dado23S);
+                                        }
+                                        hex1324();
+                                        alp -= 1;
+                                        return ("1324," + dado13S + "0");
+                                    }
 
-                                listaDeJogadas.Add(new Jogadas(dado13S));
-                                listaDeJogadas.Add(new Jogadas(dado24S));
+                                }
+                                hex1324();
+                                alp -= 1;
                                 return ("1324," + dado13S + dado24S);
 
                             }
-
-                            if (dado24.ToString() == fila.Filwin)
-                            {
-                                hex1324();
-                                alp -= 1;
-
-                                listaDeJogadas.Add(new Jogadas(dado13S));
-                                
-                                return ("1324," + dado13S + "0");
-                            }
-
-                            if (dado13.ToString() == fila.Filwin)
-                            {
-                                hex1324();
-
-                                alp -= 1;
-
-                                listaDeJogadas.Add(new Jogadas(dado24S));
-                                return ("2413," + dado24S + "0");
-                            }
+                            hex1234();
+                            alp -= 1;
+                            return ("1234," + dado12S + "0");
                         }
-                        else
+                    }
+
+
+
+
+
+
+
+                    foreach (FilWin fil in ListadeFileiras)
+                    {
+                        if (dado12.ToString() == fil.Filwin)
                         {
-
-                            if (dado14 == dado23 && dado14.ToString() != fila.Filwin)
+                            foreach (FilWin filaa in ListadeFileiras)
                             {
-                                hex1423();
-                                alp -= 2;
-                                listaDeJogadas.Add(new Jogadas(dado14S));
-                                listaDeJogadas.Add(new Jogadas(dado23S));
+                                if (dado34.ToString() == filaa.Filwin)
+                                {
+                                    foreach (FilWin filaaa in ListadeFileiras)
+                                    {
+                                        if (dado13.ToString() == filaaa.Filwin)
+                                        {
+                                            hex1324();
+                                            alp -= 1;
+                                            listaDeJogadas.Add(new Jogadas(dado24S));
+                                            return ("2413," + dado24S + "0");
+                                        }
 
-                                return ("1423," + dado14S + dado23S);
+                                    }
+                                    hex1324();
+                                    alp -= 1;
+                                    listaDeJogadas.Add(new Jogadas(dado13S));
+                                    return ("1324," + dado13S + "0");
+                                }
 
                             }
 
-                            if (dado14.ToString() == fila.Filwin)
-                            {
-                                hex1423();
-                                alp -= 1;
-                                listaDeJogadas.Add(new Jogadas(dado23S));
+                            hex1234();
+                            alp -= 1;
+                            listaDeJogadas.Add(new Jogadas(dado34S));
+                            return ("3412," + dado34S + "0");
 
-                                return ("2314," + dado23S + "0");
-                            }
+                        }
 
-                            if (dado23.ToString() == fila.Filwin)
-                            {
-                                hex1423();
 
-                                alp -= 1;
+                    }
 
-                                listaDeJogadas.Add(new Jogadas(dado14S));
-
-                                return ("1423," + dado14S + "0");
-                            }
-
+                    foreach (FilWin fil in ListadeFileiras)
+                    {
+                        if (dado34.ToString() == fil.Filwin)
+                        {
+                            hex1234();
+                            alp -= 1;
+                            listaDeJogadas.Add(new Jogadas(dado34S));
+                            return ("1234," + dado12S + "0");
                         }
 
                     }
-                    else
-                    {
 
-                        if (dado12 == dado24 && dado12.ToString() != fila.Filwin)
-                        {
-                            hex1234();
-                            alp -= 2;
 
-                            listaDeJogadas.Add(new Jogadas(dado12S));
-                            listaDeJogadas.Add(new Jogadas(dado34S));
-                            return ("1234," + dado12S + dado34S);
 
-                        }
+
+                    
+                        
 
                         if (dado12.ToString() == fila.Filwin)
                         {
@@ -381,8 +405,6 @@ namespace Aplicativo1
                             alp -= 1;
 
                             listaDeJogadas.Add(new Jogadas(dado34S));
-                           
-
                             return ("3412," + dado34S + "0");
                         }
 
@@ -397,133 +419,171 @@ namespace Aplicativo1
                         }
 
                         
+                    
+                }
+               
+                    if (dado12 == dado34 )
+                    {
+
+                        hex1234();
+
+                        alp -= 1;
+                        listaDeJogadas.Add(new Jogadas(dado12S));
+                        listaDeJogadas.Add(new Jogadas(dado34S));
+                        return ("1234," + dado12S + dado34S);
+
                     }
-                }
+                    else
+                    {
+                        hex1234();
 
-                if (dado12 == dado34)
-                {
+                        alp -= 2;
+                        listaDeJogadas.Add(new Jogadas(dado12S));
+                        listaDeJogadas.Add(new Jogadas(dado34S));
+                        return ("1234," + dado12S + dado34S);
 
-                    hex1234();
+                    }
 
-                    alp -= 1;
-                    listaDeJogadas.Add(new Jogadas(dado12S));
-                    listaDeJogadas.Add(new Jogadas(dado34S));
-                    return ("1234," + dado12S + dado34S);
 
-                }
-                else
-                {
-                    hex1234();
-
-                    alp -= 2;
-                    listaDeJogadas.Add(new Jogadas(dado12S));
-                    listaDeJogadas.Add(new Jogadas(dado34S));
-                    return ("1234," + dado12S + dado34S);
-
-                }
+                
             }
             if (alp == 2)
             {
                 foreach (FilWin fila in ListadeFileiras) 
                 {
 
-                    if (dado12.ToString() == fila.Filwin && dado34.ToString() == fila.Filwin)
+                    foreach (Penultima pos in ListadePenultimas)
                     {
-
-                        if (dado14.ToString() == fila.Filwin && dado23.ToString() == fila.Filwin)
+                        if (dado12 == dado34 && dado12 == Convert.ToInt32(pos.Chegou))
                         {
-
-                            if (dado24 == dado13 && dado24.ToString() != fila.Filwin)
+                            if (dado12.ToString() == fila.Filwin)
                             {
+                                foreach (Penultima poss in ListadePenultimas)
+                                {
+                                    if (dado13 == dado24 && dado13 == Convert.ToInt32(poss.Chegou))
+                                    {
+                                        if (dado13.ToString() == fila.Filwin)
+                                        {
+                                            foreach (Penultima posss in ListadePenultimas)
+                                            {
+                                                if (dado14 == dado23 && dado14 == Convert.ToInt32(posss.Chegou))
+                                                {
+                                                    hex1423();
+                                                    alp -= 1;
+                                                    return ("1423," + dado14S + "0");
+                                                }
+                                            }
+                                            hex1423();
+                                            alp -= 1;
+                                            return ("1423," + dado14S + dado23S);
+                                        }
+                                        hex1324();
+                                        alp -= 1;
+                                        return ("1324," + dado13S + "0");
+                                    }
+                                    
+                                }
                                 hex1324();
                                 alp -= 1;
-
-                                listaDeJogadas.Add(new Jogadas(dado13S));
-                                listaDeJogadas.Add(new Jogadas(dado24S));
                                 return ("1324," + dado13S + dado24S);
 
                             }
-
-                            if (dado24.ToString() == fila.Filwin)
-                            {
-                                hex1324();
-                                alp -= 1;
-
-                                listaDeJogadas.Add(new Jogadas(dado13S));
-
-                                return ("1324," + dado13S + "0");
-                            }
-
-                            if (dado13.ToString() == fila.Filwin)
-                            {
-                                hex1324();
-
-                                alp -= 1;
-
-                                listaDeJogadas.Add(new Jogadas(dado24S));
-                                return ("2413," + dado24S + "0");
-                            }
+                            hex1234();
+                            alp -= 1;
+                            return ("1234," + dado12S + "0");
                         }
-                        else
+                    }
+
+
+                    foreach (FilWin fil in ListadeFileiras)
+                    {
+                        if (dado12.ToString() == fil.Filwin)
                         {
-
-                            if (dado14 == dado23 && dado14.ToString() != fila.Filwin)
+                            foreach (FilWin filaa in ListadeFileiras)
                             {
-                                hex1423();
-                                alp -= 2;
-                                listaDeJogadas.Add(new Jogadas(dado14S));
-                                listaDeJogadas.Add(new Jogadas(dado23S));
+                                if (dado34.ToString() == filaa.Filwin)
+                                {
+                                    foreach (FilWin filaaa in ListadeFileiras)
+                                    {
+                                        if (dado13.ToString() == filaaa.Filwin)
+                                        {
+                                            hex1324();
+                                            alp -= 1;
+                                            listaDeJogadas.Add(new Jogadas(dado24S));
+                                            return ("2413," + dado24S + "0");
+                                        }
 
-                                return ("1423," + dado14S + dado23S);
+                                    }
+                                    hex1324();
+                                    alp -= 1;
+                                    listaDeJogadas.Add(new Jogadas(dado13S));
+                                    return ("1324," + dado13S + "0");
+                                }
 
                             }
 
-                            if (dado14.ToString() == fila.Filwin)
-                            {
-                                hex1423();
-                                alp -= 1;
-                                listaDeJogadas.Add(new Jogadas(dado23S));
+                            hex1234();
+                            alp -= 1;
+                            listaDeJogadas.Add(new Jogadas(dado34S));
+                            return ("3412," + dado34S + "0");
 
-                                return ("2314," + dado23S + "0");
-                            }
+                        }
 
-                            if (dado23.ToString() == fila.Filwin)
-                            {
-                                hex1423();
 
-                                alp -= 1;
+                    }
 
-                                listaDeJogadas.Add(new Jogadas(dado14S));
-
-                                return ("1423," + dado14S + "0");
-                            }
-
+                    foreach (FilWin fil in ListadeFileiras)
+                    {
+                        if (dado34.ToString() == fil.Filwin)
+                        {
+                            hex1234();
+                            alp -= 1;
+                            listaDeJogadas.Add(new Jogadas(dado34S));
+                            return ("1234," + dado12S + "0");
                         }
 
                     }
-                    else
-                    {
 
-                        if (dado12 == dado24 && dado12.ToString() != fila.Filwin)
+                    hex1234();
+                    foreach (Jogadas jogada in listaDeJogadas)
+                    {
+                        if (dado12S == jogada.Poze || dado34S == jogada.Poze)
                         {
-                            hex1234();
                             alp -= 1;
 
-                            listaDeJogadas.Add(new Jogadas(dado12S));
-                            listaDeJogadas.Add(new Jogadas(dado34S));
                             return ("1234," + dado12S + dado34S);
+                        }
+                    }
 
+                    hex1234();
+                    foreach (Jogadas jogada in listaDeJogadas)
+                    {
+                        if (dado12S == jogada.Poze)
+                        {
+                            alp -= 1;
+                            return ("1234," + dado12S + dado34S);
                         }
 
-                        if (dado12.ToString() == fila.Filwin)
+                        if (dado34S == jogada.Poze)
+                        {
+                            alp -= 1;
+                            return ("1234," + dado12S + dado34S);
+                        }
+                        else
+                        {
+                            alp -= 1;
+                            return ("1234," + dado12S + "0");
+                        }
+
+                    }
+
+                    if (dado12.ToString() == fila.Filwin)
                         {
                             hex1234();
 
                             alp -= 1;
 
                             listaDeJogadas.Add(new Jogadas(dado34S));
-
-
                             return ("3412," + dado34S + "0");
                         }
 
@@ -538,7 +598,7 @@ namespace Aplicativo1
                         }
 
 
-                    }
+                    
                 }
 
 
@@ -570,202 +630,193 @@ namespace Aplicativo1
                 //ABAIXO VAI DAR MERDA
                 foreach (FilWin fila in ListadeFileiras)
                 {
-
-                    if (dado12.ToString() == fila.Filwin && dado34.ToString() == fila.Filwin)
+                    foreach (Penultima pos in ListadePenultimas)
                     {
-
-                        if (dado14.ToString() == fila.Filwin && dado23.ToString() == fila.Filwin)
+                        if (dado12 == dado34 && dado12 == Convert.ToInt32(pos.Chegou))
                         {
-
-                            if (dado24 == dado13 && dado24.ToString() != fila.Filwin)
+                            if (dado12.ToString() == fila.Filwin)
                             {
+                                foreach (Penultima poss in ListadePenultimas)
+                                {
+                                    if (dado13 == dado24 && dado13 == Convert.ToInt32(poss.Chegou))
+                                    {
+                                        if (dado13.ToString() == fila.Filwin)
+                                        {
+                                            foreach (Penultima posss in ListadePenultimas)
+                                            {
+                                                if (dado14 == dado23 && dado14 == Convert.ToInt32(posss.Chegou))
+                                                {
+                                                    hex1423();
+                                                    alp -= 1;
+                                                    return ("1423," + dado14S + "0");
+                                                }
+                                            }
+                                            hex1423();
+                                            alp -= 1;
+                                            return ("1423," + dado14S + dado23S);
+                                        }
+                                        hex1324();
+                                        alp -= 1;
+                                        return ("1324," + dado13S + "0");
+                                    }
+
+                                }
                                 hex1324();
                                 alp -= 1;
-
-                                listaDeJogadas.Add(new Jogadas(dado13S));
-                                listaDeJogadas.Add(new Jogadas(dado24S));
                                 return ("1324," + dado13S + dado24S);
 
                             }
+                            hex1234();
+                            alp -= 1;
+                            return ("1234," + dado12S + "0");
+                        }
+                    }
 
-                            if (dado24.ToString() == fila.Filwin)
+
+
+                    foreach (FilWin fil in ListadeFileiras)
+                    {
+                        if (dado12.ToString() == fil.Filwin)
+                        {
+                            foreach (FilWin filaa in ListadeFileiras)
                             {
-                                hex1324();
+                                if (dado34.ToString() == filaa.Filwin)
+                                {
+                                    foreach (FilWin filaaaa in ListadeFileiras)
+                                    {
+                                        if (dado13.ToString() == filaaaa.Filwin)
+                                        {
+                                            foreach (FilWin filaaaaaaa in ListadeFileiras)
+                                            {
+                                                if(dado24.ToString() == filaaaaaaa.Filwin)
+                                                {
+                                                    foreach (FilWin filaaaaaaaa in ListadeFileiras)
+                                                    {
+                                                        if(dado14.ToString() == filaaaaaaaa.Filwin)
+                                                        {
+                                                            hex1423();
+                                                            alp -= 1;
+                                                            listaDeJogadas.Add(new Jogadas(dado23S));
+                                                            return ("2314," + dado23S + "0");
+                                                        }
+                                                    }
+                                                    foreach (FilWin filaaaaa in ListadeFileiras)
+                                                    {
+                                                        if (dado23.ToString() == filaaaaa.Filwin)
+                                                        {
+                                                            hex1423();
+                                                            alp -= 1;
+                                                            listaDeJogadas.Add(new Jogadas(dado23S));
+                                                            return ("1423," + dado14S + "0");
+                                                        }
+                                                    }
+
+                                                    hex1423();
+                                                    alp -= 1;
+                                                    listaDeJogadas.Add(new Jogadas(dado14S));
+                                                    return ("1423," + dado14S + dado23S);
+
+                                                }
+                                            }
+                                            hex1324();
+                                            alp -= 1;
+                                            listaDeJogadas.Add(new Jogadas(dado13S));
+                                            return ("2413," + dado24S + "0");
+
+                                        }
+
+                                    }
+                                    foreach (FilWin filaaaaa in ListadeFileiras)
+                                    {
+                                        if (dado24.ToString() == filaaaaa.Filwin)
+                                        {
+                                            hex1324();
+                                            alp -= 1;
+                                            listaDeJogadas.Add(new Jogadas(dado24S));
+                                            return ("2413," + dado13S + "0");
+                                        }
+                                    }
+
+                                        hex1324();
+                                        alp -= 1;
+                                        listaDeJogadas.Add(new Jogadas(dado13S));
+                                        return ("1324," + dado13S + dado24S);
+                                }
+      
+                            }    
+                                
+                                hex1234();
                                 alp -= 1;
+                                listaDeJogadas.Add(new Jogadas(dado34S));
+                                return ("3412," + dado34S + "0");
 
-                                listaDeJogadas.Add(new Jogadas(dado13S));
+                         }  
+                        
+                    }
 
-                                return ("1324," + dado13S + "0");
-                            }
+                    foreach (FilWin fil in ListadeFileiras)
+                    {
+                        if (dado34.ToString() == fil.Filwin)
+                        {                
+                            hex1234();
+                            alp -= 1;
+                            listaDeJogadas.Add(new Jogadas(dado34S));
+                            return ("1234," + dado12S + "0");
 
-                            if (dado13.ToString() == fila.Filwin)
-                            {
-                                hex1324();
+                        }
+                    }
 
-                                alp -= 1;
+                }
 
-                                listaDeJogadas.Add(new Jogadas(dado24S));
-                                return ("2413," + dado24S + "0");
-                            }
+
+
+                if (dado12 == dado34)
+                {
+                    hex1234();
+
+                    alp -= 1;
+                    return ("1234," + dado12S + dado34S);
+
+                }
+
+                hex1234();
+                foreach (Jogadas jogada in listaDeJogadas)
+                {
+                    if (dado12S == jogada.Poze || dado34S == jogada.Poze)
+                    {
+                        alp -= 1;
+
+                        return ("1234," + dado12S + dado34S);
+                    }
+                }
+
+                hex1234();
+                    foreach (Jogadas jogada in listaDeJogadas)
+                    {
+                        if (dado12S == jogada.Poze)
+                        {
+                            alp -= 1;
+                            return ("1234," + dado12S + dado34S);
+                        }
+
+                        if (dado34S == jogada.Poze)
+                        {
+                            alp -= 1;
+                            return ("1234," + dado12S + dado34S);
                         }
                         else
                         {
-
-                            if (dado14 == dado23 && dado14.ToString() != fila.Filwin)
-                            {
-                                hex1423();
-                                alp -= 2;
-                                listaDeJogadas.Add(new Jogadas(dado14S));
-                                listaDeJogadas.Add(new Jogadas(dado23S));
-
-                                return ("1423," + dado14S + dado23S);
-
-                            }
-
-                            if (dado14.ToString() == fila.Filwin)
-                            {
-                                hex1423();
-                                alp -= 1;
-                                listaDeJogadas.Add(new Jogadas(dado23S));
-
-                                return ("2314," + dado23S + "0");
-                            }
-
-                            if (dado23.ToString() == fila.Filwin)
-                            {
-                                hex1423();
-
-                                alp -= 1;
-
-                                listaDeJogadas.Add(new Jogadas(dado14S));
-
-                                return ("1423," + dado14S + "0");
-                            }
-
-                        }
-
-                    }
-                    else
-                    {
-
-                        if (dado12 == dado24 && dado12.ToString() != fila.Filwin)
-                        {
-                            hex1234();
-                            alp -= 2;
-
-                            listaDeJogadas.Add(new Jogadas(dado12S));
-                            listaDeJogadas.Add(new Jogadas(dado34S));
-                            return ("1234," + dado12S + dado34S);
-
-                        }
-
-                        if (dado12.ToString() == fila.Filwin)
-                        {
-                            hex1234();
-
                             alp -= 1;
-
-                            listaDeJogadas.Add(new Jogadas(dado34S));
-
-
-                            return ("3412," + dado34S + "0");
-                        }
-
-                        if (dado34.ToString() == fila.Filwin)
-                        {
-                            hex1234();
-
-                            alp -= 1;
-
-                            listaDeJogadas.Add(new Jogadas(dado34S));
                             return ("1234," + dado12S + "0");
                         }
 
-
-                    }
-                }
-                //ACIMA VAI DAR MERDA
-
-
-                
-                    if (dado12 == dado34)
-                    {
-                        hex1234();
-
-                        alp -= 1;
-                        return ("1234," + dado12S + dado34S);
-
-                    }
-                    else
-                    {
-
-                        hex1234();
-                        foreach (Jogadas jogada in listaDeJogadas)
-                        {
-                            if (jogada.Poze == dado12S || jogada.Poze == dado34S)
-                            {
-                                alp -= 1;
-                                
-                                return ("1234," + dado12S + dado34S);
-                            }
-                        }
-                        alp -= 1;
-                        
-                        return ("1234," + dado12S + "0");
                     }
 
                 
-
-
-                /* foreach (Jogadas jogada in listaDeJogadas)
-                 {
-
-                     if (dado12.ToString() == jogada.Poze)
-                         pode1 = true;
-
-                     if (dado34.ToString() == jogada.Poze)
-                         pode2 = true;
-
-                     if (pode1 && pode2 )
-                     {
-                         hex1234();
-                         return ("1234," + dado12S + dado34S);
-                     }
-
-
-                     if (jogada.Poze == dado12S || jogada.Poze == dado34S)
-                     {
-                         hex1234();
-                         alp -= 1;
-                         return ("1234," + dado12S + dado34S);
-                     }
-
-
-                     if (dado12 == dado34 && dado12.ToString() == jogada.Poze)
-                     {
-                         hex1234();
-                         return ("1234," + dado12S + dado34S);
-
-                     }
-
-                     if (dado12 == dado34 && dado12.ToString() != jogada.Poze)
-                     {
-                         hex1234();
-                         alp -= 1;
-                         return ("1234," + dado12S + "0");
-                     }
-
-                  }
-
-
-                 hex1234();
-                 alp -= 1;
-                 return ("1234," + dado12S + "0");
-             }*/
 
 
             }
-            return null;
+            return ("1234," + dado12S + "0");
         }
         
 
@@ -881,12 +932,14 @@ namespace Aplicativo1
                                                 pboxJ1T2.BackColor = Color.Red;
                                                 pboxAJ1T2.Visible = false;
                                                 pboxJ1T2.Location = new Point(110, 296 - 28);
+                                                ListadePenultimas.Add(new Penultima("2"));
                                             }
                                             else
                                             {
                                                 pboxAJ1T2.Visible = true;
                                                 pboxAJ1T2.BackColor = Color.Black;
                                                 pboxAJ1T2.Location = new Point(110, 296 - 28);
+                                                ListadePenultimas.Add(new Penultima("2"));
                                             }
 
 
@@ -916,6 +969,7 @@ namespace Aplicativo1
                                                 pboxAJ1T2.Visible = true;
                                                 pboxAJ1T2.BackColor = Color.Black;
                                                 pboxAJ1T2.Location = new Point(112, (296 - 28) - 28);
+                                                ListadeFileiras.Add(new FilWin("2"));
                                             }
 
                                             break;
@@ -991,12 +1045,14 @@ namespace Aplicativo1
                                                 pboxJ1T3.BackColor = Color.Red;
                                                 pboxAJ1T3.Visible = false;
                                                 pboxJ1T3.Location = new Point(163, 325 - (28 * 3));
+                                                ListadePenultimas.Add(new Penultima("3"));
                                             }
                                             else
                                             {
                                                 pboxAJ1T3.Visible = true;
                                                 pboxAJ1T3.BackColor = Color.Black;
                                                 pboxAJ1T3.Location = new Point(163, 325 - (28 * 3));
+                                                ListadePenultimas.Add(new Penultima("3"));
                                             }
 
 
@@ -1032,6 +1088,7 @@ namespace Aplicativo1
                                                 pboxAJ1T3.Visible = true;
                                                 pboxAJ1T3.BackColor = Color.Black;
                                                 pboxAJ1T3.Location = new Point(163, 325 - (28 * 4));
+                                                ListadeFileiras.Add(new FilWin("3"));
                                             }
 
 
@@ -1141,12 +1198,14 @@ namespace Aplicativo1
                                                 pboxJ1T4.BackColor = Color.Red;
                                                 pboxAJ1T4.Visible = false;
                                                 pboxJ1T4.Location = new Point(217, 354 - (28 * 5));
+                                                ListadePenultimas.Add(new Penultima("4"));
                                             }
                                             else
                                             {
                                                 pboxAJ1T4.Visible = true;
                                                 pboxAJ1T4.BackColor = Color.Black;
                                                 pboxAJ1T4.Location = new Point(217, 354 - (28 * 5));
+                                                ListadePenultimas.Add(new Penultima("4"));
                                             }
 
 
@@ -1185,6 +1244,7 @@ namespace Aplicativo1
                                                 pboxAJ1T4.Visible = true;
                                                 pboxAJ1T4.BackColor = Color.Black;
                                                 pboxAJ1T4.Location = new Point(217, 354 - (28 * 6));
+                                                ListadeFileiras.Add(new FilWin("4"));
                                             }
 
                                             break;
@@ -1325,12 +1385,14 @@ namespace Aplicativo1
                                                 pboxAJ1T5.Visible = false;
                                                 pboxJ1T5.BackColor = Color.Red;
                                                 pboxJ1T5.Location = new Point(270, 381 - (28 * 7));
+                                                ListadePenultimas.Add(new Penultima("5"));
                                             }
                                             else
                                             {
                                                 pboxAJ1T5.Visible = true;
                                                 pboxAJ1T5.BackColor = Color.Black;
                                                 pboxAJ1T5.Location = new Point(270, 381 - (28 * 7));
+                                                ListadePenultimas.Add(new Penultima("5"));
                                             }
 
                                             break;
@@ -1370,6 +1432,7 @@ namespace Aplicativo1
                                                 pboxAJ1T5.Visible = true;
                                                 pboxAJ1T5.BackColor = Color.Black;
                                                 pboxAJ1T5.Location = new Point(270, 381 - (28 * 8));
+                                                ListadeFileiras.Add(new FilWin("5"));
                                             }
 
                                             break;
@@ -1533,12 +1596,14 @@ namespace Aplicativo1
                                                 pboxAJ1T6.Visible = false;
                                                 pboxJ1T6.BackColor = Color.Red;
                                                 pboxJ1T6.Location = new Point(323, 410 - (28 * 9));
+                                                ListadePenultimas.Add(new Penultima("6"));
                                             }
                                             else
                                             {
                                                 pboxAJ1T6.Visible = true;
                                                 pboxAJ1T6.BackColor = Color.Black;
                                                 pboxAJ1T6.Location = new Point(323, 410 - (28 * 9));
+                                                ListadePenultimas.Add(new Penultima("6"));
                                             }
 
                                             break;
@@ -1581,7 +1646,8 @@ namespace Aplicativo1
                                                 pboxJ1T6.Visible = true;
                                                 pboxAJ1T6.BackColor = Color.Black;
                                                 pboxAJ1T6.Location = new Point(323, 410 - (28 * 10));
-                                               
+                                                ListadeFileiras.Add(new FilWin("6"));
+
                                             }
 
                                             break;
@@ -1777,12 +1843,14 @@ namespace Aplicativo1
                                                 pboxAJ1T7.Visible = false;
                                                 pboxJ1T7.BackColor = Color.Red;
                                                 pboxJ1T7.Location = new Point(376, 438 - (28 * 11));
+                                                ListadePenultimas.Add(new Penultima("7"));
                                             }
                                             else
                                             {
                                                 pboxAJ1T7.Visible = true;
                                                 pboxAJ1T7.BackColor = Color.Black;
                                                 pboxAJ1T7.Location = new Point(376, 438 - (28 * 11));
+                                                ListadePenultimas.Add(new Penultima("7"));
                                             }
 
                                             break;
@@ -1829,6 +1897,7 @@ namespace Aplicativo1
                                                 pboxAJ1T7.Visible = true;
                                                 pboxAJ1T7.BackColor = Color.Black;
                                                 pboxAJ1T7.Location = new Point(376, 438 - (28 * 12));
+                                                ListadeFileiras.Add(new FilWin("7"));
 
                                             }
 
@@ -1997,13 +2066,15 @@ namespace Aplicativo1
                                                 pboxJ1T8.Visible = true;
                                                 pboxAJ1T8.Visible = false;
                                                 pboxJ1T8.BackColor = Color.Red;
-                                                pboxJ1T8.Location = new Point(429, 410 - (28 * 8));
+                                                pboxJ1T8.Location = new Point(429, 410 - (28 * 9));
+                                                ListadePenultimas.Add(new Penultima("8"));
                                             }
                                             else
                                             {
                                                 pboxAJ1T8.Visible = true;
                                                 pboxAJ1T8.BackColor = Color.Black;
-                                                pboxAJ1T8.Location = new Point(429, 410 - (28 * 8));
+                                                pboxAJ1T8.Location = new Point(429, 410 - (28 * 9));
+                                                ListadePenultimas.Add(new Penultima("8"));
                                             }
 
                                             break;
@@ -2013,7 +2084,7 @@ namespace Aplicativo1
                                             {
                                                 pboxAJ1T8.Visible = false;
                                                 pboxJ1T8.BackColor = Color.Red;
-                                                pboxJ1T8.Location = new Point(429, 410 - (28 * 8));
+                                                pboxJ1T8.Location = new Point(429, 410 - (28 * 10));
                                                 pboxJ1T8.Visible = false;
                                                 pboxJ2T8.Visible = false;
                                                 pboxJ3T8.Visible = false;
@@ -2046,7 +2117,8 @@ namespace Aplicativo1
                                             {
                                                 pboxAJ1T8.Visible = true;
                                                 pboxAJ1T8.BackColor = Color.Black;
-                                                pboxAJ1T8.Location = new Point(429, 410 - (28 * 8));
+                                                pboxAJ1T8.Location = new Point(429, 410 - (28 * 10));
+                                                ListadeFileiras.Add(new FilWin("8"));
                                             }
 
                                             break;
@@ -2181,12 +2253,14 @@ namespace Aplicativo1
                                                 pboxAJ1T9.Visible = false;
                                                 pboxJ1T9.BackColor = Color.Red;
                                                 pboxJ1T9.Location = new Point(482, 381 - (28 * 7));
+                                                ListadePenultimas.Add(new Penultima("9"));
                                             }
                                             else
                                             {
                                                 pboxAJ1T9.Visible = true;
                                                 pboxAJ1T9.BackColor = Color.Black;
                                                 pboxAJ1T9.Location = new Point(482, 381 - (28 * 7));
+                                                ListadePenultimas.Add(new Penultima("9"));
                                             }
 
                                             break;
@@ -2226,6 +2300,7 @@ namespace Aplicativo1
                                                 pboxAJ1T9.Visible = true;
                                                 pboxAJ1T9.BackColor = Color.Black;
                                                 pboxAJ1T9.Location = new Point(482, 381 - (28 * 8));
+                                                ListadeFileiras.Add(new FilWin("9"));
                                             }
 
                                             break;
@@ -2333,12 +2408,14 @@ namespace Aplicativo1
                                                 pboxAJ1T10.Visible = false;
                                                 pboxJ1T10.BackColor = Color.Red;
                                                 pboxJ1T10.Location = new Point(536, 354 - (28 * 5));
+                                                ListadePenultimas.Add(new Penultima("10"));
                                             }
                                             else
                                             {
                                                 pboxAJ1T10.Visible = true;
                                                 pboxAJ1T10.BackColor = Color.Black;
                                                 pboxAJ1T10.Location = new Point(536, 354 - (28 * 5));
+                                                ListadePenultimas.Add(new Penultima("10"));
                                             }
 
                                             break;
@@ -2376,6 +2453,7 @@ namespace Aplicativo1
                                                 pboxAJ1T10.Visible = true;
                                                 pboxAJ1T10.BackColor = Color.Black;
                                                 pboxAJ1T10.Location = new Point(536, 354 - (28 * 6));
+                                                ListadeFileiras.Add(new FilWin("10"));
                                             }
 
                                             break;
@@ -2449,12 +2527,14 @@ namespace Aplicativo1
                                                 pboxAJ1T11.Visible = false;
                                                 pboxJ1T11.BackColor = Color.Red;
                                                 pboxJ1T11.Location = new Point(589, 325 - (28 * 3));
+                                                ListadePenultimas.Add(new Penultima("11"));
                                             }
                                             else
                                             {
                                                 pboxAJ1T11.Visible = true;
                                                 pboxAJ1T11.BackColor = Color.Black;
                                                 pboxAJ1T11.Location = new Point(589, 325 - (28 * 3));
+                                                ListadePenultimas.Add(new Penultima("11"));
                                             }
 
                                             break;
@@ -2486,6 +2566,7 @@ namespace Aplicativo1
                                                 pboxAJ1T11.Visible = true;
                                                 pboxAJ1T11.BackColor = Color.Black;
                                                 pboxAJ1T11.Location = new Point(589, 325 - (28 * 4));
+                                                ListadeFileiras.Add(new FilWin("11"));
                                             }
 
                                             break;
@@ -2521,12 +2602,14 @@ namespace Aplicativo1
                                                 pboxAJ1T12.Visible = false;
                                                 pboxJ1T12.BackColor = Color.Red;
                                                 pboxJ1T12.Location = new Point(642, 296 - 28);
+                                                ListadePenultimas.Add(new Penultima("12"));
                                             }
                                             else
                                             {
                                                 pboxAJ1T12.Visible = true;
                                                 pboxAJ1T12.BackColor = Color.Black;
                                                 pboxAJ1T12.Location = new Point(642, 296 - 28);
+                                                ListadePenultimas.Add(new Penultima("12"));
                                             }
 
                                             break;
@@ -2554,6 +2637,7 @@ namespace Aplicativo1
                                                 pboxAJ1T12.Visible = true;
                                                 pboxAJ1T12.BackColor = Color.Black;
                                                 pboxAJ1T12.Location = new Point(642, (296 - 28) - 28);
+                                                ListadeFileiras.Add(new FilWin("12"));
                                             }
 
                                             break;
@@ -2601,12 +2685,14 @@ namespace Aplicativo1
                                                 pboxAJ2T2.Visible = false;
                                                 pboxJ2T2.BackColor = Color.Blue;
                                                 pboxJ2T2.Location = new Point(129, 296 - 28);
+                                                ListadePenultimas.Add(new Penultima("2"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T2.Visible = true;
                                                 pboxAJ2T2.BackColor = Color.Black;
                                                 pboxAJ2T2.Location = new Point(129, 296 - 28);
+                                                ListadePenultimas.Add(new Penultima("2"));
                                             }
 
                                             break;
@@ -2628,13 +2714,15 @@ namespace Aplicativo1
                                                 C2.Visible = true;
                                                 C22.Visible = true;
                                                 C23.Visible = true;
-                                                
+                                                ListadeFileiras.Add(new FilWin("2"));
+
                                             }
                                             else
                                             {
                                                 pboxAJ2T2.Visible = true;
                                                 pboxAJ2T2.BackColor = Color.Black;
                                                 pboxAJ2T2.Location = new Point(129, (296 - 28) - 28);
+                                                ListadeFileiras.Add(new FilWin("2"));
                                             }
 
                                             break;
@@ -2706,12 +2794,14 @@ namespace Aplicativo1
                                                 pboxAJ2T3.Visible = false;
                                                 pboxJ2T3.BackColor = Color.Blue;
                                                 pboxJ2T3.Location = new Point(181, 325 - (28 * 3));
+                                                ListadePenultimas.Add(new Penultima("3"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T3.Visible = true;
                                                 pboxAJ2T3.BackColor = Color.Black;
                                                 pboxAJ2T3.Location = new Point(181, 325 - (28 * 3));
+                                                ListadePenultimas.Add(new Penultima("3"));
                                             }
 
                                             break;
@@ -2736,12 +2826,14 @@ namespace Aplicativo1
                                                 C33.Visible = true;
                                                 C34.Visible = true;
                                                 C35.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("3"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T3.Visible = true;
                                                 pboxAJ2T3.BackColor = Color.Black;
                                                 pboxAJ2T3.Location = new Point(181, 325 - (28 * 4));
+                                                ListadeFileiras.Add(new FilWin("3"));
                                             }
 
                                             break;
@@ -2846,12 +2938,14 @@ namespace Aplicativo1
                                                 pboxAJ2T4.Visible = false;
                                                 pboxJ2T4.BackColor = Color.Blue;
                                                 pboxJ2T4.Location = new Point(235, 354 - (28 * 5));
+                                                ListadePenultimas.Add(new Penultima("4"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T4.Visible = true;
                                                 pboxAJ2T4.BackColor = Color.Black;
                                                 pboxAJ2T4.Location = new Point(235, 354 - (28 * 5));
+                                                ListadePenultimas.Add(new Penultima("4"));
                                             }
 
                                             break;
@@ -2881,12 +2975,14 @@ namespace Aplicativo1
                                                 C45.Visible = true;
                                                 C46.Visible = true;
                                                 C47.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("4"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T4.Visible = true;
                                                 pboxAJ2T4.BackColor = Color.Black;
                                                 pboxAJ2T4.Location = new Point(235, 354 - (28 * 6));
+                                                ListadeFileiras.Add(new FilWin("4"));
                                             }
 
                                             break;
@@ -3025,12 +3121,14 @@ namespace Aplicativo1
                                                 pboxAJ2T5.Visible = false;
                                                 pboxJ2T5.BackColor = Color.Blue;
                                                 pboxJ2T5.Location = new Point(287, 381 - (28 * 7));
+                                                ListadePenultimas.Add(new Penultima("5"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T5.Visible = true;
                                                 pboxAJ2T5.BackColor = Color.Black;
                                                 pboxAJ2T5.Location = new Point(287, 381 - (28 * 7));
+                                                ListadePenultimas.Add(new Penultima("5"));
                                             }
 
                                             break;
@@ -3065,12 +3163,14 @@ namespace Aplicativo1
                                                 C57.Visible = true;
                                                 C58.Visible = true;
                                                 C59.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("5"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T5.Visible = true;
                                                 pboxAJ2T5.BackColor = Color.Black;
                                                 pboxAJ2T5.Location = new Point(287, 381 - (28 * 8));
+                                                ListadeFileiras.Add(new FilWin("5"));
                                             }
 
                                             break;
@@ -3248,12 +3348,14 @@ namespace Aplicativo1
                                                 pboxAJ2T6.Visible = false;
                                                 pboxJ2T6.BackColor = Color.Blue;
                                                 pboxJ2T6.Location = new Point(341, 410 - (28 * 9));
+                                                ListadePenultimas.Add(new Penultima("6"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T6.Visible = true;
                                                 pboxAJ2T6.BackColor = Color.Black;
                                                 pboxAJ2T6.Location = new Point(341, 410 - (28 * 9));
+                                                ListadePenultimas.Add(new Penultima("6"));
                                             }
 
                                             break;
@@ -3291,12 +3393,14 @@ namespace Aplicativo1
                                                 C69.Visible = true;
                                                 C610.Visible = true;
                                                 C611.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("6"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T6.Visible = true;
                                                 pboxAJ2T6.BackColor = Color.Black;
                                                 pboxAJ2T6.Location = new Point(341, 410 - (28 * 10));
+                                                ListadeFileiras.Add(new FilWin("6"));
                                             }
 
                                             break;
@@ -3513,12 +3617,14 @@ namespace Aplicativo1
                                                 pboxAJ2T7.Visible = false;
                                                 pboxJ2T7.BackColor = Color.Blue;
                                                 pboxJ2T7.Location = new Point(395, 438 - (28 * 11));
+                                                ListadePenultimas.Add(new Penultima("7"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T7.Visible = true;
                                                 pboxAJ2T7.BackColor = Color.Black;
                                                 pboxAJ2T7.Location = new Point(395, 438 - (28 * 11));
+                                                ListadePenultimas.Add(new Penultima("7"));
                                             }
 
                                             break;
@@ -3561,12 +3667,14 @@ namespace Aplicativo1
                                                 C711.Visible = true;
                                                 C712.Visible = true;
                                                 C713.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("7"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T7.Visible = true;
                                                 pboxAJ2T7.BackColor = Color.Black;
                                                 pboxAJ2T7.Location = new Point(395, 438 - (28 * 12));
+                                                ListadeFileiras.Add(new FilWin("7"));
                                             }
 
                                             break;
@@ -3737,13 +3845,15 @@ namespace Aplicativo1
                                                 pboxJ2T8.Visible = true;
                                                 pboxAJ2T8.Visible = false;
                                                 pboxJ2T8.BackColor = Color.Blue;
-                                                pboxJ2T8.Location = new Point(447, 410 - (28 * 8));
+                                                pboxJ2T8.Location = new Point(447, 410 - (28 * 9));
+                                                ListadePenultimas.Add(new Penultima("8"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T8.Visible = true;
                                                 pboxAJ2T8.BackColor = Color.Black;
-                                                pboxAJ2T8.Location = new Point(447, 410 - (28 * 8));
+                                                pboxAJ2T8.Location = new Point(447, 410 - (28 * 9));
+                                                ListadePenultimas.Add(new Penultima("8"));
                                             }
 
                                             break;
@@ -3754,7 +3864,7 @@ namespace Aplicativo1
                                                 
                                                 pboxAJ2T8.Visible = false;
                                                 pboxJ2T8.BackColor = Color.Blue;
-                                                pboxJ2T8.Location = new Point(447, 410 - (28 * 8));
+                                                pboxJ2T8.Location = new Point(447, 410 - (28 * 10));
                                                 pboxJ1T8.Visible = false;
                                                 pboxJ2T8.Visible = false;
                                                 pboxJ3T8.Visible = false;
@@ -3781,13 +3891,14 @@ namespace Aplicativo1
                                                 C89.Visible = true;
                                                 C810.Visible = true;
                                                 C811.Visible = true;
-                                                
+                                                ListadeFileiras.Add(new FilWin("8"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T8.Visible = true;
                                                 pboxAJ2T8.BackColor = Color.Black;
-                                                pboxAJ2T8.Location = new Point(447, 410 - (28 * 8));
+                                                pboxAJ2T8.Location = new Point(447, 410 - (28 * 10));
+                                                ListadeFileiras.Add(new FilWin("8"));
                                             }
 
                                             break;
@@ -3928,12 +4039,14 @@ namespace Aplicativo1
                                                 pboxAJ2T9.Visible = false;
                                                 pboxJ2T9.BackColor = Color.Blue;
                                                 pboxJ2T9.Location = new Point(500, 381 - (28 * 7));
+                                                ListadePenultimas.Add(new Penultima("9"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T9.Visible = true;
                                                 pboxAJ2T9.BackColor = Color.Black;
                                                 pboxAJ2T9.Location = new Point(500, 381 - (28 * 7));
+                                                ListadePenultimas.Add(new Penultima("9"));
                                             }
 
                                             break;
@@ -3968,6 +4081,7 @@ namespace Aplicativo1
                                                 C97.Visible = true;
                                                 C98.Visible = true;
                                                 C99.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("9"));
 
                                             }
                                             else
@@ -3975,6 +4089,7 @@ namespace Aplicativo1
                                                 pboxAJ2T9.Visible = true;
                                                 pboxAJ2T9.BackColor = Color.Black;
                                                 pboxAJ2T9.Location = new Point(500, 381 - (28 * 8));
+                                                ListadeFileiras.Add(new FilWin("9"));
                                             }
 
                                             break;
@@ -4077,12 +4192,15 @@ namespace Aplicativo1
                                                 pboxAJ2T10.Visible = false;
                                                 pboxJ2T10.BackColor = Color.Blue;
                                                 pboxJ2T10.Location = new Point(553, 354 - (28 * 5));
+                                                ListadePenultimas.Add(new Penultima("10"));
+
                                             }
                                             else
                                             {
                                                 pboxAJ2T10.Visible = true;
                                                 pboxAJ2T10.BackColor = Color.Black;
                                                 pboxAJ2T10.Location = new Point(553, 354 - (28 * 5));
+                                                ListadePenultimas.Add(new Penultima("10"));
                                             }
 
                                             break;
@@ -4113,13 +4231,15 @@ namespace Aplicativo1
                                                 C105.Visible = true;
                                                 C106.Visible = true;
                                                 C107.Visible = true;
-                                                
+                                                ListadeFileiras.Add(new FilWin("10"));
+
                                             }
                                             else
                                             {
                                                 pboxAJ2T10.Visible = true;
                                                 pboxAJ2T10.BackColor = Color.Black;
                                                 pboxAJ2T10.Location = new Point(553, 354 - (28 * 6));
+                                                ListadeFileiras.Add(new FilWin("10"));
                                             }
 
                                             break;
@@ -4190,12 +4310,14 @@ namespace Aplicativo1
                                                 pboxAJ2T11.Visible = false;
                                                 pboxJ2T11.BackColor = Color.Blue;
                                                 pboxJ2T11.Location = new Point(607, 325 - (28 * 3));
+                                                ListadePenultimas.Add(new Penultima("11"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T11.Visible = true;
                                                 pboxAJ2T11.BackColor = Color.Black;
                                                 pboxAJ2T11.Location = new Point(607, 325 - (28 * 3));
+                                                ListadePenultimas.Add(new Penultima("11"));
                                             }
 
                                             break;
@@ -4222,13 +4344,15 @@ namespace Aplicativo1
                                                 C113.Visible = true;
                                                 C114.Visible = true;
                                                 C115.Visible = true;
-                                                
+                                                ListadeFileiras.Add(new FilWin("11"));
+
                                             }
                                             else
                                             {
                                                 pboxAJ2T11.Visible = true;
                                                 pboxAJ2T11.BackColor = Color.Black;
                                                 pboxAJ2T11.Location = new Point(607, 325 - (28 * 4));
+                                                ListadeFileiras.Add(new FilWin("11"));
                                             }
 
                                             break;
@@ -4265,12 +4389,14 @@ namespace Aplicativo1
                                                 pboxAJ2T12.Visible = false;
                                                 pboxJ2T12.BackColor = Color.Blue;
                                                 pboxJ2T12.Location = new Point(660, 296 - 28);
+                                                ListadePenultimas.Add(new Penultima("12"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T12.Visible = true;
                                                 pboxAJ2T12.BackColor = Color.Black;
                                                 pboxAJ2T12.Location = new Point(660, 296 - 28);
+                                                ListadePenultimas.Add(new Penultima("12"));
                                             }
 
                                             break;
@@ -4291,13 +4417,15 @@ namespace Aplicativo1
                                                 C123.BackColor = Color.Blue;
                                                 C12.Visible = true;
                                                 C122.Visible = true;
-                                                C123.Visible = true;  
+                                                C123.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("12"));
                                             }
                                             else
                                             {
                                                 pboxAJ2T12.Visible = true;
                                                 pboxAJ2T12.BackColor = Color.Black;
                                                 pboxAJ2T12.Location = new Point(660, (296 - 28) - 28);
+                                                ListadeFileiras.Add(new FilWin("12"));
                                             }
                                             break;
                                     }
@@ -4344,12 +4472,14 @@ namespace Aplicativo1
                                                 pboxAJ3T2.Visible = false;
                                                 pboxJ3T2.BackColor = Color.Green;
                                                 pboxJ3T2.Location = new Point(110, 306 - 28);
+                                                ListadePenultimas.Add(new Penultima("2"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T2.Visible = true;
                                                 pboxAJ3T2.BackColor = Color.Black;
                                                 pboxAJ3T2.Location = new Point(110, 306 - 28);
+                                                ListadePenultimas.Add(new Penultima("2"));
                                             }
 
 
@@ -4371,12 +4501,14 @@ namespace Aplicativo1
                                                 C2.Visible = true;
                                                 C22.Visible = true;
                                                 C23.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("2"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T2.Visible = true;
                                                 pboxAJ3T2.BackColor = Color.Black;
                                                 pboxAJ3T2.Location = new Point(112, (306 - 28) - 28);
+                                                ListadeFileiras.Add(new FilWin("2"));
                                             }
 
                                             break;
@@ -4452,12 +4584,14 @@ namespace Aplicativo1
                                                 pboxAJ3T3.Visible = false;
                                                 pboxJ3T3.BackColor = Color.Green;
                                                 pboxJ3T3.Location = new Point(163, 334 - (28 * 3));
+                                                ListadePenultimas.Add(new Penultima("3"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T3.Visible = true;
                                                 pboxAJ3T3.BackColor = Color.Black;
                                                 pboxAJ3T3.Location = new Point(163, 334 - (28 * 3));
+                                                ListadePenultimas.Add(new Penultima("3"));
                                             }
 
 
@@ -4486,12 +4620,14 @@ namespace Aplicativo1
                                                 C33.Visible = true;
                                                 C34.Visible = true;
                                                 C35.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("3"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T3.Visible = true;
                                                 pboxAJ3T3.BackColor = Color.Black;
                                                 pboxAJ3T3.Location = new Point(163, 334 - (28 * 4));
+                                                ListadeFileiras.Add(new FilWin("3"));
                                             }
 
 
@@ -4601,12 +4737,14 @@ namespace Aplicativo1
                                                 pboxAJ3T4.Visible = false;
                                                 pboxJ3T4.BackColor = Color.Green;
                                                 pboxJ3T4.Location = new Point(217, 363 - (28 * 5));
+                                                ListadePenultimas.Add(new Penultima("4"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T4.Visible = true;
                                                 pboxAJ3T4.BackColor = Color.Black;
                                                 pboxAJ3T4.Location = new Point(217, 363 - (28 * 5));
+                                                ListadePenultimas.Add(new Penultima("4"));
                                             }
 
                                             break;
@@ -4635,12 +4773,14 @@ namespace Aplicativo1
                                                 C45.Visible = true;
                                                 C46.Visible = true;
                                                 C47.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("4"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T4.Visible = true;
                                                 pboxAJ3T4.BackColor = Color.Black;
                                                 pboxAJ3T4.Location = new Point(217, 363 - (28 * 6));
+                                                ListadeFileiras.Add(new FilWin("4"));
                                             }
 
                                             break;
@@ -4781,12 +4921,14 @@ namespace Aplicativo1
                                                 pboxAJ3T5.Visible = false;
                                                 pboxJ3T5.BackColor = Color.Green;
                                                 pboxJ3T5.Location = new Point(270, 391 - (28 * 7));
+                                                ListadePenultimas.Add(new Penultima("5"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T5.Visible = true;
                                                 pboxAJ3T5.BackColor = Color.Black;
                                                 pboxAJ3T5.Location = new Point(270, 391 - (28 * 7));
+                                                ListadePenultimas.Add(new Penultima("5"));
                                             }
 
                                             break;
@@ -4819,12 +4961,14 @@ namespace Aplicativo1
                                                 C57.Visible = true;
                                                 C58.Visible = true;
                                                 C59.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("5"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T5.Visible = true;
                                                 pboxAJ3T5.BackColor = Color.Black;
                                                 pboxAJ3T5.Location = new Point(270, 391 - (28 * 8));
+                                                ListadeFileiras.Add(new FilWin("5"));
                                             }
 
                                             break;
@@ -4988,12 +5132,14 @@ namespace Aplicativo1
                                                 pboxAJ3T6.Visible = false;
                                                 pboxJ3T6.BackColor = Color.Green;
                                                 pboxJ3T6.Location = new Point(323, 420 - (28 * 9));
+                                                ListadePenultimas.Add(new Penultima("6"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T6.Visible = true;
                                                 pboxAJ3T6.BackColor = Color.Black;
                                                 pboxAJ3T6.Location = new Point(323, 420 - (28 * 9));
+                                                ListadePenultimas.Add(new Penultima("6"));
                                             }
 
                                             break;
@@ -5029,12 +5175,14 @@ namespace Aplicativo1
                                                 C69.Visible = true;
                                                 C610.Visible = true;
                                                 C611.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("6"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T6.Visible = true;
                                                 pboxAJ3T6.BackColor = Color.Black;
                                                 pboxAJ3T6.Location = new Point(323, 420 - (28 * 10));
+                                                ListadeFileiras.Add(new FilWin("6"));
                                             }
 
                                             break;
@@ -5230,12 +5378,14 @@ namespace Aplicativo1
                                                 pboxAJ3T7.Visible = false;
                                                 pboxJ3T7.BackColor = Color.Green;
                                                 pboxJ3T7.Location = new Point(376, 447 - (28 * 11));
+                                                ListadePenultimas.Add(new Penultima("7"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T7.Visible = true;
                                                 pboxAJ3T7.BackColor = Color.Black;
                                                 pboxAJ3T7.Location = new Point(376, 447 - (28 * 11));
+                                                ListadePenultimas.Add(new Penultima("7"));
                                             }
 
                                             break;
@@ -5275,12 +5425,14 @@ namespace Aplicativo1
                                                 C711.Visible = true;
                                                 C712.Visible = true;
                                                 C713.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("7"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T7.Visible = true;
                                                 pboxAJ3T7.BackColor = Color.Black;
                                                 pboxAJ3T7.Location = new Point(376, 447 - (28 * 12));
+                                                ListadeFileiras.Add(new FilWin("7"));
                                             }
 
                                             break;
@@ -5448,13 +5600,15 @@ namespace Aplicativo1
                                                 pboxJ3T8.Visible = true;
                                                 pboxAJ3T8.Visible = false;
                                                 pboxJ3T8.BackColor = Color.Green;
-                                                pboxJ3T8.Location = new Point(429, 420 - (28 * 8));
+                                                pboxJ3T8.Location = new Point(429, 420 - (28 * 9));
+                                                ListadePenultimas.Add(new Penultima("8"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T8.Visible = true;
                                                 pboxAJ3T8.BackColor = Color.Black;
-                                                pboxAJ3T8.Location = new Point(429, 420 - (28 * 8));
+                                                pboxAJ3T8.Location = new Point(429, 420 - (28 * 9));
+                                                ListadePenultimas.Add(new Penultima("8"));
                                             }
 
                                             break;
@@ -5464,7 +5618,7 @@ namespace Aplicativo1
                                             {
                                                 pboxAJ3T8.Visible = false;
                                                 pboxJ3T8.BackColor = Color.Green;
-                                                pboxJ3T8.Location = new Point(429, 420 - (28 * 8));
+                                                pboxJ3T8.Location = new Point(429, 420 - (28 * 10));
                                                 pboxJ1T8.Visible = false;
                                                 pboxJ2T8.Visible = false;
                                                 pboxJ3T8.Visible = false;
@@ -5491,13 +5645,15 @@ namespace Aplicativo1
                                                 C89.Visible = true;
                                                 C810.Visible = true;
                                                 C811.Visible = true;
-                                               
+                                                ListadeFileiras.Add(new FilWin("8"));
+
                                             }
                                             else
                                             {
                                                 pboxAJ3T8.Visible = true;
                                                 pboxAJ3T8.BackColor = Color.Black;
-                                                pboxAJ3T8.Location = new Point(429, 420 - (28 * 8));
+                                                pboxAJ3T8.Location = new Point(429, 420 - (28 * 10));
+                                                ListadeFileiras.Add(new FilWin("8"));
                                             }
 
                                             break;
@@ -5632,12 +5788,14 @@ namespace Aplicativo1
                                                 pboxAJ3T9.Visible = false;
                                                 pboxJ3T9.BackColor = Color.Green;
                                                 pboxJ3T9.Location = new Point(482, 391 - (28 * 7));
+                                                ListadePenultimas.Add(new Penultima("9"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T9.Visible = true;
                                                 pboxAJ3T9.BackColor = Color.Black;
                                                 pboxAJ3T9.Location = new Point(482, 391 - (28 * 7));
+                                                ListadePenultimas.Add(new Penultima("9"));
                                             }
 
                                             break;
@@ -5672,13 +5830,15 @@ namespace Aplicativo1
                                                 C97.Visible = true;
                                                 C98.Visible = true;
                                                 C99.Visible = true;
-                                                
+                                                ListadeFileiras.Add(new FilWin("9"));
+
                                             }
                                             else
                                             {
                                                 pboxAJ3T9.Visible = true;
                                                 pboxAJ3T9.BackColor = Color.Black;
                                                 pboxAJ3T9.Location = new Point(482, 391 - (28 * 8));
+                                                ListadeFileiras.Add(new FilWin("9"));
                                             }
 
                                             break;
@@ -5786,12 +5946,14 @@ namespace Aplicativo1
                                                 pboxAJ3T10.Visible = false;
                                                 pboxJ3T10.BackColor = Color.Green;
                                                 pboxJ3T10.Location = new Point(536, 363 - (28 * 5));
+                                                ListadePenultimas.Add(new Penultima("10"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T10.Visible = true;
                                                 pboxAJ3T10.BackColor = Color.Black;
                                                 pboxAJ3T10.Location = new Point(536, 363 - (28 * 5));
+                                                ListadePenultimas.Add(new Penultima("10"));
                                             }
 
                                             break;
@@ -5820,13 +5982,15 @@ namespace Aplicativo1
                                                 C105.Visible = true;
                                                 C106.Visible = true;
                                                 C107.Visible = true;
-                                               
+                                                ListadeFileiras.Add(new FilWin("10"));
+
                                             }
                                             else
                                             {
                                                 pboxAJ3T10.Visible = true;
                                                 pboxAJ3T10.BackColor = Color.Black;
                                                 pboxAJ3T10.Location = new Point(536, 363 - (28 * 6));
+                                                ListadeFileiras.Add(new FilWin("10"));
                                             }
 
                                             break;
@@ -5900,12 +6064,14 @@ namespace Aplicativo1
                                                 pboxAJ3T11.Visible = false;
                                                 pboxJ3T11.BackColor = Color.Green;
                                                 pboxJ3T11.Location = new Point(589, 334 - (28 * 3));
+                                                ListadePenultimas.Add(new Penultima("11"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T11.Visible = true;
                                                 pboxAJ3T11.BackColor = Color.Black;
                                                 pboxAJ3T11.Location = new Point(589, 334 - (28 * 3));
+                                                ListadePenultimas.Add(new Penultima("11"));
                                             }
 
                                             break;
@@ -5931,13 +6097,15 @@ namespace Aplicativo1
                                                 C113.Visible = true;
                                                 C114.Visible = true;
                                                 C115.Visible = true;
-                                           
+                                                ListadeFileiras.Add(new FilWin("11"));
+
                                             }
                                             else
                                             {
                                                 pboxAJ3T11.Visible = true;
                                                 pboxAJ3T11.BackColor = Color.Black;
                                                 pboxAJ3T11.Location = new Point(589, 334 - (28 * 4));
+                                                ListadeFileiras.Add(new FilWin("11"));
                                             }
 
                                             break;
@@ -5973,12 +6141,14 @@ namespace Aplicativo1
                                                 pboxAJ3T12.Visible = false;
                                                 pboxJ3T12.BackColor = Color.Green;
                                                 pboxJ3T12.Location = new Point(642, 306 - 28);
+                                                ListadePenultimas.Add(new Penultima("12"));
                                             }
                                             else
                                             {
                                                 pboxAJ3T12.Visible = true;
                                                 pboxAJ3T12.BackColor = Color.Black;
                                                 pboxAJ3T12.Location = new Point(642, 306 - 28);
+                                                ListadePenultimas.Add(new Penultima("12"));
                                             }
 
                                             break;
@@ -5999,13 +6169,15 @@ namespace Aplicativo1
                                                 C12.Visible = true;
                                                 C122.Visible = true;
                                                 C123.Visible = true;
-                                               
+                                                ListadeFileiras.Add(new FilWin("12"));
+
                                             }
                                             else
                                             {
                                                 pboxAJ3T12.Visible = true;
                                                 pboxAJ3T12.BackColor = Color.Black;
                                                 pboxAJ3T12.Location = new Point(642, (306 - 28) - 28);
+                                                ListadeFileiras.Add(new FilWin("12"));
                                             }
 
                                             break;
@@ -6051,12 +6223,14 @@ namespace Aplicativo1
                                                 pboxAJ4T2.Visible = false;
                                                 pboxJ4T2.BackColor = Color.Yellow;
                                                 pboxJ4T2.Location = new Point(129, 306 - 28);
+                                                ListadePenultimas.Add(new Penultima("2"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T2.Visible = true;
                                                 pboxAJ4T2.BackColor = Color.Black;
                                                 pboxAJ4T2.Location = new Point(129, 306 - 28);
+                                                ListadePenultimas.Add(new Penultima("2"));
                                             }
 
 
@@ -6077,12 +6251,14 @@ namespace Aplicativo1
                                                 C2.Visible = true;
                                                 C22.Visible = true;
                                                 C23.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("2"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T2.Visible = true;
                                                 pboxAJ4T2.BackColor = Color.Black;
                                                 pboxAJ4T2.Location = new Point(129, (306 - 28) - 28);
+                                                ListadeFileiras.Add(new FilWin("2"));
                                             }
 
                                             break;
@@ -6158,12 +6334,14 @@ namespace Aplicativo1
                                                 pboxAJ4T3.Visible = false;
                                                 pboxJ4T3.BackColor = Color.Yellow;
                                                 pboxJ4T3.Location = new Point(181, 334 - (28 * 3));
+                                                ListadePenultimas.Add(new Penultima("3"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T3.Visible = true;
                                                 pboxAJ4T3.BackColor = Color.Black;
                                                 pboxAJ4T3.Location = new Point(181, 334 - (28 * 3));
+                                                ListadePenultimas.Add(new Penultima("3"));
                                             }
 
 
@@ -6191,12 +6369,14 @@ namespace Aplicativo1
                                                 C33.Visible = true;
                                                 C34.Visible = true;
                                                 C35.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("3"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T3.Visible = true;
                                                 pboxAJ4T3.BackColor = Color.Black;
                                                 pboxAJ4T3.Location = new Point(181, 334 - (28 * 4));
+                                                ListadeFileiras.Add(new FilWin("3"));
                                             }
 
 
@@ -6306,12 +6486,14 @@ namespace Aplicativo1
                                                 pboxAJ4T4.Visible = false;
                                                 pboxJ4T4.BackColor = Color.Yellow;
                                                 pboxJ4T4.Location = new Point(235, 363 - (28 * 5));
+                                                ListadePenultimas.Add(new Penultima("4"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T4.Visible = true;
                                                 pboxAJ4T4.BackColor = Color.Black;
                                                 pboxAJ4T4.Location = new Point(235, 363 - (28 * 5));
+                                                ListadePenultimas.Add(new Penultima("4"));
                                             }
 
 
@@ -6344,12 +6526,14 @@ namespace Aplicativo1
                                                 C45.Visible = true;
                                                 C46.Visible = true;
                                                 C47.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("4"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T4.Visible = true;
                                                 pboxAJ4T4.BackColor = Color.Black;
                                                 pboxAJ4T4.Location = new Point(235, 363 - (28 * 6));
+                                                ListadeFileiras.Add(new FilWin("4"));
                                             }
 
                                             break;
@@ -6490,12 +6674,14 @@ namespace Aplicativo1
                                                 pboxAJ4T5.Visible = false;
                                                 pboxJ4T5.BackColor = Color.Yellow;
                                                 pboxJ4T5.Location = new Point(287, 391 - (28 * 7));
+                                                ListadePenultimas.Add(new Penultima("5"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T5.Visible = true;
                                                 pboxAJ4T5.BackColor = Color.Black;
                                                 pboxAJ4T5.Location = new Point(287, 391 - (28 * 7));
+                                                ListadePenultimas.Add(new Penultima("5"));
                                             }
 
                                             break;
@@ -6528,12 +6714,14 @@ namespace Aplicativo1
                                                 C57.Visible = true;
                                                 C58.Visible = true;
                                                 C59.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("5"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T5.Visible = true;
                                                 pboxAJ4T5.BackColor = Color.Black;
                                                 pboxAJ4T5.Location = new Point(287, 391 - (28 * 8));
+                                                ListadeFileiras.Add(new FilWin("5"));
                                             }
 
                                             break;
@@ -6697,12 +6885,14 @@ namespace Aplicativo1
                                                 pboxAJ4T6.Visible = false;
                                                 pboxJ4T6.BackColor = Color.Yellow;
                                                 pboxJ4T6.Location = new Point(341, 420 - (28 * 9));
+                                                ListadePenultimas.Add(new Penultima("6"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T6.Visible = true;
                                                 pboxAJ4T6.BackColor = Color.Black;
                                                 pboxAJ4T6.Location = new Point(341, 420 - (28 * 9));
+                                                ListadePenultimas.Add(new Penultima("6"));
                                             }
 
                                             break;
@@ -6739,12 +6929,14 @@ namespace Aplicativo1
                                                 C69.Visible = true;
                                                 C610.Visible = true;
                                                 C611.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("6"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T6.Visible = true;
                                                 pboxAJ4T6.BackColor = Color.Black;
                                                 pboxAJ4T6.Location = new Point(341, 420 - (28 * 10));
+                                                ListadeFileiras.Add(new FilWin("6"));
                                             }
 
                                             break;
@@ -6940,12 +7132,14 @@ namespace Aplicativo1
                                                 pboxAJ4T7.Visible = false;
                                                 pboxJ4T7.BackColor = Color.Yellow;
                                                 pboxJ4T7.Location = new Point(395, 447 - (28 * 11));
+                                                ListadePenultimas.Add(new Penultima("7"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T7.Visible = true;
                                                 pboxAJ4T7.BackColor = Color.Black;
                                                 pboxAJ4T7.Location = new Point(395, 447 - (28 * 11));
+                                                ListadePenultimas.Add(new Penultima("7"));
                                             }
 
                                             break;
@@ -6985,17 +7179,20 @@ namespace Aplicativo1
                                                 C711.Visible = true;
                                                 C712.Visible = true;
                                                 C713.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("7"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T7.Visible = true;
                                                 pboxAJ4T7.BackColor = Color.Black;
                                                 pboxAJ4T7.Location = new Point(395, 447 - (28 * 12));
+                                                ListadeFileiras.Add(new FilWin("7"));
                                             }
 
                                             break;
                                     }
                                     break;
+
                                 case 8:
                                     switch (Status.position)
                                     {
@@ -7158,13 +7355,15 @@ namespace Aplicativo1
                                                 pboxJ4T8.Visible = true;
                                                 pboxAJ4T8.Visible = false;
                                                 pboxJ4T8.BackColor = Color.Yellow;
-                                                pboxJ4T8.Location = new Point(447, 420 - (28 * 8));
+                                                pboxJ4T8.Location = new Point(447, 420 - (28 * 9));
+                                                ListadePenultimas.Add(new Penultima("8"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T8.Visible = true;
                                                 pboxAJ4T8.BackColor = Color.Black;
-                                                pboxAJ4T8.Location = new Point(447, 420 - (28 * 8));
+                                                pboxAJ4T8.Location = new Point(447, 420 - (28 * 9));
+                                                ListadePenultimas.Add(new Penultima("8"));
                                             }
 
                                             break;
@@ -7175,7 +7374,7 @@ namespace Aplicativo1
                                                 
                                                 pboxAJ4T8.Visible = false;
                                                 pboxJ4T8.BackColor = Color.Yellow;
-                                                pboxJ4T8.Location = new Point(447, 420 - (28 * 8));
+                                                pboxJ4T8.Location = new Point(447, 420 - (28 * 10));
                                                 pboxJ1T8.Visible = false;
                                                 pboxJ2T8.Visible = false;
                                                 pboxJ3T8.Visible = false;
@@ -7202,12 +7401,14 @@ namespace Aplicativo1
                                                 C89.Visible = true;
                                                 C810.Visible = true;
                                                 C811.Visible = true;
+                                                ListadeFileiras.Add(new FilWin("8"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T8.Visible = true;
                                                 pboxAJ4T8.BackColor = Color.Black;
-                                                pboxAJ4T8.Location = new Point(447, 420 - (28 * 8));
+                                                pboxAJ4T8.Location = new Point(447, 420 - (28 * 10));
+                                                ListadeFileiras.Add(new FilWin("8"));
                                             }
 
                                             break;
@@ -7342,12 +7543,14 @@ namespace Aplicativo1
                                                 pboxAJ4T9.Visible = false;
                                                 pboxJ4T9.BackColor = Color.Yellow;
                                                 pboxJ4T9.Location = new Point(500, 391 - (28 * 7));
+                                                ListadePenultimas.Add(new Penultima("9"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T9.Visible = true;
                                                 pboxAJ4T9.BackColor = Color.Black;
                                                 pboxAJ4T9.Location = new Point(500, 391 - (28 * 7));
+                                                ListadePenultimas.Add(new Penultima("9"));
                                             }
 
                                             break;
@@ -7381,13 +7584,15 @@ namespace Aplicativo1
                                                 C97.Visible = true;
                                                 C98.Visible = true;
                                                 C99.Visible = true;
-                                                
+                                                ListadeFileiras.Add(new FilWin("9"));
+
                                             }
                                             else
                                             {
                                                 pboxAJ4T9.Visible = true;
                                                 pboxAJ4T9.BackColor = Color.Black;
                                                 pboxAJ4T9.Location = new Point(500, 391 - (28 * 8));
+                                                ListadeFileiras.Add(new FilWin("9"));
                                             }
 
                                             break;
@@ -7495,12 +7700,14 @@ namespace Aplicativo1
                                                 pboxAJ4T10.Visible = false;
                                                 pboxJ4T10.BackColor = Color.Yellow;
                                                 pboxJ4T10.Location = new Point(553, 363 - (28 * 5));
+                                                ListadePenultimas.Add(new Penultima("10"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T10.Visible = true;
                                                 pboxAJ4T10.BackColor = Color.Black;
                                                 pboxAJ4T10.Location = new Point(553, 363 - (28 * 5));
+                                                ListadePenultimas.Add(new Penultima("10"));
                                             }
 
                                             break;
@@ -7531,13 +7738,15 @@ namespace Aplicativo1
                                                 C105.Visible = true;
                                                 C106.Visible = true;
                                                 C107.Visible = true;
-                                                
+                                                ListadeFileiras.Add(new FilWin("10"));
+
                                             }
                                             else
                                             {
                                                 pboxAJ4T10.Visible = true;
                                                 pboxAJ4T10.BackColor = Color.Black;
                                                 pboxAJ4T10.Location = new Point(553, 363 - (28 * 6));
+                                                ListadeFileiras.Add(new FilWin("10"));
                                             }
 
                                             break;
@@ -7611,12 +7820,14 @@ namespace Aplicativo1
                                                 pboxAJ4T11.Visible = false;
                                                 pboxJ4T11.BackColor = Color.Yellow;
                                                 pboxJ4T11.Location = new Point(607, 334 - (28 * 3));
+                                                ListadePenultimas.Add(new Penultima("11"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T11.Visible = true;
                                                 pboxAJ4T11.BackColor = Color.Black;
                                                 pboxAJ4T11.Location = new Point(607, 334 - (28 * 3));
+                                                ListadePenultimas.Add(new Penultima("11"));
                                             }
 
                                             break;
@@ -7642,13 +7853,15 @@ namespace Aplicativo1
                                                 C113.Visible = true;
                                                 C114.Visible = true;
                                                 C115.Visible = true;
-                                                
+                                                ListadeFileiras.Add(new FilWin("11"));
+
                                             }
                                             else
                                             {
                                                 pboxAJ4T11.Visible = true;
                                                 pboxAJ4T11.BackColor = Color.Black;
                                                 pboxAJ4T11.Location = new Point(607, 334 - (28 * 4));
+                                                ListadeFileiras.Add(new FilWin("11"));
                                             }
 
                                             break;
@@ -7684,12 +7897,14 @@ namespace Aplicativo1
                                                 pboxAJ4T12.Visible = false;
                                                 pboxJ4T12.BackColor = Color.Yellow;
                                                 pboxJ4T12.Location = new Point(660, 306 - 28);
+                                                ListadePenultimas.Add(new Penultima("12"));
                                             }
                                             else
                                             {
                                                 pboxAJ4T12.Visible = true;
                                                 pboxAJ4T12.BackColor = Color.Black;
                                                 pboxAJ4T12.Location = new Point(660, 306 - 28);
+                                                ListadePenultimas.Add(new Penultima("12"));
                                             }
 
                                             break;
@@ -7709,13 +7924,15 @@ namespace Aplicativo1
                                                 C12.Visible = true;
                                                 C122.Visible = true;
                                                 C123.Visible = true;
-                                                
+                                                ListadeFileiras.Add(new FilWin("12"));
+
                                             }
                                             else
                                             {
                                                 pboxAJ4T12.Visible = true;
                                                 pboxAJ4T12.BackColor = Color.Black;
                                                 pboxAJ4T12.Location = new Point(660, (306 - 28) - 28);
+                                                ListadeFileiras.Add(new FilWin("12"));
                                             }
 
                                             break;

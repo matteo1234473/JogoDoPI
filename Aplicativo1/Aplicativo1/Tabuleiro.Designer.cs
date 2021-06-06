@@ -216,6 +216,7 @@ namespace Aplicativo1
             this.C123 = new System.Windows.Forms.Panel();
             this.C122 = new System.Windows.Forms.Panel();
             this.C12 = new System.Windows.Forms.Panel();
+            this.pnlVez = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado3)).BeginInit();
@@ -1193,7 +1194,7 @@ namespace Aplicativo1
             // 
             // timer1
             // 
-            this.timer1.Interval = 5000;
+            this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // lblJogador
@@ -1202,9 +1203,9 @@ namespace Aplicativo1
             this.lblJogador.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblJogador.Location = new System.Drawing.Point(264, 15);
             this.lblJogador.Name = "lblJogador";
-            this.lblJogador.Size = new System.Drawing.Size(65, 33);
+            this.lblJogador.Size = new System.Drawing.Size(120, 33);
             this.lblJogador.TabIndex = 228;
-            this.lblJogador.Text = "Cor";
+            this.lblJogador.Text = "Vez de:";
             // 
             // label4
             // 
@@ -1889,6 +1890,13 @@ namespace Aplicativo1
             this.C12.TabIndex = 278;
             this.C12.Visible = false;
             // 
+            // pnlVez
+            // 
+            this.pnlVez.Location = new System.Drawing.Point(390, 12);
+            this.pnlVez.Name = "pnlVez";
+            this.pnlVez.Size = new System.Drawing.Size(52, 40);
+            this.pnlVez.TabIndex = 281;
+            // 
             // Tabuleiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1897,6 +1905,7 @@ namespace Aplicativo1
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.pnlVez);
             this.Controls.Add(this.C123);
             this.Controls.Add(this.C113);
             this.Controls.Add(this.C122);
@@ -2364,5 +2373,6 @@ namespace Aplicativo1
         private System.Windows.Forms.Panel C123;
         private System.Windows.Forms.Panel C122;
         private System.Windows.Forms.Panel C12;
+        private System.Windows.Forms.Panel pnlVez;
     }
 }
