@@ -217,6 +217,10 @@ namespace Aplicativo1
             this.C122 = new System.Windows.Forms.Panel();
             this.C12 = new System.Windows.Forms.Panel();
             this.pnlVez = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbxDado3)).BeginInit();
@@ -1897,6 +1901,38 @@ namespace Aplicativo1
             this.pnlVez.Size = new System.Drawing.Size(52, 40);
             this.pnlVez.TabIndex = 281;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Red;
+            this.panel1.Location = new System.Drawing.Point(604, 7);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(16, 10);
+            this.panel1.TabIndex = 282;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel2.Location = new System.Drawing.Point(604, 23);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(16, 10);
+            this.panel2.TabIndex = 283;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Lime;
+            this.panel3.Location = new System.Drawing.Point(604, 38);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(16, 10);
+            this.panel3.TabIndex = 284;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Gold;
+            this.panel4.Location = new System.Drawing.Point(604, 54);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(16, 10);
+            this.panel4.TabIndex = 285;
+            // 
             // Tabuleiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1905,6 +1941,10 @@ namespace Aplicativo1
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlVez);
             this.Controls.Add(this.C123);
             this.Controls.Add(this.C113);
@@ -2374,5 +2414,9 @@ namespace Aplicativo1
         private System.Windows.Forms.Panel C122;
         private System.Windows.Forms.Panel C12;
         private System.Windows.Forms.Panel pnlVez;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
     }
 }
