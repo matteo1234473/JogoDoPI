@@ -74,7 +74,7 @@ namespace Aplicativo1
             this.lstPartidas.Name = "lstPartidas";
             this.lstPartidas.Size = new System.Drawing.Size(334, 173);
             this.lstPartidas.TabIndex = 2;
-            this.lstPartidas.SelectedIndexChanged += new System.EventHandler(this.lstPartidas_SelectedIndexChanged);
+
             // 
             // btnJogadores
             // 
@@ -211,7 +211,7 @@ namespace Aplicativo1
             this.label4.Size = new System.Drawing.Size(49, 16);
             this.label4.TabIndex = 17;
             this.label4.Text = "Nome";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+
             // 
             // label5
             // 
@@ -260,7 +260,7 @@ namespace Aplicativo1
             this.label6.Size = new System.Drawing.Size(54, 13);
             this.label6.TabIndex = 22;
             this.label6.Text = "IdJogador";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+
             // 
             // txtIdjogador
             // 
@@ -310,7 +310,6 @@ namespace Aplicativo1
             this.Controls.Add(this.btnPartidas);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -98,12 +98,7 @@ namespace Aplicativo1
             txtSenhaPartida.Clear();
 
         }
-        //TesteGIT ja to profissa Thiago
-
-        //TesteGIT ja to profissa Joãozinho
-
-        //TesteGIT ja to profissa Thaysa dsds
-        
+         
         //Cria uma partida
         private void btnCriar_Click(object sender, EventArgs e)
         {
@@ -122,9 +117,6 @@ namespace Aplicativo1
         {
             int id = pegaIdDaPartida(lstPartidas.SelectedItem.ToString());
             this.idPartida = Convert.ToInt32(id);
-
-            
-
             this.Close();
         }
 
@@ -143,45 +135,17 @@ namespace Aplicativo1
                 }
 
         }
-
         private void btnIniciarP_Click(object sender, EventArgs e)
         {
             Jogo.IniciarPartida(IdJogador, Senha);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lstPartidas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_StatusTabu_Click(object sender, EventArgs e)
-        {
-
-        }
-
+ 
         private void ChecaTabu_Click(object sender, EventArgs e)
         {
             int id = pegaIdDaPartida(lstPartidas.SelectedItem.ToString());
             string status = Jogo.ExibirTabuleiro(id);
             MessageBox.Show(status);
         }
-
-        
-
     }
 }

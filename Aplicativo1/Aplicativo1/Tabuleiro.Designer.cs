@@ -36,7 +36,6 @@ namespace Aplicativo1
             this.picbxDado3 = new System.Windows.Forms.PictureBox();
             this.picbxDado4 = new System.Windows.Forms.PictureBox();
             this.txtJogadores = new System.Windows.Forms.TextBox();
-            this.btn_statusTabu = new System.Windows.Forms.Button();
             this.pboxJ1T2 = new System.Windows.Forms.PictureBox();
             this.pboxJ3T2 = new System.Windows.Forms.PictureBox();
             this.pboxJ2T2 = new System.Windows.Forms.PictureBox();
@@ -125,8 +124,6 @@ namespace Aplicativo1
             this.pboxAJ2T2 = new System.Windows.Forms.PictureBox();
             this.pboxAJ3T2 = new System.Windows.Forms.PictureBox();
             this.pboxAJ1T2 = new System.Windows.Forms.PictureBox();
-            this.btnMover = new System.Windows.Forms.Button();
-            this.btnParar = new System.Windows.Forms.Button();
             this.txtHistorico = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -349,7 +346,8 @@ namespace Aplicativo1
             // 
             // txtJogadores
             // 
-            this.txtJogadores.BackColor = System.Drawing.Color.LightGray;
+            this.txtJogadores.BackColor = System.Drawing.Color.Silver;
+            this.txtJogadores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtJogadores.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtJogadores.Location = new System.Drawing.Point(621, 7);
             this.txtJogadores.Multiline = true;
@@ -357,16 +355,6 @@ namespace Aplicativo1
             this.txtJogadores.ReadOnly = true;
             this.txtJogadores.Size = new System.Drawing.Size(151, 103);
             this.txtJogadores.TabIndex = 7;
-            // 
-            // btn_statusTabu
-            // 
-            this.btn_statusTabu.Location = new System.Drawing.Point(0, 531);
-            this.btn_statusTabu.Name = "btn_statusTabu";
-            this.btn_statusTabu.Size = new System.Drawing.Size(113, 35);
-            this.btn_statusTabu.TabIndex = 123;
-            this.btn_statusTabu.Text = "Status Tabuleiro";
-            this.btn_statusTabu.UseVisualStyleBackColor = true;
-            this.btn_statusTabu.Click += new System.EventHandler(this.btn_statusTabu_Click);
             // 
             // pboxJ1T2
             // 
@@ -1160,35 +1148,16 @@ namespace Aplicativo1
             this.pboxAJ1T2.TabStop = false;
             this.pboxAJ1T2.Visible = false;
             // 
-            // btnMover
-            // 
-            this.btnMover.Location = new System.Drawing.Point(129, 531);
-            this.btnMover.Name = "btnMover";
-            this.btnMover.Size = new System.Drawing.Size(101, 35);
-            this.btnMover.TabIndex = 217;
-            this.btnMover.Text = "MOVER!";
-            this.btnMover.UseVisualStyleBackColor = true;
-            this.btnMover.Click += new System.EventHandler(this.btnMover_Click);
-            // 
-            // btnParar
-            // 
-            this.btnParar.Location = new System.Drawing.Point(248, 531);
-            this.btnParar.Name = "btnParar";
-            this.btnParar.Size = new System.Drawing.Size(87, 34);
-            this.btnParar.TabIndex = 218;
-            this.btnParar.Text = "PARAR!";
-            this.btnParar.UseVisualStyleBackColor = true;
-            this.btnParar.Click += new System.EventHandler(this.btnParar_Click);
-            // 
             // txtHistorico
             // 
-            this.txtHistorico.BackColor = System.Drawing.Color.LightGray;
+            this.txtHistorico.BackColor = System.Drawing.Color.Silver;
+            this.txtHistorico.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtHistorico.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHistorico.Location = new System.Drawing.Point(589, 420);
+            this.txtHistorico.Location = new System.Drawing.Point(246, 494);
             this.txtHistorico.Multiline = true;
             this.txtHistorico.Name = "txtHistorico";
             this.txtHistorico.ReadOnly = true;
-            this.txtHistorico.Size = new System.Drawing.Size(194, 141);
+            this.txtHistorico.Size = new System.Drawing.Size(294, 71);
             this.txtHistorico.TabIndex = 224;
             // 
             // contextMenuStrip1
@@ -2033,8 +2002,6 @@ namespace Aplicativo1
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblJogador);
             this.Controls.Add(this.txtHistorico);
-            this.Controls.Add(this.btnParar);
-            this.Controls.Add(this.btnMover);
             this.Controls.Add(this.pboxAJ4T12);
             this.Controls.Add(this.pboxAJ2T12);
             this.Controls.Add(this.pboxAJ3T12);
@@ -2123,7 +2090,6 @@ namespace Aplicativo1
             this.Controls.Add(this.pboxJ2T2);
             this.Controls.Add(this.pboxJ3T2);
             this.Controls.Add(this.pboxJ1T2);
-            this.Controls.Add(this.btn_statusTabu);
             this.Controls.Add(this.picbxDado4);
             this.Controls.Add(this.picbxDado3);
             this.Controls.Add(this.picbxDado2);
@@ -2233,7 +2199,6 @@ namespace Aplicativo1
         private System.Windows.Forms.PictureBox picbxDado3;
         private System.Windows.Forms.PictureBox picbxDado4;
         private System.Windows.Forms.TextBox txtJogadores;
-        private System.Windows.Forms.Button btn_statusTabu;
         private System.Windows.Forms.PictureBox pboxJ1T2;
         private System.Windows.Forms.PictureBox pboxJ3T2;
         private System.Windows.Forms.PictureBox pboxJ2T2;
@@ -2322,8 +2287,6 @@ namespace Aplicativo1
         private System.Windows.Forms.PictureBox pboxAJ2T2;
         private System.Windows.Forms.PictureBox pboxAJ3T2;
         private System.Windows.Forms.PictureBox pboxAJ1T2;
-        private System.Windows.Forms.Button btnMover;
-        private System.Windows.Forms.Button btnParar;
         private System.Windows.Forms.TextBox txtHistorico;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Timer timer1;
